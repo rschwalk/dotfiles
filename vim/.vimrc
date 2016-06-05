@@ -5,19 +5,16 @@ set nocompatible
 " Automatic reloading of .vimrc
 ""autocmd! bufwritepost .vimrc source %
 
-" Get pathogen up and running
-""filetype off
-"call pathogen#runtime_append_all_bundles()
-""call pathogen#helptags()
-
 filetype off                  " required!
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
 
-" let Vundle manage Vundle
-" required!
-Plugin 'gmarik/vundle'
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
 
 " My bundles here:
 "
@@ -50,6 +47,8 @@ Plugin 'rdnetto/YCM-Generator'
 Plugin 'scrooloose/syntastic'
 Plugin 'nvie/vim-flake8'
 ""Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+
+call vundle#end()
 
 " Automatic reloading of .vimrc
 autocmd! bufwritepost .vimrc source %
