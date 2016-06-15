@@ -192,7 +192,7 @@ nmap <silent> <leader>cd :lcd %:h<CR>
 nmap <silent> <leader>kd :!mkdir -p %:p:h<CR>
 
 " put the vim directives for my file editing settings in
-nmap <silent> <leader>vi ovim:set ts=2 sts=2 sw=2:<CR>vim600:fdm=marker fdl=1 fdc=0:<ESC>
+nmap <silent> <leader>vi ovim:set ts=2 sts=2 sw=2 tw=79:<CR>vim600:fdm=marker fdl=1 fdc=0:<ESC>
 
 " set text wrapping toggles
 nmap <silent> <leader>ww :set invwrap<CR>:set wrap?<CR>
@@ -205,7 +205,7 @@ nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sw :execute ":resize " . line('$')<cr>
 
 " Use the bufkill plugin to eliminate a buffer but keep the window layout
-nmap <leader>bd :BD<cr>
+nmap <leader>bd :bp\|bd #<cr>
 
 " Make the current file executable
 nmap <leader>x :w<cr>:!chmod 755 %<cr>:e<cr>
@@ -487,17 +487,17 @@ if has('gui_running')
 else
   set t_Co=256
   set background=dark
-  colorscheme solarized
-  let g:airline_theme='solarized'
-  call togglebg#map("<F5>")
+  ""colorscheme solarized
+  ""let g:airline_theme='solarized'
+  ""call togglebg#map("<F5>")
   ""colorscheme xoria256
   ""colorscheme zenburn
   ""let g:airline_theme='dark'
   ""let g:solarized_termcolors=256
   ""colorscheme solarized
-  ""let base16colorspace=256
-  ""colorscheme base16-default
-  ""let g:airline_theme='base16'
+  let base16colorspace=256
+  colorscheme base16-default
+  let g:airline_theme='base16'
 endif
 
 autocmd FileType python highlight ColorColumn ctermbg=grey guibg=DimGrey

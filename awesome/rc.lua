@@ -255,9 +255,9 @@ for s = 1, screen.count() do
     if s == 1 then right_layout:add(wibox.widget.systray()) end
     right_layout:add(spacer)
     --right_layout:add(pacicon)
-    right_layout:add(pactext)
-    right_layout:add(pacwidget)
-    right_layout:add(spacer)
+--    right_layout:add(pactext)
+--    right_layout:add(pacwidget)
+--    right_layout:add(spacer)
     --right_layout:add(baticon)
     right_layout:add(battext)
     right_layout:add(batpct)
@@ -358,7 +358,7 @@ globalkeys = awful.util.table.join(
     awful.key({                   }, "XF86AudioRaiseVolume", function () awful.util.spawn("amixer set Master 5%+") end),
     awful.key({                   }, "XF86AudioLowerVolume", function () awful.util.spawn("amixer set Master 5%-") end),
     awful.key({                   }, "XF86AudioMute", function () awful.util.spawn("amixer set Master toggle") end),
-    awful.key({modkey,            }, "x", function () awful.util.spawn("oblogout") end),
+    awful.key({modkey,            }, "x", function () awful.util.spawn(terminal .. "-e 'systemctl suspend & xlock -mode blank'") end),
     awful.key({modkey,            }, "d", function () awful.util.spawn("/home/rschwalk/tools/dual.sh")
         naughty.notify({ text = "Dual monitor setup", ontop = true }) end),
     awful.key({modkey,            }, "s", function () awful.util.spawn("/home/rschwalk/tools/single.sh")
