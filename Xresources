@@ -1,0 +1,188 @@
+Xft.dpi: 96
+Xft.antialias: true
+Xft.hinting: true
+Xft.rgba: rgb
+Xft.autohint: false
+Xft.hintstyle: hintslight
+Xft.lcdfilter: lcddefault
+
+
+! My own configuration
+URxvt.urgentOnBell: true
+URxvt.visualBell: off
+URxvt.iso14755: off
+URxvt.iso14755_52: off
+URxvt.meta8: true
+URxvt.depth: 32
+!URxvt.iconFile: /usr/share/icons/Humanity/apps/128/utilities-terminal.svg
+URxvt.metaSendsEscape: true
+
+URxvt.internalBorder: 0
+URxvt.externalBorder: 0
+
+URxvt.scrollBar: off
+URxvt.cursorBlink: true
+URxvt.cursorUnderline: false
+URxvt.cursorColor:#757575
+URxvt.saveLines: 10000
+URxvt.scrollTtyOutput:   false
+URxvt.scrollWithBuffer:  true
+URxvt.scrollTtyKeypress: true
+
+!urxvt*depth:32
+!urxvt*foreground:#ADADAD
+!urxvt*background:rgba:0600/0600/0600/dddd
+!URxvt.foreground: 15
+URxvt.geometry: 128x38
+
+!URxvt.font: xft:DejaVu Sans Mono:pixelsize=12:antialias=true:hinting=true
+!URxvt.boldFont: xft:DejaVu Sans Mono:bold:pixelsize=12:antialias=true:hinting=true
+!URxvt.italicFont: xft:DejaVu Sans Mono:italic:pixelsize=12:antialias=true:hinting=true
+!URxvt.boldItalicFont: xft:DejaVu Sans Mono:bold:italic:pixelsize=12:antialias=true
+
+URxvt.font: xft:Oxygen Mono:pixelsize=13:antialias=true:hinting=true
+URxvt.boldFont: xft:Oxygen Mono:bold:pixelsize=13:antialias=true:hinting=true
+URxvt.italicFont: xft:Oxygen Mono:italic:pixelsize=13:antialias=true:hinting=true
+URxvt.boldItalicFont: xft:Oxygen Mono:bold:italic:pixelsize=13:antialias=true
+!Droid Sans
+!URxvt.font: xft:Droid Sans Mono for Powerline:pixelsize=12:antialias=true:hinting=true
+!URxvt.boldFont: xft:Droid Sans Mono for Powerline:bold:pixelsize=12:antialias=true:hinting=true
+!URxvt.italicFont: xft:Droid Sans Mono for Powerline:italic:pixelsize=12:antialias=true:hinting=true
+!URxvt.boldItalicFont: xft:Droid Sans Mono for Powerline:bold:italic:pixelsize=12:antialias=true
+!! Monofur
+!URxvt.font: xft:Monofur for Powerline:pixelsize=22:antialias=true:hinting=true
+!URxvt.boldFont: xft:Monofur Bold for Powerline:pixelsize=22:antialias=true:hinting=true
+!URxvt.italicFont: xft:Monofur Italic for Powerline:pixelsize=22:antialias=true:hinting=true
+!URxvt.boldItalicFont: xft:Monofur Bold for Powerline:italic:pixelsize=17:antialias=true
+!! Anonymice
+!URxvt.font: xft:Anonymice Powerline:pixelsize=21:antialias=true:hinting=true
+!URxvt.boldFont: xft:Anonymice Powerline Bold:pixelsize=21:antialias=true:hinting=true
+!URxvt.italicFont: xft:Anonymice Powerline Italic:pixelsize=21:antialias=true:hinting=true
+!URxvt.boldItalicFont: xft:Anonymice Bold Italic:pixelsize=21:antialias=true
+
+!URxvt.font: 	xft: Anonymice Powerline:pixelsize=17:anialias=true
+!		xft: DejaVu Sans Mono for Powerline:pixelsize=12:anialias=true
+!		xft: Digital Readout Thick UprightPowerline:pixelsize=17:anialias=true
+!		xft: Droid Sans Mono for Powerline:pixelsize=12:anialias=true
+!		xft: FuraMono-Regular Powerline:pixelsize=17:anialias=true
+!		xft: Inconsolata for Powerline:pixelsize=17:anialias=true
+!		xft: Literation Mono Powerline:pixelsize=17:anialias=true
+!		xft: Meslo L DZ Regular for Powerline:pixelsize=17:anialias=true
+!		xft: Monofur for Powerline:pixelsize=17:anialias=true
+!		xft: Sauce Code Powerline Medium:pixelsize=17:anialias=true
+!		xft: Ubuntu Mono derivative Powerline:pixelsize=17:anialias=true
+
+
+URxvt.letterSpace: -1
+
+! Disable screen printing by overriding the default print pipe.
+URxvt.print-pipe: "cat >/dev/null"
+
+URxvt.perl-ext-common : default,keyboard-select,url-select,clipboard
+
+URxvt.keysym.M-x           	: perl:keyboard-select:activate
+URxvt.keysym.M-u           	: perl:url-select:select_next
+URxvt.keysym.M-c           	: perl:clipboard:copy
+URxvt.keysym.M-v           	: perl:clipboard:paste
+URxvt.keysym.M-s           	: perl:keyboard-select:search
+URxvt.keysym.M-C-v         	: perl:clipboard:paste_escaped
+!URxvt.perl-ext-common     	: tabbed,default,matcher
+Urxvt.perl-lib            	: /usr/lib/urxvt/perl/
+URxvt.url-select.launcher  	: luakit
+URxvt.url-select.autocopy  	: true
+URxvt.url-select.underline 	: true
+!URxvt.matcher.button: 1
+
+URxvt.url-select.button:   1
+
+URxvt.clipboard.copycmd:  xsel --input  --clipboard
+URxvt.clipboard.pastecmd: xsel --output --clipboard
+
+!URxvt.keysym.Control-Shift-C: perl:clipboard:copy
+!URxvt.keysym.Control-Shift-V: perl:clipboard:paste
+
+
+! xterm configuration
+XTerm*locale: true
+Xterm*saveLines: 4096
+xterm*faceName: DejaVu Sans Mono:size=9:antialias=true
+!xterm*font: 7x13
+!XTerm*transparent: true
+xterm*termName: xterm-256color
+xterm*borderWidth: 0
+XTerm*cursorBlink: true
+XTerm*selectToClipboard: true
+XTerm*on3Clicks: regex ([[:alpha:]]+://)?([[:alnum:]!#+,./=?@_~-]|(%[[:xdigit:]][[:xdigit:]]))+
+*VT100*translations: #override Shift <Btn1Up>: exec-formatted("google-chrome-stable '%t'", PRIMARY)
+
+! Solarized color scheme for the X Window System
+!
+! http://ethanschoonover.com/solarized
+
+
+! Common
+
+#define S_yellow        #b58900
+#define S_orange        #cb4b16
+#define S_red           #dc322f
+#define S_magenta       #d33682
+#define S_violet        #6c71c4
+#define S_blue          #268bd2
+#define S_cyan          #2aa198
+#define S_green         #859900
+
+
+! Dark
+
+#define S_base03        #002b36
+#define S_base02        #073642
+#define S_base01        #586e75
+#define S_base00        #657b83
+#define S_base0         #839496
+#define S_base1         #93a1a1
+#define S_base2         #eee8d5
+#define S_base3         #fdf6e3
+
+
+! Light
+
+! #define S_base03        #fdf6e3
+! #define S_base02        #eee8d5
+! #define S_base01        #93a1a1
+! #define S_base00        #839496
+! #define S_base0         #657b83
+! #define S_base1         #586e75
+! #define S_base2         #073642
+! #define S_base3         #002b36
+
+
+! To only apply colors to your terminal, for example, prefix
+! the color assignment statement with its name. Example:
+!
+! URxvt*background:            S_base03
+
+*background:              S_base03
+*foreground:              S_base0
+*fading:                  40
+*fadeColor:               S_base03
+*cursorColor:             S_base1
+*pointerColorBackground:  S_base01
+*pointerColorForeground:  S_base1
+
+*color0:                  S_base02
+*color1:                  S_red
+*color2:                  S_green
+*color3:                  S_yellow
+*color4:                  S_blue
+*color5:                  S_magenta
+*color6:                  S_cyan
+*color7:                  S_base2
+*color9:                  S_orange
+*color8:                  S_base03
+*color10:                 S_base01
+*color11:                 S_base00
+*color12:                 S_base0
+*color13:                 S_violet
+*color14:                 S_base1
+*color15:                 S_base3
+
