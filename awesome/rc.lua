@@ -44,14 +44,12 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
---beautiful.init("/usr/share/awesome/themes/arch/theme.lua")
---beautiful.init("/usr/share/awesome/themes/default/theme.lua")
 beautiful.init("/home/rschwalk/.config/awesome/themes/grey-new/theme.lua")
 --beautiful.init("/usr/share/awesome/themes/holo/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
---terminal = "urxvt"
-terminal = "konsole"
+terminal = "urxvt"
+--terminal = "konsole"
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
 
