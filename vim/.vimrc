@@ -487,17 +487,17 @@ if has('gui_running')
 else
   set t_Co=256
   set background=dark
-  ""colorscheme solarized
-  ""let g:airline_theme='solarized'
-  ""call togglebg#map("<F5>")
+  colorscheme solarized
+  let g:airline_theme='solarized'
+  call togglebg#map("<F5>")
   ""colorscheme xoria256
   ""colorscheme zenburn
   ""let g:airline_theme='dark'
   ""let g:solarized_termcolors=256
   ""colorscheme solarized
-  let base16colorspace=256
-  colorscheme base16-default
-  let g:airline_theme='base16'
+  ""let base16colorspace=256
+  ""colorscheme base16-default
+  ""let g:airline_theme='base16'
 endif
 
 autocmd FileType python highlight ColorColumn ctermbg=grey guibg=DimGrey
