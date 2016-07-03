@@ -45,7 +45,7 @@ end
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
 beautiful.init("/home/rschwalk/.config/awesome/themes/grey-new/theme.lua")
---beautiful.init("/usr/share/awesome/themes/holo/theme.lua")
+--beautiful.init("/home/rschwalk/.config/awesome/themes/awesome-solarized/dark/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "urxvt"

@@ -46,19 +46,19 @@ end
 
 theme.font          = "Monaco 8"
 
-theme.bg_normal     = "#121212"
-theme.bg_focus      = "#212121"
+theme.bg_normal     = "#002b36" --"#121212"
+theme.bg_focus      = "#073642" --"#212121"
 theme.bg_urgent     = "#212121"
 theme.bg_minimize   = "#121212"
 
-theme.fg_normal     = "#5fafff"
-theme.fg_focus      = "#ff8700"
-theme.fg_urgent     = "#ff0056"
+theme.fg_normal     = "#657b83" --"#5fafff"
+theme.fg_focus      = "#2aa198" --"#ff8700"
+theme.fg_urgent     = "#dc322f" --"#ff0056"
 theme.fg_minimize   = "#ababab"
 
 theme.border_width  = "1"
-theme.border_normal = "#515151"
-theme.border_focus  = "#ff8700"
+theme.border_normal = "#657b83" --"#515151"
+theme.border_focus  = "#859900" -- "#ff8700"
 theme.border_marked = "#ff0056"
 
 -- There are other variable sets
