@@ -7,48 +7,38 @@ set nocompatible
 
 filetype off                  " required!
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+call plug#begin('~/.config/nvim/plugged')
 
 " My bundles here:
 "
 " original repos on GitHub
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'chriskempson/base16-vim'
-Plugin 'mattdbridges/bufkill.vim'
-Plugin 'kien/ctrlp.vim'
-Plugin 'tpope/vim-fugitive'
-Plugin 'sjl/gundo.vim'
-""Plugin 'fholgado/minibufexpl.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'vim-scripts/OmniCppComplete'
-""Plugin 'klen/python-mode'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'jnurmine/Zenburn'
-""Plugin 'ervandew/supertab'
-Plugin 'vim-scripts/taglist.vim'
-Plugin 'vim-scripts/TaskList.vim'
-""Plugin 'drmingdrmer/xptemplate'
-Plugin 'peterhoeg/vim-qml'
-Plugin 'derekwyatt/vim-fswitch'
-Plugin 'derekwyatt/vim-protodef'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
-Plugin 'rdnetto/YCM-Generator'
-""Plugin 'jmcantrell/vim-virtualenv'
-Plugin 'scrooloose/syntastic'
-Plugin 'nvie/vim-flake8'
-""Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'chriskempson/base16-vim'
+Plug 'kien/ctrlp.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'sjl/gundo.vim'
+""Plug 'fholgado/minibufexpl.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'vim-scripts/OmniCppComplete'
+""Plug 'klen/python-mode'
+Plug 'altercation/vim-colors-solarized'
+Plug 'jnurmine/Zenburn'
+""Plug 'ervandew/supertab'
+Plug 'vim-scripts/taglist.vim'
+Plug 'vim-scripts/TaskList.vim'
+Plug 'peterhoeg/vim-qml'
+Plug 'derekwyatt/vim-fswitch'
+Plug 'derekwyatt/vim-protodef'
+Plug 'Valloric/YouCompleteMe'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'rdnetto/YCM-Generator'
+Plug 'scrooloose/syntastic'
+Plug 'nvie/vim-flake8'
+Plug 'airblade/vim-gitgutter'
 
-call vundle#end()
+call plug#end()
 
 " Automatic reloading of .vimrc
 autocmd! bufwritepost .vimrc source %
@@ -213,7 +203,7 @@ nmap <leader>x :w<cr>:!chmod 755 %<cr>:e<cr>
 " Syntax coloring lines that are too long just slows down the world
 set synmaxcol=2048
 
-let g:ycm_global_ycm_extra_conf = "~/.vim/ycm_extra_conf.py"
+let g:ycm_global_ycm_extra_conf = "~/.config/nvim/ycm_extra_conf.py"
 ""let g:ycm_key_list_select_completion=[]
 ""let g:ycm_key_list_previous_completion=[]
 
@@ -363,8 +353,7 @@ let g:airline#extensions#tabline#enabled = 1
 set laststatus=2
 let g:airline_theme='dark'
 
-" cd ~/.vim/bundle
-" git clone https://github.com/kien/ctrlp.vim.git
+" Setting for ctr-p
 let g:ctrlp_max_height = 30
 set wildignore+=*.pyc
 set wildignore+=*_build/*
