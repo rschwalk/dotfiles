@@ -35,15 +35,16 @@ URxvt.scrollTtyKeypress: true
 !URxvt.foreground: 15
 URxvt.geometry: 128x38
 
-!URxvt.font: xft:DejaVu Sans Mono:pixelsize=12:antialias=true:hinting=true
-!URxvt.boldFont: xft:DejaVu Sans Mono:bold:pixelsize=12:antialias=true:hinting=true
-!URxvt.italicFont: xft:DejaVu Sans Mono:italic:pixelsize=12:antialias=true:hinting=true
-!URxvt.boldItalicFont: xft:DejaVu Sans Mono:bold:italic:pixelsize=12:antialias=true
+URxvt.font: xft:DejaVu Sans Mono:pixelsize=12:antialias=true:hinting=true
+URxvt.boldFont: xft:DejaVu Sans Mono:bold:pixelsize=12:antialias=true:hinting=true
+URxvt.italicFont: xft:DejaVu Sans Mono:italic:pixelsize=12:antialias=true:hinting=true
+URxvt.boldItalicFont: xft:DejaVu Sans Mono:bold:italic:pixelsize=12:antialias=true
 
-URxvt.font: xft:Oxygen Mono:pixelsize=13:antialias=true:hinting=true
-URxvt.boldFont: xft:Oxygen Mono:bold:pixelsize=13:antialias=true:hinting=true
-URxvt.italicFont: xft:Oxygen Mono:italic:pixelsize=13:antialias=true:hinting=true
-URxvt.boldItalicFont: xft:Oxygen Mono:bold:italic:pixelsize=13:antialias=true
+!URxvt.font: xft:Oxygen Mono:pixelsize=13:antialias=true:hinting=true
+!URxvt.boldFont: xft:Oxygen Mono:bold:pixelsize=13:antialias=true:hinting=true
+!URxvt.italicFont: xft:Oxygen Mono:italic:pixelsize=13:antialias=true:hinting=true
+!URxvt.boldItalicFont: xft:Oxygen Mono:bold:italic:pixelsize=13:antialias=true
+
 !Droid Sans
 !URxvt.font: xft:Droid Sans Mono for Powerline:pixelsize=12:antialias=true:hinting=true
 !URxvt.boldFont: xft:Droid Sans Mono for Powerline:bold:pixelsize=12:antialias=true:hinting=true
