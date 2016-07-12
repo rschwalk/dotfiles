@@ -381,7 +381,7 @@ let g:pep8_map='<leader>8'
 ""let g:pymode_doc = 1
 """"let g:pymode_rope_autoimport_modules = ["os.*", "gi.repository.*"]
 ""let g:pymode_rope_always_show_complete_menu = 1
-""map <Leader>b Oimport pdb; pdb.set_trace() # BREAKPOINT<C-c>
+map <Leader>bp Oimport pdb; pdb.set_trace() # BREAKPOINT<C-c>
 
 " automaticaly load the tags on every save for cpp files
 autocmd BufWritePost *.cpp :TlistUpdate
