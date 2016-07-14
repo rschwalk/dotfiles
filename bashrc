@@ -30,4 +30,8 @@ export MAKEFLAGS='-j 4'
 # alias python='/opt/python/bin/python3.5'
 # alias pyvenv='/opt/python/bin/pyvenv-3.5'
 
+export WORKON_HOME=$HOME/dev/tools/pyvenv   # optional
+export PROJECT_HOME=$HOME/dev/projects      # optional
+source /usr/bin/virtualenvwrapper.sh
+
 test -s ~/.alias && . ~/.alias || true
