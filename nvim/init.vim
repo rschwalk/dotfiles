@@ -34,9 +34,10 @@ Plug 'Valloric/YouCompleteMe'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'rdnetto/YCM-Generator'
-Plug 'scrooloose/syntastic'
+""Plug 'scrooloose/syntastic'
 Plug 'nvie/vim-flake8'
 Plug 'airblade/vim-gitgutter'
+Plug 'neomake/neomake'
 
 call plug#end()
 
@@ -136,6 +137,9 @@ set autoread
 
 set grepprg=grep\ -nH\ $*
 
+" Relitive line numbers
+set relativenumber
+
 " Don't use Ex mode, use Q for formatting
 map Q gq
 
@@ -205,7 +209,7 @@ set synmaxcol=2048
 
 let g:ycm_global_ycm_extra_conf = "~/.config/nvim/ycm_extra_conf.py"
 ""let g:ycm_key_list_select_completion=[]
-""let g:ycm_key_list_previous_completion=[]
+let g:ycm_key_list_previous_completion=[]
 
 let g:UltiSnipsExpandTrigger="<c-l>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
@@ -291,6 +295,10 @@ vnoremap > >gv  " better indentation
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 au InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWritePre * :%s/\s\+$//e
+
+" Settings for run neomake automatically
+autocmd! BufWritePost * Neomake
+
 
 " limit the text width in mutt
 au BufRead /tmp/mutt-* set tw=72
