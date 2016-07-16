@@ -484,7 +484,7 @@ if has('gui_running')
   ""colorscheme xoria256
 else
   set t_Co=256
-  set background=dark
+  set background=light
   colorscheme solarized
   let g:airline_theme='solarized'
   ""call togglebg#map("<F5>")
