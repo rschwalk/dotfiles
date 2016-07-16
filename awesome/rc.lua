@@ -114,11 +114,11 @@ tags = {
      "5-media"
            },
  layout = {
-      layouts[2],
-      layouts[1],
-      layouts[2],
-      layouts[2],
-      layouts[2]
+      layouts[9],
+      layouts[9],
+      layouts[9],
+      layouts[9],
+      layouts[9]
           }
        }
   for s = 1, screen.count() do
@@ -357,6 +357,7 @@ globalkeys = awful.util.table.join(
     awful.key({                   }, "XF86AudioLowerVolume", function () awful.util.spawn("amixer set Master 5%-") end),
     awful.key({                   }, "XF86AudioMute", function () awful.util.spawn("amixer set Master toggle") end),
     awful.key({modkey,            }, "x", function () awful.util.spawn(terminal .. "-e 'systemctl suspend & xlock -mode blank'") end),
+    awful.key({modkey,            }, "e", function () awful.util.spawn("dmenu_run -fn -misc-fixed-*-*-*-*-20-200-*-*-*-*-*-*  -i -nf 'gray' -sb 'dark green' -nb 'dim gray'") end),
     awful.key({modkey,            }, "d", function () awful.util.spawn("/home/rschwalk/tools/dual.sh")
         naughty.notify({ text = "Dual monitor setup", ontop = true }) end),
     awful.key({modkey,            }, "s", function () awful.util.spawn("/home/rschwalk/tools/single.sh")
