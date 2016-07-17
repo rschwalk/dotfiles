@@ -27,8 +27,14 @@ set sidebar_delim   = '  │'
 set sidebar_visible = yes
 set sidebar_width   = 24
 set sidebar_shortpath = yes
-#color sidebar_new yellow red
+color sidebar_new yellow default
 #color sidebar_new color221 color233
+# b toggles sidebar visibility
+macro index b ‘<enter-command>toggle sidebar_visible<enter>’
+macro pager b ‘<enter-command>toggle sidebar_visible<enter>’
+
+# Remap bounce-message function to “B”
+bind index B bounce-message
 
 # Status Bar -----------------------------------------
 set status_chars  = " *%A"
@@ -132,7 +138,7 @@ set reverse_name                     # reply as whomever it was to
 set include                          # include message in replies
 set forward_quote                    # include message in forwards
 
-set editor = "vim"        # Use terminal Vim to compose email.
+set editor = "nvim"        # Use terminal Vim to compose email.
 
 set from     = "richard.schwalk@gmail.com"
 set sendmail = "/usr/bin/msmtp -a gmail"
