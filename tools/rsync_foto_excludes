@@ -1,0 +1,6 @@
+/rschwalk/.cache*
+/rschwalk/.gvfs*
+/rschwalk/.local/share/Trash/*
+/rschwalk/.thumbnails/*
+/rschwalk/.config/chromium*
+/rschwalk/.config/google*
