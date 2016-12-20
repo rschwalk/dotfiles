@@ -1,3 +1,4 @@
+#!/bin/bash
 
 ln -s /home/rschwalk/dotfiles/Xresources /home/rschwalk/.Xresources &&
 ln -s /home/rschwalk/dotfiles/bashrc /home/rschwalk/.bashrc &&
