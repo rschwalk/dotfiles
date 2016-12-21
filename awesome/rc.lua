@@ -48,8 +48,8 @@ beautiful.init("/home/rschwalk/.config/awesome/themes/grey-new/theme.lua")
 --beautiful.init("/home/rschwalk/.config/awesome/themes/awesome-solarized/dark/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "urxvt"
---terminal = "konsole"
+--terminal = "urxvt"
+terminal = "konsole"
 editor = os.getenv("EDITOR") or "nvim"
 editor_cmd = terminal .. " -e " .. editor
 
