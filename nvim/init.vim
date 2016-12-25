@@ -210,8 +210,9 @@ set synmaxcol=2048
 "-----------------------------------------------------------------------------
 " Neovim settings
 "-----------------------------------------------------------------------------
-let g:python_host_prog = '/home/rschwalk/dev/tools/pyvenv/neovim/bin/python'
-let g:python3_host_prog = '/home/rschwalk/dev/tools/pyvenv/neovim3/bin/python'
+""let g:python_host_prog = '/home/rschwalk/dev/tools/pyvenv/neovim/bin/python'
+""let g:python3_host_prog = '/home/rschwalk/dev/tools/pyvenv/neovim3/bin/python'
+let g:python3_host_prog = '/usr/bin/python3'
 
 let g:ycm_global_ycm_extra_conf = "~/.config/nvim/ycm_extra_conf.py"
 ""let g:ycm_key_list_select_completion=[]
