@@ -468,7 +468,7 @@ autocmd FileType python map R :w<CR>:!python3 "%"<CR>
 " Run the last shell command
 nnoremap <leader>rl :!!<CR>
 
-set cursorline
+""set cursorline
 nnoremap <leader>c :set cursorline!<CR>
 nnoremap <C-s> :w<CR>
 
@@ -491,13 +491,13 @@ if has('gui_running')
   ""colorscheme xoria256
 else
   set t_Co=256
-  set background=light
-  colorscheme solarized
-  let g:airline_theme='solarized'
+  set background=dark
+  ""colorscheme solarized
+  ""let g:airline_theme='solarized'
   ""call togglebg#map("<F5>")
-  ""colorscheme xoria256
+  colorscheme xoria256
   ""colorscheme zenburn
-  ""let g:airline_theme='dark'
+  let g:airline_theme='dark'
   ""let g:solarized_termcolors=256
   ""colorscheme solarized
   ""let base16colorspace=256
