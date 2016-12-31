@@ -495,9 +495,10 @@ else
   ""colorscheme solarized
   ""let g:airline_theme='solarized'
   ""call togglebg#map("<F5>")
-  colorscheme xoria256
-  ""colorscheme zenburn
-  let g:airline_theme='dark'
+  ""colorscheme xoria256
+  ""let g:airline_theme='dark'
+  colorscheme zenburn
+  let g:airline_theme='zenburn'
   ""let g:solarized_termcolors=256
   ""colorscheme solarized
   ""let base16colorspace=256
