@@ -1,5 +1,7 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_cnt =5
 let g:netrw_dirhist_1='/home/rschwalk/dev/projects/InformationDevicePy'
 let g:netrw_dirhist_2='/home/rschwalk/dev/projects/InformationDevicePy/modules'
 let g:netrw_dirhist_3='/home/rschwalk/dev/projects/RemotePiNPN'
+let g:netrw_dirhist_4='/home/rschwalk/dev/tools/pyvenv/RobotControlCenter/twisted/src/twisted/internet'
+let g:netrw_dirhist_5='/home/rschwalk/dev/tools/pyvenv/RobotControlCenter/twisted/src/twisted'

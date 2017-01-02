@@ -38,6 +38,7 @@ Plug 'rdnetto/YCM-Generator'
 Plug 'nvie/vim-flake8'
 Plug 'airblade/vim-gitgutter'
 Plug 'neomake/neomake'
+Plug 'flazz/vim-colorschemes'
 
 call plug#end()
 
@@ -62,7 +63,7 @@ set shiftround
 set expandtab
 
 " Printing options
-set printoptions=header:0,duplex:long,paper:letter
+set printoptions=header:0,duplex:long,paper:A4
 
 " set the search scan to wrap lines
 set wrapscan
@@ -71,7 +72,7 @@ set wrapscan
 set ch=2
 
 " set visual bell -- i hate that damned beeping
-set vb
+"" set vb
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
@@ -95,7 +96,7 @@ set lazyredraw
 set mousehide
 
 " Set up the gui cursor to look nice
-""set guicursor=n-v-c:block-Cursor-blinkon0,ve:ver35-Cursor,o:hor50-Cursor,i-ci:ver25-Cursor,r-cr:hor20-Cursor,sm:block-Cursor-blinkwait175-blinkoff150-blinkon175
+set guicursor=n-v-c:block-Cursor-blinkon0,ve:ver35-Cursor,o:hor50-Cursor,i-ci:ver25-Cursor,r-cr:hor20-Cursor,sm:block-Cursor-blinkwait175-blinkoff150-blinkon175
 
 " Gui option
 set go-=m
@@ -198,7 +199,7 @@ nmap <silent> <leader>ev :e $MYVIMRC<CR>
 " for those buffers that are only a few lines
 nmap <silent> <leader>sw :execute ":resize " . line('$')<cr>
 
-" Use the bufkill plugin to eliminate a buffer but keep the window layout
+" Use to eliminate a buffer but keep the window layout
 nmap <leader>bd :bp\|bd #<cr>
 
 " Make the current file executable
@@ -468,7 +469,7 @@ autocmd FileType python map R :w<CR>:!python3 "%"<CR>
 " Run the last shell command
 nnoremap <leader>rl :!!<CR>
 
-""set cursorline
+set cursorline
 nnoremap <leader>c :set cursorline!<CR>
 nnoremap <C-s> :w<CR>
 
@@ -497,13 +498,11 @@ else
   ""call togglebg#map("<F5>")
   ""colorscheme xoria256
   ""let g:airline_theme='dark'
-  colorscheme zenburn
-  let g:airline_theme='zenburn'
+  ""colorscheme zenburn
+  ""let g:airline_theme='zenburn'
+  colorscheme jellybeans
+  let g:airline_theme='jellybeans'
   ""let g:solarized_termcolors=256
-  ""colorscheme solarized
-  ""let base16colorspace=256
-  ""colorscheme base16-default
-  ""let g:airline_theme='base16'
 endif
 
 autocmd FileType python highlight ColorColumn ctermbg=grey guibg=DimGrey
