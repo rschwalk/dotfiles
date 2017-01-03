@@ -279,10 +279,10 @@ let NERDTreeWinSize = 35
 
 " bind Ctrl+<movement> keys to move around the windows, instead of using Ctrl+w + <movement>
 " Every unnecessary keystroke that can be saved is good for your health :)
-map <c-j> <c-w>j
-map <c-k> <c-w>k
-map <c-l> <c-w>l
-map <c-h> <c-w>h
+""map <c-j> <c-w>j
+""map <c-k> <c-w>k
+""map <c-l> <c-w>l
+""map <c-h> <c-w>h
 
 " easier moving between buffers
 ""map <Leader>n <esc>:bprevious<CR>
@@ -478,6 +478,18 @@ nnoremap <C-s> :w<CR>
 let Tlist_Ctags_Cmd='ctags'
 let Tlist_Use_Right_Window = 1
 let Tlist_WinWidth = 35
+
+" Neovim terminal settings
+:tnoremap <Esc> <C-\><C-n>
+:tnoremap <A-h> <C-\><C-n><C-w>h
+:tnoremap <A-j> <C-\><C-n><C-w>j
+:tnoremap <A-k> <C-\><C-n><C-w>k
+:tnoremap <A-l> <C-\><C-n><C-w>l
+:nnoremap <A-h> <C-w>h
+:nnoremap <A-j> <C-w>j
+:nnoremap <A-k> <C-w>k
+:nnoremap <A-l> <C-w>l
+:au BufEnter * if &buftype == 'terminal' | :startinsert | endif
 
 call togglebg#map("<F5>")
 
