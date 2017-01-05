@@ -33,7 +33,7 @@ Plug 'derekwyatt/vim-protodef'
 Plug 'Valloric/YouCompleteMe'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-Plug 'rdnetto/YCM-Generator'
+Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 ""Plug 'scrooloose/syntastic'
 Plug 'nvie/vim-flake8'
 Plug 'airblade/vim-gitgutter'
