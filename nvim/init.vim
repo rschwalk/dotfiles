@@ -515,6 +515,7 @@ else
   colorscheme jellybeans
   let g:airline_theme='jellybeans'
   ""let g:solarized_termcolors=256
+  ""set termguicolors
 endif
 
 autocmd FileType python highlight ColorColumn ctermbg=grey guibg=DimGrey
