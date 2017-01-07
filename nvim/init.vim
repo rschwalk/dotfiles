@@ -39,6 +39,7 @@ Plug 'nvie/vim-flake8'
 Plug 'airblade/vim-gitgutter'
 Plug 'neomake/neomake'
 Plug 'flazz/vim-colorschemes'
+Plug 'Raimondi/delimitMate'
 
 call plug#end()
 
@@ -144,6 +145,10 @@ set relativenumber
 " Don't use Ex mode, use Q for formatting
 map Q gq
 
+" Use more sense splitting
+set splitbelow
+set splitright
+
 " CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
 " so that you can undo CTRL-U after inserting a line break.
 inoremap <C-U> <C-G>u<C-U>
@@ -187,7 +192,7 @@ nmap <silent> <leader>cd :lcd %:h<CR>
 nmap <silent> <leader>kd :!mkdir -p %:p:h<CR>
 
 " put the vim directives for my file editing settings in
-nmap <silent> <leader>vi ovim:set ts=2 sts=2 sw=2 tw=79:<CR>vim600:fdm=marker fdl=1 fdc=0:<ESC>
+nmap <silent> <leader>vi ovim:set ts=2 sts=2 sw=2 tw=79 fo=+t:<CR>vim600:fdm=marker fdl=1 fdc=0:<ESC>
 
 " set text wrapping toggles
 nmap <silent> <leader>ww :set invwrap<CR>:set wrap?<CR>
@@ -242,6 +247,7 @@ nnoremap <leader>jf :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>jc :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 let g:ycm_python_binary_path = '/usr/bin/python3'
+let g:ycm_show_diagnostics_ui = 0
 
 "-----------------------------------------------------------------------------
 " FuzzyFinder Settings
@@ -305,8 +311,9 @@ au InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWritePre * :%s/\s\+$//e
 
 " Settings for run neomake automatically
-autocmd! BufWritePost * Neomake
-
+autocmd! BufWritePost * Neomake!
+let g:neomake_open_list = 2
+let g:neomake_cpp_enabled_makers = ['gcc']
 
 " limit the text width in mutt
 au BufRead /tmp/mutt-* set tw=72
