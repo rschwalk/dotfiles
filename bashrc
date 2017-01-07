@@ -49,6 +49,8 @@ export PROJECT_HOME=$HOME/dev/projects      # optional
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 source /usr/bin/virtualenvwrapper.sh
 
+xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
+
 # export TERM=screen-256color-bce
 
 test -s ~/.alias && . ~/.alias || true
