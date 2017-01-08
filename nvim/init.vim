@@ -212,73 +212,18 @@ nmap <leader>x :w<cr>:!chmod 755 %<cr>:e<cr>
 
 " Syntax coloring lines that are too long just slows down the world
 set synmaxcol=2048
-"
-"-----------------------------------------------------------------------------
-" Neovim settings
-"-----------------------------------------------------------------------------
-""let g:python_host_prog = '/home/rschwalk/dev/tools/pyvenv/neovim/bin/python'
-""let g:python3_host_prog = '/home/rschwalk/dev/tools/pyvenv/neovim3/bin/python'
-let g:python3_host_prog = '/usr/bin/python3'
 
-let g:ycm_global_ycm_extra_conf = "~/.config/nvim/ycm_extra_conf.py"
-""let g:ycm_key_list_select_completion=[]
-let g:ycm_key_list_previous_completion=[]
-
-let g:UltiSnipsExpandTrigger="<c-l>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
-"-----------------------------------------------------------------------------
-" FSwitch mappings
-"-----------------------------------------------------------------------------
-nmap <silent> <leader>of :FSHere<CR>
-nmap <silent> <leader>ol :FSRight<CR>
-nmap <silent> <leader>oL :FSSplitRight<CR>
-nmap <silent> <leader>oh :FSLeft<CR>
-nmap <silent> <leader>oH :FSSplitLeft<CR>
-nmap <silent> <leader>ok :FSAbove<CR>
-nmap <silent> <leader>oK :FSSplitAbove<CR>
-nmap <silent> <leader>oj :FSBelow<CR>
-nmap <silent> <leader>oJ :FSSplitBelow<CR>
-
-
-" YouCompleteMe Settings
-nnoremap <leader>jf :YcmCompleter GoToDefinition<CR>
-nnoremap <leader>jc :YcmCompleter GoToDeclaration<CR>
-nnoremap <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
-let g:ycm_python_binary_path = '/usr/bin/python3'
-let g:ycm_show_diagnostics_ui = 0
-
-"-----------------------------------------------------------------------------
-" FuzzyFinder Settings
-"-----------------------------------------------------------------------------
-""let g:fuf_file_exclude = '\v\~$|\.(o|exe|dll|bak|class|meta|lock|orig|jar|swp)$|/test/data\.|(^|[/\\])\.(svn|hg|git|bzr)($|[/\\])'
-""let g:fuf_splitPathMatching = 1
-""let g:fuf_maxMenuWidth = 110
-""let g:fuf_timeFormat = ''
-""nmap <silent> ,fc :FufMruCmd<cr>
-""nmap <silent> ,fm :FufMruFile<cr>
-""set wildignore+=*.o,*.class,.git,.svn
-""let g:CommandTMatchWindowAtTop = 1
-""nmap <silent> ,fb :FufBuffer<cr>
-""nmap <silent> ,ff :FufFile<cr>
-
-"-----------------------------------------------------------------------------
-" Gundo Settings
-"-----------------------------------------------------------------------------
-nmap <c-F5> :GundoToggle<cr>
-
-"-----------------------------------------------------------------------------
-" XPTTemplate settings
-"-----------------------------------------------------------------------------
-""let g:xptemplate_brace_complete = 0
-""let g:xptemplate_vars = "SParg="
-""imap <C-l> <C-\><CR>
-
-" NERDTree
-map <leader>i :NERDTreeToggle<CR>
-let NERDTreeChDirMode = 2     "setting root dir in NT also sets VIM's cd
-let NERDTreeWinSize = 35
+" Neovim terminal settings
+:tnoremap <Esc> <C-\><C-n>
+:tnoremap <A-h> <C-\><C-n><C-w>h
+:tnoremap <A-j> <C-\><C-n><C-w>j
+:tnoremap <A-k> <C-\><C-n><C-w>k
+:tnoremap <A-l> <C-\><C-n><C-w>l
+:nnoremap <A-h> <C-w>h
+:nnoremap <A-j> <C-w>j
+:nnoremap <A-k> <C-w>k
+:nnoremap <A-l> <C-w>l
+:au BufEnter * if &buftype == 'terminal' | :startinsert | endif
 
 " Press Space to turn off highlighting and clear any message already displayed.
 :nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
@@ -304,16 +249,16 @@ vnoremap <Leader>s :sort<CR>
 vnoremap < <gv  " better indentation
 vnoremap > >gv  " better indentation
 
-" Show whitespace
-" MUST be inserted BEFORE the colorscheme command
-autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
-au InsertLeave * match ExtraWhitespace /\s\+$/
-autocmd BufWritePre * :%s/\s\+$//e
+set enc=utf-8
 
-" Settings for run neomake automatically
-autocmd! BufWritePost * Neomake!
-let g:neomake_open_list = 2
-let g:neomake_cpp_enabled_makers = ['gcc']
+autocmd FileType python map R :w<CR>:!python3 "%"<CR>
+
+" Run the last shell command
+nnoremap <leader>rl :!!<CR>
+
+set cursorline
+nnoremap <leader>c :set cursorline!<CR>
+nnoremap <C-s> :w<CR>
 
 " limit the text width in mutt
 au BufRead /tmp/mutt-* set tw=72
@@ -370,53 +315,8 @@ set nobackup
 set nowritebackup
 set noswapfile
 
-" Settings for airlines
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
-set laststatus=2
-let g:airline_theme='dark'
-
-" Setting for ctr-p
-let g:ctrlp_max_height = 30
-set wildignore+=*.pyc
-set wildignore+=*_build/*
-set wildignore+=*/coverage/*
-
-
-" Settings for jedi
-""let g:jedi#popup_on_dot = 0
-
-" Settings for pep8
-let g:pep8_map='<leader>8'
-
-" Settings for python-mode
-" cd ~/.vim/bundle
-" git clone https://github.com/klen/python-mode
-""map <Leader>g :call RopeGotoDefinition()<CR>
-""let g:pymode_rope_enable_shortcuts = 1
-""let g:pymode_rope_vim_completion = 1
-""let g:pymode_rope_goto_def_newwin = "vnew"
-""let g:pymode_rope_extended_complete = 1
-""let g:pymode_breakpoint = 0
-""let g:pymode_syntax = 1
-""let g:pymode_syntax_builtin_objs = 1
-""let g:pymode_syntax_builtin_funcs = 1
-""let g:pymode_doc = 1
-""""let g:pymode_rope_autoimport_modules = ["os.*", "gi.repository.*"]
-""let g:pymode_rope_always_show_complete_menu = 1
+" Set breakpoint in python source
 map <Leader>bp Oimport pdb; pdb.set_trace() # BREAKPOINT<C-c>
-
-" automaticaly load the tags on every save for cpp files
-autocmd BufWritePost *.cpp :TlistUpdate
-" configure tags - add additional tags here or comment out not-used ones
-""set tags+=./tags;~/dev
-""set tags+=~/.vim/tags/cpp.tags
-""set tags+=~/.vim/tags/sfml.tags
-""set tags+=~/.vim/tags/gl.tags
-""set tags+=~/.vim/tags/glfw.tags
-
-" build tags of your own project with Ctrl-F12
-map <C-F12> :!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q --language-force=C++ %:p:h<CR>
 
 " Better navigating through omnicomplete option list
 " See http://stackoverflow.com/questions/2170023/how-to-map-keys-for-popup-menu-in-vim
@@ -450,9 +350,89 @@ inoremap <silent><C-j> <C-R>=OmniPopup('j')<CR>
 inoremap <silent><C-k> <C-R>=OmniPopup('k')<CR>
 imap <C-space> <C-x><C-o>
 
-" SuperTab Settings
-"" let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
-""let g:SuperTabDefaultCompletionType = "context"
+
+"------------------
+" Plugin settings
+"==================
+
+
+
+"-----------------------------------------------------------------------------
+" Neovim settings
+"-----------------------------------------------------------------------------
+""let g:python_host_prog = '/home/rschwalk/dev/tools/pyvenv/neovim/bin/python'
+""let g:python3_host_prog = '/home/rschwalk/dev/tools/pyvenv/neovim3/bin/python'
+let g:python3_host_prog = '/usr/bin/python3'
+
+let g:UltiSnipsExpandTrigger="<c-l>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+"-----------------------------------------------------------------------------
+" FSwitch mappings
+"-----------------------------------------------------------------------------
+nmap <silent> <leader>of :FSHere<CR>
+nmap <silent> <leader>ol :FSRight<CR>
+nmap <silent> <leader>oL :FSSplitRight<CR>
+nmap <silent> <leader>oh :FSLeft<CR>
+nmap <silent> <leader>oH :FSSplitLeft<CR>
+nmap <silent> <leader>ok :FSAbove<CR>
+nmap <silent> <leader>oK :FSSplitAbove<CR>
+nmap <silent> <leader>oj :FSBelow<CR>
+nmap <silent> <leader>oJ :FSSplitBelow<CR>
+
+" YouCompleteMe Settings
+nnoremap <leader>jf :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>jc :YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+let g:ycm_python_binary_path = '/usr/bin/python3'
+let g:ycm_show_diagnostics_ui = 0
+let g:ycm_global_ycm_extra_conf = "~/.config/nvim/ycm_extra_conf.py"
+""let g:ycm_key_list_select_completion=[]
+let g:ycm_key_list_previous_completion=[]
+
+
+"-----------------------------------------------------------------------------
+" Gundo Settings
+"-----------------------------------------------------------------------------
+nmap <c-F5> :GundoToggle<cr>
+
+" NERDTree
+map <leader>i :NERDTreeToggle<CR>
+let NERDTreeChDirMode = 2     "setting root dir in NT also sets VIM's cd
+let NERDTreeWinSize = 35
+
+" Settings for run neomake automatically
+autocmd! BufWritePost * Neomake!
+let g:neomake_open_list = 2
+let g:neomake_cpp_enabled_makers = ['gcc']
+
+" Settings for airlines
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+set laststatus=2
+let g:airline_theme='dark'
+
+" Setting for ctr-p
+let g:ctrlp_max_height = 30
+set wildignore+=*.pyc
+set wildignore+=*_build/*
+set wildignore+=*/coverage/*
+
+" Settings for pep8
+let g:pep8_map='<leader>8'
+
+" automaticaly load the tags on every save for cpp files
+autocmd BufWritePost *.cpp :TlistUpdate
+" configure tags - add additional tags here or comment out not-used ones
+""set tags+=./tags;~/dev
+""set tags+=~/.vim/tags/cpp.tags
+""set tags+=~/.vim/tags/sfml.tags
+""set tags+=~/.vim/tags/gl.tags
+""set tags+=~/.vim/tags/glfw.tags
+
+" build tags of your own project with Ctrl-F12
+map <C-F12> :!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q --language-force=C++ %:p:h<CR>
 
 " Python folding
 " mkdir -p ~/.vim/ftplugin
@@ -468,35 +448,24 @@ let g:miniBufExplModSelTarget = 1
 ""map <leader>l :TaskList<CR>
 map <leader>l :TlistToggle<CR>
 
-
-set enc=utf-8
-
-autocmd FileType python map R :w<CR>:!python3 "%"<CR>
-
-" Run the last shell command
-nnoremap <leader>rl :!!<CR>
-
-set cursorline
-nnoremap <leader>c :set cursorline!<CR>
-nnoremap <C-s> :w<CR>
-
-
 " Taglist
 let Tlist_Ctags_Cmd='ctags'
 let Tlist_Use_Right_Window = 1
 let Tlist_WinWidth = 35
 
-" Neovim terminal settings
-:tnoremap <Esc> <C-\><C-n>
-:tnoremap <A-h> <C-\><C-n><C-w>h
-:tnoremap <A-j> <C-\><C-n><C-w>j
-:tnoremap <A-k> <C-\><C-n><C-w>k
-:tnoremap <A-l> <C-\><C-n><C-w>l
-:nnoremap <A-h> <C-w>h
-:nnoremap <A-j> <C-w>j
-:nnoremap <A-k> <C-w>k
-:nnoremap <A-l> <C-w>l
-:au BufEnter * if &buftype == 'terminal' | :startinsert | endif
+
+
+"------------------
+" Color settings
+"==================
+
+
+" Show whitespace
+" MUST be inserted BEFORE the colorscheme command
+autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
+au InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWritePre * :%s/\s\+$//e
+
 
 call togglebg#map("<F5>")
 
@@ -526,16 +495,4 @@ else
 endif
 
 autocmd FileType python highlight ColorColumn ctermbg=grey guibg=DimGrey
-
-
-"python with virtualenv support
-"py << EOF
-"import os
-"import sys
-"if 'VIRTUAL_ENV' in os.environ:
-"  project_base_dir = os.environ['VIRTUAL_ENV']
-"  activate_this = os.path.join(project_base_dir, 'bin/activate')
-"  run = 'source ' + activate_this
-"  execfile(run, dict(__file__=activate_this))
-"EOF
 
