@@ -204,11 +204,14 @@ nmap <silent> <leader>ev :e $MYVIMRC<CR>
 " for those buffers that are only a few lines
 nmap <silent> <leader>sw :execute ":resize " . line('$')<cr>
 
+" Search and replace the current word
+nnoremap <Leader>ss :%s/\<<C-r><C-w>\>/
+
 " Use to eliminate a buffer but keep the window layout
 nmap <leader>bd :bp\|bd #<cr>
 
 " Make the current file executable
-nmap <leader>x :w<cr>:!chmod 755 %<cr>:e<cr>
+""nmap <leader>x :w<cr>:!chmod 755 %<cr>:e<cr>
 
 " Syntax coloring lines that are too long just slows down the world
 set synmaxcol=2048
@@ -273,7 +276,7 @@ autocmd FileType cpp highlight ColorColumn ctermbg=darkgray
 
 " cpp options
 autocmd FileType cpp set makeprg=make\ -j4
-autocmd FileType cpp nnoremap <leader>rm :make!<CR>
+autocmd FileType cpp nnoremap <leader>rm :w<CR>:make!<CR>
 autocmd FileType cpp nnoremap <leader>cm :! cmake ..<CR>
 
 
@@ -350,6 +353,12 @@ inoremap <silent><C-j> <C-R>=OmniPopup('j')<CR>
 inoremap <silent><C-k> <C-R>=OmniPopup('k')<CR>
 imap <C-space> <C-x><C-o>
 
+noremap <leader>gpl :-1read ~/dotfiles/nvim/templates/gpl.templ<CR>wi
+
+inoremap <leader>x <esc>
+noremap <leader>x <esc>
+vnoremap <leader>x <esc>
+
 
 "------------------
 " Plugin settings
@@ -389,7 +398,7 @@ let g:ycm_python_binary_path = '/usr/bin/python3'
 let g:ycm_show_diagnostics_ui = 0
 let g:ycm_global_ycm_extra_conf = "~/.config/nvim/ycm_extra_conf.py"
 ""let g:ycm_key_list_select_completion=[]
-let g:ycm_key_list_previous_completion=[]
+""let g:ycm_key_list_previous_completion=[]
 
 
 "-----------------------------------------------------------------------------
@@ -452,6 +461,9 @@ map <leader>l :TlistToggle<CR>
 let Tlist_Ctags_Cmd='ctags'
 let Tlist_Use_Right_Window = 1
 let Tlist_WinWidth = 35
+
+" delimitMate settings
+let delimitMate_expand_cr = 1
 
 
 
