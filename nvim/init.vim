@@ -22,7 +22,7 @@ Plug 'sjl/gundo.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'vim-scripts/OmniCppComplete'
 ""Plug 'klen/python-mode'
-Plug 'altercation/vim-colors-solarized'
+""Plug 'altercation/vim-colors-solarized'
 Plug 'jnurmine/Zenburn'
 ""Plug 'ervandew/supertab'
 Plug 'vim-scripts/taglist.vim'
@@ -40,6 +40,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'neomake/neomake'
 Plug 'flazz/vim-colorschemes'
 Plug 'Raimondi/delimitMate'
+Plug 'frankier/neovim-colors-solarized-truecolor-only'
 
 call plug#end()
 
@@ -205,7 +206,13 @@ nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sw :execute ":resize " . line('$')<cr>
 
 " Search and replace the current word
-nnoremap <Leader>ss :%s/\<<C-r><C-w>\>/
+nnoremap <Leader>ss :%s/<C-r><C-w>/
+
+" Switch spell cheking
+nmap <silent> <leader>sc :set spell!<CR>
+nmap <A-n> ]s
+nmap <A-p> [s
+nmap <A-c> 1z=
 
 " Use to eliminate a buffer but keep the window layout
 nmap <leader>bd :bp\|bd #<cr>
@@ -276,7 +283,8 @@ autocmd FileType cpp highlight ColorColumn ctermbg=darkgray
 
 " cpp options
 autocmd FileType cpp set makeprg=make\ -j4
-autocmd FileType cpp nnoremap <leader>rm :w<CR>:make!<CR>
+autocmd FileType cpp nnoremap <leader>rm :make<CR>
+autocmd FileType cpp nnoremap <leader>rc :make clean<CR>
 autocmd FileType cpp nnoremap <leader>cm :! cmake ..<CR>
 
 
@@ -492,6 +500,7 @@ if has('gui_running')
   ""colorscheme xoria256
 else
   set t_Co=256
+  ""set termguicolors
   set background=dark
   ""colorscheme solarized
   ""let g:airline_theme='solarized'
@@ -503,7 +512,6 @@ else
   colorscheme jellybeans
   let g:airline_theme='jellybeans'
   ""let g:solarized_termcolors=256
-  ""set termguicolors
 endif
 
 autocmd FileType python highlight ColorColumn ctermbg=grey guibg=DimGrey
