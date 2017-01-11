@@ -1,0 +1,14 @@
+app
+kivy
+NAS
+gpl
+Gtk
+autotools
+gtkmm
+neovim
+ESC
+asyncio
+neomake
+gcc
+volumio
+sonos
