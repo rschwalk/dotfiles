@@ -48,8 +48,8 @@ beautiful.init("/home/rschwalk/.config/awesome/themes/grey-new/theme.lua")
 --beautiful.init("/home/rschwalk/.config/awesome/themes/awesome-solarized/dark/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
---terminal = "urxvt"
-terminal = "konsole"
+terminal = "urxvt"
+--terminal = "terminology"
 editor = os.getenv("EDITOR") or "nvim"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -142,7 +142,7 @@ weather = wibox.widget.textbox()
 vicious.register(weather, vicious.widgets.weather, "Weather: ${city}. Sky: ${sky}. Temp: ${tempc}C° Humid: ${humid}%. Wind: ${windkmh} KM/h", 1200, "EDDM")
 
 -- {{{ Menu
--- Create a laucher widget and a main menu
+-- Create a laucnher widget and a main menu
 myawesomemenu = {
    { "manual", terminal .. " -e man awesome" },
    { "edit config", editor_cmd .. " " .. awesome.conffile },
@@ -252,11 +252,11 @@ for s = 1, screen.count() do
     local right_layout = wibox.layout.fixed.horizontal()
     if s == 1 then right_layout:add(wibox.widget.systray()) end
     right_layout:add(spacer)
-    --right_layout:add(pacicon)
---    right_layout:add(pactext)
---    right_layout:add(pacwidget)
---    right_layout:add(spacer)
-    --right_layout:add(baticon)
+    right_layout:add(pacicon)
+    right_layout:add(pactext)
+    right_layout:add(pacwidget)
+    right_layout:add(spacer)
+   -- right_layout:add(baticon)
     right_layout:add(battext)
     right_layout:add(batpct)
     right_layout:add(spacer)
@@ -356,7 +356,19 @@ globalkeys = awful.util.table.join(
     awful.key({                   }, "XF86AudioRaiseVolume", function () awful.util.spawn("amixer set Master 5%+") end),
     awful.key({                   }, "XF86AudioLowerVolume", function () awful.util.spawn("amixer set Master 5%-") end),
     awful.key({                   }, "XF86AudioMute", function () awful.util.spawn("amixer set Master toggle") end),
-    awful.key({modkey,            }, "x", function () awful.util.spawn(terminal .. "-e 'systemctl suspend & xlock -mode blank'") end),
+    -- awful.key({modkey,            }, "x", function () awful.util.spawn(terminal .. "-e 'systemctl suspend & xlock -mode blank'") end),
+    -- Lock
+    awful.key({ modkey,  }, "x",
+    function()
+        local lock = "i3lock -d -p default -c " .. beautiful.bg_focus:gsub("#","")
+        awful.util.spawn(lock, false)
+    end),
+    -- Reboot
+    awful.key({ modkey, "Shift" }, "x",
+    function()
+        local suspend = "zenity --question --text 'Suspend?' && systemctl suspend "
+        awful.util.spawn(suspend, false)
+    end),
     awful.key({modkey,            }, "e", function () awful.util.spawn("dmenu_run -fn -misc-fixed-*-*-*-*-20-200-*-*-*-*-*-*  -i -nf 'gray' -sb 'dark green' -nb 'dim gray'") end),
     awful.key({modkey,            }, "d", function () awful.util.spawn("/home/rschwalk/dotfiles/dual.sh")
         naughty.notify({ text = "Dual monitor setup", ontop = true }) end),
@@ -583,7 +595,7 @@ run_once("xrdb -load ~/.Xresources")
 run_once("syndaemon -i 1 -K -d")
 --run_once("thunar --deamon")
 run_once("nm-applet")
---run_once("pamac-tray")
+run_once("pamac-tray")
 
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
