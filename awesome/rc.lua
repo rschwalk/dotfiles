@@ -587,7 +587,7 @@ function run_once(cmd)
   awful.util.spawn_with_shell("pgrep -u $USER -x " .. findme .. " > /dev/null || (" .. cmd .. ")")
 end
 
-run_once("xset -dpms; xset s off")
+run_once("xset -dpms; xset s off; xset -b")
 run_once("compton -CGb &")
 run_once("xrdb -load ~/.Xresources")
 --run_once("nitrogen --restore")
