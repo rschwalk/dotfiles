@@ -49,7 +49,8 @@ export PROJECT_HOME=$HOME/dev/projects      # optional
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 source /usr/bin/virtualenvwrapper.sh
 
-xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
+# xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
+archey
 
 # export TERM=screen-256color-bce
 
