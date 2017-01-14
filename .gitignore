@@ -3,3 +3,4 @@ mutt/temp/*
 nvim/plugged/*
 nvim/__pycache__
 *.pyc
+temp/*
