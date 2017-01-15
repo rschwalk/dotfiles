@@ -38,12 +38,11 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
---beautiful.init(awful.util.get_themes_dir() .. "default/theme.lua")
-beautiful.init("/home/rschwalk/.config/awesome/themes/rschwalk/theme.lua")
+beautiful.init(awful.util.get_themes_dir() .. "default/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "urxvt"
-editor = os.getenv("EDITOR") or nvim or vim or "nano"
+terminal = "xterm"
+editor = os.getenv("EDITOR") or "nano"
 editor_cmd = terminal .. " -e " .. editor
 
 -- Default modkey.
@@ -55,7 +54,7 @@ modkey = "Mod4"
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
-    awful.layout.suit.max,
+    awful.layout.suit.floating,
     awful.layout.suit.tile,
     awful.layout.suit.tile.left,
     awful.layout.suit.tile.bottom,
@@ -64,8 +63,8 @@ awful.layout.layouts = {
     awful.layout.suit.fair.horizontal,
     awful.layout.suit.spiral,
     awful.layout.suit.spiral.dwindle,
+    awful.layout.suit.max,
     awful.layout.suit.max.fullscreen,
-    awful.layout.suit.floating,
     awful.layout.suit.magnifier,
     awful.layout.suit.corner.nw,
     -- awful.layout.suit.corner.ne,
@@ -181,7 +180,7 @@ awful.screen.connect_for_each_screen(function(s)
     set_wallpaper(s)
 
     -- Each screen has its own tag table.
-    awful.tag({ "1-home", "2-www", "3-files", "4-dev", "5-media", "6-sost" }, s, awful.layout.layouts[2])
+    awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
@@ -317,47 +316,19 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey },            "r",     function () awful.screen.focused().mypromptbox:run() end,
               {description = "run prompt", group = "launcher"}),
 
-    --awful.key({ modkey }, "x",
-    --          function ()
-    --              awful.prompt.run {
-    --                prompt       = "Run Lua code: ",
-    --                textbox      = awful.screen.focused().mypromptbox.widget,
-    --                exe_callback = awful.util.eval,
-    --                history_path = awful.util.get_cache_dir() .. "/history_eval"
-    --              }
-    --          end,
-    --          {description = "lua execute prompt", group = "awesome"}),
+    awful.key({ modkey }, "x",
+              function ()
+                  awful.prompt.run {
+                    prompt       = "Run Lua code: ",
+                    textbox      = awful.screen.focused().mypromptbox.widget,
+                    exe_callback = awful.util.eval,
+                    history_path = awful.util.get_cache_dir() .. "/history_eval"
+                  }
+              end,
+              {description = "lua execute prompt", group = "awesome"}),
     -- Menubar
     awful.key({ modkey }, "p", function() menubar.show() end,
-              {description = "show the menubar", group = "launcher"}),
-
-    -- User keys
-    awful.key({ modkey }, "x",
-                function()
-                    local lock = "i3lock -d -p default -c " .. beautiful.bg_focus:gsub("#","")
-                    awful.util.spawn(lock, false)
-                end,
-              {description = "lock screen", group = "user"}),
-    awful.key({ }, "XF86AudioRaiseVolume", function () awful.util.spawn("amixer set Master 5%+") end,
-              {description = "raise volume", group = "user"}),
-    awful.key({ }, "XF86AudioLowerVolume", function () awful.util.spawn("amixer set Master 5%-") end,
-              {description = "lower volume", group = "user"}),
-    awful.key({ }, "XF86AudioMute", function () awful.util.spawn("amixer set Master toggle") end,
-              {description = "mute volume", group = "user"}),
-    awful.key({ modkey, "Shift" }, "x",
-                function()
-                    local suspend = "zenity --question --text 'Suspend?' && systemctl suspend "
-                    awful.util.spawn(suspend, false)
-                end,
-              {description = "mute volume", group = "user"}),
-    awful.key({modkey,            }, "e", function () awful.util.spawn("dmenu_run -fn -misc-fixed-*-*-*-*-20-200-*-*-*-*-*-*  -i -nf 'gray' -sb 'dark green' -nb 'dim gray'") end,
-              {description = "dmenu run", group = "user"}),
-    awful.key({modkey,            }, "d", function () awful.util.spawn("/home/rschwalk/dotfiles/dual.sh")
-        naughty.notify({ text = "Dual monitor setup", ontop = true }) end,
-              {description = "change to dual monitor setup", group = "user"}),
-    awful.key({modkey,            }, "s", function () awful.util.spawn("/home/rschwalk/dotfiles/single.sh")
-        naughty.notify({ text = "Single monitor setup", ontop = true }) end,
-              {description = "change to single monitor setup", group = "user"})
+              {description = "show the menubar", group = "launcher"})
 )
 
 clientkeys = awful.util.table.join(
@@ -458,7 +429,6 @@ awful.rules.rules = {
     { rule = { },
       properties = { border_width = beautiful.border_width,
                      border_color = beautiful.border_normal,
-                     size_hints_honor = false, -- No gaps between windows
                      focus = awful.client.focus.filter,
                      raise = true,
                      keys = clientkeys,
@@ -496,7 +466,7 @@ awful.rules.rules = {
 
     -- Add titlebars to normal clients and dialogs
     { rule_any = {type = { "normal", "dialog" }
-      }, properties = { titlebars_enabled = false } -- RiSc: Disabled
+      }, properties = { titlebars_enabled = true }
     },
 
     -- Set Firefox to always map on the tag named "2" on screen 1.
@@ -572,29 +542,4 @@ end)
 
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
-
--- autostrt
-function run_once(cmd)
-  findme = cmd
-  firstspace = cmd:find(" ")
-  if firstspace then
-    findme = cmd:sub(0, firstspace-1)
-  end
-  awful.util.spawn_with_shell("pgrep -u $USER -x " .. findme .. " > /dev/null || (" .. cmd .. ")")
-end
-
-run_once("xset -dpms; xset s off; xset -b")
-run_once("compton -CGb &")
-run_once("xrdb -load ~/.Xresources")
-run_once("xfsettingsd")
-run_once("xfce4-power-manager")
---run_once("xfce4-panel")
-run_once("/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1")
-run_once("nitrogen --restore")
---run_once("pnmixer")
-run_once("syndaemon -i 1 -K -d")
---run_once("thunar --deamon")
-run_once("nm-applet")
-run_once("pamac-tray")
-run_once("albert")
 -- }}}
