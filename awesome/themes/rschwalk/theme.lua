@@ -14,22 +14,27 @@ local theme = {}
 --theme.font          = "sans 10"
 theme.font          = "Roboto Bold 10"
 
-theme.bg_normal     = "#222222"
-theme.bg_focus      = "#535d6c"
-theme.bg_urgent     = "#ff0000"
+theme.bg_normal                     = "#242424"
+theme.bg_focus                      = "#404040"
+theme.bg_urgent                     = "#006B8E"
 theme.bg_minimize   = "#444444"
 theme.bg_systray    = theme.bg_normal
 
-theme.fg_normal     = "#aaaaaa"
-theme.fg_focus      = "#ffffff"
-theme.fg_urgent     = "#ffffff"
+theme.fg_normal                     = "#FFFFFF"
+theme.fg_focus                      = "#0099CC"
+theme.fg_urgent                     = "#CC9393"
 theme.fg_minimize   = "#ffffff"
 
 theme.useless_gap   = 0
 theme.border_width  = dpi(1)
-theme.border_normal = "#000000"
-theme.border_focus  = "#535d6c"
+theme.border_normal                 = "#252525"
+theme.border_focus                  = "#0099CC"
 theme.border_marked = "#91231c"
+
+theme.taglist_font                  = "Roboto Condensed Regular 10"
+theme.taglist_fg_focus              = "#FFFFFF"
+theme.tasklist_bg_normal            = "#222222"
+theme.tasklist_fg_focus             = "#4CB7DB"
 
 -- There are other variable sets
 -- overriding the default one when
@@ -45,7 +50,7 @@ theme.border_marked = "#91231c"
 -- Generate taglist squares:
 local taglist_square_size = dpi(4)
 theme.taglist_squares_sel = theme_assets.taglist_squares_sel(
-    taglist_square_size, theme.fg_normal
+    taglist_square_size, theme.fg_focus
 )
 theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(
     taglist_square_size, theme.fg_normal
