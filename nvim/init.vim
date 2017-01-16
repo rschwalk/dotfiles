@@ -41,6 +41,7 @@ Plug 'neomake/neomake'
 Plug 'flazz/vim-colorschemes'
 Plug 'Raimondi/delimitMate'
 Plug 'frankier/neovim-colors-solarized-truecolor-only'
+Plug 'w0ng/vim-hybrid'
 
 call plug#end()
 
@@ -141,7 +142,7 @@ set autoread
 set grepprg=grep\ -nH\ $*
 
 " Relitive line numbers
-set relativenumber
+""set relativenumber
 
 " Don't use Ex mode, use Q for formatting
 map Q gq
@@ -236,7 +237,7 @@ set synmaxcol=2048
 :au BufEnter * if &buftype == 'terminal' | :startinsert | endif
 
 " Press Space to turn off highlighting and clear any message already displayed.
-:nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
+:nnoremap <silent> <Space>n :nohlsearch<Bar>:echo<CR>
 
 " bind Ctrl+<movement> keys to move around the windows, instead of using Ctrl+w + <movement>
 " Every unnecessary keystroke that can be saved is good for your health :)
@@ -362,6 +363,22 @@ inoremap <silent><C-k> <C-R>=OmniPopup('k')<CR>
 imap <C-space> <C-x><C-o>
 
 noremap <leader>gpl :-1read ~/dotfiles/nvim/templates/gpl.templ<CR>wi
+
+" Comment
+noremap <space>" I"<esc>
+vnoremap <space>" I"<esc>
+
+noremap <space># I#<esc>
+vnoremap <space># I#<esc>
+
+noremap <space>/ I//<esc>
+vnoremap <space>/ I//<esc>
+
+noremap <space>! I!<esc>
+vnoremap <space>! I!<esc>
+
+noremap <space>- I--<esc>
+vnoremap <space>- I--<esc>
 
 inoremap <leader>x <esc>
 noremap <leader>x <esc>
@@ -505,11 +522,13 @@ else
   ""colorscheme solarized
   ""let g:airline_theme='solarized'
   ""call togglebg#map("<F5>")
-  ""colorscheme xoria256
-  ""let g:airline_theme='dark'
+  "colorscheme xoria256
+  "let g:airline_theme='dark'
   ""colorscheme zenburn
   ""let g:airline_theme='zenburn'
-  colorscheme jellybeans
+  colorscheme hybrid
+  let g:hybrid_custom_term_colors = 1
+  ""colorscheme jellybeans
   let g:airline_theme='jellybeans'
   ""let g:solarized_termcolors=256
 endif
