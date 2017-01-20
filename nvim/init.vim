@@ -531,6 +531,8 @@ else
   ""colorscheme jellybeans
   let g:airline_theme='jellybeans'
   ""let g:solarized_termcolors=256
+  highlight Normal ctermbg=none
+  highlight NonText ctermbg=none
 endif
 
 autocmd FileType python highlight ColorColumn ctermbg=grey guibg=DimGrey
