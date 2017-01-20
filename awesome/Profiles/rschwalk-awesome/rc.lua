@@ -8,7 +8,11 @@ local wibox = require("wibox")
 local beautiful = require("beautiful")
 -- Notification library
 local naughty = require("naughty")
+local lain          = require("lain")
+local shape         = require("gears.shape")
 local menubar = require("menubar")
+local wi = require("wi")
+--local blingbling = require("blingbling")
 local hotkeys_popup = require("awful.hotkeys_popup").widget
 
 -- {{{ Error handling
@@ -40,6 +44,7 @@ end
 -- Themes define colours, icons, font and wallpapers.
 --beautiful.init(awful.util.get_themes_dir() .. "default/theme.lua")
 beautiful.init("/home/rschwalk/.config/awesome/themes/rschwalk/theme.lua")
+--blingbling.superproperties.init('/home/rschwalk/.config/awesome/themes/rschwalk/theme.lua')
 
 -- This is used later as the default terminal and editor to run.
 terminal = "urxvt"
@@ -115,8 +120,40 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 mykeyboardlayout = awful.widget.keyboardlayout()
 
 -- {{{ Wibar
+markup      = lain.util.markup
+darkblue    = "#404040" --theme.bg_focus
+white       = beautiful.fg_focus
+blue        = "#1793D0" -- Arch Blue
+--blue        = "#7A5ADA" -- Gentoo Purple
+red         = "#EB8F8F"
+gray        = "#858585"
+space3 = markup.font("Tamsyn 3", " ")
+
+local util = awful.util
+
 -- Create a textclock widget
-mytextclock = wibox.widget.textclock()
+--mytextclock = wibox.widget.textclock()
+mytextclock = awful.widget.textclock(markup(gray, "%a")
+.. markup(beautiful.system_color, " %d ") .. markup(gray, "%b ") ..  markup(beautiful.system_color, "%H:%M "))
+
+-- Calendar
+--lain.widgets.calendar:attach(mytextclock, { fg = gray })
+
+-- Calendar
+--mytextcalendar = wibox.widget.textclock(markup("#FFFFFF", space3 .. "%d %b " .. markup.font("Tamsyn 5", " ")))
+--calendar_icon = wibox.widget.imagebox(beautiful.calendar)
+--calbg = wibox.container.background(mytextcalendar, beautiful.bg_focus, shape.rectangle)
+--calendarwidget = wibox.container.margin(calbg, 0, 0, 5, 5)
+lain.widgets.calendar.attach(mytextclock, { fg = beautiful.system_color, position = "top_right", font = "Monospace", font_size = 10 })
+
+----------------------------------------------------------------------------------------
+-- Spacers
+
+space = wibox.widget.textbox(' ')
+bigspace = wibox.widget.textbox('   ')
+separator = wibox.widget.textbox(' ⁞ ')
+
+----------------------------------------------------------------------------------------
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = awful.util.table.join(
@@ -215,7 +252,11 @@ awful.screen.connect_for_each_screen(function(s)
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
             mykeyboardlayout,
+            systemicon,
+            systemwidget,
             wibox.widget.systray(),
+            --calendar_icon,
+            --calendarwidget,
             mytextclock,
             s.mylayoutbox,
         },
@@ -346,10 +387,10 @@ globalkeys = awful.util.table.join(
               {description = "mute volume", group = "user"}),
     awful.key({ modkey, "Shift" }, "x",
                 function()
-                    local suspend = "zenity --question --text 'Suspend?' && systemctl suspend "
+                    local suspend = "zenity --question --text 'Suspend?' && i3lock -d -p default -c && systemctl suspend "
                     awful.util.spawn(suspend, false)
                 end,
-              {description = "mute volume", group = "user"}),
+              {description = "suspend the system", group = "user"}),
     awful.key({modkey,            }, "e", function () awful.util.spawn("dmenu_run -fn -misc-fixed-*-*-*-*-20-200-*-*-*-*-*-*  -i -nf 'gray' -sb 'dark green' -nb 'dim gray'") end,
               {description = "dmenu run", group = "user"}),
     awful.key({modkey,            }, "d", function () awful.util.spawn("/home/rschwalk/dotfiles/dual.sh")

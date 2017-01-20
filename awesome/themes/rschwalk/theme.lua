@@ -1,5 +1,6 @@
 ---------------------------
 -- Default awesome theme --
+-- modified by rschwalk  --
 ---------------------------
 
 local theme_assets = require("beautiful.theme_assets")
@@ -8,33 +9,42 @@ local dpi = xresources.apply_dpi
 
 local util = require('awful.util')
 local themes_path = util.get_themes_dir()
+themedir = "/home/rschwalk/.config/awesome/themes/rschwalk"
 
 local theme = {}
 
+theme.system_color = "#1A8A74"
+system_gray = "#BAC3CF"
+
+blue        = "#1793D0"		--Arch Blue
+red         = "#EB8F8F"
+
+gray        = "#858585"
 --theme.font          = "sans 10"
-theme.font          = "Roboto Bold 10"
+theme.font          = "Roboto Bold 11"
 
 theme.bg_normal                     = "#242424"
-theme.bg_focus                      = "#404040"
+theme.bg_focus                      = system_gray --theme.system_color -- "#404040"
 theme.bg_urgent                     = "#006B8E"
 theme.bg_minimize   = "#444444"
 theme.bg_systray    = theme.bg_normal
 
-theme.fg_normal                     = "#FFFFFF"
-theme.fg_focus                      = "#0099CC"
+theme.fg_normal                     = system_gray --"#858585" --"#FFFFFF"
+theme.fg_focus                      = "#FFFFFF" --system_gray --theme.system_color --"#0099CC"
 theme.fg_urgent                     = "#CC9393"
 theme.fg_minimize   = "#ffffff"
 
 theme.useless_gap   = 0
 theme.border_width  = dpi(1)
 theme.border_normal                 = "#252525"
-theme.border_focus                  = "#0099CC"
+theme.border_focus                  = theme.system_color --"#0099CC"
 theme.border_marked = "#91231c"
 
-theme.taglist_font                  = "Roboto Condensed Regular 10"
-theme.taglist_fg_focus              = "#FFFFFF"
+theme.taglist_font                  = "Roboto Condensed Regular 11"
+theme.taglist_fg_focus              = "#FFFFFF" --system_gray -- theme.system_color --"#FFFFFF"
+theme.taglist_bg_focus              = theme.system_color
 theme.tasklist_bg_normal            = "#222222"
-theme.tasklist_fg_focus             = "#4CB7DB"
+theme.tasklist_fg_focus             = theme.system_color --"#4CB7DB"
 
 -- There are other variable sets
 -- overriding the default one when
@@ -48,7 +58,7 @@ theme.tasklist_fg_focus             = "#4CB7DB"
 --theme.taglist_bg_focus = "#ff0000"
 
 -- Generate taglist squares:
-local taglist_square_size = dpi(4)
+local taglist_square_size = dpi(7)
 theme.taglist_squares_sel = theme_assets.taglist_squares_sel(
     taglist_square_size, theme.fg_focus
 )
@@ -95,6 +105,8 @@ theme.titlebar_maximized_button_focus_inactive  = themes_path.."default/titlebar
 theme.titlebar_maximized_button_normal_active = themes_path.."default/titlebar/maximized_normal_active.png"
 theme.titlebar_maximized_button_focus_active  = themes_path.."default/titlebar/maximized_focus_active.png"
 
+theme.widget_system = themedir .. "/icons/system.png"
+
 --theme.wallpaper = themes_path.."default/background.png"
 -- using nitrogen for wallpaper
 
@@ -118,7 +130,7 @@ theme.layout_cornerse = themes_path.."default/layouts/cornersew.png"
 
 -- Generate Awesome icon:
 theme.awesome_icon = theme_assets.awesome_icon(
-    theme.menu_height, theme.bg_focus, theme.fg_focus
+    theme.menu_height, theme.system_color, theme.fg_focus
 )
 
 -- Define the icon theme for application icons. If not set then the icons
