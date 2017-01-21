@@ -21,7 +21,7 @@ red         = "#EB8F8F"
 
 gray        = "#858585"
 --theme.font          = "sans 10"
-theme.font          = "Roboto Bold 11"
+theme.font          = "Roboto Bold 10"
 
 theme.bg_normal                     = "#242424"
 theme.bg_focus                      = system_gray --theme.system_color -- "#404040"
@@ -40,7 +40,7 @@ theme.border_normal                 = "#252525"
 theme.border_focus                  = theme.system_color --"#0099CC"
 theme.border_marked = "#91231c"
 
-theme.taglist_font                  = "Roboto Condensed Regular 11"
+theme.taglist_font                  = "Roboto Condensed Regular 10"
 theme.taglist_fg_focus              = "#FFFFFF" --system_gray -- theme.system_color --"#FFFFFF"
 theme.taglist_bg_focus              = theme.system_color
 theme.tasklist_bg_normal            = "#222222"
