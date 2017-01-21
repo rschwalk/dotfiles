@@ -261,6 +261,24 @@ awful.screen.connect_for_each_screen(function(s)
             s.mylayoutbox,
         },
     }
+
+    -- Create the wibox
+    --s.mywibox2 = awful.wibar({ position = "buttom", screen = s })
+    s.mybottomwibox = awful.wibar({ position = "bottom", screen = s })
+
+    -- Add widgets to the wibox
+    s.mybottomwibox:setup {
+        layout = wibox.layout.align.horizontal,
+        { -- Left widgets
+            layout = wibox.layout.fixed.horizontal,
+        },
+        -- Middle widget
+        { -- Right widgets
+            layout = wibox.layout.fixed.horizontal,
+            systemicon,
+            systemwidget,
+        },
+    }
 end)
 -- }}}
 
