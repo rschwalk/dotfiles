@@ -131,29 +131,6 @@ space3 = markup.font("Tamsyn 3", " ")
 
 local util = awful.util
 
--- Create a textclock widget
---mytextclock = wibox.widget.textclock()
-mytextclock = awful.widget.textclock(markup(gray, "%a")
-.. markup(beautiful.system_color, " %d ") .. markup(gray, "%b ") ..  markup(beautiful.system_color, "%H:%M "))
-
--- Calendar
---lain.widgets.calendar:attach(mytextclock, { fg = gray })
-
--- Calendar
---mytextcalendar = wibox.widget.textclock(markup("#FFFFFF", space3 .. "%d %b " .. markup.font("Tamsyn 5", " ")))
---calendar_icon = wibox.widget.imagebox(beautiful.calendar)
---calbg = wibox.container.background(mytextcalendar, beautiful.bg_focus, shape.rectangle)
---calendarwidget = wibox.container.margin(calbg, 0, 0, 5, 5)
-lain.widgets.calendar.attach(mytextclock, { fg = beautiful.system_color, position = "top_right", font = "Monospace", font_size = 10 })
-
-----------------------------------------------------------------------------------------
--- Spacers
-
-space = wibox.widget.textbox(' ')
-bigspace = wibox.widget.textbox('   ')
-separator = wibox.widget.textbox(' ⁞ ')
-
-----------------------------------------------------------------------------------------
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = awful.util.table.join(
@@ -252,9 +229,10 @@ awful.screen.connect_for_each_screen(function(s)
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
             mykeyboardlayout,
-            systemicon,
-            systemwidget,
-            wibox.widget.systray(),
+            separator,
+            pacicon,
+            pacwidget,
+            separator,
             --calendar_icon,
             --calendarwidget,
             mytextclock,
@@ -265,18 +243,22 @@ awful.screen.connect_for_each_screen(function(s)
     -- Create the wibox
     --s.mywibox2 = awful.wibar({ position = "buttom", screen = s })
     s.mybottomwibox = awful.wibar({ position = "bottom", screen = s })
+    s.borderwibox = awful.wibar({ position = "bottom", screen = s, height = 1, bg = beautiful.fg_focus, x = 0, y = 33})
 
     -- Add widgets to the wibox
     s.mybottomwibox:setup {
         layout = wibox.layout.align.horizontal,
         { -- Left widgets
             layout = wibox.layout.fixed.horizontal,
-        },
-        -- Middle widget
-        { -- Right widgets
-            layout = wibox.layout.fixed.horizontal,
             systemicon,
             systemwidget,
+        },
+        -- Middle widget
+        --yawn,
+        space,
+        { -- Right widgets
+            layout = wibox.layout.fixed.horizontal,
+            wibox.widget.systray(),
         },
     }
 end)
