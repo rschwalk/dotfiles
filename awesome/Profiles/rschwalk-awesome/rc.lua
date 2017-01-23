@@ -230,8 +230,15 @@ awful.screen.connect_for_each_screen(function(s)
             layout = wibox.layout.fixed.horizontal,
             mykeyboardlayout,
             separator,
-            pacicon,
-            pacwidget,
+            --pacicon,
+            --pacwidget,
+            --separator,
+            volicon,
+            volumewidget,
+            separator,
+            batpct,
+            baticon,
+            --batwidget,
             separator,
             --calendar_icon,
             --calendarwidget,
@@ -252,6 +259,8 @@ awful.screen.connect_for_each_screen(function(s)
             layout = wibox.layout.fixed.horizontal,
             systemicon,
             systemwidget,
+            separator,
+            --fshome,
         },
         -- Middle widget
         --yawn,
@@ -379,11 +388,11 @@ globalkeys = awful.util.table.join(
                     awful.util.spawn(lock, false)
                 end,
               {description = "lock screen", group = "user"}),
-    awful.key({ }, "XF86AudioRaiseVolume", function () awful.util.spawn("amixer set Master 5%+") end,
+    awful.key({ }, "XF86AudioRaiseVolume", function () awful.util.spawn("amixer sset Master playback 5%+", false) end,
               {description = "raise volume", group = "user"}),
-    awful.key({ }, "XF86AudioLowerVolume", function () awful.util.spawn("amixer set Master 5%-") end,
+    awful.key({ }, "XF86AudioLowerVolume", function () awful.util.spawn("amixer sset Master playback 5%-", false) end,
               {description = "lower volume", group = "user"}),
-    awful.key({ }, "XF86AudioMute", function () awful.util.spawn("amixer set Master toggle") end,
+    awful.key({ }, "XF86AudioMute", function () awful.util.spawn("amixer sset Master toggle", false) end,
               {description = "mute volume", group = "user"}),
     awful.key({ modkey, "Shift" }, "x",
                 function()
@@ -634,8 +643,8 @@ run_once("/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1")
 run_once("nitrogen --restore")
 --run_once("pnmixer")
 run_once("syndaemon -i 1 -K -d")
---run_once("thunar --deamon")
+run_once("thunar --deamon")
 run_once("nm-applet")
 run_once("pamac-tray")
-run_once("albert")
+--run_once("albert")
 -- }}}
