@@ -418,7 +418,7 @@ fshome = lain.widgets.fs({
         if fs_now.used >=  0 then
             fs_header = " Hdd "
             fs_p      = fs_now.used
-			fs_ps	  = "%"
+			fs_ps	  = " % "
         end
 
         widget:set_markup(markup(gray, " ◘ ") .. markup(gray, fs_header) .. markup(beautiful.system_color, fs_p) .. markup(gray, fs_ps))
@@ -429,31 +429,30 @@ fshome = lain.widgets.fs({
 cpu_icon = wibox.widget.imagebox(beautiful.widget_cpu)
 cpu_widget = lain.widgets.cpu({
     settings = function()
-        widget:set_markup(" CPU " .. cpu_now.usage
-                          .. "% " .. markup.font("Tamsyn 5", " "))
+        widget:set_markup(markup(gray, " CPU ") .. markup(beautiful.system_color, cpu_now.usage) .. markup(gray, " % "))
     end
 })
-cpubg = wibox.container.background(cpu_widget, beautiful.system_color, shape.rectangle)
-cpuwidget = wibox.container.margin(cpubg, 0, 0, 5, 5)
+--cpubg = wibox.container.background(cpu_widget, beautiful.system_color, shape.rectangle)
+cpuwidget = wibox.container.margin(cpu_widget, 0, 0, 5, 5)
 
 -- Net
 netdown_icon = wibox.widget.imagebox(beautiful.widget_net_down)
 netup_icon = wibox.widget.imagebox(beautiful.widget_net_up)
 netwidget = lain.widgets.net({
     settings = function()
-        widget:set_markup(markup.font("Tamsyn 1", " ") .. net_now.received .. " - "
-                          .. net_now.sent .. markup.font("Tamsyn 2", " "))
+        widget:set_markup(markup(beautiful.system_color, net_now.received) .. markup(gray, " - ")
+                          .. markup(beautiful.system_color, net_now.sent) )
     end
 })
-netbg = wibox.container.background(netwidget, beautiful.system_color, shape.rectangle)
-networkwidget = wibox.container.margin(netbg, 0, 0, 5, 5)
+--netbg = wibox.container.background(netwidget, beautiful.system_color, shape.rectangle)
+networkwidget = wibox.container.margin(netwidget, 0, 0, 5, 5)
 
 -- Coretemp
 
 tempicon = wibox.widget.imagebox(beautiful.widget_temp)
 tempwidget = lain.widgets.temp({
     settings = function()
-        widget:set_markup(markup(beautiful.system_color, coretemp_now) .. markup(gray, "°C"))
+        widget:set_markup(markup(beautiful.system_color, coretemp_now) .. markup(gray, markup(gray, " °C")))
     end
 })
 
