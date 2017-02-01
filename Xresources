@@ -32,7 +32,8 @@ URxvt.iso14755_52: off
 URxvt.meta8: true
 URxvt.depth: 32
 URxvt.iconFile: /usr/share/icons/Humanity/apps/128/utilities-terminal.svg
-URxvt.metaSendsEscape: truee
+URxvt.metaSendsEscape: true
+URxvt.buffered: false
 
 URxvt.internalBorder: 0
 URxvt.externalBorder: 0
