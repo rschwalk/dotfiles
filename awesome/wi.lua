@@ -6,6 +6,7 @@ local beautiful = require("beautiful")
 local vicious = require("vicious")
 local naughty = require("naughty")
 local lain = require("lain")
+local shape         = require("gears.shape")
 
 home 			= os.getenv("HOME")
 confdir 		= home .. "/.config/awesome"
@@ -406,21 +407,68 @@ baticon:buttons(batpct:buttons())
 vicious.cache(vicious.widgets.fs)
 
 -- Initialize widget
---fshome = lain.widgets.fs({
---    partition = "/home",
---    settings  = function()
---        fs_notification_preset.fg = gray
---        fs_header = ""
---        fs_p      = ""
---		fs_ps	  = ""
---
---        if fs_now.used >= 75 then
---            fs_header = " Hdd "
---            fs_p      = fs_now.used
---			fs_ps	  = "%"
---        end
---
---        widget:set_markup(markup(gray, " ◘ ") .. markup(red, fs_header) .. markup(bright_red, fs_p) .. markup(gray, fs_ps))
---    end
---})
+fshome = lain.widgets.fs({
+    partition = "/",
+    settings  = function()
+        --fs_notification_preset.fg = gray
+        fs_header = ""
+        fs_p      = ""
+        fs_ps	  = ""
 
+        if fs_now.used >=  0 then
+            fs_header = " Hdd "
+            fs_p      = fs_now.used
+			fs_ps	  = "%"
+        end
+
+        widget:set_markup(markup(gray, " ◘ ") .. markup(gray, fs_header) .. markup(beautiful.system_color, fs_p) .. markup(gray, fs_ps))
+    end
+})
+
+-- CPU
+cpu_icon = wibox.widget.imagebox(beautiful.widget_cpu)
+cpu_widget = lain.widgets.cpu({
+    settings = function()
+        widget:set_markup(" CPU " .. cpu_now.usage
+                          .. "% " .. markup.font("Tamsyn 5", " "))
+    end
+})
+cpubg = wibox.container.background(cpu_widget, beautiful.system_color, shape.rectangle)
+cpuwidget = wibox.container.margin(cpubg, 0, 0, 5, 5)
+
+-- Net
+netdown_icon = wibox.widget.imagebox(beautiful.widget_net_down)
+netup_icon = wibox.widget.imagebox(beautiful.widget_net_up)
+netwidget = lain.widgets.net({
+    settings = function()
+        widget:set_markup(markup.font("Tamsyn 1", " ") .. net_now.received .. " - "
+                          .. net_now.sent .. markup.font("Tamsyn 2", " "))
+    end
+})
+netbg = wibox.container.background(netwidget, beautiful.system_color, shape.rectangle)
+networkwidget = wibox.container.margin(netbg, 0, 0, 5, 5)
+
+-- Coretemp
+
+tempicon = wibox.widget.imagebox(beautiful.widget_temp)
+tempwidget = lain.widgets.temp({
+    settings = function()
+        widget:set_markup(markup(beautiful.system_color, coretemp_now) .. markup(gray, "°C"))
+    end
+})
+
+-- Memory
+
+memicon = wibox.widget.imagebox(beautiful.widget_mem)
+memicon:buttons(awful.util.table.join(awful.button({ }, 1, function () awful.util.spawn("urxvt -e htop -s PERCENT_MEM", false) end)))
+memwidget = lain.widgets.mem({
+    settings  = function()
+        mem_header = "mem "
+        mem_u      = mem_now.used
+        mem_t      = mem_now.total
+        mem_p      = mem_now.percent
+	widget:set_markup(markup(beautiful.system_color, mem_u) .. markup(gray, " MB") .. " / " .. markup(gray, mem_t) .. markup(gray, " MB"))
+        --widget:set_markup(markup(gray, " ") .. markup(blue, mem_u))
+	widget:buttons(awful.util.table.join(awful.button({ }, 1, function () awful.util.spawn("urxvt -e htop -s PERCENT_MEM", false) end)))
+    end
+})

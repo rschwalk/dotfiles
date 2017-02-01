@@ -132,6 +132,11 @@ theme.widget_charge_30		= themedir .. "/icons/charge_30.png"
 theme.widget_charge_20		= themedir .. "/icons/charge_20.png"
 theme.widget_charge_10		= themedir .. "/icons/charge_10.png"
 theme.widget_charge_empty	= themedir .. "/icons/charge_empty.png"
+theme.widget_cpu                = themedir .. "/icons/cpu.png"
+theme.widget_net_up		= themedir .. "/icons/net_up.png"
+theme.widget_net_down		= themedir .. "/icons/net_down.png"
+theme.widget_temp               = themedir .. "/icons/temp.png"
+theme.widget_mem                = themedir .. "/icons/mem.png"
 
 --theme.wallpaper = themes_path.."default/background.png"
 -- using nitrogen for wallpaper

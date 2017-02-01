@@ -260,7 +260,21 @@ awful.screen.connect_for_each_screen(function(s)
             systemicon,
             systemwidget,
             separator,
-            --fshome,
+            fshome,
+            separator,
+            cpu_icon,
+            cpuwidget,
+            separator,
+            tempicon,
+            tempwidget,
+            separator,
+            memicon,
+            memwidget,
+            separator,
+            netdown_icon,
+            networkwidget,
+            netup_icon,
+            separator,
         },
         -- Middle widget
         --yawn,
@@ -283,7 +297,7 @@ root.buttons(awful.util.table.join(
 
 -- {{{ Key bindings
 globalkeys = awful.util.table.join(
-    awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
+    awful.key({ modkey, "Shift"   }, "s",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev,
               {description = "view previous", group = "tag"}),
