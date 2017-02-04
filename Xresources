@@ -30,8 +30,12 @@ URxvt.visualBell: false
 URxvt.iso14755: false
 URxvt.iso14755_52: off
 URxvt.meta8: true
-URxvt.depth: 32
-URxvt.iconFile: /usr/share/icons/Humanity/apps/128/utilities-terminal.svg
+!URxvt.depth: 32
+!URxvt.iconFile: /usr/share/icons/Humanity/apps/128/utilities-terminal.svg
+URxvt.resource: $HOME/.Xresources
+URxvt.iconFile: /usr/share/icons/Faenza/apps/scalable/gksu-debian.svg
+URxvt.iconName: urxvt
+hold: false
 URxvt.metaSendsEscape: true
 URxvt.buffered: false
 
@@ -39,19 +43,45 @@ URxvt.internalBorder: 0
 URxvt.externalBorder: 0
 
 URxvt.scrollBar: off
-URxvt.cursorBlink: true
-URxvt.cursorUnderline: false
-URxvt.cursorColor:#ffff00
+!URxvt.cursorBlink: true
+!URxvt.cursorUnderline: false
+!URxvt.cursorColor:#ffff00
 URxvt.saveLines: 10000
 URxvt.scrollTtyOutput:   false
 URxvt.scrollWithBuffer:  true
 URxvt.scrollTtyKeypress: true
 
-urxvt*depth:32
-urxvt*foreground:#ADADAD
-urxvt*background:rgba:0600/0600/0600/dddd
-URxvt.foreground: 15
+!urxvt.depth:32
+!urxvt.foreground:#ADADAD
+!urxvt.background:rgba:0600/0600/0600/dddd
+!URxvt.foreground: 15
 URxvt.geometry: 145x45
+
+!----------------------
+! urxvt specific colors
+URxvt.depth: 32
+!URxvt.buffered: true
+URxvt.intensityStyles: true
+URxvt.colorBD: 11
+URxvt.colorIT: 13
+URxvt.colorUL: 12
+!URxvt*underlineColor: 12
+!URxvt*fading: 0
+!URxvt*fadeColor: 0
+
+!
+! Cursor
+!
+URxvt.cursorColor: 10
+URxvt.cursorColor2: 0
+URxvt.cursorBlink: false
+URxvt.cursorUnderline: false
+
+!
+! Frack the fracking bell
+URxvt.loginShell: true
+URxvt.utmpInhibit: false
+!------------------------
 
 ! Ctrl-Tab, Ctrl-Shift-Tab and other bindings in urxvt
 URxvt.keysym.Control-Up:   \033[1;5A
@@ -182,30 +212,118 @@ URxvt.url-select.button:   1
 !URxvt.keysym.Control-Shift-C: perl:clipboard:copy
 !URxvt.keysym.Control-Shift-V: perl:clipboard:paste
 
+!
+! Jellybeans.vim Colors
+!
+! color0      (black)           = Black
+! color1      (red)             = Red3
+! color2      (green)           = Green3
+! color3      (yellow)          = Yellow3
+! color4      (blue)            = Blue3
+! color5      (magenta)         = Magenta3
+! color6      (cyan)            = Cyan3
+! color7      (white)           = AntiqueWhite
+! color8      (bright black)    = Grey25
+! color9      (bright red)      = Red
+! color10     (bright green)    = Green
+! color11     (bright yellow)   = Yellow
+! color12     (bright blue)     = Blue
+! color13     (bright magenta)  = Magenta
+! color14     (bright cyan)     = Cyan
+! color15     (bright white)    = White
+! foreground                    = Black
+! background                    = White
+!
+!
+! Jellybeans
+!
 ! Black
-URxvt.color0:  #5c5c5c
-URxvt.color8:  #4c4c4c
+URxvt.color0: #000000
+URxvt.color8: #303030
+!
 ! Red
-URxvt.color1:  #cd0000
-URxvt.color9:  #ff0000
+! 167:217
+URxvt.color1: #af0000
+URxvt.color9: #d75f5f
+!urxvt.color9: #ffafaf
+!
 ! Green
-URxvt.color2:  #00cd00
-URxvt.color10: #00ff00
+! 107:077
+URxvt.color2: #87af5f
+URxvt.color10: #5fdf5f
+!urxvt.color10: #afd787
+!
 ! Yellow
-URxvt.color3:  #cdcd00
-URxvt.color11: #ffff00
+! 215:186
+URxvt.color3: #ffaf5f
+URxvt.color11: #d7d787
+!urxvt.color11: #ffdf87
+!
 ! Blue
-URxvt.color4:  #1e90ff
-URxvt.color12: #4682b4
+! 110:081
+URxvt.color4: #87afd7
+URxvt.color12: #5fd7ff
+!
 ! Magenta
-URxvt.color5:  #cd00cd
-URxvt.color13: #ff00ff
+! 103:183
+!urxvt.color5: #8787af
+URxvt.color5: #8787d7
+URxvt.color13: #d7afff
+!
 ! Cyan
-URxvt.color6:  #00cdcd
-URxvt.color14: #00ffff
+! 066:116
+URxvt.color6: #578787
+URxvt.color14: #87dfd7
+!
 ! White
-URxvt.color7:  #cfcfcf
-URxvt.color15: #a8a8a8
+URxvt.color7: #afafaf
+URxvt.color15: #d7d7d7
+!
+! Defaults
+URxvt.background: #121212
+!urxvt.background:rgba:0600/0600/0600/dddd
+URxvt.foreground: #808080
+!
+!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+!! Black
+!URxvt.color0:  #5c5c5c
+!URxvt.color8:  #4c4c4c
+!! Red
+!URxvt.color1:  #cd0000
+!URxvt.color9:  #ff0000
+!! Green
+!URxvt.color2:  #00cd00
+!URxvt.color10: #00ff00
+!! Yellow
+!URxvt.color3:  #cdcd00
+!URxvt.color11: #ffff00
+!! Blue
+!URxvt.color4:  #1e90ff
+!URxvt.color12: #4682b4
+!! Magenta
+!URxvt.color5:  #cd00cd
+!URxvt.color13: #ff00ff
+!! Cyan
+!URxvt.color6:  #00cdcd
+!URxvt.color14: #00ffff
+!! White
+!URxvt.color7:  #cfcfcf
+!URxvt.color15: #a8a8a8
 
 
 
