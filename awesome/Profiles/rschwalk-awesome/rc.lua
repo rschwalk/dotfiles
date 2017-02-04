@@ -421,7 +421,10 @@ globalkeys = awful.util.table.join(
               {description = "change to dual monitor setup", group = "user"}),
     awful.key({modkey,            }, "s", function () awful.util.spawn("/home/rschwalk/dotfiles/single.sh")
         naughty.notify({ text = "Single monitor setup", ontop = true }) end,
-              {description = "change to single monitor setup", group = "user"})
+              {description = "change to single monitor setup", group = "user"}),
+    awful.key({ }, "Print", function () awful.util.spawn("scrot -e 'mv $f ~/Pictures/screenshots/ 2>/dev/null'") end,
+              {description = "Screen shot", group = "user"})
+
 )
 
 clientkeys = awful.util.table.join(
@@ -660,5 +663,6 @@ run_once("syndaemon -i 1 -K -d")
 run_once("thunar --deamon")
 run_once("nm-applet")
 run_once("pamac-tray")
---run_once("albert")
+run_once("albert")
+run_once("touchegg")
 -- }}}
