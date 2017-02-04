@@ -23,11 +23,18 @@ set pipe_decode          # strip headers and eval mimes when piping
 set thorough_search      # strip headers and eval mimes before searching
 
 # Sidebar Patch --------------------------------------
-set sidebar_delim   = '  │'
+#set sidebar_delim   = '  │'
 set sidebar_visible = yes
-set sidebar_width   = 24
-set sidebar_shortpath = yes
-color sidebar_new yellow default
+set sidebar_width   = 26
+#set sidebar_shortpath = yes
+set sidebar_short_path
+set sidebar_delim_chars="/"
+set mail_check_stats
+#set sidebar_format="%B%* %F:%N:%S"
+set sidebar_format="%B%?F? [%F]?%* %?N?%N/?%S"
+set sidebar_folder_indent
+set sidebar_indent_string="  "
+#color sidebar_new yellow default
 #color sidebar_new color221 color233
 # b toggles sidebar visibility
 macro index b ‘<enter-command>toggle sidebar_visible<enter>’
@@ -56,9 +63,14 @@ set spoolfile = "+rschwalk-gmail.com/INBOX"
 
 # Mailboxes to show in the sidebar.
 mailboxes +rschwalk-gmail.com/INBOX \
+          +rschwalk-gmail.com/Vanessa \
+          +rschwalk-gmail.com/Amazon \
+          +rschwalk-gmail.com/Lists.gnome-builder \
+          +rschwalk-gmail.com/Lists.glade-users \
           +rschwalk-gmail.com/archive \
           +rschwalk-gmail.com/sent \
           +rschwalk-gmail.com/drafts \
+          +temporary/search \
 
 # Other special folders.
 set mbox      = "+rschwalk-gmail.com/archive"
@@ -145,4 +157,15 @@ set sendmail = "/usr/bin/msmtp -a gmail"
 set sendmail_wait = 0
 unset record
 
-source ~/.mutt/color/mutt-colors-solarized-dark-16.muttrc
+bind compose p postpone-message
+bind index p recall-message
+bind index N search-opposite
+bind pager N search-opposite
+macro index S "<enter-command>unset wait_key<enter><shell-escape>mutt-notmuch-py ~/.mail/temporary/search<enter><change-folder-readonly>+temporary/search<enter>" "search mail (using notmuch)"
+
+## GooBook
+set query_command="goobook query '%s'"
+macro index,pager a "<pipe-message>goobook add<return>" "add sender to google contacts"
+bind editor <Tab> complete-query
+
+source ~/.mutt/color/jellybeans.muttrc
