@@ -5,7 +5,14 @@ ln -s /home/rschwalk/dotfiles/bashrc /home/rschwalk/.bashrc;
 ln -s /home/rschwalk/dotfiles/nvim /home/rschwalk/.config/;
 ln -s /home/rschwalk/dotfiles/xinitrc /home/rschwalk/.xinitrc;
 ln -s /home/rschwalk/dotfiles/awesome /home/rschwalk/.config/;
-ln -s /home/rschwalk/dotfiles/ranger /home/rschwalk/.config/
+ln -s /home/rschwalk/dotfiles/ranger /home/rschwalk/.config/;
+ln -s /home/rschwalk/dotfiles/offlineimaprc /home/rschwalk/.offlineimaprc;
+ln -s /home/rschwalk/dotfiles/msmtprc /home/rschwalk/.msmtprc;
+ln -s /home/rschwalk/dotfiles/urlview /home/rschwalk/.urlview;
+ln -s /home/rschwalk/dotfiles/notmuch-config /home/rschwalk/.notmuch-config;
+ln -s /home/rschwalk/dotfiles/touchegg/ /home/rschwalk/.config/;
+sudo ln -s /home/rschwalk/dotfiles/mutt/mutt-notmuch-py /usr/bin/;
+mkdir /home/rschwalk/.mail;
 git config --global user.name "Richard Schwalk";
 git config --global user.email "richard.schwalk@gmail.com";
 sudo mkdir /mnt/mybook_richard;
