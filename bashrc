@@ -44,8 +44,8 @@ export MAKEFLAGS='-j 4'
 # alias python='/opt/python/bin/python3.5'
 # alias pyvenv='/opt/python/bin/pyvenv-3.5'
 
-export WORKON_HOME=$HOME/dev/tools/pyvenv   # optional
-export PROJECT_HOME=$HOME/dev/projects      # optional
+export WORKON_HOME=$HOME/tools/venv   # optional
+export PROJECT_HOME=$HOME/projects      # optional
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 source /usr/bin/virtualenvwrapper.sh
 
