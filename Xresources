@@ -131,11 +131,25 @@ URxvt.keysym.Control-Right:    \033[1;5C
 !URxvt.boldItalicFont: xft:Droid Sans Mono for Powerline:bold:italic:pixelsize=20:antialias=true
 !URxvt.letterSpace: -1
 
+!!!Hack
+!URxvt.font: xft:Hack:pixelsize=14:antialias=true:hinting=true
+!URxvt.boldFont: xft:Hack:bold:pixelsize=14:antialias=true:hinting=true
+!URxvt.italicFont: xft:Hack:italic:pixelsize=14:antialias=true:hinting=true
+!URxvt.boldItalicFont: xft:Hack:bold:italic:pixelsize=14:antialias=true
+!URxvt.letterSpace: -1
+
 !Droid Sans
-URxvt.font: xft:Droid Sans Mono for Powerline:pixelsize=14:antialias=true:hinting=true
-URxvt.boldFont: xft:Droid Sans Mono for Powerline:bold:pixelsize=14:antialias=true:hinting=true
-URxvt.italicFont: xft:Droid Sans Mono for Powerline:italic:pixelsize=14:antialias=true:hinting=true
-URxvt.boldItalicFont: xft:Droid Sans Mono for Powerline:bold:italic:pixelsize=14:antialias=true
+!Urxvt.font: xft:Droid Sans Mono for Powerline:pixelsize=16:antialias=true:hinting=true
+!URxvt.boldFont: xft:Droid Sans Mono for Powerline:bold:pixelsize=16:antialias=true:hinting=true
+!URxvt.italicFont: xft:Droid Sans Mono for Powerline:italic:pixelsize=16:antialias=true:hinting=true
+!URxvt.boldItalicFont: xft:Droid Sans Mono for Powerline:bold:italic:pixelsize=16:antialias=true
+!URxvt.letterSpace: -1
+
+!Droid Sans
+Urxvt.font: xft:Droid Sans Mono:pixelsize=16:antialias=true:hinting=true
+URxvt.boldFont: xft:Droid Sans Mono:bold:pixelsize=16:antialias=true:hinting=true
+URxvt.italicFont: xft:Droid Sans Mono:italic:pixelsize=16:antialias=true:hinting=true
+URxvt.boldItalicFont: xft:Droid Sans Mono:bold:italic:pixelsize=16:antialias=true
 URxvt.letterSpace: -1
 
 !! Monofur
@@ -212,85 +226,114 @@ URxvt.url-select.button:   1
 !URxvt.keysym.Control-Shift-C: perl:clipboard:copy
 !URxvt.keysym.Control-Shift-V: perl:clipboard:paste
 
-!
-! Jellybeans.vim Colors
-!
-! color0      (black)           = Black
-! color1      (red)             = Red3
-! color2      (green)           = Green3
-! color3      (yellow)          = Yellow3
-! color4      (blue)            = Blue3
-! color5      (magenta)         = Magenta3
-! color6      (cyan)            = Cyan3
-! color7      (white)           = AntiqueWhite
-! color8      (bright black)    = Grey25
-! color9      (bright red)      = Red
-! color10     (bright green)    = Green
-! color11     (bright yellow)   = Yellow
-! color12     (bright blue)     = Blue
-! color13     (bright magenta)  = Magenta
-! color14     (bright cyan)     = Cyan
-! color15     (bright white)    = White
-! foreground                    = Black
-! background                    = White
-!
-!
-! Jellybeans
-!
-! Black
-URxvt.color0: #000000
-URxvt.color8: #303030
-!
-! Red
-! 167:217
-URxvt.color1: #af0000
-URxvt.color9: #d75f5f
-!urxvt.color9: #ffafaf
-!
-! Green
-! 107:077
-URxvt.color2: #87af5f
-URxvt.color10: #5fdf5f
-!urxvt.color10: #afd787
-!
-! Yellow
-! 215:186
-URxvt.color3: #ffaf5f
-URxvt.color11: #d7d787
-!urxvt.color11: #ffdf87
-!
-! Blue
-! 110:081
-URxvt.color4: #87afd7
-URxvt.color12: #5fd7ff
-!
-! Magenta
-! 103:183
-!urxvt.color5: #8787af
-URxvt.color5: #8787d7
-URxvt.color13: #d7afff
-!
-! Cyan
-! 066:116
-URxvt.color6: #578787
-URxvt.color14: #87dfd7
-!
-! White
-URxvt.color7: #afafaf
-URxvt.color15: #d7d7d7
-!
-! Defaults
-URxvt.background: #121212
-!urxvt.background:rgba:0600/0600/0600/dddd
-URxvt.foreground: #808080
-!
-!
+!!
+!! Jellybeans.vim Colors
+!!
+!! color0      (black)           = Black
+!! color1      (red)             = Red3
+!! color2      (green)           = Green3
+!! color3      (yellow)          = Yellow3
+!! color4      (blue)            = Blue3
+!! color5      (magenta)         = Magenta3
+!! color6      (cyan)            = Cyan3
+!! color7      (white)           = AntiqueWhite
+!! color8      (bright black)    = Grey25
+!! color9      (bright red)      = Red
+!! color10     (bright green)    = Green
+!! color11     (bright yellow)   = Yellow
+!! color12     (bright blue)     = Blue
+!! color13     (bright magenta)  = Magenta
+!! color14     (bright cyan)     = Cyan
+!! color15     (bright white)    = White
+!! foreground                    = Black
+!! background                    = White
+!!
+!!
+!! Jellybeans
+!!
+!! Black
+!URxvt.color0: #000000
+!URxvt.color8: #303030
+!!
+!! Red
+!! 167:217
+!URxvt.color1: #af0000
+!URxvt.color9: #d75f5f
+!!urxvt.color9: #ffafaf
+!!
+!! Green
+!! 107:077
+!URxvt.color2: #87af5f
+!URxvt.color10: #5fdf5f
+!!urxvt.color10: #afd787
+!!
+!! Yellow
+!! 215:186
+!URxvt.color3: #ffaf5f
+!URxvt.color11: #d7d787
+!!urxvt.color11: #ffdf87
+!!
+!! Blue
+!! 110:081
+!URxvt.color4: #87afd7
+!URxvt.color12: #5fd7ff
+!!
+!! Magenta
+!! 103:183
+!!urxvt.color5: #8787af
+!URxvt.color5: #8787d7
+!URxvt.color13: #d7afff
+!!
+!! Cyan
+!! 066:116
+!URxvt.color6: #578787
+!URxvt.color14: #87dfd7
+!!
+!! White
+!URxvt.color7: #afafaf
+!URxvt.color15: #d7d7d7
+!!
+!! Defaults
+!URxvt.background: [90]#121212
+!!urxvt.background:rgba:0600/0600/0600/dddd
+!URxvt.foreground: #808080
+!!
+!!
 
 
 
 
 
-
+!! Hybrid Terminal Colours. Uses the palette from Tomorrow-Night:
+!! https://github.com/chriskempson/tomorrow-theme/blob/master/vim/colors/Tomorrow-Night.vim
+!! vim: ft=xdefaults
+!
+*background: #1D1F21
+*foreground: #C5C8C6
+! black
+*color0: #282A2E
+*color8: #373B41
+! red
+*color1: #A54242
+*color9: #CC6666
+! green
+*color2: #8C9440
+*color10: #B5BD68
+! yellow
+*color3: #DE935F
+*color11: #F0C674
+! blue
+*color4: #5F819D
+*color12: #81A2BE
+! magenta
+*color5: #85678F
+*color13: #B294BB
+! cyan
+*color6: #5E8D87
+*color14: #8ABEB7
+! white
+*color7: #707880
+*color15: #C5C8C6
 
 
 
