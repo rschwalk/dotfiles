@@ -142,7 +142,7 @@ set autoread
 set grepprg=grep\ -nH\ $*
 
 " Relitive line numbers
-""set relativenumber
+set relativenumber
 
 " Don't use Ex mode, use Q for formatting
 map Q gq
@@ -457,7 +457,7 @@ set wildignore+=*/coverage/*
 let g:pep8_map='<leader>8'
 
 " automaticaly load the tags on every save for cpp files
-autocmd BufWritePost *.cpp :TlistUpdate
+""autocmd BufWritePost *.cpp :TlistUpdate
 " configure tags - add additional tags here or comment out not-used ones
 ""set tags+=./tags;~/dev
 ""set tags+=~/.vim/tags/cpp.tags
@@ -503,6 +503,7 @@ autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 au InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWritePre * :%s/\s\+$//e
 
+syntax on
 
 call togglebg#map("<F5>")
 
@@ -516,14 +517,13 @@ if has('gui_running')
   set guifont=DejaVu\ Sans\ Mono\ for\ Powerline
   ""colorscheme xoria256
 else
-  set t_Co=256
+  ""set t_Co=256
   ""set termguicolors
   set background=dark
   ""colorscheme solarized
   ""let g:airline_theme='solarized'
   ""call togglebg#map("<F5>")
-  "colorscheme xoria256
-  "let g:airline_theme='dark'
+  ""colorscheme xoria256
   ""colorscheme zenburn
   ""let g:airline_theme='zenburn'
   colorscheme hybrid
@@ -533,6 +533,7 @@ else
   ""let g:solarized_termcolors=256
   highlight Normal ctermbg=none
   highlight NonText ctermbg=none
+  ""let g:airline_theme='dark'
 endif
 
 autocmd FileType python highlight ColorColumn ctermbg=grey guibg=DimGrey
