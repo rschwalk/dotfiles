@@ -47,7 +47,7 @@ beautiful.init("/home/rschwalk/.config/awesome/themes/rschwalk/theme.lua")
 --blingbling.superproperties.init('/home/rschwalk/.config/awesome/themes/rschwalk/theme.lua')
 
 -- This is used later as the default terminal and editor to run.
-terminal = "urxvt"
+terminal = "konsole"
 editor = os.getenv("EDITOR") or nvim or vim or "nano"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -195,7 +195,7 @@ awful.screen.connect_for_each_screen(function(s)
     set_wallpaper(s)
 
     -- Each screen has its own tag table.
-    awful.tag({ "1-home", "2-www", "3-files", "4-dev", "5-media", "6-sost" }, s, awful.layout.layouts[2])
+    awful.tag({ "1-home", "2-www", "3-files", "4-dev", "5-media", "6-sonst" }, s, awful.layout.layouts[2])
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
@@ -662,7 +662,7 @@ run_once("nitrogen --restore")
 run_once("syndaemon -i 1 -K -d")
 run_once("thunar --deamon")
 run_once("nm-applet")
-run_once("pamac-tray")
+--run_once("pamac-tray")
 run_once("albert")
-run_once("touchegg")
+--run_once("touchegg")
 -- }}}

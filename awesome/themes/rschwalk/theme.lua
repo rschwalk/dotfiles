@@ -69,7 +69,7 @@ theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(
 -- Variables set for theming the menu:
 -- menu_[bg|fg]_[normal|focus]
 -- menu_[border_color|border_width]
-theme.menu_submenu_icon = themes_path.."default/submenu.png"
+theme.menu_submenu_icon = themedir.."icons/submenu.png"
 theme.menu_height = dpi(15)
 theme.menu_width  = dpi(100)
 
@@ -142,27 +142,28 @@ theme.widget_mem                = themedir .. "/icons/mem.png"
 -- using nitrogen for wallpaper
 
 -- You can use your own layout icons like this:
-theme.layout_fairh = themes_path.."default/layouts/fairhw.png"
-theme.layout_fairv = themes_path.."default/layouts/fairvw.png"
-theme.layout_floating  = themes_path.."default/layouts/floatingw.png"
-theme.layout_magnifier = themes_path.."default/layouts/magnifierw.png"
-theme.layout_max = themes_path.."default/layouts/maxw.png"
-theme.layout_fullscreen = themes_path.."default/layouts/fullscreenw.png"
-theme.layout_tilebottom = themes_path.."default/layouts/tilebottomw.png"
-theme.layout_tileleft   = themes_path.."default/layouts/tileleftw.png"
-theme.layout_tile = themes_path.."default/layouts/tilew.png"
-theme.layout_tiletop = themes_path.."default/layouts/tiletopw.png"
-theme.layout_spiral  = themes_path.."default/layouts/spiralw.png"
-theme.layout_dwindle = themes_path.."default/layouts/dwindlew.png"
-theme.layout_cornernw = themes_path.."default/layouts/cornernww.png"
-theme.layout_cornerne = themes_path.."default/layouts/cornernew.png"
-theme.layout_cornersw = themes_path.."default/layouts/cornersww.png"
-theme.layout_cornerse = themes_path.."default/layouts/cornersew.png"
+theme.layout_fairh              = themedir.."/layouts/fairhw.png"
+theme.layout_fairv              = themedir.."/layouts/fairvw.png"
+theme.layout_floating           = themedir.."/layouts/floatingw.png"
+theme.layout_magnifier          = themedir.."/layouts/magnifierw.png"
+theme.layout_max                = themedir.."/layouts/maxw.png"
+theme.layout_fullscreen         = themedir.."/layouts/fullscreenw.png"
+theme.layout_tilebottom         = themedir.."/layouts/tilebottomw.png"
+theme.layout_tileleft           = themedir.."/layouts/tileleftw.png"
+theme.layout_tile               = themedir.."/layouts/tilew.png"
+theme.layout_tiletop            = themedir.."/layouts/tiletopw.png"
+theme.layout_spiral             = themedir.."/layouts/spiralw.png"
+theme.layout_dwindle            = themedir.."/layouts/dwindlew.png"
+theme.layout_cornernw           = themedir.."/layouts/cornernww.png"
+theme.layout_cornerne           = themedir.."/layouts/cornernew.png"
+theme.layout_cornersw           = themedir.."/layouts/cornersww.png"
+theme.layout_cornerse           = themedir.."/layouts/cornersew.png"
 
+theme.awesome_icon = themedir.."/icons/opensuse.svg"
 -- Generate Awesome icon:
-theme.awesome_icon = theme_assets.awesome_icon(
-    theme.menu_height, theme.system_color, theme.fg_focus
-)
+--theme.awesome_icon = theme_assets.awesome_icon(
+    --theme.menu_height, theme.system_color, theme.fg_focus
+--)
 
 -- Define the icon theme for application icons. If not set then the icons
 -- from /usr/share/icons and /usr/share/icons/hicolor will be used.
