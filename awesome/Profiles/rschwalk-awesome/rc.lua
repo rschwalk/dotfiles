@@ -47,7 +47,7 @@ beautiful.init("/home/rschwalk/.config/awesome/themes/rschwalk/theme.lua")
 --blingbling.superproperties.init('/home/rschwalk/.config/awesome/themes/rschwalk/theme.lua')
 
 -- This is used later as the default terminal and editor to run.
-terminal = "konsole"
+terminal = "xfce4-terminal"
 editor = os.getenv("EDITOR") or nvim or vim or "nano"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -418,6 +418,9 @@ globalkeys = awful.util.table.join(
               {description = "dmenu run", group = "user"}),
     awful.key({modkey,            }, "d", function () awful.util.spawn("/home/rschwalk/dotfiles/dual.sh")
         naughty.notify({ text = "Dual monitor setup", ontop = true }) end,
+              {description = "change to dual monitor setup", group = "user"}),
+    awful.key({modkey,            }, "g", function () awful.util.spawn("/home/rschwalk/dotfiles/triple.sh")
+        naughty.notify({ text = "Tripl monitor setup", ontop = true }) end,
               {description = "change to dual monitor setup", group = "user"}),
     awful.key({modkey,            }, "s", function () awful.util.spawn("/home/rschwalk/dotfiles/single.sh")
         naughty.notify({ text = "Single monitor setup", ontop = true }) end,
