@@ -1,28 +1,3 @@
-#if __has_include(".extend.Xresources")
-#include ".extend.Xresources"
-#endif
-
-! ^ The above lines are no comments!
-! Leave them as they are if a file ~/.extend.Xresources is being used on your system.
-! config can be added there or also here below.
-! For comments use "!"
-
-Xft.dpi: 96
-!Xft.dpi: 120
-Xft.antialias: true
-Xft.hinting: true
-Xft.rgba: rgb
-Xft.autohint: false
-!Xft.hintstyle: hintfull
-Xft.hintstyle: hintslight
-Xft.lcdfilter: lcddefault
-
-XTerm*background: #2b2b2b
-XTerm*foreground: #e7e7e7
-XTerm*pointerColor: #16A085
-XTerm*faceName: Fixed
-XTerm*faceSize: 11
-
 ! My own configuration
 
 URxvt.urgentOnBell: off
@@ -89,118 +64,6 @@ URxvt.keysym.Control-Down:    \033[1;5B
 URxvt.keysym.Control-Left:    \033[1;5D
 URxvt.keysym.Control-Right:    \033[1;5C
 
-!!Hermit
-!URxvt*font: xft:Hermit:medium:size=12:antialiasing=true
-!URxvt*boldFont: xft:Hermit:bold:size=12:antialiasing=true:style=medium
-!URxvt*italicFont: xft:Hermit:medium:size=12:antialiasing=true:style=medium
-!URxvt*boldItalicFont: xft:Hermit:bold:size=12:antialiasing=true:style=medium
-!URxvt.letterSpace: -1
-
-!!Inconsolata
-!URxvt.font: xft:Inconsolata for Powerline:pixelsize=20:antialias=true:hinting=true
-!URxvt.boldFont: xft:Inconsolata for Powerline:bold:pixelsize=20:antialias=true:hinting=true
-!URxvt.italicFont: xft:Inconsolata for Powerline:italic:pixelsize=20:antialias=true:hinting=true
-!URxvt.boldItalicFont: xft:Inconsolata for Powerline:bold:italic:pixelsize=20:antialias=true
-!URxvt.letterSpace: -1
-
-!!DejaVu Sans
-!URxvt.font: xft:Noto Mono:pixelsize=14:antialias=true:hinting=true
-!URxvt.boldFont: xft:Noto Mono:bold:pixelsize=14:antialias=true:hinting=true
-!URxvt.italicFont: xft:Noto Mono:italic:pixelsize=14:antialias=true:hinting=true
-!URxvt.boldItalicFont: xft:Noto Mono:bold:italic:pixelsize=14:antialias=true
-!URxvt.letterSpace: -1
-
-!!DejaVu Sans
-!URxvt.font: xft:Dejavu Sans Mono for Powerline:pixelsize=16:antialias=true:hinting=true
-!URxvt.boldFont: xft:DejaVu Sans Mono for Powerline:bold:pixelsize=16:antialias=true:hinting=true
-!URxvt.italicFont: xft:DejaVu Sans Mono for Powerline:italic:pixelsize=16:antialias=true:hinting=true
-!URxvt.boldItalicFont: xft:DejaVu Sans Mono for Powerline:bold:italic:pixelsize=16:antialias=true
-!URxvt.letterSpace: -1
-
-!!DejaVu Sans
-!URxvt.font: xft:Dejavu Sans Mono:pixelsize=14:antialias=true:hinting=true
-!URxvt.boldFont: xft:DejaVu Sans Mono:bold:pixelsize=14:antialias=true:hinting=true
-!URxvt.italicFont: xft:DejaVu Sans Mono:italic:pixelsize=14:antialias=true:hinting=true
-!URxvt.boldItalicFont: xft:DejaVu Sans Mono:bold:italic:pixelsize=14:antialias=true
-!URxvt.letterSpace: -1
-
-!!!Droid Sans
-!URxvt.font: xft:Droid Sans Mono for Powerline:pixelsize=20:antialias=true:hinting=true
-!URxvt.boldFont: xft:Droid Sans Mono for Powerline:bold:pixelsize=20:antialias=true:hinting=true
-!URxvt.italicFont: xft:Droid Sans Mono for Powerline:italic:pixelsize=20:antialias=true:hinting=true
-!URxvt.boldItalicFont: xft:Droid Sans Mono for Powerline:bold:italic:pixelsize=20:antialias=true
-!URxvt.letterSpace: -1
-
-!!!Hack
-!URxvt.font: xft:Hack:pixelsize=14:antialias=true:hinting=true
-!URxvt.boldFont: xft:Hack:bold:pixelsize=14:antialias=true:hinting=true
-!URxvt.italicFont: xft:Hack:italic:pixelsize=14:antialias=true:hinting=true
-!URxvt.boldItalicFont: xft:Hack:bold:italic:pixelsize=14:antialias=true
-!URxvt.letterSpace: -1
-
-!Droid Sans
-!Urxvt.font: xft:Droid Sans Mono for Powerline:pixelsize=16:antialias=true:hinting=true
-!URxvt.boldFont: xft:Droid Sans Mono for Powerline:bold:pixelsize=16:antialias=true:hinting=true
-!URxvt.italicFont: xft:Droid Sans Mono for Powerline:italic:pixelsize=16:antialias=true:hinting=true
-!URxvt.boldItalicFont: xft:Droid Sans Mono for Powerline:bold:italic:pixelsize=16:antialias=true
-!URxvt.letterSpace: -1
-
-!Droid Sans
-Urxvt.font: xft:Droid Sans Mono:pixelsize=16:antialias=true:hinting=true
-URxvt.boldFont: xft:Droid Sans Mono:bold:pixelsize=16:antialias=true:hinting=true
-URxvt.italicFont: xft:Droid Sans Mono:italic:pixelsize=16:antialias=true:hinting=true
-URxvt.boldItalicFont: xft:Droid Sans Mono:bold:italic:pixelsize=16:antialias=true
-URxvt.letterSpace: -1
-
-!! Monofur
-!URxvt.font: xft:Monofur for Powerline:pixelsize=20:antialias=true:hinting=true
-!URxvt.boldFont: xft:Monofur Bold for Powerline:pi8elsize=20:antialias=true:hinting=true
-!URxvt.italicFont: xft:Monofur Italic for Powerline:pixelsize=20:antialias=true:hinting=true
-!URxvt.boldItalicFont: xft:Monofur Bold for Powerline:italic:pixelsize=20:antialias=true
-!URxvt.letterSpace: -0.5
-
-!! Anonymice
-!URxvt.font: xft:Anonymice Powerline:pixelsize=21:antialias=true:hinting=true
-!URxvt.boldFont: xft:Anonymice Powerline Bold:pixelsize=21:antialias=true:hinting=true
-!URxvt.italicFont: xft:Anonymice Powerline Italic:pixelsize=21:antialias=true:hinting=true
-!URxvt.boldItalicFont: xft:Anonymice Bold Italic:pixelsize=21:antialias=true
-!URxvt.letterSpace: 1
-
-!! Literation
-!URxvt.font: xft:Literation Mono Powerline:pixelsize=18:antialias=true:hinting=true
-!URxvt.boldFont: xft:Literation Mono Bold for Powerline:pixelsize=18:antialias=true:hinting=true
-!URxvt.italicFont: xft:Literation Mono Italic for Powerline:pixelsize=18:antialias=true:hinting=true
-!URxvt.boldItalicFont: xft:Literation Mono Bold for Powerline:italic:pixelsize=18:antialias=true
-!URxvt.letterSpace: -1
-
-!! Sauce Code
-!URxvt.font: xft:Sauce Code Powerline:pixelsize=20:antialias=true:hinting=true
-!URxvt.boldFont: xft:Sauce Code Powerline Bold:pixelsize=20:antialias=true:hinting=true
-!URxvt.italicFont: xft:Sauce Code Powerline Italic:pixelsize=20:antialias=true:hinting=true
-!URxvt.boldItalicFont: xft:Sauce Code Bold Italic:pixelsize=20:antialias=true
-!URxvt.letterSpace: -1
-
-!! Ubuntu Mono derivative
-!URxvt.font: xft:Ubuntu Mono derivative Powerline:pixelsize=20:antialias=true:hinting=true
-!URxvt.boldFont: xft:Ubuntu Mono derivative Powerline Bold:pixelsize=20:antialias=true:hinting=true
-!URxvt.italicFont: xft:Ubuntu Mono derivative Powerline Italic:pixelsize=20:antialias=true:hinting=true
-!URxvt.boldItalicFont: xft:Ubuntu Mono derivative Bold Italic:pixelsize=20:antialias=true
-!URxvt.letterSpace: -1
-
-
-!URxvt.font: 	xft: Anonymice Powerline:pixelsize=17:anialias=true
-!		xft: DejaVu Sans Mono for Powerline:pixelsize=12:anialias=true
-!		xft: Digital Readout Thick UprightPowerline:pixelsize=17:anialias=true
-!		xft: Droid Sans Mono for Powerline:pixelsize=12:anialias=true
-!		xft: FuraMono-Regular Powerline:pixelsize=17:anialias=true
-!		xft: Inconsolata for Powerline:pixelsize=17:anialias=true
-!		xft: Literation Mono Powerline:pixelsize=17:anialias=true
-!		xft: Meslo L DZ Regular for Powerline:pixelsize=17:anialias=true
-!		xft: Monofur for Powerline:pixelsize=17:anialias=true
-!		xft: Sauce Code Powerline Medium:pixelsize=17:anialias=true
-!		xft: Ubuntu Mono derivative Powerline:pixelsize=17:anialias=true
-
-
 ! Disable screen printing by overriding the default print pipe.
 URxvt.print-pipe: "cat >/dev/null"
 
@@ -220,385 +83,72 @@ URxvt.url-select.underline 	: true
 
 URxvt.url-select.button:   1
 
-!URxvt.clipboard.copycmd:  xsel --input  --clipboard
-!URxvt.clipboard.pastecmd: xsel --output --clipboard
-
-!URxvt.keysym.Control-Shift-C: perl:clipboard:copy
-!URxvt.keysym.Control-Shift-V: perl:clipboard:paste
-
-!!
-!! Jellybeans.vim Colors
-!!
-!! color0      (black)           = Black
-!! color1      (red)             = Red3
-!! color2      (green)           = Green3
-!! color3      (yellow)          = Yellow3
-!! color4      (blue)            = Blue3
-!! color5      (magenta)         = Magenta3
-!! color6      (cyan)            = Cyan3
-!! color7      (white)           = AntiqueWhite
-!! color8      (bright black)    = Grey25
-!! color9      (bright red)      = Red
-!! color10     (bright green)    = Green
-!! color11     (bright yellow)   = Yellow
-!! color12     (bright blue)     = Blue
-!! color13     (bright magenta)  = Magenta
-!! color14     (bright cyan)     = Cyan
-!! color15     (bright white)    = White
-!! foreground                    = Black
-!! background                    = White
-!!
-!!
-!! Jellybeans
-!!
-!! Black
-!URxvt.color0: #000000
-!URxvt.color8: #303030
-!!
-!! Red
-!! 167:217
-!URxvt.color1: #af0000
-!URxvt.color9: #d75f5f
-!!urxvt.color9: #ffafaf
-!!
-!! Green
-!! 107:077
-!URxvt.color2: #87af5f
-!URxvt.color10: #5fdf5f
-!!urxvt.color10: #afd787
-!!
-!! Yellow
-!! 215:186
-!URxvt.color3: #ffaf5f
-!URxvt.color11: #d7d787
-!!urxvt.color11: #ffdf87
-!!
-!! Blue
-!! 110:081
-!URxvt.color4: #87afd7
-!URxvt.color12: #5fd7ff
-!!
-!! Magenta
-!! 103:183
-!!urxvt.color5: #8787af
-!URxvt.color5: #8787d7
-!URxvt.color13: #d7afff
-!!
-!! Cyan
-!! 066:116
-!URxvt.color6: #578787
-!URxvt.color14: #87dfd7
-!!
-!! White
-!URxvt.color7: #afafaf
-!URxvt.color15: #d7d7d7
-!!
-!! Defaults
-!URxvt.background: [90]#121212
-!!urxvt.background:rgba:0600/0600/0600/dddd
-!URxvt.foreground: #808080
-!!
-!!
-
-
-
-
-
-!! Hybrid Terminal Colours. Uses the palette from Tomorrow-Night:
-!! https://github.com/chriskempson/tomorrow-theme/blob/master/vim/colors/Tomorrow-Night.vim
-!! vim: ft=xdefaults
-!
-*background: #1D1F21
-*foreground: #C5C8C6
-! black
-*color0: #282A2E
-*color8: #373B41
-! red
-*color1: #A54242
-*color9: #CC6666
-! green
-*color2: #8C9440
-*color10: #B5BD68
-! yellow
-*color3: #DE935F
-*color11: #F0C674
-! blue
-*color4: #5F819D
-*color12: #81A2BE
-! magenta
-*color5: #85678F
-*color13: #B294BB
-! cyan
-*color6: #5E8D87
-*color14: #8ABEB7
-! white
-*color7: #707880
-*color15: #C5C8C6
-
-
-
-
-
-
-
-
-
-!! Black
-!URxvt.color0:  #5c5c5c
-!URxvt.color8:  #4c4c4c
-!! Red
-!URxvt.color1:  #cd0000
-!URxvt.color9:  #ff0000
-!! Green
-!URxvt.color2:  #00cd00
-!URxvt.color10: #00ff00
-!! Yellow
-!URxvt.color3:  #cdcd00
-!URxvt.color11: #ffff00
-!! Blue
-!URxvt.color4:  #1e90ff
-!URxvt.color12: #4682b4
-!! Magenta
-!URxvt.color5:  #cd00cd
-!URxvt.color13: #ff00ff
-!! Cyan
-!URxvt.color6:  #00cdcd
-!URxvt.color14: #00ffff
-!! White
-!URxvt.color7:  #cfcfcf
-!URxvt.color15: #a8a8a8
-
-
-
-
-
-
-
-
-
-!URxvt.urgentOnBell: true
-!URxvt.visualBell: off
-!URxvt.iso14755: off
-!URxvt.iso14755_52: off
-!URxvt.meta8: true
-!URxvt.depth: 32
-!!URxvt.iconFile: /usr/share/icons/Humanity/apps/128/utilities-terminal.svg
-!URxvt.metaSendsEscape: true
-!
-!URxvt.internalBorder: 0
-!URxvt.externalBorder: 0
-!
-!URxvt.scrollBar: off
-!URxvt.cursorBlink: true
-!URxvt.cursorUnderline: false
-!URxvt.cursorColor:#757575
-!URxvt.saveLines: 10000
-!URxvt.scrollTtyOutput:   false
-!URxvt.scrollWithBuffer:  true
-!URxvt.scrollTtyKeypress: true
-!
-!urxvt*depth:32
-!!urxvt*foreground:#ADADAD
-!urxvt*background:rgba:0600/0600/0600/dddd
-!!URxvt.foreground: 15
-!URxvt.geometry: 128x38
-!
-!!URxvt.font: xft:Noto Mono:pixelsize=14:antialias=true:hinting=true
-!!URxvt.boldFont: xft:Noto Mono:bold:pixelsize=14:antialias=true:hinting=true
-!!URxvt.italicFont: xft:Noto Mono:italic:pixelsize=14:antialias=true:hinting=true
-!!URxvt.boldItalicFont: xft:Noto Mono:bold:italic:pixelsize=14:antialias=true
-!
-!!URxvt.font: xft:DejaVu Sans Mono:pixelsize=13:antialias=true:hinting=true
-!!URxvt.boldFont: xft:DejaVu Sans Mono:bold:pixelsize=13:antialias=true:hinting=true
-!!URxvt.italicFont: xft:DejaVu Sans Mono:italic:pixelsize=13:antialias=true:hinting=true
-!!URxvt.boldItalicFont: xft:DejaVu Sans Mono:bold:italic:pixelsize=13:antialias=true
-!
-!URxvt.font: xft:DejaVu Sans Mono for Powerline:pixelsize=13,5:antialias=true:hinting=true
-!URxvt.boldFont: xft:DejaVu Sans Mono for Powerline:bold:pixelsize=13,5:antialias=true:hinting=true
-!URxvt.italicFont: xft:DejaVu Sans Mono for Powerline:italic:pixelsize=13,5:antialias=true:hinting=true
-!URxvt.boldItalicFont: xft:DejaVu Sans Mono for Powerline:bold:italic:pixelsize=13,5:antialias=true
-!
-!!URxvt.font: xft:Oxygen Mono:pixelsize=13:antialias=true:hinting=true
-!!URxvt.boldFont: xft:Oxygen Mono:bold:pixelsize=13:antialias=true:hinting=true
-!!URxvt.italicFont: xft:Oxygen Mono:italic:pixelsize=13:antialias=true:hinting=true
-!!URxvt.boldItalicFont: xft:Oxygen Mono:bold:italic:pixelsize=13:antialias=true
-!
-!!Droid Sans
-!!URxvt.font: xft:Droid Sans Mono for Powerline:pixelsize=12:antialias=true:hinting=true
-!!URxvt.boldFont: xft:Droid Sans Mono for Powerline:bold:pixelsize=12:antialias=true:hinting=true
-!!URxvt.italicFont: xft:Droid Sans Mono for Powerline:italic:pixelsize=12:antialias=true:hinting=true
-!!URxvt.boldItalicFont: xft:Droid Sans Mono for Powerline:bold:italic:pixelsize=12:antialias=true
-!!! Monofur
-!!URxvt.font: xft:Monofur for Powerline:pixelsize=22:antialias=true:hinting=true
-!!URxvt.boldFont: xft:Monofur Bold for Powerline:pixelsize=22:antialias=true:hinting=true
-!!URxvt.italicFont: xft:Monofur Italic for Powerline:pixelsize=22:antialias=true:hinting=true
-!!URxvt.boldItalicFont: xft:Monofur Bold for Powerline:italic:pixelsize=17:antialias=true
-!!! Anonymice
-!!URxvt.font: xft:Anonymice Powerline:pixelsize=21:antialias=true:hinting=true
-!!URxvt.boldFont: xft:Anonymice Powerline Bold:pixelsize=21:antialias=true:hinting=true
-!!URxvt.italicFont: xft:Anonymice Powerline Italic:pixelsize=21:antialias=true:hinting=true
-!!URxvt.boldItalicFont: xft:Anonymice Bold Italic:pixelsize=21:antialias=true
-!
-!!URxvt.font: 	xft: Anonymice Powerline:pixelsize=17:anialias=true
-!!		xft: DejaVu Sans Mono for Powerline:pixelsize=12:anialias=true
-!!		xft: Digital Readout Thick UprightPowerline:pixelsize=17:anialias=true
-!!		xft: Droid Sans Mono for Powerline:pixelsize=12:anialias=true
-!!		xft: FuraMono-Regular Powerline:pixelsize=17:anialias=true
-!!		xft: Inconsolata for Powerline:pixelsize=17:anialias=true
-!!		xft: Literation Mono Powerline:pixelsize=17:anialias=true
-!!		xft: Meslo L DZ Regular for Powerline:pixelsize=17:anialias=true
-!!		xft: Monofur for Powerline:pixelsize=17:anialias=true
-!!		xft: Sauce Code Powerline Medium:pixelsize=17:anialias=true
-!!		xft: Ubuntu Mono derivative Powerline:pixelsize=17:anialias=true
-!
-!
+!URxvt.font: xft:DejaVu Sans Mono:pixelsize=13:antialias=true:hinting=true
+!URxvt.boldFont: xft:DejaVu Sans Mono:bold:pixelsize=13:antialias=true:hinting=true
+!URxvt.italicFont: xft:DejaVu Sans Mono:italic:pixelsize=13:antialias=true:hinting=true
+!URxvt.boldItalicFont: xft:DejaVu Sans Mono:bold:italic:pixelsize=13:antialias=true
 !URxvt.letterSpace: -1
-!
-!! Disable screen printing by overriding the default print pipe.
-!URxvt.print-pipe: "cat >/dev/null"
-!
-!URxvt.perl-ext-common : default,keyboard-select,url-select,clipboard
-!
-!URxvt.keysym.M-x           	: perl:keyboard-select:activate
-!URxvt.keysym.M-u           	: perl:url-select:select_next
-!URxvt.keysym.M-c           	: perl:clipboard:copy
-!URxvt.keysym.M-v           	: perl:clipboard:paste
-!URxvt.keysym.M-s           	: perl:keyboard-select:search
-!URxvt.keysym.M-C-v         	: perl:clipboard:paste_escaped
-!!URxvt.perl-ext-common     	: tabbed,default,matcher
-!Urxvt.perl-lib            	: /usr/lib/urxvt/perl/
-!URxvt.url-select.launcher  	: luakit
-!URxvt.url-select.autocopy  	: true
-!URxvt.url-select.underline 	: true
-!!URxvt.matcher.button: 1
-!
-!URxvt.url-select.button:   1
-!
-!URxvt.clipboard.copycmd:  xsel --input  --clipboard
-!URxvt.clipboard.pastecmd: xsel --output --clipboard
-!
-!!URxvt.keysym.Control-Shift-C: perl:clipboard:copy
-!!URxvt.keysym.Control-Shift-V: perl:clipboard:paste
-!
-!
-!! xterm configuration
-!XTerm*locale: true
-!Xterm*saveLines: 4096
-!xterm*faceName: DejaVu Sans Mono:size=9:antialias=true
-!!xterm*font: 7x13
-!!XTerm*transparent: true
-!xterm*termName: xterm-256color
-!xterm*borderWidth: 0
-!XTerm*cursorBlink: true
-!XTerm*selectToClipboard: true
-!XTerm*on3Clicks: regex ([[:alpha:]]+://)?([[:alnum:]!#+,./=?@_~-]|(%[[:xdigit:]][[:xdigit:]]))+
-!*VT100*translations: #override Shift <Btn1Up>: exec-formatted("google-chrome-stable '%t'", PRIMARY)
-!
-!! Solarized color scheme for the X Window System
-!!
-!! http://ethanschoonover.com/solarized
-!
-!
-!! Common
-!
-!!#define S_yellow        #b58900
-!!#define S_orange        #cb4b16
-!!#define S_red           #dc322f
-!!#define S_magenta       #d33682
-!!#define S_violet        #6c71c4
-!!#define S_blue          #268bd2
-!!#define S_cyan          #2aa198
-!!#define S_green         #859900
-!!
-!!
-!!! Dark
-!!
-!!#define S_base03        #002b36
-!!#define S_base02        #073642
-!!#define S_base01        #586e75
-!!#define S_base00        #657b83
-!!#define S_base0         #839496
-!!#define S_base1         #93a1a1
-!!#define S_base2         #eee8d5
-!!#define S_base3         #fdf6e3
-!!
-!!
-!!! Light
-!!
-!!! #define S_base03        #fdf6e3
-!!! #define S_base02        #eee8d5
-!!! #define S_base01        #93a1a1
-!!! #define S_base00        #839496
-!!! #define S_base0         #657b83
-!!! #define S_base1         #586e75
-!!! #define S_base2         #073642
-!!! #define S_base3         #002b36
-!!
-!!
-!!! To only apply colors to your terminal, for example, prefix
-!!! the color assignment statement with its name. Example:
-!!!
-!!! URxvt*background:            S_base03
-!!
-!!*background:              S_base03
-!!*foreground:              S_base0
-!!*fading:                  40
-!!*fadeColor:               S_base03
-!!*cursorColor:             S_base1
-!!*pointerColorBackground:  S_base01
-!!*pointerColorForeground:  S_base1
-!!
-!!*color0:                  S_base02
-!!*color1:                  S_red
-!!*color2:                  S_green
-!!*color3:                  S_yellow
-!!*color4:                  S_blue
-!!*color5:                  S_magenta
-!!*color6:                  S_cyan
-!!*color7:                  S_base2
-!!*color9:                  S_orange
-!!*color8:                  S_base03
-!!*color10:                 S_base01
-!!*color11:                 S_base00
-!!*color12:                 S_base0
-!!*color13:                 S_violet
-!!*color14:                 S_base1
-!!*color15:                 S_base3
-!!
-!
-!! Holo
-!
-!*background: #242424
-!*foreground: #CCCCCC
-!
-!! black
-!*color0: #444444
-!*color8: #888888
-!
-!! red
-!*color1: #BF3E3E
-!*color9: #FF5353
-!
-!! green
-!*color2: #98AB60
-!*color10: #CBE580
-!
-!! yellow
-!*color3: #AB7260
-!*color11: #E59980
-!
-!! blue
-!*color4: #6099AC
-!*color12: #80CCE6
-!
-!! magenta
-!*color5: #AB6099
-!*color13: #E580CC
-!
-!! cyan
-!*color6: #80bab0
-!*color14: #add9d1
-!
-!! white
-!*color7: #F1F2F0
-!*color15: #FFFFFF
+
+URxvt.font: xft:Source Code Pro Medium:pixelsize=13:antialias=true:hinting=true
+URxvt.boldFont: xft:Source Code Pro Medium:bold:pixelsize=13:antialias=true:hinting=true
+URxvt.italicFont: xft:Source Code Pro Medium:italic:pixelsize=13:antialias=true:hinting=true
+URxvt.boldItalicFont: xft:Source Code Pro Medium:bold:italic:pixelsize=13:antialias=true
+URxvt.letterSpace: -1
+
+
+
+
+! Base16 Default Dark
+! Scheme: Chris Kempson (http://chriskempson.com)
+
+#define base00 #181818
+#define base01 #282828
+#define base02 #383838
+#define base03 #585858
+#define base04 #b8b8b8
+#define base05 #d8d8d8
+#define base06 #e8e8e8
+#define base07 #f8f8f8
+#define base08 #ab4642
+#define base09 #dc9656
+#define base0A #f7ca88
+#define base0B #a1b56c
+#define base0C #86c1b9
+#define base0D #7cafc2
+#define base0E #ba8baf
+#define base0F #a16946
+
+*foreground:   base05
+#ifdef background_opacity
+*background:   [background_opacity]base00
+#else
+*background:   base00
+#endif
+*cursorColor:  base05
+
+*color0:       base00
+*color1:       base08
+*color2:       base0B
+*color3:       base0A
+*color4:       base0D
+*color5:       base0E
+*color6:       base0C
+*color7:       base05
+
+*color8:       base03
+*color9:       base08
+*color10:      base0B
+*color11:      base0A
+*color12:      base0D
+*color13:      base0E
+*color14:      base0C
+*color15:      base07
+
+! Note: colors beyond 15 might not be loaded (e.g., xterm, urxvt),
+! use 'shell' template to set these if necessary
+*color16:      base09
+*color17:      base0F
+*color18:      base01
+*color19:      base02
+*color20:      base04
+*color21:      base06
