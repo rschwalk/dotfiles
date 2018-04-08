@@ -11,6 +11,7 @@ ln -s /home/rschwalk/dotfiles/msmtprc /home/rschwalk/.msmtprc;
 ln -s /home/rschwalk/dotfiles/urlview /home/rschwalk/.urlview;
 ln -s /home/rschwalk/dotfiles/notmuch-config /home/rschwalk/.notmuch-config;
 ln -s /home/rschwalk/dotfiles/touchegg/ /home/rschwalk/.config/;
+ln -s /home/rschwalk/dotfiles/xmodmap /home/rschwalk/.xmodmap
 sudo ln -s /home/rschwalk/dotfiles/mutt/mutt-notmuch-py /usr/bin/;
 mkdir /home/rschwalk/.mail;
 git config --global user.name "Richard Schwalk";
