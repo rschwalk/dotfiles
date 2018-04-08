@@ -410,7 +410,8 @@ globalkeys = awful.util.table.join(
               {description = "mute volume", group = "user"}),
     awful.key({ modkey, "Shift" }, "x",
                 function()
-                    local suspend = "zenity --question --text 'Suspend?' && i3lock -d -p default -c && systemctl suspend "
+                    --local suspend = "zenity --question --text 'Suspend?' && i3lock -d -p default -c && systemctl suspend "
+                    local suspend = "i3lock -d -p default -c && systemctl suspend "
                     awful.util.spawn(suspend, false)
                 end,
               {description = "suspend the system", group = "user"}),
@@ -665,6 +666,7 @@ run_once("nitrogen --restore")
 run_once("syndaemon -i 1 -K -d")
 run_once("thunar --deamon")
 run_once("nm-applet")
+run_once("xmodmap ~./.xmodmap")
 --run_once("pamac-tray")
 run_once("albert")
 --run_once("touchegg")
