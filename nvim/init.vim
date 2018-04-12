@@ -46,7 +46,7 @@ Plug 'w0ng/vim-hybrid'
 call plug#end()
 
 " Automatic reloading of .vimrc
-autocmd! bufwritepost .vimrc source %
+autocmd! bufwritepost $MYVIMRC source %
 
 " Enable syntax highlighting
 " You need to reload this file for the change to apply
@@ -448,6 +448,9 @@ set laststatus=2
 let g:airline_theme='dark'
 
 " Setting for ctr-p
+"nnoremap :CtrlP<CR>
+"nnoremap :CtrlPBuffer<CR>
+nnoremap <C-p> :CtrlPMixed<CR>
 let g:ctrlp_max_height = 30
 set wildignore+=*.pyc
 set wildignore+=*_build/*
@@ -517,31 +520,33 @@ if has('gui_running')
 else
   ""set t_Co=256
   ""set termguicolors
-  "set background=dark
+  set background=dark
   "colorscheme solarized
   "let g:airline_theme='solarized'
   ""call togglebg#map("<F5>")
-  ""colorscheme xoria256
-  ""colorscheme zenburn
+  "colorscheme xoria256
+  "colorscheme zenburn
   ""let g:airline_theme='zenburn'
-  ""colorscheme hybrid
+  "colorscheme hybrid
   ""let g:hybrid_custom_term_colors = 1
   "colorscheme jellybeans
   "let g:airline_theme='jellybeans'
+  colorscheme Tomorrow-Night
+  let g:airline_theme='tomorrow'
   ""let g:solarized_termcolors=256
-  ""let base16colorspace=256
+  "let base16colorspace=256
   "colorscheme base16-default-dark
-  let g:airline_theme='base16_ocean'
+  "let g:airline_theme='base16_ocean'
   "highlight Normal ctermbg=none
   "highlight NonText ctermbg=none
-  if filereadable(expand("~/.vimrc_background"))
-      let base16colorspace=256
-      source ~/.vimrc_background
-  else
-      set background=dark
-      colorscheme xoria256
-      let g:airline_theme='zenburn'
-  endif
+  "if filereadable(expand("~/.vimrc_background"))
+  "    let base16colorspace=256
+  "    source ~/.vimrc_background
+  "else
+  "    set background=dark
+  "    colorscheme xoria256
+  "    let g:airline_theme='zenburn'
+  "endif
 endif
 
 autocmd FileType python highlight ColorColumn ctermbg=grey guibg=DimGrey
