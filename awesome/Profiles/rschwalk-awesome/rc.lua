@@ -43,7 +43,8 @@ end
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
 --beautiful.init(awful.util.get_themes_dir() .. "default/theme.lua")
-beautiful.init("/home/rschwalk/.config/awesome/themes/rschwalk/theme.lua")
+--beautiful.init("/home/rschwalk/.config/awesome/themes/rschwalk/theme.lua")
+beautiful.init("/home/rschwalk/.config/awesome/themes/powerarrow-blue/theme.lua")
 --blingbling.superproperties.init('/home/rschwalk/.config/awesome/themes/rschwalk/theme.lua')
 
 -- This is used later as the default terminal and editor to run.
@@ -641,8 +642,8 @@ client.connect_signal("mouse::enter", function(c)
     end
 end)
 
-client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
-client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
+--client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
+--client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 
 -- autostrt
 function run_once(cmd)
