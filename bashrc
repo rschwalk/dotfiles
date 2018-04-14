@@ -33,8 +33,8 @@ colors() {
 
 [[ -f ~/.extend.bashrc ]] && . ~/.extend.bashrc
 
-BASE16_SHELL=$HOME/.config/base16-shell/
-[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
+#BASE16_SHELL=$HOME/.config/base16-shell/
+#[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
 
 # Setting Bash prompt.
 export PS1="\[$(tput bold)\]\[$(tput setaf 4)\][\[$(tput setaf 3)\]\u\[$(tput setaf 7)\]@\[$(tput setaf 4)\]\h \[$(tput setaf 5)\]\W\[$(tput setaf 4)\]\[$(tput setaf 4)\]]\\$ \[$(tput sgr0)\]"
@@ -57,10 +57,11 @@ source /usr/bin/virtualenvwrapper.sh
 
 # xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
 #screenfetch
+neofetch
 
 #export TERM=screen-256color-bce
 #export TERM=rxvt-unicode-256colors
-export TERM=xterm-256color
+#export TERM=konsole-256color
 #export TERM=rxvt-256color
 
 test -s ~/.alias && . ~/.alias || true
