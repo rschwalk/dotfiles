@@ -141,7 +141,7 @@ end
 function desktop.add_base_icons(args)
     for _,base in ipairs(args.baseicons) do
         desktop.add_single_icon(args, base.label, utils.lookup_icon(base.icon), function()
-            awful.spawn(string.format("%s '%s'", args.open_width, base.onclick))
+            awful.spawn(string.format("%s '%s'", args.open_with, base.onclick))
         end)
     end
 end
@@ -244,8 +244,8 @@ function desktop.add_icons(args)
 
     -- trying to fallback on Adwaita if theme.icon_theme is not defined
     -- if Adwaita is missing too, no icons will be shown
-    if not beautiful.icon_theme then
-        beautiful.icon_theme = args.icon_theme or "Adwaita"
+    if not theme.icon_theme then
+        theme.icon_theme = args.icon_theme or "Adwaita"
     end
 
     desktop.add_base_icons(args)

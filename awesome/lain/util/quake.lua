@@ -1,22 +1,21 @@
-
 --[[
-                                                   
-     Licensed under GNU General Public License v2  
-      * (c) 2016, Luke Bonham                      
-      * (c) 2015, unknown                          
-                                                   
+
+     Licensed under GNU General Public License v2
+      * (c) 2016, Luca CPZ
+      * (c) 2015, unknown
+
 --]]
 
 local awful        = require("awful")
-local capi         = { client = client,
-                       timer  = require("gears.timer") }
+local capi         = { client = client }
+
 local math         = { floor  = math.floor }
-local string       = string
+local string       = { format = string.format }
 
 local pairs        = pairs
 local screen       = screen
+
 local setmetatable = setmetatable
-local tostring     = tostring
 
 -- Quake-like Dropdown application spawn
 local quake = {}
@@ -34,7 +33,7 @@ function quake:display()
     for c in awful.client.iterate(function (c)
         -- c.name may be changed!
         return c.instance == self.name
-    end, nil, self.screen)
+    end)
     do
         i = i + 1
         if i == 1 then
@@ -57,25 +56,23 @@ function quake:display()
         cmd = string.format("%s %s %s", self.app,
               string.format(self.argname, self.name), self.extra)
         awful.spawn(cmd, { tag = self.screen.selected_tag })
-        self.notexist = true
         return
     end
 
-    -- Resize
+    -- Set geometry
     client.floating = true
     client.border_width = self.border
     client.size_hints_honor = false
-    if self.notexist then
-        self:compute_size()
-        client:geometry(self.geometry)
-        self.notexist = false
-    end
+    client:geometry(self.geometry[self.screen] or self:compute_size())
 
-    -- Not sticky and on top
+    -- Set not sticky and on top
     client.sticky = false
     client.ontop = true
     client.above = true
     client.skip_taskbar = true
+
+    -- Additional user settings
+    if self.settings then self.settings(client) end
 
     -- Toggle display
     if self.visible then
@@ -97,23 +94,27 @@ function quake:display()
 end
 
 function quake:compute_size()
-    local geom
-    if not self.overlap then
-        geom = screen[self.screen].workarea
-    else
-        geom = screen[self.screen].geometry
+    -- skip if we already have a geometry for this screen
+    if not self.geometry[self.screen] then
+        local geom
+        if not self.overlap then
+            geom = screen[self.screen].workarea
+        else
+            geom = screen[self.screen].geometry
+        end
+        local width, height = self.width, self.height
+        if width  <= 1 then width = math.floor(geom.width * width) - 2 * self.border end
+        if height <= 1 then height = math.floor(geom.height * height) end
+        local x, y
+        if     self.horiz == "left"  then x = geom.x
+        elseif self.horiz == "right" then x = geom.width + geom.x - width
+        else   x = geom.x + (geom.width - width)/2 end
+        if     self.vert == "top"    then y = geom.y
+        elseif self.vert == "bottom" then y = geom.height + geom.y - height
+        else   y = geom.y + (geom.height - height)/2 end
+        self.geometry[self.screen] = { x = x, y = y, width = width, height = height }
     end
-    local width, height = self.width, self.height
-    if width  <= 1 then width = math.floor(geom.width * width) - 2 * self.border end
-    if height <= 1 then height = math.floor(geom.height * height) end
-    local x, y
-    if     self.horiz == "left"  then x = geom.x
-    elseif self.horiz == "right" then x = geom.width + geom.x - width
-    else   x = geom.x + (geom.width - width)/2 end
-    if     self.vert == "top"    then y = geom.y
-    elseif self.vert == "bottom" then y = geom.height + geom.y - height
-    else   y = geom.y + (geom.height - height)/2 end
-    self.geometry = { x = x, y = y, width = width, height = height }
+    return self.geometry[self.screen]
 end
 
 function quake:new(config)
@@ -128,42 +129,39 @@ function quake:new(config)
     conf.followtag  = conf.followtag or false      -- spawn on currently focused screen
     conf.overlap    = conf.overlap   or false      -- overlap wibox
     conf.screen     = conf.screen    or awful.screen.focused()
+    conf.settings   = conf.settings
 
     -- If width or height <= 1 this is a proportion of the workspace
-    conf.height       = conf.height       or 0.25     -- height
-    conf.width        = conf.width        or 1        -- width
-    conf.vert         = conf.vert         or "top"    -- top, bottom or center
-    conf.horiz        = conf.horiz        or "left"   -- left, right or center
+    conf.height     = conf.height    or 0.25       -- height
+    conf.width      = conf.width     or 1          -- width
+    conf.vert       = conf.vert      or "top"      -- top, bottom or center
+    conf.horiz      = conf.horiz     or "left"     -- left, right or center
+    conf.geometry   = {}                           -- internal use
 
-    local console = setmetatable(conf, { __index = quake })
+    local dropdown = setmetatable(conf, { __index = quake })
+
     capi.client.connect_signal("manage", function(c)
-        if c.instance == console.name and c.screen == console.screen then
-            console:display()
+        if c.instance == dropdown.name and c.screen == dropdown.screen then
+            dropdown:display()
         end
     end)
     capi.client.connect_signal("unmanage", function(c)
-        if c.instance == console.name and c.screen == console.screen then
-            console.visible = false
+        if c.instance == dropdown.name and c.screen == dropdown.screen then
+            dropdown.visible = false
         end
      end)
 
-    -- "Reattach" currently running quake application. This is in case awesome is restarted.
-    local reattach = capi.timer { timeout = 0 }
-    reattach:connect_signal("timeout", function()
-        if self.followtag then self.screen = awful.screen.focused() end
-        reattach:stop()
-        console:display()
-    end)
-    reattach:start()
-
-    return console
+    return dropdown
 end
 
 function quake:toggle()
      if self.followtag then self.screen = awful.screen.focused() end
      local current_tag = self.screen.selected_tag
      if current_tag and self.last_tag ~= current_tag and self.visible then
-         self:display():move_to_tag(current_tag)
+         local c=self:display()
+         if c then
+            c:move_to_tag(current_tag)
+        end
      else
          self.visible = not self.visible
          self:display()
