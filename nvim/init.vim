@@ -260,6 +260,10 @@ vnoremap <Leader>s :sort<CR>
 vnoremap < <gv  " better indentation
 vnoremap > >gv  " better indentation
 
+" Session management
+nmap <F2> :mksession! ./.session<cr>
+nmap <F3> :source ./.session<cr>
+
 set enc=utf-8
 
 autocmd FileType python map R :w<CR>:!python3 "%"<CR>
@@ -519,7 +523,7 @@ if has('gui_running')
   ""colorscheme xoria256
 else
   ""set t_Co=256
-  ""set termguicolors
+  set termguicolors
   set background=dark
   "colorscheme solarized
   "let g:airline_theme='solarized'
@@ -531,22 +535,23 @@ else
   ""let g:hybrid_custom_term_colors = 1
   "colorscheme jellybeans
   "let g:airline_theme='jellybeans'
-  colorscheme Tomorrow-Night
-  let g:airline_theme='tomorrow'
+  "colorscheme Tomorrow-Night
+  "let g:airline_theme='tomorrow'
   ""let g:solarized_termcolors=256
   "let base16colorspace=256
   "colorscheme base16-default-dark
   "let g:airline_theme='base16_ocean'
-  "highlight Normal ctermbg=none
-  "highlight NonText ctermbg=none
-  "if filereadable(expand("~/.vimrc_background"))
-  "    let base16colorspace=256
-  "    source ~/.vimrc_background
-  "else
-  "    set background=dark
-  "    colorscheme xoria256
-  "    let g:airline_theme='zenburn'
-  "endif
+  highlight Normal ctermbg=none
+  highlight NonText ctermbg=none
+  if filereadable(expand("~/.vimrc_background"))
+      let base16colorspace=256
+      source ~/.vimrc_background
+      let g:airline_theme=substitute(g:colors_name, "-", "_", "") ""'base16_ocean'
+  else
+      set background=dark
+      colorscheme Tomorrow-Night
+      let g:airline_theme='tomorrow'
+  endif
 endif
 
 autocmd FileType python highlight ColorColumn ctermbg=grey guibg=DimGrey
