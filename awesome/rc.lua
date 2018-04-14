@@ -112,7 +112,7 @@ local filemanager       = "thunar"
 local mailclient        = "evolution"
 local mediaplayer       = "spotify"
 local scrlocker         = "slimlock"
-local terminal          = "xfce4-terminal"
+local terminal          = "termite"
 local virtualmachine    = "virtualbox"
 
 -- awesome variables
@@ -282,7 +282,7 @@ globalkeys = my_table.join(
     function ()
         awful.spawn(string.format("dmenu_run -i -nb '#191919' -nf '#fea63c' -sb '#fea63c' -sf '#191919' -fn NotoMonoRegular:bold:pixelsize=14",
         beautiful.bg_normal, beautiful.fg_normal, beautiful.bg_focus, beautiful.fg_focus))
-	end,
+    end,
     {description = "show dmenu", group = "hotkeys"}),
 
 
@@ -315,8 +315,8 @@ globalkeys = my_table.join(
     -- super + ...
     awful.key({ modkey }, "e", function () awful.util.spawn( editorgui ) end,
         {description = "run gui editor", group = "super"}),
-    awful.key({ modkey }, "h", function () awful.util.spawn( "urxvt -T 'htop task manager' -e htop" ) end,
-        {description = "htop", group = "super"}),
+    --awful.key({ modkey }, "h", function () awful.util.spawn( "urxvt -T 'htop task manager' -e htop" ) end,
+    --    {description = "htop", group = "super"}),
     awful.key({ modkey }, "m", function () awful.util.spawn( mediaplayer ) end,
         {description = "mediaplayer", group = "super"}),
     awful.key({ modkey }, "q", function () awful.spawn( browser) end,
