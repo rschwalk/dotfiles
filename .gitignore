@@ -6,3 +6,4 @@ nvim/__pycache__
 temp/*
 .directory
 *_old
+awesome/.session
