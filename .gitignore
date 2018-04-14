@@ -5,3 +5,4 @@ nvim/__pycache__
 *.pyc
 temp/*
 .directory
+*_old
