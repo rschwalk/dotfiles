@@ -37,6 +37,7 @@ run "numlockx on"
 #run "conky -c $HOME/.config/awesome/system-overview"
 
 #run applications from startup
+run "megasync"
 #run "firefox"
 #run "atom"
 #run "dropbox"
