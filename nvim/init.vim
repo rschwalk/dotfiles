@@ -15,7 +15,7 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'chriskempson/base16-vim'
-Plug 'kien/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'sjl/gundo.vim'
 ""Plug 'fholgado/minibufexpl.vim'
@@ -42,6 +42,8 @@ Plug 'flazz/vim-colorschemes'
 Plug 'Raimondi/delimitMate'
 Plug 'frankier/neovim-colors-solarized-truecolor-only'
 Plug 'w0ng/vim-hybrid'
+Plug 'wincent/loupe'
+Plug 'tpope/vim-surround'
 
 call plug#end()
 
@@ -241,10 +243,10 @@ set synmaxcol=2048
 
 " bind Ctrl+<movement> keys to move around the windows, instead of using Ctrl+w + <movement>
 " Every unnecessary keystroke that can be saved is good for your health :)
-""map <c-j> <c-w>j
-""map <c-k> <c-w>k
-""map <c-l> <c-w>l
-""map <c-h> <c-w>h
+"map <c-j> <c-w>j
+"map <c-k> <c-w>k
+"map <c-l> <c-w>l
+"map <c-h> <c-w>h
 
 " easier moving between buffers
 ""map <Leader>n <esc>:bprevious<CR>
@@ -454,7 +456,8 @@ let g:airline_theme='dark'
 " Setting for ctr-p
 "nnoremap :CtrlP<CR>
 "nnoremap :CtrlPBuffer<CR>
-nnoremap <C-p> :CtrlPMixed<CR>
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlPMixed'
 let g:ctrlp_max_height = 30
 set wildignore+=*.pyc
 set wildignore+=*_build/*
@@ -523,7 +526,7 @@ if has('gui_running')
   ""colorscheme xoria256
 else
   ""set t_Co=256
-  "set termguicolors
+  set termguicolors
   set background=dark
   "colorscheme solarized
   "let g:airline_theme='solarized'
@@ -532,26 +535,26 @@ else
   "colorscheme zenburn
   ""let g:airline_theme='zenburn'
   "colorscheme hybrid
-  ""let g:hybrid_custom_term_colors = 1
+  "let g:hybrid_custom_term_colors = 1
   "colorscheme jellybeans
   "let g:airline_theme='jellybeans'
-  colorscheme Tomorrow-Night
-  let g:airline_theme='tomorrow'
-  ""let g:solarized_termcolors=256
+  "colorscheme Tomorrow-Night
+  "let g:airline_theme='tomorrow'
+  "let g:solarized_termcolors=256
   "let base16colorspace=256
   "colorscheme base16-default-dark
   "let g:airline_theme='base16_ocean'
-  highlight Normal ctermbg=none
-  highlight NonText ctermbg=none
-  "if filereadable(expand("~/.vimrc_background"))
-  "    let base16colorspace=256
-  "    source ~/.vimrc_background
-  "    let g:airline_theme=substitute(g:colors_name, "-", "_", "") ""'base16_ocean'
-  "else
-  "    set background=dark
-  "    colorscheme Tomorrow-Night
-  "    let g:airline_theme='tomorrow'
-  "endif
+  "highlight Normal ctermbg=none
+  "highlight NonText ctermbg=none
+  if filereadable(expand("~/.vimrc_background"))
+      let base16colorspace=256
+      source ~/.vimrc_background
+      let g:airline_theme=substitute(g:colors_name, "-", "_", "") ""'base16_ocean'
+  else
+      set background=dark
+      colorscheme Tomorrow-Night
+      let g:airline_theme='tomorrow'
+  endif
 endif
 
 autocmd FileType python highlight ColorColumn ctermbg=grey guibg=DimGrey
