@@ -57,7 +57,7 @@ source /usr/bin/virtualenvwrapper.sh
 
 # xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
 #screenfetch
-neofetch
+#neofetch
 
 #export TERM=screen-256color-bce
 #export TERM=rxvt-unicode-256colors
