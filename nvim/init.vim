@@ -538,23 +538,23 @@ else
   "let g:hybrid_custom_term_colors = 1
   "colorscheme jellybeans
   "let g:airline_theme='jellybeans'
-  "colorscheme Tomorrow-Night
-  "let g:airline_theme='tomorrow'
+  colorscheme Tomorrow-Night
+  let g:airline_theme='tomorrow'
   "let g:solarized_termcolors=256
   "let base16colorspace=256
   "colorscheme base16-default-dark
   "let g:airline_theme='base16_ocean'
   "highlight Normal ctermbg=none
   "highlight NonText ctermbg=none
-  if filereadable(expand("~/.vimrc_background"))
-      let base16colorspace=256
-      source ~/.vimrc_background
-      let g:airline_theme=substitute(g:colors_name, "-", "_", "") ""'base16_ocean'
-  else
-      set background=dark
-      colorscheme Tomorrow-Night
-      let g:airline_theme='tomorrow'
-  endif
+  "if filereadable(expand("~/.vimrc_background"))
+  "    let base16colorspace=256
+  "    source ~/.vimrc_background
+  "    let g:airline_theme=substitute(g:colors_name, "-", "_", "") ""'base16_ocean'
+  "else
+  "    set background=dark
+  "    colorscheme Tomorrow-Night
+  "    let g:airline_theme='tomorrow'
+  "endif
 endif
 
 autocmd FileType python highlight ColorColumn ctermbg=grey guibg=DimGrey
