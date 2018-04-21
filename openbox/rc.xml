@@ -1,3 +1,4 @@
+<?xml version="1.0"?>
 <openbox_config xmlns="http://openbox.org/3.4/rc" xmlns:xi="http://www.w3.org/2001/XInclude">
   <resistance>
     <strength>10</strength>
@@ -117,7 +118,7 @@
 
        use obconf if you want to change these without having to log out
        and back in -->
-    <number>4</number>
+    <number>2</number>
     <firstdesk>1</firstdesk>
     <names>
       <name>1</name>
@@ -425,7 +426,7 @@
     </keybind>
     <keybind key="W-e">
       <action name="Execute">
-        <command>geany</command>
+        <command>code</command>
       </action>
     </keybind>
     <keybind key="W-m">
@@ -554,11 +555,11 @@
         <command>variety --resume</command>
       </action>
     </keybind>
-    <keybind key="A-Up">
+    <!-- <keybind key="A-Up">
       <action name="Execute">
         <command>variety --pause</command>
       </action>
-    </keybind>
+    </keybind> -->
     <keybind key="W-Pause">
       <action name="Execute">
         <command>oblogout</command>
@@ -627,12 +628,12 @@
         <command>spotify</command>
       </action>
     </keybind>
-        <keybind key="W-F11">
+    <keybind key="W-F11">
       <action name="Execute">
         <command>rofi -show run -fullscreen -font "Noto Sans 13"</command>
       </action>
     </keybind>
-        <keybind key="W-F12">
+    <keybind key="W-F12">
       <action name="Execute">
         <command>rofi -show run -font "Noto Sans 13"</command>
       </action>
