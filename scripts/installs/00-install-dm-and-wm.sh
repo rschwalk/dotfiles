@@ -17,7 +17,8 @@ sudo zypper -n up
 sudo zypper -n in lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings
 sudo zypper -n in openbox
 sudo zypper -n in noto-sans-fonts
-perl-Gtk2
+sudo zypper -n in perl-Gtk2
+sudo zypper -n in perl-Linux-DesktopFiles
 
 #sudo systemctl enable lightdm.service -f
 # sudo systemctl set-default graphical.target
@@ -38,3 +39,6 @@ sudo zypper -n in tint2
 sudo zypper -n in plank
 sudo zypper -n in compton
 sudo zypper -n in nitrogen
+
+echo "Installing openbox theme"
+git clone https://github.com/dglava/arc-openbox /home/rschwalk/tools/arc-openbox
