@@ -18,6 +18,7 @@ sudo zypper -n in lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings
 sudo zypper -n in openbox
 sudo zypper -n in noto-sans-fonts
 sudo zypper -n in perl-Gtk2
+sudo zypper -n in perl-Data-Dump
 sudo zypper -n in perl-Linux-DesktopFiles
 
 #sudo systemctl enable lightdm.service -f
@@ -41,4 +42,10 @@ sudo zypper -n in compton
 sudo zypper -n in nitrogen
 
 echo "Installing openbox theme"
-git clone https://github.com/dglava/arc-openbox /home/rschwalk/tools/arc-openbox
+git clone https://github.com/dglava/arc-openbox ~/tools/arc-openbox
+
+echo "Installing openbox obmenu-generator"
+git clone https://github.com/trizen/obmenu-generator ~/tools/obmenu-generator
+sudo cp ~/tools/obmenu-generator/obmenu-generator /usr/bin
+mkdir -p ~/.config/obmenu-generator/
+cp ~/tools/obmenu-generator/schema.pl ~/.config/obmenu-generator/
