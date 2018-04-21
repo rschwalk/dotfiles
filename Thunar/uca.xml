@@ -1,0 +1,47 @@
+<?xml encoding="UTF-8" version="1.0"?>
+<actions>
+<action>
+	<icon>utilities-terminal</icon>
+	<name>Open Terminal Here</name>
+	<unique-id>1523705874562730-3</unique-id>
+	<command>exo-open --working-directory %f --launch TerminalEmulator</command>
+	<description>Example for a custom action</description>
+	<patterns>*</patterns>
+	<startup-notify/>
+	<directories/>
+</action>
+<action>
+	<icon>termite</icon>
+	<name>Open Termite</name>
+	<unique-id>1523874707910085-3</unique-id>
+	<command>termite -d %f</command>
+	<description></description>
+	<patterns>*</patterns>
+	<startup-notify/>
+	<directories/>
+	<audio-files/>
+	<image-files/>
+	<other-files/>
+	<text-files/>
+	<video-files/>
+</action>
+<action>
+	<icon>visual-studio-code</icon>
+	<name>Open in VSCode</name>
+	<unique-id>1524224292016674-1</unique-id>
+	<command>code %f</command>
+	<description></description>
+	<patterns>*</patterns>
+	<directories/>
+	<text-files/>
+</action>
+<action>
+	<icon>python</icon>
+	<name>Check small images</name>
+	<unique-id>1524300617465323-3</unique-id>
+	<command>termite --hold -e &apos;/home/rschwalk/tools/venv/ImageManager/bin/python /home/rschwalk/projects/ImageManager/main.py %d&apos;</command>
+	<description></description>
+	<patterns>*</patterns>
+	<image-files/>
+</action>
+</actions>
