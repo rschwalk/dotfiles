@@ -70,10 +70,15 @@ sed -i 's/~\/.mpd\/socket/~\/.config\/mpd\/socket/g' ~/.config/mpd/mpd.conf
 
 sed -i 's/#filesystem_charset/filesystem_charset/g' ~/.config/mpd/mpd.conf
 
+# echo 'audio_output {
+#       type  "alsa"
+#       name  "mpd-alsa"
+#       mixer_type "software"
+# }
+
 echo 'audio_output {
-      type  "alsa"
-      name  "mpd-alsa"
-      mixer_type "software"
+	type		"pulse"
+	name		"Pulse Output"
 }
 
 audio_output {
