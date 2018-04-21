@@ -12,6 +12,8 @@ ln -s /home/rschwalk/dotfiles/xinitrc /home/rschwalk/.xinitrc;
 #ln -s /home/rschwalk/dotfiles/notmuch-config /home/rschwalk/.notmuch-config;
 #ln -s /home/rschwalk/dotfiles/touchegg/ /home/rschwalk/.config/;
 ln -s /home/rschwalk/dotfiles/xmodmap /home/rschwalk/.xmodmap
+ln -s /home/rschwalk/dotfiles/tint2/ /home/rschwalk/.config/;
+
 #sudo ln -s /home/rschwalk/dotfiles/mutt/mutt-notmuch-py /usr/bin/;
 #ln -s /home/rschwalk/dotfiles/openbox/ /home/rschwalk/.config/;
 #mkdir /home/rschwalk/.mail;
