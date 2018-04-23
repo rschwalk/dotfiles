@@ -65,6 +65,12 @@ set spoolfile = "+rschwalk-gmail.com/INBOX"
 mailboxes +rschwalk-gmail.com/INBOX \
           +rschwalk-gmail.com/Vanessa \
           +rschwalk-gmail.com/Amazon \
+          +rschwalk-gmail.com/Lists.opensuse \
+          +rschwalk-gmail.com/Lists.project-suse \
+          +rschwalk-gmail.com/Lists.programming-suse \
+          +rschwalk-gmail.com/Lists.factory-suse \
+          +rschwalk-gmail.com/Lists.gnome-builder \
+          +rschwalk-gmail.com/Lists.factory-suse \
           +rschwalk-gmail.com/Lists.gnome-builder \
           +rschwalk-gmail.com/Lists.glade-users \
           +rschwalk-gmail.com/archive \
@@ -161,7 +167,7 @@ bind compose p postpone-message
 bind index p recall-message
 bind index N search-opposite
 bind pager N search-opposite
-macro index S "<enter-command>unset wait_key<enter><shell-escape>mutt-notmuch-py ~/.mail/temporary/search<enter><change-folder-readonly>+temporary/search<enter>" "search mail (using notmuch)"
+macro index S "<enter-command>unset wait_key<enter><shell-escape>mutt-notmuch-py -G ~/.mail/temporary/search<enter><change-folder-readonly>+temporary/search<enter>" "search mail (using notmuch)"
 
 ## GooBook
 set query_command="goobook query '%s'"

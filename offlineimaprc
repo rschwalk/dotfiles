@@ -7,7 +7,6 @@ fsync = False
 [Account RSchwalk]
 localrepository = RSchwalk-Local
 remoterepository = RSchwalk-Remote
-status_backend = sqlite
 postsynchook = notmuch new
 
 [Repository RSchwalk-Local]

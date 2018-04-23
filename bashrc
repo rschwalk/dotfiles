@@ -64,4 +64,6 @@ source /usr/bin/virtualenvwrapper.sh
 #export TERM=konsole-256color
 #export TERM=rxvt-256color
 
+alias tup='sudo zypper dup --no-allow-vendor-change'
+
 test -s ~/.alias && . ~/.alias || true

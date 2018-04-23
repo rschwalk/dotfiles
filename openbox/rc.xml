@@ -520,46 +520,6 @@
     <keybind key="A-m">
       <action name="Move"/>
     </keybind>
-    <keybind key="A-t">
-      <action name="Execute">
-        <command>variety -t</command>
-      </action>
-    </keybind>
-    <keybind key="A-f">
-      <action name="Execute">
-        <command>variety -f</command>
-      </action>
-    </keybind>
-    <keybind key="A-p">
-      <action name="Execute">
-        <command>variety -p</command>
-      </action>
-    </keybind>
-    <keybind key="A-Left">
-      <action name="Execute">
-        <command>variety -p</command>
-      </action>
-    </keybind>
-    <keybind key="A-n">
-      <action name="Execute">
-        <command>variety -n</command>
-      </action>
-    </keybind>
-    <keybind key="A-Right">
-      <action name="Execute">
-        <command>variety -n</command>
-      </action>
-    </keybind>
-    <keybind key="A-Down">
-      <action name="Execute">
-        <command>variety --resume</command>
-      </action>
-    </keybind>
-    <!-- <keybind key="A-Up">
-      <action name="Execute">
-        <command>variety --pause</command>
-      </action>
-    </keybind> -->
     <keybind key="W-Pause">
       <action name="Execute">
         <command>oblogout</command>
