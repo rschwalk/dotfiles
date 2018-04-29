@@ -24,8 +24,8 @@ thunar --daemon &
 (numlockx on) &
 
 ## GNOME PolicyKit authentication
-/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-
+#/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+/usr/libexec/polkit-gnome-authentication-agent-1 &
 ## Volume control for systray
 (volumeicon) &
 
