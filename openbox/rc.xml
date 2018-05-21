@@ -40,7 +40,7 @@
                     'Active' - where the active window is -->
   </placement>
   <theme>
-    <name>Arc-Dark</name>
+    <name>Arc-Evopop-Dark</name>
     <titleLayout>DSLIMC</titleLayout>
     <!--
       available characters are NDSLIMC, each can occur at most once.
@@ -118,7 +118,7 @@
 
        use obconf if you want to change these without having to log out
        and back in -->
-    <number>2</number>
+    <number>4</number>
     <firstdesk>1</firstdesk>
     <names>
       <name>1</name>
@@ -337,16 +337,6 @@
         <command>playerctl next</command>
       </action>
     </keybind>
-    <keybind key="XF86MonBrightnessUp">
-      <action name="Execute">
-        <command>xbacklight +10</command>
-      </action>
-    </keybind>
-    <keybind key="XF86MonBrightnessDown">
-      <action name="Execute">
-        <command>xbacklight -10</command>
-      </action>
-    </keybind>
     <keybind key="Print">
       <action name="Execute">
         <command>scrot 'ArcoLinux_%Y-%m-%d-%S_$wx$h.png' -e 'mv $f $$(xdg-user-dir PICTURES)'</command>
@@ -451,7 +441,17 @@
     </keybind>
     <keybind key="W-x">
       <action name="Execute">
-        <command>oblogout</command>
+        <command>dm-tool lock</command>
+      </action>
+    </keybind>
+    <keybind key="W-S-x">
+      <action name="Execute">
+        <command>/home/rschwalk/dotfiles/scripts/lock_suspend.sh</command>
+      </action>
+    </keybind>
+    <keybind key="W-A-x">
+      <action name="Execute">
+        <command>openbox --exit</command>
       </action>
     </keybind>
     <keybind key="W-Escape">
@@ -530,7 +530,7 @@
     </keybind>
     <keybind key="W-Return">
       <action name="Execute">
-        <command>termite</command>
+        <command>xfce4-terminal</command>
       </action>
     </keybind>
     <keybind key="S-W-Return">
@@ -596,6 +596,11 @@
     <keybind key="W-F12">
       <action name="Execute">
         <command>rofi -show run -font "Noto Sans 13"</command>
+      </action>
+    </keybind>
+    <keybind key="W-S-F12">
+      <action name="Execute">
+        <command>rofi -show window -font "Noto Sans 13"</command>
       </action>
     </keybind>
     <keybind key="C-S-Escape">

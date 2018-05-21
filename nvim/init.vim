@@ -526,10 +526,10 @@ if has('gui_running')
   ""colorscheme xoria256
 else
   ""set t_Co=256
-  set termguicolors
+  "set termguicolors
   set background=dark
-  "colorscheme solarized
-  "let g:airline_theme='solarized'
+  colorscheme solarized
+  let g:airline_theme='solarized'
   ""call togglebg#map("<F5>")
   "colorscheme xoria256
   "colorscheme zenburn
@@ -546,16 +546,16 @@ else
   "let g:airline_theme='base16_ocean'
   "highlight Normal ctermbg=none
   "highlight NonText ctermbg=none
-  if filereadable(expand("~/.vimrc_background"))
-      let base16colorspace=256
-      source ~/.vimrc_background
-      let g:airline_theme=substitute(g:colors_name, "-", "_", "") ""'base16_ocean'
-  else
-      set background=dark
-      colorscheme Tomorrow-Night
-      let g:airline_theme='tomorrow'
-  endif
+""  if filereadable(expand("~/.vimrc_background"))
+""      let base16colorspace=256
+""      source ~/.vimrc_background
+""      let g:airline_theme=substitute(g:colors_name, "-", "_", "") ""'base16_ocean'
+""  else
+""      set background=dark
+""      colorscheme Tomorrow-Night
+""      let g:airline_theme='tomorrow'
+""  endif
 endif
 
-autocmd FileType python highlight ColorColumn ctermbg=grey guibg=DimGrey
+autocmd FileType python highlight ColorColumn guibg=DimGrey
 

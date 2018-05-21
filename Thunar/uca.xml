@@ -38,8 +38,8 @@
 <action>
 	<icon>python</icon>
 	<name>Check small images</name>
-	<unique-id>1524300617465323-3</unique-id>
-	<command>termite --hold -e &apos;/home/rschwalk/tools/venv/ImageManager/bin/python /home/rschwalk/projects/ImageManager/main.py %d&apos;</command>
+	<unique-id>1525072001469969-2</unique-id>
+	<command>xfce4-terminal --hold -e &apos;/home/rschwalk/projects/ImageManager/.env/bin/python /home/rschwalk/projects/ImageManager/main.py %d&apos;</command>
 	<description></description>
 	<patterns>*</patterns>
 	<image-files/>

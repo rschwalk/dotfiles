@@ -31,3 +31,20 @@ git config --global user.email "richard.schwalk@gmail.com";
 # sudo chown rschwalk /mnt/mybook_music;
 # sudo mkdir /mnt/mybook_video;
 # sudo chown rschwalk /mnt/mybook_video;
+
+# Enable Fusion repository
+sudo dnf -y install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+sudo dnf -y update
+
+sudo dnf -y install neovim
+sudo dnf -y install python2-neovim python3-neovim
+sudo dnf -y install automake gcc gcc-c++ kernel-devel cmake
+sudo dnf -y install python-devel python3-devel
+sudo dnf -y install adobe-source-code-pro-fonts
+git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
+
+sudo dnf -y install https://dl.folkswithhats.org/fedora/$(rpm -E %fedora)/RPMS/folkswithhats-release.noarch.rpm
+sudo dnf -y install fedy
+
+sudo dnf -y install tlp tlp-rdw
+sudo systemctl enable tlp

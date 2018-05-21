@@ -12,7 +12,8 @@
 
 echo "Installing category Accessories"
 
-sudo zypper -n in gedit
+sudo dnf install -y gedit
+sudo dnf install -y screenfetch
 
 echo "Installing category Development"
 
@@ -42,7 +43,7 @@ sudo zypper -n in evolution
 echo "Installing category System"
 
 sudo zypper -n in gparted
-sudo zypper -n in gvfs gvfs-backend-samba
+sudo dnf -y install gvfs gvfs-smb
 sudo zypper -n in htop
 sudo zypper -n in thunar thunar-megasync thunar-plugin-archive thunar-volman
 sudo zypper -n in thunar-volman-branding-openSUSE
@@ -51,8 +52,9 @@ sudo zypper -n in google-droid-fonts
 sudo zypper -n in tumbler
 sudo zypper -n in xdg-user-dirs
 # installation of zippers and unzippers
-sudo zypper -n in unrar zip unzip arj file-roller
+sudo dnf -y install unrar zip unzip arj file-roller
 # sudo pacman -S --noconfirm --needed noto-fonts
+sudo dnf -y install google-noto-sans-fonts google-noto-mono-fonts
 # sudo pacman -S --noconfirm --needed termite
 
 echo "################################################################"

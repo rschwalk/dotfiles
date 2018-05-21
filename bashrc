@@ -12,11 +12,11 @@ fi
 
 [[ $- != *i* ]] && return
 
-BASE16_SHELL=$HOME/.config/base16-shell/
-[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
+#BASE16_SHELL=$HOME/.config/base16-shell/
+#[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
 
 # Setting Bash prompt.
-export PS1="\[$(tput bold)\]\[$(tput setaf 4)\][\[$(tput setaf 3)\]\u\[$(tput setaf 7)\]@\[$(tput setaf 4)\]\h \[$(tput setaf 5)\]\W\[$(tput setaf 4)\]\[$(tput setaf 4)\]]\\$ \[$(tput sgr0)\]"
+#export PS1="\[$(tput bold)\]\[$(tput setaf 4)\][\[$(tput setaf 3)\]\u\[$(tput setaf 7)\]@\[$(tput setaf 4)\]\h \[$(tput setaf 5)\]\W\[$(tput setaf 4)\]\[$(tput setaf 4)\]]\\$ \[$(tput sgr0)\]"
 
 [ -r /usr/share/bash-completion/bash_completion   ] && . /usr/share/bash-completion/bash_completion
 
@@ -29,10 +29,10 @@ export MAKEFLAGS='-j 4'
 # alias python='/opt/python/bin/python3.5'
 # alias pyvenv='/opt/python/bin/pyvenv-3.5'
 
-export WORKON_HOME=$HOME/tools/venv   # optional
-export PROJECT_HOME=$HOME/projects      # optional
-export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
-source /usr/bin/virtualenvwrapper.sh
+#export WORKON_HOME=$HOME/tools/venv   # optional
+#export PROJECT_HOME=$HOME/projects      # optional
+#export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+#source /usr/bin/virtualenvwrapper.sh
 
 # xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
 screenfetch
@@ -42,6 +42,8 @@ screenfetch
 #export TERM=rxvt-unicode-256colors
 #export TERM=konsole-256color
 #export TERM=rxvt-256color
+
+export LC_ALL="en_US.UTF-8"
 
 #alias tup='sudo zypper dup --no-allow-vendor-change'
 

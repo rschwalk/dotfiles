@@ -35,4 +35,4 @@ folderfilter = lambda folder: folder not in ['[Gmail]/Trash',
                                              '[Gmail]/Important',
                                              '[Gmail]/Spam',
                                             ]
-sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+sslcacertfile = /etc/pki/ca-trust/extracted/openssl/ca-bundle.trust.crt

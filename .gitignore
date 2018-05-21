@@ -8,3 +8,4 @@ temp/*
 *_old
 awesome/.session
 openbox/menu.xml.bak
+tint2/*.backup.*
