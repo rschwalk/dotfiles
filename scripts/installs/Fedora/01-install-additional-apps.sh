@@ -12,49 +12,46 @@
 
 echo "Installing category Accessories"
 
-sudo dnf install -y gedit
-sudo dnf install -y screenfetch
+sudo dnf -y install gedit
 
 echo "Installing category Development"
 
-sudo zypper -n in meld
+sudo dnf -y install meld
 
 echo "Installing category Graphics"
 
-sudo zypper -n in darktable
-sudo zypper -n in gimp
-sudo zypper -n in gpick
+sudo dnf -y install darktable
+sudo dnf -y install gimp
+sudo dnf -y install gpick
 
 echo "Installing category Internet"
 
-sudo zypper -n in chromium
-sudo zypper -n in firefox
+sudo dnf -y install chromium
+sudo dnf -y install firefox
 
 echo "Installing category Multimedia"
 
-sudo zypper -n in mpv
-sudo zypper -n in vlc
+sudo dnf -y install mpv
+sudo dnf -y install vlc
 
 echo "Installing category Office"
 
-sudo zypper -n in evince
-sudo zypper -n in evolution
+sudo dnf -y install evince
+sudo dnf -y install evolution
 
 echo "Installing category System"
 
-sudo zypper -n in gparted
+sudo dnf -y install gparted
 sudo dnf -y install gvfs gvfs-smb
-sudo zypper -n in htop
-sudo zypper -n in thunar thunar-megasync thunar-plugin-archive thunar-volman
-sudo zypper -n in thunar-volman-branding-openSUSE
-sudo zypper -n in ubuntu-fonts
-sudo zypper -n in google-droid-fonts
-sudo zypper -n in tumbler
-sudo zypper -n in xdg-user-dirs
+sudo dnf -y install htop
+sudo dnf -y install thunar thunar-megasync thunar-archive-plugin thunar-volman
+sudo dnf -y install google-droid-sans-fonts
+sudo dnf -y install google-noto-sans-fonts
+sudo dnf -y install google-noto-mono-fonts
+sudo dnf -y install tumbler
+sudo dnf -y install xdg-user-dirs
 # installation of zippers and unzippers
 sudo dnf -y install unrar zip unzip arj file-roller
-# sudo pacman -S --noconfirm --needed noto-fonts
-sudo dnf -y install google-noto-sans-fonts google-noto-mono-fonts
 # sudo pacman -S --noconfirm --needed termite
 
 echo "################################################################"

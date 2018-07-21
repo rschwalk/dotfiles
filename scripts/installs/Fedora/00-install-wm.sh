@@ -46,6 +46,9 @@ sudo dnf -y install nitrogen
 sudo dnf -y install volumeicon
 sudo dnf -y install conky conky-manager
 sudo dnf -y install dmenu
+sudo dnf -y install arandr
+sudo dnf copr enable yaroslav/i3desktop
+sudo dnf -y install rofi
 
 echo "Installing openbox theme"
 git clone https://github.com/dglava/arc-openbox ~/tools/arc-openbox
