@@ -30,10 +30,10 @@ Plug 'vim-scripts/TaskList.vim'
 Plug 'peterhoeg/vim-qml'
 Plug 'derekwyatt/vim-fswitch'
 Plug 'derekwyatt/vim-protodef'
-Plug 'Valloric/YouCompleteMe'
+""Plug 'Valloric/YouCompleteMe'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
+""Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 ""Plug 'scrooloose/syntastic'
 Plug 'nvie/vim-flake8'
 Plug 'airblade/vim-gitgutter'
@@ -44,6 +44,7 @@ Plug 'frankier/neovim-colors-solarized-truecolor-only'
 Plug 'w0ng/vim-hybrid'
 Plug 'wincent/loupe'
 Plug 'tpope/vim-surround'
+Plug 'rust-lang/rust.vim'
 
 call plug#end()
 
@@ -422,14 +423,14 @@ nmap <silent> <leader>oj :FSBelow<CR>
 nmap <silent> <leader>oJ :FSSplitBelow<CR>
 
 " YouCompleteMe Settings
-nnoremap <leader>jf :YcmCompleter GoToDefinition<CR>
-nnoremap <leader>jc :YcmCompleter GoToDeclaration<CR>
-nnoremap <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
-let g:ycm_python_binary_path = '/usr/bin/python3'
-let g:ycm_show_diagnostics_ui = 0
-let g:ycm_global_ycm_extra_conf = "~/.config/nvim/ycm_extra_conf.py"
-""let g:ycm_key_list_select_completion=[]
-""let g:ycm_key_list_previous_completion=[]
+""nnoremap <leader>jf :YcmCompleter GoToDefinition<CR>
+""nnoremap <leader>jc :YcmCompleter GoToDeclaration<CR>
+""nnoremap <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+""let g:ycm_python_binary_path = '/usr/bin/python3'
+""let g:ycm_show_diagnostics_ui = 0
+""let g:ycm_global_ycm_extra_conf = "~/.config/nvim/ycm_extra_conf.py"
+""""let g:ycm_key_list_select_completion=[]
+""""let g:ycm_key_list_previous_completion=[]
 
 
 "-----------------------------------------------------------------------------
@@ -528,16 +529,16 @@ else
   ""set t_Co=256
   "set termguicolors
   set background=dark
-  colorscheme solarized
-  let g:airline_theme='solarized'
+  "colorscheme solarized
+  "let g:airline_theme='solarized'
   ""call togglebg#map("<F5>")
   "colorscheme xoria256
   "colorscheme zenburn
   ""let g:airline_theme='zenburn'
   "colorscheme hybrid
   "let g:hybrid_custom_term_colors = 1
-  "colorscheme jellybeans
-  "let g:airline_theme='jellybeans'
+  colorscheme jellybeans
+  let g:airline_theme='jellybeans'
   "colorscheme Tomorrow-Night
   "let g:airline_theme='tomorrow'
   "let g:solarized_termcolors=256
