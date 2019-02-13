@@ -1,12 +1,17 @@
+" Fish doesn't play all that well with others
+set shell=/bin/bash
+
+" =============================================================================
+" # PLUGINS
+" =============================================================================
+
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
 set nocompatible
-
 " Automatic reloading of .vimrc
 ""autocmd! bufwritepost .vimrc source %
-
 filetype off                  " required!
-
+"set rtp+=~/.config/baase16
 call plug#begin('~/.config/nvim/plugged')
 
 " My bundles here:
@@ -528,7 +533,7 @@ if has('gui_running')
 else
   ""set t_Co=256
   "set termguicolors
-  set background=dark
+  "set background=dark
   "colorscheme solarized
   "let g:airline_theme='solarized'
   ""call togglebg#map("<F5>")
@@ -537,8 +542,8 @@ else
   ""let g:airline_theme='zenburn'
   "colorscheme hybrid
   "let g:hybrid_custom_term_colors = 1
-  colorscheme jellybeans
-  let g:airline_theme='jellybeans'
+"  colorscheme jellybeans
+"  let g:airline_theme='jellybeans'
   "colorscheme Tomorrow-Night
   "let g:airline_theme='tomorrow'
   "let g:solarized_termcolors=256
@@ -547,15 +552,16 @@ else
   "let g:airline_theme='base16_ocean'
   "highlight Normal ctermbg=none
   "highlight NonText ctermbg=none
-""  if filereadable(expand("~/.vimrc_background"))
-""      let base16colorspace=256
-""      source ~/.vimrc_background
-""      let g:airline_theme=substitute(g:colors_name, "-", "_", "") ""'base16_ocean'
-""  else
-""      set background=dark
-""      colorscheme Tomorrow-Night
-""      let g:airline_theme='tomorrow'
-""  endif
+  if filereadable(expand("~/.vimrc_background"))
+      let base16colorspace=256
+      source ~/.vimrc_background
+      "let g:airline_theme=substitute(g:colors_name, "-", "_", "") ""'base16_ocean'
+      let g:airline_theme='base16_atelierdune'
+  else
+      set background=dark
+      colorscheme Tomorrow-Night
+      let g:airline_theme='tomorrow'
+  endif
 endif
 
 autocmd FileType python highlight ColorColumn guibg=DimGrey
