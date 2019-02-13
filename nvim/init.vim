@@ -507,7 +507,7 @@ nmap <leader>m :Buffers<CR>
 "-----------------------------------------------------------------------------
 let g:LanguageClient_settingsPath = "/home/rschwalk/.config/nvim/settings.json"
 let g:LanguageClient_serverCommands = {
-            \ 'rust': ['rustup', 'run', 'nightly', 'rls']
+            \ 'rust': ['rustup', 'run', 'stable', 'rls']
             \ }
 let g:LanguageClient_autoStart = 1
 nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
