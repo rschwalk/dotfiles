@@ -11,45 +11,72 @@ set nocompatible
 " Automatic reloading of .vimrc
 ""autocmd! bufwritepost .vimrc source %
 filetype off                  " required!
-"set rtp+=~/.config/baase16
 call plug#begin('~/.config/nvim/plugged')
 
-" My bundles here:
-"
-" original repos on GitHub
+" Load plugins
+" VIM enhancements
+Plug 'tpope/vim-fugitive'
+Plug 'Raimondi/delimitMate'
+Plug 'tpope/vim-surround'
+Plug 'wincent/loupe'
+"Plug 'ervandew/supertab'
+"Plug 'derekwyatt/vim-fswitch'
+"Plug 'derekwyatt/vim-protodef'
+
+" GUI enhancements
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'chriskempson/base16-vim'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'tpope/vim-fugitive'
-Plug 'sjl/gundo.vim'
-""Plug 'fholgado/minibufexpl.vim'
-Plug 'scrooloose/nerdtree'
-Plug 'vim-scripts/OmniCppComplete'
-""Plug 'klen/python-mode'
-""Plug 'altercation/vim-colors-solarized'
-Plug 'jnurmine/Zenburn'
-""Plug 'ervandew/supertab'
-Plug 'vim-scripts/taglist.vim'
-Plug 'vim-scripts/TaskList.vim'
-Plug 'peterhoeg/vim-qml'
-Plug 'derekwyatt/vim-fswitch'
-Plug 'derekwyatt/vim-protodef'
-""Plug 'Valloric/YouCompleteMe'
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-""Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
-""Plug 'scrooloose/syntastic'
-Plug 'nvie/vim-flake8'
 Plug 'airblade/vim-gitgutter'
-Plug 'neomake/neomake'
+Plug 'chriskempson/base16-vim'
+"Plug 'vim-scripts/taglist.vim'
+Plug 'vim-scripts/TaskList.vim'
 Plug 'flazz/vim-colorschemes'
-Plug 'Raimondi/delimitMate'
-Plug 'frankier/neovim-colors-solarized-truecolor-only'
-Plug 'w0ng/vim-hybrid'
-Plug 'wincent/loupe'
-Plug 'tpope/vim-surround'
+"Plug 'w0ng/vim-hybrid'
+"Plug 'frankier/neovim-colors-solarized-truecolor-only'
+"Plug 'sjl/gundo.vim'
+"Plug 'scrooloose/nerdtree'
+"Plug 'fholgado/minibufexpl.vim'
+"Plug 'altercation/vim-colors-solarized'
+"Plug 'jnurmine/Zenburn'
+
+" Fuzzy finder
+Plug 'airblade/vim-rooter'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+"Plug 'ctrlpvim/ctrlp.vim'
+
+" Semantic language support
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+\ }
+Plug 'mattn/webapi-vim'
+Plug 'ncm2/ncm2'
+Plug 'roxma/nvim-yarp'
+
+" Completion plugins
+Plug 'ncm2/ncm2-bufword'
+Plug 'ncm2/ncm2-tmux'
+Plug 'ncm2/ncm2-path'
+"Plug 'vim-scripts/OmniCppComplete'
+"Plug 'klen/python-mode'
+"Plug 'SirVer/ultisnips'
+"Plug 'honza/vim-snippets'
+
+" LanguageClient enhancements
+Plug 'neomake/neomake'
+Plug 'Shougo/echodoc.vim'
+""Plug 'nvie/vim-flake8'
+""Plug 'Valloric/YouCompleteMe'
+"Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
+
+" Syntactic language support
 Plug 'rust-lang/rust.vim'
+Plug 'cespare/vim-toml'
+Plug 'dag/vim-fish'
+Plug 'plasticboy/vim-markdown'
+"Plug 'peterhoeg/vim-qml'
+""Plug 'scrooloose/syntastic'
 
 call plug#end()
 
@@ -108,6 +135,11 @@ set mousehide
 
 " Set up the gui cursor to look nice
 set guicursor=n-v-c:block-Cursor-blinkon0,ve:ver35-Cursor,o:hor50-Cursor,i-ci:ver25-Cursor,r-cr:hor20-Cursor,sm:block-Cursor-blinkwait175-blinkoff150-blinkon175
+if has('nvim')
+    set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
+    set inccommand=nosplit
+    noremap <C-q> :confirm qall<CR>
+end
 
 " Gui option
 set go-=m
@@ -122,6 +154,10 @@ set scrolloff=8
 
 " Make the command-line completion better
 set wildmenu
+
+" Permanent undo
+set undodir=~/.vimdid
+set undofile
 
 " When completing by tag, show the whole tag, not just the function name
 "" set showfulltag
@@ -185,6 +221,25 @@ if !exists(":DiffOrig")
   command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
 		  \ | wincmd p | diffthis
 endif
+
+" <leader>s for Rg search
+noremap <leader>s :Rg
+let g:fzf_layout = { 'down': '~20%' }
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
+  \   <bang>0 ? fzf#vim#with_preview('up:60%')
+  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \   <bang>0)
+
+function! s:list_cmd()
+  let base = fnamemodify(expand('%'), ':h:.:S')
+  return base == '.' ? 'fd --type file --follow' : printf('fd --type file --follow | proximity-sort %s', expand('%'))
+endfunction
+
+command! -bang -nargs=? -complete=dir Files
+  \ call fzf#vim#files(<q-args>, {'source': s:list_cmd(),
+  \ 'options': '--tiebreak=index'}, <bang>0)
 
 " Better copy & paste
 " When you want to paste large blocks of code into vim, press F2 before you
@@ -257,7 +312,12 @@ set synmaxcol=2048
 " easier moving between buffers
 ""map <Leader>n <esc>:bprevious<CR>
 ""map <Leader>m <esc>:bnext<CR>
+nnoremap <left> :bp<CR>
+nnoremap <right> :bn<CR>
 map <Leader>n <esc>:b#<CR>
+
+" <leader>= reformats current tange
+nnoremap <leader>= :'<,'>RustFmtRange<cr>
 
 " map sort function to a key
 vnoremap <Leader>s :sort<CR>
@@ -300,6 +360,16 @@ autocmd FileType cpp nnoremap <leader>rm :make<CR>
 autocmd FileType cpp nnoremap <leader>rc :make clean<CR>
 autocmd FileType cpp nnoremap <leader>cm :! cmake ..<CR>
 
+" Follow Rust code style rules
+au Filetype rust source ~/.config/nvim/scripts/spacetab.vim
+au Filetype rust set colorcolumn=100
+
+" Help filetype detection
+autocmd BufRead *.plot set filetype=gnuplot
+autocmd BufRead *.md set filetype=markdown
+autocmd BufRead *.lds set filetype=ld
+autocmd BufRead *.tex set filetype=tex
+autocmd BufRead *.trm set filetype=c
 
 " disable arrow keys
 inoremap <up> <nop>
@@ -328,8 +398,6 @@ set history=700
 set undolevels=700
 
 " Make search case insensitive
-"" set hlsearch
-"" set incsearch
 set ignorecase
 set smartcase
 
@@ -344,35 +412,35 @@ map <Leader>bp Oimport pdb; pdb.set_trace() # BREAKPOINT<C-c>
 
 " Better navigating through omnicomplete option list
 " See http://stackoverflow.com/questions/2170023/how-to-map-keys-for-popup-menu-in-vim
-set ofu=syntaxcomplete#Complete
-au BufNewFile,BufRead,BufEnter *.cpp,*.hpp set omnifunc=omni#cpp#complete#Main
-""autocmd FileType python set omnifunc=pythoncomplete#Complete
-
-" OmniCppComplete
-let OmniCpp_GlobalScopeSearch = 1
-let OmniCpp_NamespaceSearch = 1
-let OmniCpp_ShowPrototypeInAbbr = 1 " show function parameters
-let OmniCpp_ShowAccess = 1
-let OmniCpp_SelectFirstItem = 0
-let OmniCpp_MayCompleteDot = 1 " autocomplete after .
-let OmniCpp_MayCompleteArrow = 1 " autocomplete after ->
-let OmniCpp_MayCompleteScope = 1 " autocomplete after ::
-set completeopt=menuone,longest,preview
-" automatically open and close the popup menu / preview window
-au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
-function! OmniPopup(action)
-    if pumvisible()
-        if a:action == 'j'
-            return "\<C-N>"
-        elseif a:action == 'k'
-            return "\<C-P>"
-        endif
-    endif
-    return a:action
-endfunction
-inoremap <silent><C-j> <C-R>=OmniPopup('j')<CR>
-inoremap <silent><C-k> <C-R>=OmniPopup('k')<CR>
-imap <C-space> <C-x><C-o>
+"set ofu=syntaxcomplete#Complete
+"au BufNewFile,BufRead,BufEnter *.cpp,*.hpp set omnifunc=omni#cpp#complete#Main
+"""autocmd FileType python set omnifunc=pythoncomplete#Complete
+"
+"" OmniCppComplete
+"let OmniCpp_GlobalScopeSearch = 1
+"let OmniCpp_NamespaceSearch = 1
+"let OmniCpp_ShowPrototypeInAbbr = 1 " show function parameters
+"let OmniCpp_ShowAccess = 1
+"let OmniCpp_SelectFirstItem = 0
+"let OmniCpp_MayCompleteDot = 1 " autocomplete after .
+"let OmniCpp_MayCompleteArrow = 1 " autocomplete after ->
+"let OmniCpp_MayCompleteScope = 1 " autocomplete after ::
+"set completeopt=menuone,longest,preview
+"" automatically open and close the popup menu / preview window
+"au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
+"function! OmniPopup(action)
+"    if pumvisible()
+"        if a:action == 'j'
+"            return "\<C-N>"
+"        elseif a:action == 'k'
+"            return "\<C-P>"
+"        endif
+"    endif
+"    return a:action
+"endfunction
+"inoremap <silent><C-j> <C-R>=OmniPopup('j')<CR>
+"inoremap <silent><C-k> <C-R>=OmniPopup('k')<CR>
+"imap <C-space> <C-x><C-o>
 
 noremap <leader>gpl :-1read ~/dotfiles/nvim/templates/gpl.templ<CR>wi
 
@@ -396,6 +464,9 @@ inoremap <leader>x <esc>
 noremap <leader>x <esc>
 vnoremap <leader>x <esc>
 
+set nofoldenable
+
+
 
 "------------------
 " Plugin settings
@@ -403,29 +474,83 @@ vnoremap <leader>x <esc>
 
 
 
-"-----------------------------------------------------------------------------
 " Neovim settings
 "-----------------------------------------------------------------------------
 ""let g:python_host_prog = '/home/rschwalk/dev/tools/pyvenv/neovim/bin/python'
 ""let g:python3_host_prog = '/home/rschwalk/dev/tools/pyvenv/neovim3/bin/python'
 let g:python3_host_prog = '/usr/bin/python3'
 
-let g:UltiSnipsExpandTrigger="<c-l>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+" Settings for run neomake automatically
+"-----------------------------------------------------------------------------
+autocmd! BufWritePost * Neomake!
+let g:neomake_open_list = 0
+let g:neomake_cpp_enabled_makers = ['gcc']
+
+" Settings for airlines
+"-----------------------------------------------------------------------------
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+set laststatus=2
+let g:airline_theme='dark'
+
+" delimitMate settings
+"-----------------------------------------------------------------------------
+let delimitMate_expand_cr = 1
+
+" fzf settings
+"-----------------------------------------------------------------------------
+" Open hotkeys
+map <C-p> :Files<CR>
+nmap <leader>m :Buffers<CR>
+
+" language server protocol
+"-----------------------------------------------------------------------------
+let g:LanguageClient_settingsPath = "/home/rschwalk/.config/nvim/settings.json"
+let g:LanguageClient_serverCommands = {
+            \ 'rust': ['rustup', 'run', 'nightly', 'rls']
+            \ }
+let g:LanguageClient_autoStart = 1
+nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
+
+" racer + rust
+" https://github.com/rust-lang/rust.vim/issues/192
+let g:rustfmt_command = "rustfmt +nightly"
+let g:rustfmt_autosave = 1
+let g:rustfmt_emit_files = 1
+let g:rustfmt_fail_silently = 0
+let g:rust_clip_command = 'xclip -selection clipboard'
+"let g:racer_cmd = "/usr/bin/racer"
+"let g:racer_experimental_completer = 1
+let $RUST_SRC_PATH = systemlist("rustc --print sysroot")[0] . "/lib/rustlib/src/rust/src"
+
+" Completion
+autocmd BufEnter * call ncm2#enable_for_buffer()
+set completeopt=noinsert,menuone,noselect
+" tab to select
+" and don't hijack my enter key
+inoremap <expr><Tab> (pumvisible()?(empty(v:completed_item)?"\<C-n>":"\<C-y>"):"\<Tab>")
+inoremap <expr><CR> (pumvisible()?(empty(v:completed_item)?"\<CR>\<CR>":"\<C-y>"):"\<CR>")
+
+
+
+"let g:UltiSnipsExpandTrigger="<c-l>"
+"let g:UltiSnipsJumpForwardTrigger="<c-b>"
+"let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 "-----------------------------------------------------------------------------
 " FSwitch mappings
 "-----------------------------------------------------------------------------
-nmap <silent> <leader>of :FSHere<CR>
-nmap <silent> <leader>ol :FSRight<CR>
-nmap <silent> <leader>oL :FSSplitRight<CR>
-nmap <silent> <leader>oh :FSLeft<CR>
-nmap <silent> <leader>oH :FSSplitLeft<CR>
-nmap <silent> <leader>ok :FSAbove<CR>
-nmap <silent> <leader>oK :FSSplitAbove<CR>
-nmap <silent> <leader>oj :FSBelow<CR>
-nmap <silent> <leader>oJ :FSSplitBelow<CR>
+"nmap <silent> <leader>of :FSHere<CR>
+"nmap <silent> <leader>ol :FSRight<CR>
+"nmap <silent> <leader>oL :FSSplitRight<CR>
+"nmap <silent> <leader>oh :FSLeft<CR>
+"nmap <silent> <leader>oH :FSSplitLeft<CR>
+"nmap <silent> <leader>ok :FSAbove<CR>
+"nmap <silent> <leader>oK :FSSplitAbove<CR>
+"nmap <silent> <leader>oj :FSBelow<CR>
+"nmap <silent> <leader>oJ :FSSplitBelow<CR>
 
 " YouCompleteMe Settings
 ""nnoremap <leader>jf :YcmCompleter GoToDefinition<CR>
@@ -441,36 +566,26 @@ nmap <silent> <leader>oJ :FSSplitBelow<CR>
 "-----------------------------------------------------------------------------
 " Gundo Settings
 "-----------------------------------------------------------------------------
-nmap <c-F5> :GundoToggle<cr>
+"nmap <c-F5> :GundoToggle<cr>
 
 " NERDTree
-map <leader>i :NERDTreeToggle<CR>
-let NERDTreeChDirMode = 2     "setting root dir in NT also sets VIM's cd
-let NERDTreeWinSize = 35
+"map <leader>i :NERDTreeToggle<CR>
+"let NERDTreeChDirMode = 2     "setting root dir in NT also sets VIM's cd
+"let NERDTreeWinSize = 35
 
-" Settings for run neomake automatically
-autocmd! BufWritePost * Neomake!
-let g:neomake_open_list = 0
-let g:neomake_cpp_enabled_makers = ['gcc']
-
-" Settings for airlines
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
-set laststatus=2
-let g:airline_theme='dark'
 
 " Setting for ctr-p
-"nnoremap :CtrlP<CR>
-"nnoremap :CtrlPBuffer<CR>
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlPMixed'
-let g:ctrlp_max_height = 30
-set wildignore+=*.pyc
-set wildignore+=*_build/*
-set wildignore+=*/coverage/*
+""nnoremap :CtrlP<CR>
+""nnoremap :CtrlPBuffer<CR>
+"let g:ctrlp_map = '<c-p>'
+"let g:ctrlp_cmd = 'CtrlPMixed'
+"let g:ctrlp_max_height = 30
+"set wildignore+=*.pyc
+"set wildignore+=*_build/*
+"set wildignore+=*/coverage/*
 
 " Settings for pep8
-let g:pep8_map='<leader>8'
+"let g:pep8_map='<leader>8'
 
 " automaticaly load the tags on every save for cpp files
 ""autocmd BufWritePost *.cpp :TlistUpdate
@@ -482,29 +597,26 @@ let g:pep8_map='<leader>8'
 ""set tags+=~/.vim/tags/glfw.tags
 
 " build tags of your own project with Ctrl-F12
-map <C-F12> :!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q --language-force=C++ %:p:h<CR>
+"map <C-F12> :!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q --language-force=C++ %:p:h<CR>
 
 " Python folding
 " mkdir -p ~/.vim/ftplugin
 " wget -O ~/.vim/ftplugin/python_editing.vim http://www.vim.org/scripts/download_script.php?src_id=5492
 " the script nust be modified becouse the key 'f, F' is reasonable for movement
-set nofoldenable
 
-let g:miniBufExplMapWindowNavVim = 1
-let g:miniBufExplMapWindowNavArrows = 1
-let g:miniBufExplMapCTabSwitchBufs = 1
-let g:miniBufExplModSelTarget = 1
+"let g:miniBufExplMapWindowNavVim = 1
+"let g:miniBufExplMapWindowNavArrows = 1
+"let g:miniBufExplMapCTabSwitchBufs = 1
+"let g:miniBufExplModSelTarget = 1
 
 ""map <leader>l :TaskList<CR>
-map <leader>l :TlistToggle<CR>
+"map <leader>l :TlistToggle<CR>
 
 " Taglist
-let Tlist_Ctags_Cmd='ctags'
-let Tlist_Use_Right_Window = 1
-let Tlist_WinWidth = 35
+"let Tlist_Ctags_Cmd='ctags'
+"let Tlist_Use_Right_Window = 1
+"let Tlist_WinWidth = 35
 
-" delimitMate settings
-let delimitMate_expand_cr = 1
 
 
 
@@ -519,39 +631,14 @@ autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 au InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWritePre * :%s/\s\+$//e
 
-call togglebg#map("<F5>")
+"call togglebg#map("<F5>")
 
 if has('gui_running')
   set background=dark
   colorscheme solarized
   let g:airline_theme='solarized'
- "" colorscheme base16-default
- "" let g:airline_theme='base16'
-  ""set t_Co=256
   set guifont=DejaVu\ Sans\ Mono\ for\ Powerline
-  ""colorscheme xoria256
 else
-  ""set t_Co=256
-  "set termguicolors
-  "set background=dark
-  "colorscheme solarized
-  "let g:airline_theme='solarized'
-  ""call togglebg#map("<F5>")
-  "colorscheme xoria256
-  "colorscheme zenburn
-  ""let g:airline_theme='zenburn'
-  "colorscheme hybrid
-  "let g:hybrid_custom_term_colors = 1
-"  colorscheme jellybeans
-"  let g:airline_theme='jellybeans'
-  "colorscheme Tomorrow-Night
-  "let g:airline_theme='tomorrow'
-  "let g:solarized_termcolors=256
-  "let base16colorspace=256
-  "colorscheme base16-default-dark
-  "let g:airline_theme='base16_ocean'
-  "highlight Normal ctermbg=none
-  "highlight NonText ctermbg=none
   if filereadable(expand("~/.vimrc_background"))
       let base16colorspace=256
       source ~/.vimrc_background
