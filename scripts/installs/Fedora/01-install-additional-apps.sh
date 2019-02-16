@@ -44,12 +44,12 @@ echo "Installing category System"
 sudo dnf -y install gparted
 sudo dnf -y install gvfs gvfs-smb
 sudo dnf -y install htop
-sudo dnf -y install thunar thunar-megasync thunar-archive-plugin thunar-volman
+sudo dnf -y install thunar thunar-archive-plugin thunar-volman
 sudo dnf -y install google-droid-sans-fonts
 sudo dnf -y install google-noto-sans-fonts
 sudo dnf -y install google-noto-mono-fonts
 sudo dnf -y install tumbler
-sudo dnf -y install xdg-user-dirs
+#sudo dnf -y install xdg-user-dirs
 # installation of zippers and unzippers
 sudo dnf -y install unrar zip unzip arj file-roller
 # sudo pacman -S --noconfirm --needed termite
