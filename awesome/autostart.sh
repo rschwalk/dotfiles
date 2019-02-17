@@ -20,7 +20,7 @@ run "xrdb -load ~/.Xresources"
 run "syndaemon -i 1 -K -d"
 #run_once("thunar --deamon")
 #run_once("nm-applet")
-run "xmodmap ~./.xmodmap"
+run "xmodmap ~/.xmodmap"
 #--run_once("pamac-tray")
 #run_once("albert")
 #--run_once("touchegg")
@@ -29,7 +29,7 @@ run "nm-applet"
 #run "pamac-tray"
 #run "variety"
 run "xfce4-power-manager"
-run "blueberry-tray"
+#run "blueberry-tray"
 run "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 run "numlockx on"
 #run "volumeicon"
@@ -38,6 +38,7 @@ run "numlockx on"
 
 #run applications from startup
 run "megasync"
+run "/opt/enpass/Enpass"
 #run "firefox"
 #run "atom"
 #run "dropbox"
