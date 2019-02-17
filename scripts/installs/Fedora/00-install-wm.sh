@@ -34,7 +34,7 @@ sudo dnf -y install gnome-disk-utility
 sudo dnf -y install gnome-keyring
 sudo dnf -y install numlockx
 sudo dnf -y install polkit-gnome
-
+sudo dnf -y install network-manager-applet
 
 echo "Installing category Accessories"
 #sudo dnf -y install tint2
