@@ -178,7 +178,7 @@ set hlsearch
 set incsearch
 
 " Add the unnamed register to the clipboard
-set clipboard+=unnamed
+set clipboard+=unnamedplus
 
 " Automatically read a file that has changed on disk
 set autoread
@@ -222,6 +222,12 @@ if !exists(":DiffOrig")
 		  \ | wincmd p | diffthis
 endif
 
+" Neat X clipboard integration
+" ,p will paste clipboard into buffer
+" ,c will copy entire buffer into clipboard
+noremap <leader>p :read !xsel --clipboard --output<cr>
+noremap <leader>c :w !xsel -ib<cr><cr>
+
 " <leader>s for Rg search
 noremap <leader>s :Rg
 let g:fzf_layout = { 'down': '~20%' }
@@ -237,9 +243,9 @@ function! s:list_cmd()
   return base == '.' ? 'fd --type file --follow' : printf('fd --type file --follow | proximity-sort %s', expand('%'))
 endfunction
 
-command! -bang -nargs=? -complete=dir Files
-  \ call fzf#vim#files(<q-args>, {'source': s:list_cmd(),
-  \ 'options': '--tiebreak=index'}, <bang>0)
+"command! -bang -nargs=? -complete=dir Files
+"  \ call fzf#vim#files(<q-args>, {'source': s:list_cmd(),
+"  \ 'options': '--tiebreak=index'}, <bang>0)
 
 " Better copy & paste
 " When you want to paste large blocks of code into vim, press F2 before you
@@ -384,6 +390,7 @@ noremap <left> <nop>
 " Set folding
 autocmd FileType python set foldmethod=indent
 autocmd FileType cpp set foldmethod=syntax
+autocmd FileType c set foldmethod=syntax
 set foldlevel=99
 
 " These commands open folds
@@ -516,7 +523,7 @@ nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
 
 " racer + rust
 " https://github.com/rust-lang/rust.vim/issues/192
-let g:rustfmt_command = "rustfmt +nightly"
+"let g:rustfmt_command = "rustfmt +nightly"
 let g:rustfmt_autosave = 1
 let g:rustfmt_emit_files = 1
 let g:rustfmt_fail_silently = 0
