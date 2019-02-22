@@ -22,6 +22,8 @@ ln -s /home/rschwalk/dotfiles/xmodmap /home/rschwalk/.xmodmap;
 mkdir /home/rschwalk/tools
 git config --global user.name "rschwalk";
 git config --global user.email "rschwalk@outlook.com";
+git config --global credential.helper cache
+git config --global credential.helper 'cache --timeout=3600'
 # sudo mkdir /mnt/mybook_richard;
 # sudo chown rschwalk /mnt/mybook_richard;
 # sudo mkdir /mnt/mybook_foto;
