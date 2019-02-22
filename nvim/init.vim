@@ -391,6 +391,7 @@ noremap <left> <nop>
 autocmd FileType python set foldmethod=indent
 autocmd FileType cpp set foldmethod=syntax
 autocmd FileType c set foldmethod=syntax
+autocmd FileType rust set foldmethod=syntax
 set foldlevel=99
 
 " These commands open folds
