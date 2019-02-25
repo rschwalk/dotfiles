@@ -4,6 +4,8 @@ if status --is-interactive
     source "$BASE16_SHELL/profile_helper.fish"
 end
 
+export PATH="$PATH:/home/rschwalk/bin"
+
 # Fish git prompt
 set __fish_git_prompt_showuntrackedfiles 'yes'
 set __fish_git_prompt_showdirtystate 'yes'
