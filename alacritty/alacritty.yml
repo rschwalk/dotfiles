@@ -519,6 +519,7 @@ key_bindings:
   #- { key: Key0,     mods: Control,       action: ResetFontSize    }
   - { key: Add,   mods: Control,       action: IncreaseFontSize }
   - { key: Minus, mods: Control,       action: DecreaseFontSize }
+  - { key: N,     mods: Control,       action: SpawnNewInstance }
 
   # (macOS only)
   #- { key: Key0,   mods: Command, action: ResetFontSize    }

@@ -1,11 +1,2 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =9
-let g:netrw_dirhist_1='/home/rschwalk/dev/projects/InformationDevicePy'
-let g:netrw_dirhist_2='/home/rschwalk/dev/projects/InformationDevicePy/modules'
-let g:netrw_dirhist_3='/home/rschwalk/dev/projects/RemotePiNPN'
-let g:netrw_dirhist_4='/home/rschwalk/dev/tools/pyvenv/RobotControlCenter/twisted/src/twisted/internet'
-let g:netrw_dirhist_5='/home/rschwalk/dev/tools/pyvenv/RobotControlCenter/twisted/src/twisted'
-let g:netrw_dirhist_6='/home/rschwalk/dev/projects/FotoManagerGTK/build'
-let g:netrw_dirhist_7='/home/rschwalk/dev/projects/FotoManagerGTK'
-let g:netrw_dirhist_8='/home/rschwalk/dotfiles/fish'
-let g:netrw_dirhist_9='/home/rschwalk/dotfiles/alacritty'
+let g:netrw_dirhist_cnt =0
