@@ -6,6 +6,8 @@ end
 
 export PATH="$PATH:/home/rschwalk/bin"
 
+set -x EDITOR nvim
+
 # Fish git prompt
 set __fish_git_prompt_showuntrackedfiles 'yes'
 set __fish_git_prompt_showdirtystate 'yes'
