@@ -13,6 +13,7 @@
 echo "Installing category Accessories"
 
 sudo dnf -y install gedit
+sudo dnf -y install ranger
 
 echo "Installing category Development"
 
