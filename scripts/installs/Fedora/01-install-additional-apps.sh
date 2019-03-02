@@ -13,7 +13,7 @@
 echo "Installing category Accessories"
 
 sudo dnf -y install gedit
-sudo dnf -y install ranger
+#sudo dnf -y install ranger
 
 echo "Installing category Development"
 
@@ -22,7 +22,7 @@ sudo dnf -y install meld
 echo "Installing category Graphics"
 
 sudo dnf -y install darktable
-sudo dnf -y install gimp
+#sudo dnf -y install gimp
 sudo dnf -y install gpick
 
 echo "Installing category Internet"
@@ -37,19 +37,19 @@ sudo dnf -y install vlc
 
 echo "Installing category Office"
 
-sudo dnf -y install evince
-sudo dnf -y install evolution
+#sudo dnf -y install evince
+#sudo dnf -y install evolution
 
 echo "Installing category System"
 
 #sudo dnf -y install gparted
-sudo dnf -y install gvfs gvfs-smb
+#sudo dnf -y install gvfs gvfs-smb
 sudo dnf -y install htop
-sudo dnf -y install thunar thunar-archive-plugin thunar-volman
+#sudo dnf -y install thunar thunar-archive-plugin thunar-volman
 sudo dnf -y install google-droid-sans-fonts
 sudo dnf -y install google-noto-sans-fonts
 sudo dnf -y install google-noto-mono-fonts
-sudo dnf -y install tumbler
+#sudo dnf -y install tumbler
 #sudo dnf -y install xdg-user-dirs
 # installation of zippers and unzippers
 sudo dnf -y install unrar zip unzip arj file-roller
