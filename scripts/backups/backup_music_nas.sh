@@ -1,2 +1,2 @@
 #!/bin/bash
-rsync -aP --delete ssh /run/media/rschwalk/Data01/Music/ rschwalk@vrnas:/srv/dev-disk-by-label-NAS01/richard/Music
+rsync -aP --delete -e ssh /run/media/rschwalk/Data01/Music/ rschwalk@vrnas:/srv/dev-disk-by-label-NAS01/richard/Music
