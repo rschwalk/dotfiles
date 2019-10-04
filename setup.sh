@@ -44,6 +44,8 @@ sudo dnf -y install neovim
 sudo dnf -y install python2-neovim python3-neovim
 #sudo dnf -y install automake gcc gcc-c++ kernel-devel cmake
 sudo dnf -y install python-devel python3-devel
+sudo pip install neovim
+sudo pip3 install neovim
 sudo dnf -y install adobe-source-code-pro-fonts
 git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
 
