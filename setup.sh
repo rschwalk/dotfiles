@@ -15,7 +15,7 @@ ln -s /home/rschwalk/dotfiles/awesome /home/rschwalk/.config/;
 ln -s /home/rschwalk/dotfiles/xmodmap /home/rschwalk/.xmodmap;
 #ln -s /home/rschwalk/dotfiles/tint2/ /home/rschwalk/.config/;
 #ln -s /home/rschwalk/dotfiles/Thunar/ /home/rschwalk/.config/;
-#ln -s /home/rschwalk/dotfiles/Code/settings.json .config/Code/User/;
+ln -s /home/rschwalk/dotfiles/Code/settings.json .config/Code/User/;
 
 #sudo ln -s /home/rschwalk/dotfiles/mutt/mutt-notmuch-py /usr/bin/;
 #ln -s /home/rschwalk/dotfiles/openbox/ /home/rschwalk/.config/;
@@ -46,10 +46,6 @@ sudo dnf -y install python2-neovim python3-neovim
 sudo dnf -y install python-devel python3-devel
 sudo dnf -y install adobe-source-code-pro-fonts
 git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
-
-sudo dnf -y install fish
-sudo dnf -y install util-linux-user
-chsh -s /usr/bin/fish
 
 #sudo dnf -y install https://dl.folkswithhats.org/fedora/$(rpm -E %fedora)/RPMS/folkswithhats-release.noarch.rpm
 #sudo dnf -y install fedy
