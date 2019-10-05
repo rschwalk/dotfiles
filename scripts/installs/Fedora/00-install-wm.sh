@@ -34,8 +34,8 @@ echo "Installing category System"
 #sudo dnf -y install gnome-keyring
 #sudo dnf -y install numlockx
 #sudo dnf -y install polkit-gnome
-#sudo dnf -y install network-manager-applet
-#sudo dnf -y install xfce4-power-manager
+sudo dnf -y install network-manager-applet
+sudo dnf -y install xfce4-power-manager
 
 echo "Installing category Accessories"
 #sudo dnf -y install tint2
