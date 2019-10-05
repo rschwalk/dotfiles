@@ -57,7 +57,7 @@ cp -r ~/tools/arc-openbox/* ~/.themes/
 echo "Installing Sardi icon theme"
 wget -P ~/tools https://sourceforge.net/projects/sardi/files/sardi-icons-9.6-9.tar.gz
 mkdir ~/.icons
-tar -xvzf ~/tools/sardi-icons-9.6-9.tar.gz -C ~/.icons/
+tar -xzf ~/tools/sardi-icons-9.6-9.tar.gz -C ~/.icons/
 
 # echo "Installing openbox obmenu-generator"
 # git clone https://github.com/trizen/obmenu-generator ~/tools/obmenu-generator
