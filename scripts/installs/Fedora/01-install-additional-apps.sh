@@ -45,7 +45,7 @@ echo "Installing category System"
 #sudo dnf -y install gparted
 #sudo dnf -y install gvfs gvfs-smb
 sudo dnf -y install htop
-#sudo dnf -y install thunar thunar-archive-plugin thunar-volman
+sudo dnf -y install thunar thunar-archive-plugin thunar-volman
 sudo dnf -y install google-droid-sans-fonts
 sudo dnf -y install google-noto-sans-fonts
 sudo dnf -y install google-noto-sans-mono-fonts
