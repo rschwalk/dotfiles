@@ -14,7 +14,7 @@
 sudo dnf -y update
 
 
-#sudo dnf -y install lightdm lightdm-gtk lightdm-gtk-greeter-settings
+sudo dnf -y install lightdm lightdm-gtk lightdm-gtk-greeter-settings
 #sudo dnf -y install openbox obconf obmenu
 sudo dnf -y install awesome vicious
 sudo dnf -y install arc-theme
@@ -23,8 +23,8 @@ sudo dnf -y install lxappearance
 #sudo systemctl enable lightdm.service -f
 # sudo systemctl set-default graphical.target
 #sudo update-alternatives --config default-displaymanager
-#sudo dnf -y install system-switch-displaymanager
-#sudo system-switch-displaymanager lightdm
+sudo dnf -y install system-switch-displaymanager
+sudo system-switch-displaymanager lightdm
 
 echo "Installing category System"
 
@@ -34,8 +34,8 @@ echo "Installing category System"
 #sudo dnf -y install gnome-keyring
 #sudo dnf -y install numlockx
 #sudo dnf -y install polkit-gnome
-#sudo dnf -y install network-manager-applet
-#sudo dnf -y install xfce4-power-manager
+sudo dnf -y install network-manager-applet
+sudo dnf -y install xfce4-power-manager
 
 echo "Installing category Accessories"
 #sudo dnf -y install tint2
@@ -57,7 +57,7 @@ cp -r ~/tools/arc-openbox/* ~/.themes/
 echo "Installing Sardi icon theme"
 wget -P ~/tools https://sourceforge.net/projects/sardi/files/sardi-icons-9.6-9.tar.gz
 mkdir ~/.icons
-tar -xvzf ~/tools/sardi-icons-9.6-9.tar.gz -C ~/.icons/
+tar -xzf ~/tools/sardi-icons-9.6-9.tar.gz -C ~/.icons/
 
 # echo "Installing openbox obmenu-generator"
 # git clone https://github.com/trizen/obmenu-generator ~/tools/obmenu-generator

@@ -6,6 +6,7 @@ ln -s /home/rschwalk/dotfiles/fish /home/rschwalk/.config;
 ln -s /home/rschwalk/dotfiles/nvim /home/rschwalk/.config/;
 #ln -s /home/rschwalk/dotfiles/xinitrc /home/rschwalk/.xinitrc;
 ln -s /home/rschwalk/dotfiles/awesome /home/rschwalk/.config/;
+ln -s /home/rschwalk/dotfiles/qtile /home/rschwalk/.config/;
 #ln -s /home/rschwalk/dotfiles/ranger /home/rschwalk/.config/;
 #ln -s /home/rschwalk/dotfiles/offlineimaprc /home/rschwalk/.offlineimaprc;
 #ln -s /home/rschwalk/dotfiles/msmtprc /home/rschwalk/.msmtprc;
