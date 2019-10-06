@@ -84,6 +84,7 @@ run_once({ "unclutter -root" }) -- entries must be comma-separated
 -- {{{ Variable definitions
 
 local themes = {
+    "rschwalk-solarized",
     "powerarrow-blue", -- 1
     "powerarrow",      -- 2
     "multicolor",      -- 3
@@ -91,7 +92,7 @@ local themes = {
 }
 
 -- choose your theme here
-local chosen_theme = themes[1]
+local chosen_theme = themes[2]
 
 local theme_path = string.format("%s/.config/awesome/themes/%s/theme.lua", os.getenv("HOME"), chosen_theme)
 beautiful.init(theme_path)
