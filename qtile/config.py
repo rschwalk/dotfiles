@@ -78,8 +78,8 @@ def init_keys():
     mod = "mod4"
     keys = [
         # Switch between windows in current stack pane
-        #Key([mod], "k", lazy.layout.down()),
-        #Key([mod], "j", lazy.layout.up()),
+        Key([mod], "k", lazy.layout.down()),
+        Key([mod], "j", lazy.layout.up()),
 
         # Move windows up or down in current stack
         #Key([mod, "control"], "k", lazy.layout.shuffle_down()),
