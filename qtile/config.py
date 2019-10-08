@@ -82,29 +82,85 @@ def init_keys():
         Key([mod], "j", lazy.layout.up()),
 
         # Move windows up or down in current stack
-        Key([mod, "control"], "k", lazy.layout.shuffle_down()),
-        Key([mod, "control"], "j", lazy.layout.shuffle_up()),
+        #Key([mod, "control"], "k", lazy.layout.shuffle_down()),
+        #Key([mod, "control"], "j", lazy.layout.shuffle_up()),
 
         # Switch window focus to other pane(s) of stack
-        Key([mod], "space", lazy.layout.next()),
+        #Key([mod], "space", lazy.layout.next()),
 
         # Swap panes of split stack
-        Key([mod, "shift"], "space", lazy.layout.rotate()),
+        #Key([mod, "shift"], "space", lazy.layout.rotate()),
 
         # Toggle between split and unsplit sides of stack.
         # Split = all windows displayed
         # Unsplit = 1 window displayed, like Max layout, but still with
         # multiple stack panes
-        Key([mod, "shift"], "Return", lazy.layout.toggle_split()),
-        Key([mod], "Return", lazy.spawn(terminal)),
+        #Key([mod, "shift"], "Return", lazy.layout.toggle_split()),
+        # Open terminal
+        Key(
+            [mod], "Return",
+            lazy.spawn(terminal)
+            ),
 
         # Toggle between different layouts as defined below
-        Key([mod], "Tab", lazy.next_layout()),
-        Key([mod], "w", lazy.window.kill()),
-
-        Key([mod, "control"], "r", lazy.restart()),
-        Key([mod, "control"], "q", lazy.shutdown()),
+        Key(
+            [mod], "Tab",
+            lazy.next_layout()
+            ),
+        # Kill active window
+        Key(
+            [mod, "shift"], "c",
+            lazy.window.kill()
+            ),
+        # Restart Qtile
+        Key(
+            [mod, "control"], "r",
+            lazy.restart()
+            ),
+        # Shutdown Qtile
+        Key(
+            [mod, "control"], "q",
+            lazy.shutdown()
+            ),
         Key([mod], "r", lazy.spawncmd()),
+        # Keyboard focus screen(0)
+        Key([mod], "w",
+            lazy.to_screen(1)
+            ),
+        # Keyboard focus screen(1)
+        Key([mod], "e",
+            lazy.to_screen(0)
+            ),
+        Key(
+           [mod, "shift"], "l",
+           lazy.layout.grow(),                     # Grow size of current window (XmonadTall)
+           lazy.layout.increase_nmaster(),         # Increase number in master pane (Tile)
+           ),
+        Key(
+           [mod, "shift"], "h",
+           lazy.layout.shrink(),                   # Shrink size of current window (XmonadTall)
+           lazy.layout.decrease_nmaster(),         # Decrease number in master pane (Tile)
+           ),
+        Key(
+           [mod, "shift"], "Left",                 # Move window to workspace to the left
+           window_to_prev_group
+           ),
+        Key(
+           [mod, "shift"], "Right",                # Move window to workspace to the right
+           window_to_next_group
+           ),
+        Key(
+           [mod], "n",
+           lazy.layout.normalize()                 # Restore all windows to default size ratios
+           ),
+        Key(
+           [mod], "m",
+           lazy.layout.maximize()                  # Toggle a window between minimum and maximum sizes
+           ),
+        Key(
+           [mod, "shift"], "KP_Enter",
+           lazy.window.toggle_floating()           # Toggle floating
+           ),
     ]
 
     return keys
@@ -146,7 +202,7 @@ def init_floating_layout():
 
 def init_layout_theme():
     return {"border_width": 2,
-            "margin": 10,
+            "margin": 4,
             "border_focus": "AD69AF",
             "border_normal": "1D2330"
            }
@@ -379,8 +435,12 @@ def init_widgets_screen1():
     return widgets_screen1                       # Slicing removes unwanted widgets on Monitors 1,3
 
 def init_widgets_screen2():
-    widgets_screen2 = init_widgets_list()
-    return widgets_screen2[:5]                       # Monitor 2 will display all widgets in widgets_list
+    orig_list = init_widgets_list()
+    widgets_screen2 = orig_list[:5]
+    widgets_screen2.append(orig_list[5])
+    widgets_screen2.append(orig_list[7])
+    widgets_screen2 += orig_list[10:13]
+    return widgets_screen2
 
 def init_screens():
     return [Screen(top=bar.Bar(widgets=init_widgets_screen1(), opacity=0.95, size=22)),
