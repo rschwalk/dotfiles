@@ -122,6 +122,10 @@ def init_keys():
             [mod, "control"], "q",
             lazy.shutdown()
             ),
+        Key(
+            [mod, ], "d",
+            lazy.spawn("dmenu_run -fn 'Noto Sans Font:size=10' -nb '#002b36' -nf '#268bd2' -sb '#859900' -sf '#eee8d5' -p 'dmenu:'")
+            ),
         Key([mod], "r", lazy.spawncmd()),
         # Keyboard focus screen(0)
         Key([mod], "w",
@@ -161,6 +165,18 @@ def init_keys():
            [mod, "shift"], "KP_Enter",
            lazy.window.toggle_floating()           # Toggle floating
            ),
+        Key(
+           [], "XF86AudioRaiseVolume",
+           lazy.spawn("amixer -q set Master 1%+")    # Volume up
+           ),
+        Key(
+           [], "XF86AudioLowerVolume",
+           lazy.spawn("amixer -q set Master 1%-")    # Volume down
+           ),
+        Key(
+           [], "XF86AudioMute",
+           lazy.spawn("amixer -q set Master toggle") # Mute volume
+           ),
     ]
 
     return keys
@@ -169,17 +185,17 @@ def init_keys():
 ##### BAR COLORS #####
 
 def init_colors():
-    return [["#292D3E", "#292D3E"], # panel background
-            ["#434758", "#434758"], # background for current screen tab
-            ["#D0D0D0", "#D0D0D0"], # font color for group names
-            ["#F07178", "#F07178"], # background color for layout widget
-            ["#000000", "#000000"], # background for other screen tabs
-            ["#AD69AF", "#AD69AF"], # dark green gradiant for other screen tabs
-            ["#C3E88D", "#C3E88D"], # background color for network widget
-            ["#C792EA", "#C792EA"], # background color for pacman widget
-            ["#9CC4FF", "#9CC4FF"], # background color for cmus widget
-            ["#000000", "#000000"], # background color for clock widget
-            ["#434758", "#434758"]] # background color for systray widget
+    return [["#002b36", "#002b36"], # panel background
+            ["#859900", "#859900"], # green: background for current screen tab
+            ["#eee8d5", "#eee8d5"], # font color for group names
+            ["#073642", "#073642"], # background color for layout widget
+            ["#073642", "#073642"], # background for other screen tabs
+            ["#839496", "#839496"], # darker font color for inactive items
+            ["#C3E88D", "#C3E88D"],
+            ["#268bd2", "#268bd2"], # blue
+            ["#9CC4FF", "#9CC4FF"],
+            ["#002b36", "#002b36"],
+            ["#002b36", "#002b36"]]
 
 ##### GROUPS #####
 
@@ -203,8 +219,8 @@ def init_floating_layout():
 def init_layout_theme():
     return {"border_width": 2,
             "margin": 4,
-            "border_focus": "AD69AF",
-            "border_normal": "1D2330"
+            "border_focus": "#859900",
+            "border_normal": "#073642"
            }
 
 def init_border_args():
@@ -215,21 +231,21 @@ def init_layouts():
             layout.MonadTall(**layout_theme),
             layout.MonadWide(**layout_theme),
             layout.Bsp(**layout_theme),
-            layout.TreeTab(
-                font = "Noto Sans ",
-                fontsize = 10,
-                sections = ["FIRST", "SECOND"],
-                section_fontsize = 11,
-                bg_color = "141414",
-                active_bg = "90C435",
-                active_fg = "000000",
-                inactive_bg = "384323",
-                inactive_fg = "a0a0a0",
-                padding_y = 5,
-                section_top = 10,
-                panel_width = 320,
-                **layout_theme
-                ),
+            #layout.TreeTab(
+            #    font = "Noto Sans ",
+            #    fontsize = 10,
+            #    sections = ["FIRST", "SECOND"],
+            #    section_fontsize = 11,
+            #    bg_color = "141414",
+            #    active_bg = "90C435",
+            #    active_fg = "000000",
+            #    inactive_bg = "384323",
+            #    inactive_fg = "a0a0a0",
+            #    padding_y = 5,
+            #    section_top = 10,
+            #    panel_width = 320,
+            #    **layout_theme
+            #    ),
             layout.Slice(side="left", width=192, name="gimp", role="gimp-toolbox",
                 fallback=layout.Slice(side="right", width=256, role="gimp-dock",
                 fallback=layout.Stack(num_stacks=1, **border_args))),
@@ -250,7 +266,8 @@ def init_widget_defaults():
     return dict(font="Noto Sans Mono",
             fontsize = 11,
             padding = 2,
-            background=theme["background"])
+            foreground = colors[7],
+            background=colors[0])
 
 def init_widgets_list():
     prompt = "{0}@{1}: ".format(os.environ["USER"], socket.gethostname())
@@ -269,7 +286,7 @@ def init_widgets_list():
                         padding_x = 5,
                         borderwidth = 1,
                         active = colors[2],
-                        inactive = colors[2],
+                        inactive = colors[5],
                         rounded = False,
                         highlight_method = "block",
                         this_current_screen_border = colors[1],
@@ -287,129 +304,110 @@ def init_widgets_list():
                         background = colors[1]
                         ),
                widget.Sep(
-                        linewidth = 0,
+                        linewidth = 2,
                         padding = 10,
-                        foreground = colors[2],
-                        background = colors[0]
-                        ),
-               widget.WindowName(font="Noto Sans ",
-                        fontsize = 11,
-                        foreground = colors[5],
-                        background = colors[0],
-                        padding = 5
-                        ),
-               widget.Image(
-                        scale = True,
-                        filename = "~/.config/qtile/bar06.png",
-                        background = colors[6]
-                        ),
-               widget.Systray(
-                        background=colors[10],
-                        padding = 5
-                        ),
-               widget.Image(
-                        scale = True,
-                        filename = "~/.config/qtile/bar02-b.png",
-                        background = colors[6]
-                        ),
-               widget.TextBox(
-                        text=" ↯",
-                        foreground=colors[0],
-                        background=colors[6],
-                        padding = 0,
-                        fontsize=14
-                        ),
-               widget.Net(
-                        interface = "enp27s0",
-                        foreground = colors[0],
-                        background = colors[6],
-                        padding = 5
-                        ),
-               widget.Image(
-                        scale = True,
-                        filename = "~/.config/qtile/bar03.png",
-                        background = colors[3]
+                        foreground = colors[1],
+                        background = colors[4]
                         ),
                widget.TextBox(
                         font="Noto Sans Bold",
                         text=" ☵",
                         padding = 5,
-                        foreground=colors[0],
-                        background=colors[3],
+                        foreground=colors[7],
+                        background=colors[4],
                         fontsize=14
                         ),
                widget.CurrentLayout(
-                        foreground = colors[0],
-                        background = colors[3],
+                        fontsize=12,
+                        foreground = colors[7],
+                        background = colors[4],
                         padding = 5
                         ),
-               widget.Image(
-                        scale = True,
-                        filename = "~/.config/qtile/bar04.png",
-                        background = colors[7]
+               widget.Sep(
+                        linewidth = 2,
+                        padding = 10,
+                        foreground = colors[1],
+                        background = colors[4]
+                        ),
+               widget.WindowName(font="Noto Sans ",
+                        fontsize = 12,
+                        foreground = colors[7],
+                        background = colors[4],
+                        padding = 5
+                        ),
+               widget.Sep(
+                        linewidth = 2,
+                        padding = 10,
+                        foreground = colors[1],
+                        background = colors[4]
+                        ),
+               widget.Systray(
+                        background=colors[4],
+                        padding = 5
+                        ),
+               widget.Sep(
+                        linewidth = 2,
+                        padding = 10,
+                        foreground = colors[1],
+                        background = colors[4]
                         ),
                widget.TextBox(
-                        font="Noto Sans Bold",
-                        text=" ⟳",
-                        padding = 5,
-                        foreground=colors[0],
-                        background=colors[7],
+                        text=" ↯",
+                        foreground=colors[7],
+                        background=colors[4],
+                        padding = 0,
                         fontsize=14
                         ),
-               widget.CheckUpdates(
-                        distro="Fedora",
-                        update_interval = 1800,
-                        foreground=colors[0],
-                        background=colors[7]
-                       ),
-               widget.TextBox(
-                        text="Updates",
-                        padding = 5,
-                        foreground=colors[0],
-                        background=colors[7]
+               widget.Net(
+                        interface = "enp27s0",
+                        foreground = colors[7],
+                        background = colors[4],
+                        padding = 5
                         ),
-               widget.Image(
-                        scale = True,
-                        filename = "~/.config/qtile/bar05.png",
-                        background = colors[8]
+               widget.Sep(
+                        linewidth = 2,
+                        padding = 10,
+                        foreground = colors[1],
+                        background = colors[4]
                         ),
                widget.TextBox(
                         font="Noto Sans Bold",
                         text=" ♫",
                         padding = 5,
-                        foreground=colors[0],
-                        background=colors[8],
+                        foreground=colors[7],
+                        background=colors[4],
                         fontsize=14
                         ),
                widget.Cmus(
                         max_chars = 40,
                         update_interval = 0.5,
-                        foreground=colors[0],
-                        background = colors[8]
+                        foreground=colors[7],
+                        background = colors[4]
                         ),
-               widget.Image(
-                        scale = True,
-                        filename = "~/.config/qtile/bar07.png",
-                        background = colors[9]
+               widget.Sep(
+                        linewidth = 2,
+                        padding = 10,
+                        foreground = colors[1],
+                        background = colors[4]
                         ),
                widget.TextBox(
                         font="Noto Sans Bold",
                         text=" 🕒",
-                        foreground=colors[2],
-                        background=colors[9],
+                        foreground=colors[7],
+                        background=colors[4],
                         padding = 5,
                         fontsize=14
                         ),
                widget.Clock(
-                        foreground = colors[2],
-                        background = colors[9],
+                        foreground = colors[7],
+                        background = colors[4],
                         format="%A, %B %d - %H:%M"
                         ),
                widget.Sep(
-                        linewidth = 0,
+                        linewidth = 2,
                         padding = 5,
-                        foreground = colors[0],
-                        background = colors[9]
+                        foreground = colors[1],
+                        background = colors[4]
                         ),
     #        widget.GroupBox(foreground=theme["text"],
     #            active=theme["text"],
@@ -436,15 +434,13 @@ def init_widgets_screen1():
 
 def init_widgets_screen2():
     orig_list = init_widgets_list()
-    widgets_screen2 = orig_list[:5]
-    widgets_screen2.append(orig_list[5])
-    widgets_screen2.append(orig_list[7])
-    widgets_screen2 += orig_list[10:13]
+    widgets_screen2 = orig_list[:2]
+    widgets_screen2 += orig_list[3:7]
     return widgets_screen2
 
 def init_screens():
-    return [Screen(top=bar.Bar(widgets=init_widgets_screen1(), opacity=0.95, size=22)),
-            Screen(top=bar.Bar(widgets=init_widgets_screen2(), opacity=0.95, size=22)),
+    return [Screen(top=bar.Bar(widgets=init_widgets_screen1(), opacity=0.95, size=22, background=colors[4])),
+            Screen(top=bar.Bar(widgets=init_widgets_screen2(), opacity=0.95, size=22, background=colors[4])),
             ]
 
 ##### FLOATING WINDOWS #####

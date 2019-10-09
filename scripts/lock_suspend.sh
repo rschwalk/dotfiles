@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-dm-tool lock && systemctl suspend
+i3lock -c 002b36 && systemctl suspend
 
