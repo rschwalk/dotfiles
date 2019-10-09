@@ -652,8 +652,8 @@ else
   if filereadable(expand("~/.vimrc_background"))
       let base16colorspace=256
       source ~/.vimrc_background
-      "let g:airline_theme=substitute(g:colors_name, "-", "_", "") ""'base16_ocean'
-      let g:airline_theme='base16_atelierdune'
+      let g:airline_theme='base16_solarized'
+      "let g:airline_theme='base16_atelierdune'
   else
       set background=dark
       colorscheme Tomorrow-Night
