@@ -124,7 +124,7 @@ def init_keys():
             ),
         Key(
             [mod, ], "d",
-            lazy.spawn("dmenu_run -fn 'Noto Sans Font:size=10' -nb '#002b36' -nf '#268bd2' -sb '#859900' -sf '#268bd2' -p 'dmenu:'")
+            lazy.spawn("dmenu_run -fn 'Noto Sans Font:size=10' -nb '#002b36' -nf '#268bd2' -sb '#859900' -sf '#eee8d5' -p 'dmenu:'")
             ),
         Key([mod], "r", lazy.spawncmd()),
         # Keyboard focus screen(0)
