@@ -161,6 +161,18 @@ def init_keys():
            [mod, "shift"], "KP_Enter",
            lazy.window.toggle_floating()           # Toggle floating
            ),
+        Key(
+           [], "XF86AudioRaiseVolume",
+           lazy.spawn("amixer -q set Master 1%+")    # Volume up
+           ),
+        Key(
+           [], "XF86AudioLowerVolume",
+           lazy.spawn("amixer -q set Master 1%-")    # Volume down
+           ),
+        Key(
+           [], "XF86AudioMute",
+           lazy.spawn("amixer -q set Master toggle") # Mute volume
+           ),
     ]
 
     return keys
