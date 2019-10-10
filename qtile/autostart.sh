@@ -6,6 +6,7 @@ syndaemon -i 1 -K -d &
 #thunar --deamon &
 xmodmap ~/.xmodmap &
 nm-applet &
+xfsettingsd &
 xfce4-power-manager &
 #blueberry-tray &
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
