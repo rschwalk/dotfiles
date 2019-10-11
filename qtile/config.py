@@ -122,7 +122,17 @@ def init_keys():
             [mod, "control"], "q",
             lazy.shutdown()
             ),
+        # Lock Qtile
         Key(
+            [mod, "control"], "q",
+            lazy.spawn("i3lock -c 002b36")
+            ),
+        Key(
+        # Suspend Qtile
+        Key(
+            [mod, "control"], "x",
+            lazy.spawn("~/dotfiles/scripts/lock_suspend.sh")
+            ),
             [mod, ], "d",
             lazy.spawn("dmenu_run -fn 'Noto Sans Font:size=10' -nb '#002b36' -nf '#268bd2' -sb '#859900' -sf '#eee8d5' -p 'dmenu:'")
             ),
@@ -167,11 +177,11 @@ def init_keys():
            ),
         Key(
            [], "XF86AudioRaiseVolume",
-           lazy.spawn("amixer -q set Master 1%+")    # Volume up
+           lazy.spawn("amixer -q set Master 2%+")    # Volume up
            ),
         Key(
            [], "XF86AudioLowerVolume",
-           lazy.spawn("amixer -q set Master 1%-")    # Volume down
+           lazy.spawn("amixer -q set Master 2%-")    # Volume down
            ),
         Key(
            [], "XF86AudioMute",
