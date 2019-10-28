@@ -130,7 +130,7 @@ def init_keys():
         # Suspend Qtile
         Key(
             [mod, "control"], "x",
-            lazy.spawn("~/dotfiles/scripts/lock_suspend.sh")
+            lazy.spawn("/home/rschwalk/dotfiles/scripts/lock_suspend.sh")
             ),
         Key(
             [mod, ], "d",
