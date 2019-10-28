@@ -82,8 +82,8 @@ def init_keys():
         Key([mod], "j", lazy.layout.up()),
 
         # Move windows up or down in current stack
-        #Key([mod, "control"], "k", lazy.layout.shuffle_down()),
-        #Key([mod, "control"], "j", lazy.layout.shuffle_up()),
+        Key([mod, "control"], "k", lazy.layout.shuffle_down()),
+        Key([mod, "control"], "j", lazy.layout.shuffle_up()),
 
         # Switch window focus to other pane(s) of stack
         #Key([mod], "space", lazy.layout.next()),
@@ -333,7 +333,7 @@ def init_widgets_list():
                         ),
                widget.TextBox(
                         font="Noto Sans Bold",
-                        text=" ☵",
+                        text=" Layout:",
                         padding = 5,
                         foreground=colors[8],
                         background=colors[0],
@@ -374,7 +374,8 @@ def init_widgets_list():
                         background = colors[0]
                         ),
                widget.TextBox(
-                        text=" ↯",
+                        font="Noto Sans Bold",
+                        text=" Net:",
                         foreground=colors[8],
                         background=colors[0],
                         padding = 0,
@@ -394,18 +395,37 @@ def init_widgets_list():
                         ),
                widget.TextBox(
                         font="Noto Sans Bold",
-                        text=" ♫",
+                        text=" Vol.:",
                         padding = 5,
                         foreground=colors[8],
                         background=colors[0],
                         fontsize=14
                         ),
-               widget.Cmus(
-                        max_chars = 40,
-                        update_interval = 0.5,
-                        foreground=colors[6],
-                        background = colors[0]
-                        ),
+               widget.Volume(
+                        foreground = colors[6],
+                        background = colors[0],
+                        padding = 5
+                       ),
+               #widget.Sep(
+               #         linewidth = 2,
+               #         padding = 10,
+               #         foreground = colors[1],
+               #         background = colors[0]
+               #         ),
+               #widget.TextBox(
+               #         font="Noto Sans Bold",
+               #         text=" ♫",
+               #         padding = 5,
+               #         foreground=colors[8],
+               #         background=colors[0],
+               #         fontsize=14
+               #         ),
+               #widget.Cmus(
+               #         max_chars = 40,
+               #         update_interval = 0.5,
+               #         foreground=colors[6],
+               #         background = colors[0]
+               #         ),
                widget.Sep(
                         linewidth = 2,
                         padding = 10,
@@ -414,7 +434,7 @@ def init_widgets_list():
                         ),
                widget.TextBox(
                         font="Noto Sans Bold",
-                        text=" 🕒",
+                        text=" T:",
                         foreground=colors[8],
                         background=colors[0],
                         padding = 5,
