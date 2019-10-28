@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-i3lock -c 002b36 && systemctl suspend
+i3lock -c 20201d && systemctl suspend &
 

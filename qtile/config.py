@@ -125,7 +125,7 @@ def init_keys():
         # Lock Qtile
         Key(
             [mod, "control"], "l",
-            lazy.spawn("i3lock -c 002b36")
+            lazy.spawn("i3lock -c 20201d")
             ),
         # Suspend Qtile
         Key(
