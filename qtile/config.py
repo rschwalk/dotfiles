@@ -124,15 +124,15 @@ def init_keys():
             ),
         # Lock Qtile
         Key(
-            [mod, "control"], "q",
+            [mod, "control"], "l",
             lazy.spawn("i3lock -c 002b36")
             ),
-        Key(
         # Suspend Qtile
         Key(
             [mod, "control"], "x",
             lazy.spawn("~/dotfiles/scripts/lock_suspend.sh")
             ),
+        Key(
             [mod, ], "d",
             lazy.spawn("dmenu_run -fn 'Noto Sans Font:size=10' -nb '#002b36' -nf '#268bd2' -sb '#859900' -sf '#eee8d5' -p 'dmenu:'")
             ),
@@ -195,29 +195,41 @@ def init_keys():
 ##### BAR COLORS #####
 
 def init_colors():
-    return [["#002b36", "#002b36"], # panel background
-            ["#859900", "#859900"], # green: background for current screen tab
-            ["#eee8d5", "#eee8d5"], # font color for group names
-            ["#073642", "#073642"], # background color for layout widget
-            ["#073642", "#073642"], # background for other screen tabs
-            ["#839496", "#839496"], # darker font color for inactive items
-            ["#C3E88D", "#C3E88D"],
-            ["#268bd2", "#268bd2"], # blue
-            ["#9CC4FF", "#9CC4FF"],
-            ["#002b36", "#002b36"],
-            ["#002b36", "#002b36"]]
+    solarized = [["#002b36", "#002b36"], # panel background
+                 ["#859900", "#859900"], # green: background for current screen tab
+                 ["#eee8d5", "#eee8d5"], # font color for group names
+                 ["#073642", "#073642"], # background color for layout widget
+                 ["#073642", "#073642"], # background for other screen tabs
+                 ["#839496", "#839496"], # darker font color for inactive items
+                 ["#d73737", "#d73737"],
+                 ["#268bd2", "#268bd2"], # blue
+                 ["#9CC4FF", "#9CC4FF"],
+                 ["#002b36", "#002b36"],
+                 ["#002b36", "#002b36"]]
+
+    atelierdune =   [["#20201d", "#20201d"], # 0 panel background
+                     ["#cfb017", "#cfb017"], # 1 current screen tab
+                     ["#20201d", "#20201d"], # 2 font color for group names
+                     ["#20201d", "#20201d"], # 3 border color for layout widget
+                     ["#6684e1", "#6684e1"], # 4 border for other screen tabs
+                     ["#7d7a68", "#7d7a68"], # 5 darker font color for inactive items
+                     ["#d73737", "#d73737"], # 6 widget font color
+                     ["#60ac39", "#60ac39"], # 7 active window border
+                     ["#6684e1", "#6684e1"]] # 8 widget symbol
+
+    return atelierdune
 
 ##### GROUPS #####
 
 def init_group_names():
-    return [("DEV", {'layout': 'monadtall'}),
-            ("WWW", {'layout': 'monadtall'}),
-            ("SYS", {'layout': 'monadtall'}),
-            ("DOC", {'layout': 'monadtall'}),
-            ("VBOX", {'layout': 'monadtall'}),
-            ("CHAT", {'layout': 'monadtall'}),
-            ("MEDIA", {'layout': 'monadtall'}),
-            ("GFX", {'layout': 'monadtall'})]
+    return [("ONE", {'layout': 'monadtall'}),
+            ("TWO", {'layout': 'monadtall'}),
+            ("THREE", {'layout': 'monadtall'}),
+            ("FOUR", {'layout': 'monadtall'}),
+            ("FIVE", {'layout': 'monadtall'}),
+            ("SIX", {'layout': 'monadtall'}),
+            ("SEVEN", {'layout': 'monadtall'}),
+            ("EIGHT", {'layout': 'monadtall'})]
 
 def init_groups():
     return [Group(name, **kwargs) for name, kwargs in group_names]
@@ -229,8 +241,8 @@ def init_floating_layout():
 def init_layout_theme():
     return {"border_width": 2,
             "margin": 4,
-            "border_focus": "#859900",
-            "border_normal": "#073642"
+            "border_focus": colors[7][0],
+            "border_normal": colors[5][0]
            }
 
 def init_border_args():
@@ -285,7 +297,7 @@ def init_widgets_list():
                widget.Sep(
                         linewidth = 0,
                         padding = 6,
-                        foreground = colors[2],
+                        foreground = colors[1],
                         background = colors[0]
                         ),
                widget.GroupBox(font="Noto Sans Bold",
@@ -294,15 +306,15 @@ def init_widgets_list():
                         margin_x = 0,
                         padding_y = 5,
                         padding_x = 5,
-                        borderwidth = 1,
-                        active = colors[2],
+                        borderwidth = 3,
+                        active = colors[6],
                         inactive = colors[5],
-                        rounded = False,
-                        highlight_method = "block",
+                        rounded = True,
+                        highlight_method = "border",
                         this_current_screen_border = colors[1],
                         this_screen_border = colors [4],
-                        other_current_screen_border = colors[0],
-                        other_screen_border = colors[0],
+                        other_current_screen_border = colors[5],
+                        other_screen_border = colors[5],
                         foreground = colors[2],
                         background = colors[0]
                         ),
@@ -317,107 +329,108 @@ def init_widgets_list():
                         linewidth = 2,
                         padding = 10,
                         foreground = colors[1],
-                        background = colors[4]
+                        background = colors[0]
                         ),
                widget.TextBox(
                         font="Noto Sans Bold",
                         text=" ☵",
                         padding = 5,
-                        foreground=colors[7],
-                        background=colors[4],
+                        foreground=colors[8],
+                        background=colors[0],
                         fontsize=14
                         ),
                widget.CurrentLayout(
                         fontsize=12,
-                        foreground = colors[7],
-                        background = colors[4],
+                        foreground = colors[6],
+                        background = colors[0],
                         padding = 5
                         ),
                widget.Sep(
                         linewidth = 2,
                         padding = 10,
                         foreground = colors[1],
-                        background = colors[4]
+                        background = colors[0]
                         ),
                widget.WindowName(font="Noto Sans ",
                         fontsize = 12,
-                        foreground = colors[7],
-                        background = colors[4],
+                        foreground = colors[6],
+                        background = colors[0],
                         padding = 5
                         ),
                widget.Sep(
                         linewidth = 2,
                         padding = 10,
                         foreground = colors[1],
-                        background = colors[4]
+                        background = colors[0]
                         ),
                widget.Systray(
-                        background=colors[4],
+                        background=colors[0],
                         padding = 5
                         ),
                widget.Sep(
                         linewidth = 2,
                         padding = 10,
                         foreground = colors[1],
-                        background = colors[4]
+                        background = colors[0]
                         ),
                widget.TextBox(
                         text=" ↯",
-                        foreground=colors[7],
-                        background=colors[4],
+                        foreground=colors[8],
+                        background=colors[0],
                         padding = 0,
                         fontsize=14
                         ),
                widget.Net(
                         interface = "enp27s0",
-                        foreground = colors[7],
-                        background = colors[4],
+                        foreground = colors[6],
+                        background = colors[0],
                         padding = 5
                         ),
                widget.Sep(
                         linewidth = 2,
                         padding = 10,
                         foreground = colors[1],
-                        background = colors[4]
+                        background = colors[0]
                         ),
                widget.TextBox(
                         font="Noto Sans Bold",
                         text=" ♫",
                         padding = 5,
-                        foreground=colors[7],
-                        background=colors[4],
+                        foreground=colors[8],
+                        background=colors[0],
                         fontsize=14
                         ),
                widget.Cmus(
                         max_chars = 40,
                         update_interval = 0.5,
-                        foreground=colors[7],
-                        background = colors[4]
+                        foreground=colors[6],
+                        background = colors[0]
                         ),
                widget.Sep(
                         linewidth = 2,
                         padding = 10,
                         foreground = colors[1],
-                        background = colors[4]
+                        background = colors[0]
                         ),
                widget.TextBox(
                         font="Noto Sans Bold",
                         text=" 🕒",
-                        foreground=colors[7],
-                        background=colors[4],
+                        foreground=colors[8],
+                        background=colors[0],
                         padding = 5,
                         fontsize=14
                         ),
                widget.Clock(
-                        foreground = colors[7],
-                        background = colors[4],
+                        font="Noto Sans Bold",
+                        foreground = colors[6],
+                        background = colors[0],
                         format="%A, %B %d - %H:%M"
                         ),
                widget.Sep(
                         linewidth = 2,
                         padding = 5,
                         foreground = colors[1],
-                        background = colors[4]
+                        background = colors[0]
                         ),
     #        widget.GroupBox(foreground=theme["text"],
     #            active=theme["text"],
@@ -449,8 +462,8 @@ def init_widgets_screen2():
     return widgets_screen2
 
 def init_screens():
-    return [Screen(top=bar.Bar(widgets=init_widgets_screen1(), opacity=0.95, size=22, background=colors[4])),
-            Screen(top=bar.Bar(widgets=init_widgets_screen2(), opacity=0.95, size=22, background=colors[4])),
+    return [Screen(top=bar.Bar(widgets=init_widgets_screen1(), opacity=0.95, size=22, background=colors[0])),
+            Screen(top=bar.Bar(widgets=init_widgets_screen2(), opacity=0.95, size=22, background=colors[0])),
             ]
 
 ##### FLOATING WINDOWS #####
