@@ -17,6 +17,7 @@ ln -s /home/rschwalk/dotfiles/xmodmap /home/rschwalk/.xmodmap;
 #ln -s /home/rschwalk/dotfiles/tint2/ /home/rschwalk/.config/;
 #ln -s /home/rschwalk/dotfiles/Thunar/ /home/rschwalk/.config/;
 ln -s /home/rschwalk/dotfiles/Code/settings.json .config/Code/User/;
+ln -s /home/rschwalk/dotfiles/alacritty /home/rschwalk/.config/;
 
 #sudo ln -s /home/rschwalk/dotfiles/mutt/mutt-notmuch-py /usr/bin/;
 #ln -s /home/rschwalk/dotfiles/openbox/ /home/rschwalk/.config/;
