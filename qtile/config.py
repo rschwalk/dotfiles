@@ -78,12 +78,12 @@ def init_keys():
     mod = "mod4"
     keys = [
         # Switch between windows in current stack pane
-        Key([mod], "k", lazy.layout.down()),
-        Key([mod], "j", lazy.layout.up()),
+        Key([mod], "j", lazy.layout.down()),
+        Key([mod], "k", lazy.layout.up()),
 
         # Move windows up or down in current stack
-        Key([mod, "control"], "k", lazy.layout.shuffle_down()),
-        Key([mod, "control"], "j", lazy.layout.shuffle_up()),
+        Key([mod, "control"], "j", lazy.layout.shuffle_down()),
+        Key([mod, "control"], "k", lazy.layout.shuffle_up()),
 
         # Switch window focus to other pane(s) of stack
         #Key([mod], "space", lazy.layout.next()),
@@ -236,7 +236,7 @@ def init_groups():
 
 ##### LAYOUTS #####
 def init_floating_layout():
-    return layout.Floating(border_focus="#3B4022")
+    return layout.Floating(border_focus=colors[7][0])
 
 def init_layout_theme():
     return {"border_width": 2,
@@ -285,7 +285,7 @@ def init_layouts():
 ##### WIDGETS #####
 
 def init_widget_defaults():
-    return dict(font="Noto Sans Mono",
+    return dict(font="Noto Sans Mono Regular",
             fontsize = 11,
             padding = 2,
             foreground = colors[7],
@@ -300,7 +300,7 @@ def init_widgets_list():
                         foreground = colors[1],
                         background = colors[0]
                         ),
-               widget.GroupBox(font="Noto Sans Bold",
+               widget.GroupBox(font="Noto Sans Mono Bold",
                         fontsize = 9,
                         margin_y = 0,
                         margin_x = 0,
@@ -320,7 +320,7 @@ def init_widgets_list():
                         ),
                widget.Prompt(
                         prompt=prompt,
-                        font="Noto Sans Mono",
+                        font="Noto Sans Mono Regular",
                         padding=10,
                         foreground = colors[3],
                         background = colors[1]
@@ -332,7 +332,7 @@ def init_widgets_list():
                         background = colors[0]
                         ),
                widget.TextBox(
-                        font="Noto Sans Bold",
+                        font="Noto Sans Mono Bold",
                         text=" Layout:",
                         padding = 5,
                         foreground=colors[8],
@@ -351,7 +351,7 @@ def init_widgets_list():
                         foreground = colors[1],
                         background = colors[0]
                         ),
-               widget.WindowName(font="Noto Sans ",
+               widget.WindowName(font="Noto Sans Mono Regular",
                         fontsize = 12,
                         foreground = colors[6],
                         background = colors[0],
@@ -374,7 +374,7 @@ def init_widgets_list():
                         background = colors[0]
                         ),
                widget.TextBox(
-                        font="Noto Sans Bold",
+                        font="Noto Sans Mono Bold",
                         text=" Net:",
                         foreground=colors[8],
                         background=colors[0],
@@ -394,7 +394,7 @@ def init_widgets_list():
                         background = colors[0]
                         ),
                widget.TextBox(
-                        font="Noto Sans Bold",
+                        font="Noto Sans Mono Bold",
                         text=" Vol.:",
                         padding = 5,
                         foreground=colors[8],
@@ -433,7 +433,7 @@ def init_widgets_list():
                         background = colors[0]
                         ),
                widget.TextBox(
-                        font="Noto Sans Bold",
+                        font="Noto Sans Mono Bold",
                         text=" T:",
                         foreground=colors[8],
                         background=colors[0],
@@ -441,7 +441,7 @@ def init_widgets_list():
                         fontsize=14
                         ),
                widget.Clock(
-                        font="Noto Sans Bold",
+                        font="Noto Sans Mono Bold",
                         foreground = colors[6],
                         background = colors[0],
                         format="%A, %B %d - %H:%M"
