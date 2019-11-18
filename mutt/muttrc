@@ -56,32 +56,27 @@ hdr_order from: to: cc: date: subject:  # and in this order
 # Account Settings -----------------------------------
 
 # Default inbox.
-set spoolfile = "+rschwalk-gmail.com/INBOX"
+set spoolfile = "+rschwalk.eu/INBOX"
 
 # Alternate email addresses.
 #alternates sjl@pculture.org still\.?life@gmail.com steve@ladyluckblues.com steve@pculture.org
+alternates rschwalk@rschwalk.eu social@rschwalk.eu
 
 # Mailboxes to show in the sidebar.
-mailboxes +rschwalk-gmail.com/INBOX \
-          +rschwalk-gmail.com/Vanessa \
-          +rschwalk-gmail.com/Amazon \
-          +rschwalk-gmail.com/Lists.opensuse \
-          +rschwalk-gmail.com/Lists.project-suse \
-          +rschwalk-gmail.com/Lists.programming-suse \
-          +rschwalk-gmail.com/Lists.factory-suse \
-          +rschwalk-gmail.com/Lists.features-suse \
-          +rschwalk-gmail.com/Lists.announce-suse \
-          +rschwalk-gmail.com/Lists.fedora-project \
-          +rschwalk-gmail.com/Lists.gnome-builder \
-          +rschwalk-gmail.com/Lists.glade-users \
-          +rschwalk-gmail.com/archive \
-          +rschwalk-gmail.com/sent \
-          +rschwalk-gmail.com/drafts \
+mailboxes +rschwalk.eu/INBOX \
+          +rschwalk.eu/NewsLetter \
+          +rschwalk.eu/Notification \
+          +rschwalk.eu/Sent \
+          +rschwalk.eu/Drafts \
+          +rschwalk.eu/Spam \
+          +rschwalk.eu/Templates \
+          +rschwalk.eu/Trash \
+          +rschwalk.eu/archive \
           +temporary/search \
 
 # Other special folders.
-set mbox      = "+rschwalk-gmail.com/archive"
-set postponed = "+rschwalk-gmail.com/drafts"
+set mbox      = "+rschwalk.eu/archive"
+set postponed = "+rschwalk.eu/Drafts"
 
 # Index View Options ---------------------------------
 set date_format = "%m/%d"
@@ -93,6 +88,7 @@ set sort_re                                # thread based on regex
 set reply_regexp = "^(([Rr][Ee]?(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*"
 
 # Index Key Bindings ---------------------------------
+bind index g        noop
 bind index gg       first-entry
 bind index G        last-entry
 
@@ -130,6 +126,7 @@ alternative_order text/plain text/enriched text/html
 # Pager Key Bindings ---------------------------------
 bind pager k  previous-line
 bind pager j  next-line
+bind pager g  noop
 bind pager gg top
 bind pager G  bottom
 
@@ -159,8 +156,8 @@ set forward_quote                    # include message in forwards
 
 set editor = "nvim"        # Use terminal Vim to compose email.
 
-set from     = "richard.schwalk@gmail.com"
-set sendmail = "/usr/bin/msmtp -a gmail"
+set from     = "richard.schwalk@rschwalk.eu"
+set sendmail = "/usr/bin/msmtp -a rschwalk"
 set sendmail_wait = 0
 unset record
 
@@ -175,5 +172,5 @@ set query_command="goobook query '%s'"
 macro index,pager a "<pipe-message>goobook add<return>" "add sender to google contacts"
 bind editor <Tab> complete-query
 
-#source ~/.mutt/color/jellybeans.muttrc
-source ~/.mutt/color/mutt-colors-solarized-dark-16.muttrc
+source ~/.mutt/color/jellybeans.muttrc
+#source ~/.mutt/color/mutt-colors-solarized-dark-16.muttrc

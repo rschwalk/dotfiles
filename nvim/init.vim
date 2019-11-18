@@ -53,10 +53,13 @@ Plug 'autozimu/LanguageClient-neovim', {
 Plug 'mattn/webapi-vim'
 Plug 'ncm2/ncm2'
 Plug 'roxma/nvim-yarp'
+Plug 'ionide/Ionide-vim', {
+      \ 'do':  'make fsautocomplete',
+      \}
 
 " Completion plugins
 Plug 'ncm2/ncm2-bufword'
-Plug 'ncm2/ncm2-tmux'
+""Plug 'ncm2/ncm2-tmux'
 Plug 'ncm2/ncm2-path'
 "Plug 'vim-scripts/OmniCppComplete'
 "Plug 'klen/python-mode'

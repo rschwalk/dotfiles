@@ -1,5 +1,5 @@
 [general]
-ui = TTY.TTYUI
+ui = ttyui
 accounts = RSchwalk
 pythonfile=~/.mutt/offlineimap.py
 fsync = False
@@ -11,28 +11,14 @@ postsynchook = notmuch new
 
 [Repository RSchwalk-Local]
 type = Maildir
-localfolders = ~/.mail/rschwalk-gmail.com
-nametrans = lambda folder: {'drafts':  '[Gmail]/Drafts',
-                            'sent':    '[Gmail]/Sent Mail',
-                            'flagged': '[Gmail]/Starred',
-                            'trash':   '[Gmail]/Trash',
-                            'archive': '[Gmail]/All Mail',
-                           }.get(folder, folder)
+localfolders = ~/.mail/rschwalk.eu
 
 [Repository RSchwalk-Remote]
 maxconnections = 1
-type = Gmail
-remoteuser = richard.schwalk@gmail.com
+type = IMAP
+remotehost = imappro.zoho.eu
+remoteuser = richard.schwalk@rschwalk.eu
 remotepasseval = get_pass()
 realdelete = no
-nametrans = lambda folder: {'[Gmail]/Drafts':    'drafts',
-                            '[Gmail]/Sent Mail': 'sent',
-                            '[Gmail]/Starred':   'flagged',
-                            '[Gmail]/Trash':     'trash',
-                            '[Gmail]/All Mail':  'archive',
-                           }.get(folder, folder)
-folderfilter = lambda folder: folder not in ['[Gmail]/Trash',
-                                             '[Gmail]/Important',
-                                             '[Gmail]/Spam',
-                                            ]
-sslcacertfile = /etc/pki/ca-trust/extracted/openssl/ca-bundle.trust.crt
+ssl = yes
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt

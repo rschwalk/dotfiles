@@ -1,3 +1,5 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =1
-let g:netrw_dirhist_1='/home/rschwalk/dotfiles/scripts/backups'
+let g:netrw_dirhistcnt =3
+let g:netrw_dirhist_3='/home/rschwalk/Documents/documents'
+let g:netrw_dirhist_2='/home/rschwalk/Documents'
+let g:netrw_dirhist_1='/home/rschwalk/Documents/documents'
