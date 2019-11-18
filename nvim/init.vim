@@ -16,6 +16,7 @@ call plug#begin('~/.config/nvim/plugged')
 " Load plugins
 " VIM enhancements
 Plug 'tpope/vim-fugitive'
+Plug 'will133/vim-dirdiff'
 Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-surround'
 Plug 'wincent/loupe'
@@ -50,6 +51,7 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
 \ }
+""Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'mattn/webapi-vim'
 Plug 'ncm2/ncm2'
 Plug 'roxma/nvim-yarp'
@@ -518,10 +520,12 @@ nmap <leader>m :Buffers<CR>
 "-----------------------------------------------------------------------------
 let g:LanguageClient_settingsPath = "/home/rschwalk/.config/nvim/settings.json"
 let g:LanguageClient_serverCommands = {
-            \ 'rust': ['rustup', 'run', 'stable', 'rls']
+            \ 'rust': ['rustup', 'run', 'stable', 'rls'],
+            \ 'fsharp': ['dotnet', '/home/rschwalk/.config/nvim/plugged/Ionide-vim/fsac/fsautocomplete.dll']
             \ }
 let g:LanguageClient_autoStart = 1
-let g:LanguageClient_useVirtualText = 0
+let g:LanguageClient_useVirtualText = 1
+set signcolumn=yes
 nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
 nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
@@ -537,7 +541,15 @@ let g:rust_clip_command = 'xclip -selection clipboard'
 "let g:racer_experimental_completer = 1
 let $RUST_SRC_PATH = systemlist("rustc --print sysroot")[0] . "/lib/rustlib/src/rust/src"
 
-" Completion
+" Completion with deoplete
+""let g:deoplete#enable_at_startup = 1
+
+" echodoc settings
+set cmdheight=2
+let g:echodoc#enable_at_startup = 1
+let g:echodoc#type = 'signature'
+
+" Completion with ncm2
 autocmd BufEnter * call ncm2#enable_for_buffer()
 set completeopt=noinsert,menuone,noselect
 " tab to select
