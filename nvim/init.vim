@@ -1,5 +1,5 @@
 " Fish doesn't play all that well with others
-set shell=/bin/bash
+set shell=/usr/bin/fish
 
 " =============================================================================
 " # PLUGINS
@@ -513,8 +513,8 @@ let delimitMate_expand_cr = 1
 " fzf settings
 "-----------------------------------------------------------------------------
 " Open hotkeys
-map <C-p> :Files<CR>
-nmap <leader>m :Buffers<CR>
+map <C-P> :Files<CR>
+nmap <C-p> :Buffers<CR>
 
 " language server protocol
 "-----------------------------------------------------------------------------
@@ -524,7 +524,7 @@ let g:LanguageClient_serverCommands = {
             \ 'fsharp': ['dotnet', '/home/rschwalk/.config/nvim/plugged/Ionide-vim/fsac/fsautocomplete.dll']
             \ }
 let g:LanguageClient_autoStart = 1
-let g:LanguageClient_useVirtualText = 1
+let g:LanguageClient_useVirtualText = 0
 set signcolumn=yes
 nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
