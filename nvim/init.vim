@@ -104,6 +104,9 @@ set softtabstop=4
 set shiftwidth=4
 set shiftround
 set expandtab
+autocmd FileType fsharp set tabstop=4
+autocmd FileType fsharp set softtabstop=2
+autocmd FileType fsharp set shiftwidth=2
 
 " Printing options
 set printoptions=header:0,duplex:long,paper:A4
@@ -495,7 +498,7 @@ let g:python3_host_prog = '/usr/bin/python3'
 
 " Settings for run neomake automatically
 "-----------------------------------------------------------------------------
-autocmd! BufWritePost * Neomake!
+""autocmd! BufWritePost * Neomake!
 let g:neomake_open_list = 0
 let g:neomake_cpp_enabled_makers = ['gcc']
 
@@ -509,11 +512,12 @@ let g:airline_theme='dark'
 " delimitMate settings
 "-----------------------------------------------------------------------------
 let delimitMate_expand_cr = 1
+au FileType fsharp let b:delimitMate_quotes = "\" "
 
 " fzf settings
 "-----------------------------------------------------------------------------
 " Open hotkeys
-map <C-P> :Files<CR>
+nmap <S-A-P> :Files<CR>
 nmap <C-p> :Buffers<CR>
 
 " language server protocol
@@ -525,6 +529,7 @@ let g:LanguageClient_serverCommands = {
             \ }
 let g:LanguageClient_autoStart = 1
 let g:LanguageClient_useVirtualText = 0
+""let g:LanguageClient_diagnosticsList = 'Location'
 set signcolumn=yes
 nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
