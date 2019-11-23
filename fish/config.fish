@@ -4,7 +4,7 @@ if status --is-interactive
     source "$BASE16_SHELL/profile_helper.fish"
 end
 
-export PATH="$PATH:/home/rschwalk/bin:/home/rschwalk/.local/bin"
+export PATH="/home/rschwalk/bin:/home/rschwalk/.local/bin:/home/rschwalk/.dotnet/:$PATH"
 
 set -x EDITOR nvim
 
