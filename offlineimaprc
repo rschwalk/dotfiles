@@ -19,6 +19,6 @@ type = IMAP
 remotehost = imappro.zoho.eu
 remoteuser = richard.schwalk@rschwalk.eu
 remotepasseval = get_pass()
-realdelete = no
+realdelete = yes
 ssl = yes
 sslcacertfile = /etc/ssl/certs/ca-certificates.crt
