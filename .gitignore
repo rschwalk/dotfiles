@@ -2,7 +2,6 @@ vim/bundle/*
 mutt/temp/*
 nvim/plugged/*
 nvim/__pycache__
-nvim/.netrwhist
 *.pyc
 temp/*
 .directory
