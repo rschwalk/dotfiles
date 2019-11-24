@@ -11,3 +11,4 @@ openbox/menu.xml.bak
 tint2/*.backup.*
 nvim/.netrwhist
 scripts/backups/backup_all.sh
+*.pyc
