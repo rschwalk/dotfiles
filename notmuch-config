@@ -11,7 +11,7 @@
 # configured here named ".notmuch".
 #
 [database]
-path=/home/rschwalk/.mail/rschwalk-gmail.com
+path=/home/rschwalk/.mail/rschwalk.eu
 
 # User configuration
 #
@@ -30,7 +30,7 @@ path=/home/rschwalk/.mail/rschwalk-gmail.com
 #
 [user]
 name=Richard Schwalk
-primary_email=richard.schwalk@gmail.com
+primary_email=richard.schwalk@rschwalk.eu
 
 # Configuration for "notmuch new"
 #
