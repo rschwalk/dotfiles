@@ -343,8 +343,8 @@ vnoremap < <gv  " better indentation
 vnoremap > >gv  " better indentation
 
 " Session management
-nmap <F2> :mksession! ./.session<cr>
-nmap <F3> :source ./.session<cr>
+nmap <F3> :mksession! ./.session<cr>
+nmap <F4> :source ./.session<cr>
 
 set enc=utf-8
 
