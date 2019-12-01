@@ -51,18 +51,18 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
 \ }
-""Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'mattn/webapi-vim'
-Plug 'ncm2/ncm2'
-Plug 'roxma/nvim-yarp'
+"Plug 'ncm2/ncm2'
+"Plug 'roxma/nvim-yarp'
 Plug 'ionide/Ionide-vim', {
       \ 'do':  'make fsautocomplete',
       \}
 
 " Completion plugins
-Plug 'ncm2/ncm2-bufword'
+"Plug 'ncm2/ncm2-bufword'
 ""Plug 'ncm2/ncm2-tmux'
-Plug 'ncm2/ncm2-path'
+"Plug 'ncm2/ncm2-path'
 "Plug 'vim-scripts/OmniCppComplete'
 "Plug 'klen/python-mode'
 "Plug 'SirVer/ultisnips'
@@ -107,6 +107,8 @@ set expandtab
 autocmd FileType fsharp set tabstop=4
 autocmd FileType fsharp set softtabstop=2
 autocmd FileType fsharp set shiftwidth=2
+
+set list listchars=tab:»-,trail:·,extends:»,precedes:«
 
 " Printing options
 set printoptions=header:0,duplex:long,paper:A4
@@ -203,6 +205,9 @@ map Q gq
 set splitbelow
 set splitright
 
+" Rebind <Leader> key
+let mapleader = ","
+
 " CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
 " so that you can undo CTRL-U after inserting a line break.
 inoremap <C-U> <C-G>u<C-U>
@@ -213,7 +218,7 @@ if has('mouse')
 endif
 
 " When editing a file, always jump to the last known cursor position.
-" Don't do it when the position is invalid or when inside an event handler
+" Don't do it when the position is invalid r when inside an event handler
 " (happens when dropping a file on gvim).
 " Also don't do it when the mark is in the first line, that is the default
 " position when opening a file.
@@ -223,7 +228,7 @@ autocmd BufReadPost *
   \ endif
 
 " Convenient command to see the difference between the current buffer and the
-" file it was loaded from, thus the changes you made.
+" file it was loaded from, thus the change you made.
 " Only define it when not defined already.
 if !exists(":DiffOrig")
   command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
@@ -260,8 +265,6 @@ endfunction
 " paste. At the bottom you should see ``-- INSERT (paste) --``.
 set pastetoggle=<F11>
 
-" Rebind <Leader> key
-let mapleader = ","
 
 " Wipe out all buffers
 nmap <silent> <leader>wa :1,900bwipeout<cr>
@@ -365,6 +368,7 @@ set nu
 set nowrap  " don't automatically wrap on load
 set fo-=t   " don't automatically wrap text when typing
 autocmd FileType python set colorcolumn=80
+autocmd FileType fhsaro set colorcolumn=120
 autocmd FileType cpp set colorcolumn=120
 autocmd FileType cpp highlight ColorColumn ctermbg=darkgray
 
@@ -517,8 +521,8 @@ au FileType fsharp let b:delimitMate_quotes = "\" "
 " fzf settings
 "-----------------------------------------------------------------------------
 " Open hotkeys
-nmap <S-A-P> :Files<CR>
-nmap <C-p> :Buffers<CR>
+nmap <C-p> :Files<CR>
+nmap <C-b> :Buffers<CR>
 
 " language server protocol
 "-----------------------------------------------------------------------------
@@ -547,7 +551,9 @@ let g:rust_clip_command = 'xclip -selection clipboard'
 let $RUST_SRC_PATH = systemlist("rustc --print sysroot")[0] . "/lib/rustlib/src/rust/src"
 
 " Completion with deoplete
-""let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_at_startup = 1
+
+let g:SuperTabDefaultCompletionType = "<c-n>"
 
 " echodoc settings
 set cmdheight=2
@@ -555,8 +561,8 @@ let g:echodoc#enable_at_startup = 1
 let g:echodoc#type = 'signature'
 
 " Completion with ncm2
-autocmd BufEnter * call ncm2#enable_for_buffer()
-set completeopt=noinsert,menuone,noselect
+""autocmd BufEnter * call ncm2#enable_for_buffer()
+""set completeopt=noinsert,menuone,noselect
 " tab to select
 " and don't hijack my enter key
 "inoremap <expr><Tab> (pumvisible()?(empty(v:completed_item)?"\<C-n>":"\<C-y>"):"\<Tab>")
