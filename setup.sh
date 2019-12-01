@@ -8,10 +8,11 @@ ln -s /home/rschwalk/dotfiles/nvim /home/rschwalk/.config/;
 ln -s /home/rschwalk/dotfiles/awesome /home/rschwalk/.config/;
 ln -s /home/rschwalk/dotfiles/qtile /home/rschwalk/.config/;
 #ln -s /home/rschwalk/dotfiles/ranger /home/rschwalk/.config/;
-#ln -s /home/rschwalk/dotfiles/offlineimaprc /home/rschwalk/.offlineimaprc;
-#ln -s /home/rschwalk/dotfiles/msmtprc /home/rschwalk/.msmtprc;
-#ln -s /home/rschwalk/dotfiles/urlview /home/rschwalk/.urlview;
-#ln -s /home/rschwalk/dotfiles/notmuch-config /home/rschwalk/.notmuch-config;
+ln -s /home/rschwalk/dotfiles/offlineimaprc /home/rschwalk/.offlineimaprc;
+ln -s /home/rschwalk/dotfiles/mutt /home/rschwalk/.mutt;
+ln -s /home/rschwalk/dotfiles/msmtprc /home/rschwalk/.msmtprc;
+ln -s /home/rschwalk/dotfiles/urlview /home/rschwalk/.urlview;
+ln -s /home/rschwalk/dotfiles/notmuch-config /home/rschwalk/.notmuch-config;
 #ln -s /home/rschwalk/dotfiles/touchegg/ /home/rschwalk/.config/;
 ln -s /home/rschwalk/dotfiles/xmodmap /home/rschwalk/.xmodmap;
 #ln -s /home/rschwalk/dotfiles/tint2/ /home/rschwalk/.config/;
@@ -19,12 +20,12 @@ ln -s /home/rschwalk/dotfiles/xmodmap /home/rschwalk/.xmodmap;
 ln -s /home/rschwalk/dotfiles/Code/settings.json .config/Code/User/;
 ln -s /home/rschwalk/dotfiles/alacritty /home/rschwalk/.config/;
 
-#sudo ln -s /home/rschwalk/dotfiles/mutt/mutt-notmuch-py /usr/bin/;
+sudo ln -s /home/rschwalk/dotfiles/mutt/mutt-notmuch-py /usr/bin/;
 #ln -s /home/rschwalk/dotfiles/openbox/ /home/rschwalk/.config/;
-#mkdir /home/rschwalk/.mail;
+mkdir /home/rschwalk/.mail;
 mkdir /home/rschwalk/tools
 git config --global user.name "rschwalk";
-git config --global user.email "rschwalk@outlook.com";
+git config --global user.email "rschwalk@rschwalk.eu";
 git config --global credential.helper cache
 git config --global credential.helper 'cache --timeout=3600'
 # sudo mkdir /mnt/mybook_richard;
@@ -39,8 +40,10 @@ git config --global credential.helper 'cache --timeout=3600'
 # sudo chown rschwalk /mnt/mybook_video;
 
 # Enable Fusion repository
-#sudo dnf -y install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
-#sudo dnf -y update
+sudo dnf -y install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+sudo dnf -y update
+
+sudo dnf -y install fish
 
 sudo dnf -y install neovim
 sudo dnf -y install python2-neovim python3-neovim

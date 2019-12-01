@@ -12,7 +12,7 @@
 
 echo "Installing category Accessories"
 
-sudo dnf -y install gedit
+#sudo dnf -y install gedit
 #sudo dnf -y install ranger
 
 echo "Installing category Development"
@@ -21,13 +21,13 @@ sudo dnf -y install meld
 
 echo "Installing category Graphics"
 
-sudo dnf -y install darktable
+#sudo dnf -y install darktable
 #sudo dnf -y install gimp
 sudo dnf -y install gpick
 
 echo "Installing category Internet"
 
-sudo dnf -y install chromium
+#sudo dnf -y install chromium
 sudo dnf -y install firefox
 
 echo "Installing category Multimedia"
@@ -45,7 +45,7 @@ echo "Installing category System"
 #sudo dnf -y install gparted
 #sudo dnf -y install gvfs gvfs-smb
 sudo dnf -y install htop
-sudo dnf -y install thunar thunar-archive-plugin thunar-volman
+#sudo dnf -y install thunar thunar-archive-plugin thunar-volman
 sudo dnf -y install google-droid-sans-fonts
 sudo dnf -y install google-noto-sans-fonts
 sudo dnf -y install google-noto-sans-mono-fonts
@@ -53,6 +53,8 @@ sudo dnf -y install google-noto-sans-mono-fonts
 #sudo dnf -y install xdg-user-dirs
 # installation of zippers and unzippers
 sudo dnf -y install unrar zip unzip arj file-roller
+
+sudo dnf -y install neomutt offlineimap msmtp urlview
 
 echo "################################################################"
 echo "#### Additional apps are installed  ############################"
