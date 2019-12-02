@@ -54,9 +54,6 @@ sudo pip3 install neovim
 sudo dnf -y install adobe-source-code-pro-fonts
 git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
 
-#sudo dnf -y install https://dl.folkswithhats.org/fedora/$(rpm -E %fedora)/RPMS/folkswithhats-release.noarch.rpm
-#sudo dnf -y install fedy
-
 # Optional for Laptops
 #sudo dnf -y install tlp tlp-rdw
 #sudo systemctl enable tlp
