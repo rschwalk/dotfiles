@@ -32,6 +32,8 @@ Plug 'chriskempson/base16-vim'
 "Plug 'vim-scripts/taglist.vim'
 Plug 'vim-scripts/TaskList.vim'
 Plug 'flazz/vim-colorschemes'
+" Polyglot loads language support on demand!
+Plug 'sheerun/vim-polyglot'
 "Plug 'w0ng/vim-hybrid'
 "Plug 'frankier/neovim-colors-solarized-truecolor-only'
 "Plug 'sjl/gundo.vim'
@@ -65,12 +67,15 @@ Plug 'ionide/Ionide-vim', {
 "Plug 'ncm2/ncm2-path'
 "Plug 'vim-scripts/OmniCppComplete'
 "Plug 'klen/python-mode'
-"Plug 'SirVer/ultisnips'
-"Plug 'honza/vim-snippets'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 
 " LanguageClient enhancements
 Plug 'neomake/neomake'
 Plug 'Shougo/echodoc.vim'
+Plug 'c-brenn/phoenix.vim'
+Plug 'tpope/vim-projectionist' " required for some navigation features
+Plug 'slashmili/alchemist.vim'
 ""Plug 'nvie/vim-flake8'
 ""Plug 'Valloric/YouCompleteMe'
 "Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
@@ -82,6 +87,7 @@ Plug 'dag/vim-fish'
 Plug 'plasticboy/vim-markdown'
 "Plug 'peterhoeg/vim-qml'
 ""Plug 'scrooloose/syntastic'
+""Plug 'tomasr/molokai'
 
 call plug#end()
 
@@ -99,14 +105,11 @@ let python_highlight_all=1
 syntax on
 
 " Real programmers don't use TABs but spaces
-set tabstop=8
-set softtabstop=4
-set shiftwidth=4
+set tabstop=4
+set softtabstop=2
+set shiftwidth=2
 set shiftround
 set expandtab
-autocmd FileType fsharp set tabstop=4
-autocmd FileType fsharp set softtabstop=2
-autocmd FileType fsharp set shiftwidth=2
 
 set list listchars=tab:»-,trail:·,extends:»,precedes:«
 
@@ -356,7 +359,10 @@ autocmd FileType python map R :w<CR>:!python3 "%"<CR>
 " Run the last shell command
 nnoremap <leader>rl :!!<CR>
 
+set title
+
 set cursorline
+"set cursorcolumn
 nnoremap <leader>c :set cursorline!<CR>
 nnoremap <C-s> :w<CR>
 
@@ -503,6 +509,9 @@ let g:python3_host_prog = '/usr/bin/python3'
 " Settings for run neomake automatically
 "-----------------------------------------------------------------------------
 ""autocmd! BufWritePost * Neomake!
+augroup localneomake
+    autocmd! BufWritePost * Neomake
+  augroup END
 let g:neomake_open_list = 0
 let g:neomake_cpp_enabled_makers = ['gcc']
 
@@ -522,7 +531,7 @@ au FileType fsharp let b:delimitMate_quotes = "\" "
 "-----------------------------------------------------------------------------
 " Open hotkeys
 nmap <C-p> :Files<CR>
-nmap <C-b> :Buffers<CR>
+""nmap <C-b> :Buffers<CR>
 
 " language server protocol
 "-----------------------------------------------------------------------------
@@ -573,8 +582,8 @@ let g:echodoc#type = 'signature'
 
 
 "let g:UltiSnipsExpandTrigger="<c-l>"
-"let g:UltiSnipsJumpForwardTrigger="<c-b>"
-"let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 "-----------------------------------------------------------------------------
 " FSwitch mappings
@@ -668,25 +677,38 @@ autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 au InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWritePre * :%s/\s\+$//e
 
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256
+  source ~/.vimrc_background
+  "let g:airline_theme='base16_solarized'
+  let g:airline_theme='base16_monokai'
+else
+  set background=dark
+  ""colorscheme Tomorrow-Night
+  ""let g:airline_theme='tomorrow'
+  colorscheme molokai
+  let g:airline_theme='molokai'
+endif
+
 "call togglebg#map("<F5>")
 
-if has('gui_running')
-  set background=dark
-  colorscheme solarized
-  let g:airline_theme='solarized'
-  set guifont=DejaVu\ Sans\ Mono\ for\ Powerline
-else
-  if filereadable(expand("~/.vimrc_background"))
-      let base16colorspace=256
-      source ~/.vimrc_background
-      "let g:airline_theme='base16_solarized'
-      let g:airline_theme='base16_atelierdune'
-  else
-      set background=dark
-      colorscheme Tomorrow-Night
-      let g:airline_theme='tomorrow'
-  endif
-endif
+""if has('gui_running')
+""  set background=dark
+""  colorscheme solarized
+""  let g:airline_theme='solarized'
+""  set guifont=DejaVu\ Sans\ Mono\ for\ Powerline
+""else
+""  if filereadable(expand("~/.vimrc_background"))
+""      let base16colorspace=256
+""      source ~/.vimrc_background
+""      "let g:airline_theme='base16_solarized'
+""      let g:airline_theme='base16_atelierdune'
+""  else
+""      set background=dark
+""      colorscheme Tomorrow-Night
+""      let g:airline_theme='tomorrow'
+""  endif
+""endif
 
 autocmd FileType python highlight ColorColumn guibg=DimGrey
 
