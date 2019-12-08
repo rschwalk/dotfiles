@@ -28,10 +28,10 @@ sudo dnf -y install neomutt offlineimap msmtp urlview
 
 echo "Installing category Theme and icons"
 
-sudo dnf -y copr enable daniruiz/flat-remix
-sudo dnf -y install flat-remix-gnome
-sudo dnf -y install flat-remix
-sudo dnf -y install flat-remix
+#sudo dnf -y copr enable daniruiz/flat-remix
+#sudo dnf -y install flat-remix-gnome
+#sudo dnf -y install flat-remix
+#sudo dnf -y install flat-remix
 
 echo "################################################################"
 echo "#### Additional apps are installed  ############################"
