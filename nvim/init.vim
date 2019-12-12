@@ -259,9 +259,9 @@ function! s:list_cmd()
   return base == '.' ? 'fd --type file --follow' : printf('fd --type file --follow | proximity-sort %s', expand('%'))
 endfunction
 
-"command! -bang -nargs=? -complete=dir Files
-"  \ call fzf#vim#files(<q-args>, {'source': s:list_cmd(),
-"  \ 'options': '--tiebreak=index'}, <bang>0)
+command! -bang -nargs=? -complete=dir Files
+  \ call fzf#vim#files(<q-args>, {'source': s:list_cmd(),
+  \ 'options': '--tiebreak=index'}, <bang>0)
 
 " Better copy & paste
 " When you want to paste large blocks of code into vim, press F2 before you
@@ -374,7 +374,8 @@ set nu
 set nowrap  " don't automatically wrap on load
 set fo-=t   " don't automatically wrap text when typing
 autocmd FileType python set colorcolumn=80
-autocmd FileType fhsaro set colorcolumn=120
+autocmd FileType elixir set colorcolumn=80
+autocmd FileType fsharp set colorcolumn=120
 autocmd FileType cpp set colorcolumn=120
 autocmd FileType cpp highlight ColorColumn ctermbg=darkgray
 
@@ -408,6 +409,7 @@ noremap <left> <nop>
 " Set folding
 autocmd FileType python set foldmethod=indent
 autocmd FileType cpp set foldmethod=syntax
+autocmd FileType elixir set foldmethod=syntax
 autocmd FileType c set foldmethod=syntax
 autocmd FileType rust set foldmethod=syntax
 set foldlevel=99
