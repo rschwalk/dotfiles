@@ -259,9 +259,9 @@ function! s:list_cmd()
   return base == '.' ? 'fd --type file --follow' : printf('fd --type file --follow | proximity-sort %s', expand('%'))
 endfunction
 
-command! -bang -nargs=? -complete=dir Files
-  \ call fzf#vim#files(<q-args>, {'source': s:list_cmd(),
-  \ 'options': '--tiebreak=index'}, <bang>0)
+""command! -bang -nargs=? -complete=dir Files
+""  \ call fzf#vim#files(<q-args>, {'source': s:list_cmd(),
+""  \ 'options': '--tiebreak=index'}, <bang>0)
 
 " Better copy & paste
 " When you want to paste large blocks of code into vim, press F2 before you
@@ -679,18 +679,23 @@ autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 au InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWritePre * :%s/\s\+$//e
 
-if filereadable(expand("~/.vimrc_background"))
-  let base16colorspace=256
-  source ~/.vimrc_background
-  "let g:airline_theme='base16_solarized'
-  let g:airline_theme='base16_monokai'
-else
-  set background=dark
-  ""colorscheme Tomorrow-Night
-  ""let g:airline_theme='tomorrow'
-  colorscheme molokai
-  let g:airline_theme='molokai'
-endif
+set background=dark
+colorscheme Monokai
+""let g:airline_theme='molokai'
+let g:airline_theme='base16_monokai'
+
+""if filereadable(expand("~/.vimrc_background"))
+""  let base16colorspace=256
+""  source ~/.vimrc_background
+""  "let g:airline_theme='base16_solarized'
+""  let g:airline_theme='base16_monokai'
+""else
+""  set background=dark
+""  ""colorscheme Tomorrow-Night
+""  ""let g:airline_theme='tomorrow'
+""  colorscheme molokai
+""  let g:airline_theme='molokai'
+""endif
 
 "call togglebg#map("<F5>")
 
