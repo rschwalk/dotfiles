@@ -4,7 +4,7 @@
 #    source "$BASE16_SHELL/profile_helper.fish"
 #end
 
-export PATH="/home/rschwalk/bin:/home/rschwalk/.local/bin:/home/rschwalk/.dotnet/:$PATH"
+export PATH="/usr/sbin:/home/rschwalk/bin:/home/rschwalk/.local/bin:/home/rschwalk/.dotnet/:$PATH"
 
 set -x EDITOR nvim
 
@@ -57,3 +57,4 @@ end
 function neomutt
     bash --login -c 'cd ~/Desktop; /usr/bin/neomutt' $argv;
 end
+source ~/.asdf/asdf.fish
