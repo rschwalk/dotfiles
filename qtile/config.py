@@ -137,6 +137,26 @@ def init_keys():
             lazy.spawn("dmenu_run -fn 'Noto Sans Font:size=10' -nb '#002b36' -nf '#268bd2' -sb '#859900' -sf '#eee8d5' -p 'dmenu:'")
             ),
         Key([mod], "r", lazy.spawncmd()),
+        Key(
+            [mod], "F5",
+            lazy.spawn("firefox")
+            ),
+        Key(
+            [mod], "F6",
+            lazy.spawn("thunar")
+            ),
+        Key(
+            [mod], "F11",
+            lazy.spawn("rofi -show run -fullscreen")
+            ),
+        Key(
+            [mod], "F12",
+            lazy.spawn("rofi -show run")
+            ),
+        Key(
+            [mod, "shift"], "F12",
+            lazy.spawn("rofi -show window")
+            ),
         # Keyboard focus screen(0)
         Key([mod], "w",
             lazy.to_screen(1)
