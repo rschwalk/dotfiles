@@ -37,7 +37,7 @@ Plug 'sheerun/vim-polyglot'
 "Plug 'w0ng/vim-hybrid'
 "Plug 'frankier/neovim-colors-solarized-truecolor-only'
 "Plug 'sjl/gundo.vim'
-"Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree'
 "Plug 'fholgado/minibufexpl.vim'
 "Plug 'altercation/vim-colors-solarized'
 "Plug 'jnurmine/Zenburn'
@@ -617,9 +617,9 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 "nmap <c-F5> :GundoToggle<cr>
 
 " NERDTree
-"map <leader>i :NERDTreeToggle<CR>
-"let NERDTreeChDirMode = 2     "setting root dir in NT also sets VIM's cd
-"let NERDTreeWinSize = 35
+map <leader>i :NERDTreeToggle<CR>
+let NERDTreeChDirMode = 2     "setting root dir in NT also sets VIM's cd
+let NERDTreeWinSize = 35
 
 
 " Setting for ctr-p
