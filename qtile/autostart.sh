@@ -16,3 +16,4 @@ numlockx on &
 megasync &
 /opt/enpass/Enpass &
 compton -b --config  $HOME/.config/qtile/compton.conf &
+dnfdragora-updater &
