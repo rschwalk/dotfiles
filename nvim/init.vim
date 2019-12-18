@@ -32,8 +32,10 @@ Plug 'chriskempson/base16-vim'
 "Plug 'vim-scripts/taglist.vim'
 Plug 'vim-scripts/TaskList.vim'
 Plug 'flazz/vim-colorschemes'
+
 " Polyglot loads language support on demand!
 Plug 'sheerun/vim-polyglot'
+
 "Plug 'w0ng/vim-hybrid'
 "Plug 'frankier/neovim-colors-solarized-truecolor-only'
 "Plug 'sjl/gundo.vim'
@@ -55,15 +57,15 @@ Plug 'autozimu/LanguageClient-neovim', {
 \ }
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'mattn/webapi-vim'
-"Plug 'ncm2/ncm2'
-"Plug 'roxma/nvim-yarp'
+""Plug 'ncm2/ncm2'
+""Plug 'roxma/nvim-yarp'
 Plug 'ionide/Ionide-vim', {
       \ 'do':  'make fsautocomplete',
       \}
 
 " Completion plugins
 "Plug 'ncm2/ncm2-bufword'
-""Plug 'ncm2/ncm2-tmux'
+"Plug 'ncm2/ncm2-tmux'
 "Plug 'ncm2/ncm2-path'
 "Plug 'vim-scripts/OmniCppComplete'
 "Plug 'klen/python-mode'
@@ -374,13 +376,13 @@ set nu
 set nowrap  " don't automatically wrap on load
 set fo-=t   " don't automatically wrap text when typing
 autocmd FileType python set colorcolumn=80
-autocmd FileType elixir set colorcolumn=80
+autocmd FileType elixir set colorcolumn=120
 autocmd FileType fsharp set colorcolumn=120
 autocmd FileType cpp set colorcolumn=120
 autocmd FileType cpp highlight ColorColumn ctermbg=darkgray
 
 " cpp options
-autocmd FileType cpp set makeprg=make\ -j4
+autocmd FileType cpp set makeprg=make\ -j16
 autocmd FileType cpp nnoremap <leader>rm :make<CR>
 autocmd FileType cpp nnoremap <leader>rc :make clean<CR>
 autocmd FileType cpp nnoremap <leader>cm :! cmake ..<CR>
