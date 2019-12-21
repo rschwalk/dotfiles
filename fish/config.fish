@@ -4,7 +4,9 @@
 #    source "$BASE16_SHELL/profile_helper.fish"
 #end
 
-export PATH="/usr/sbin:/home/rschwalk/bin:/home/rschwalk/.local/bin:/home/rschwalk/.dotnet/:$PATH"
+set -x PATH /usr/sbin /home/rschwalk/bin /home/rschwalk/.local/bin /home/rschwalk/.dotnet/ $PATH
+
+set -x LC_ALL en_US.UTF-8
 
 set -x EDITOR nvim
 
