@@ -2,4 +2,5 @@
     "editor.formatOnSave": true,
     "workbench.colorTheme": "Monokai",
     "git.autofetch": true,
+    "window.titleBarStyle": "custom",
 }
