@@ -330,7 +330,7 @@ def init_widgets_list():
                         active = colors[6],
                         inactive = colors[5],
                         rounded = True,
-                        highlight_method = "border",
+                        highlight_method = "line",
                         this_current_screen_border = colors[1],
                         this_screen_border = colors [4],
                         other_current_screen_border = colors[5],

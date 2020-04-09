@@ -681,23 +681,24 @@ autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 au InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWritePre * :%s/\s\+$//e
 
-set background=dark
-colorscheme Monokai
-""let g:airline_theme='molokai'
-let g:airline_theme='base16_monokai'
+"set background=dark
+"colorscheme Monokai
+"""let g:airline_theme='molokai'
+"let g:airline_theme='base16_monokai'
 
-""if filereadable(expand("~/.vimrc_background"))
-""  let base16colorspace=256
-""  source ~/.vimrc_background
-""  "let g:airline_theme='base16_solarized'
-""  let g:airline_theme='base16_monokai'
-""else
-""  set background=dark
-""  ""colorscheme Tomorrow-Night
-""  ""let g:airline_theme='tomorrow'
-""  colorscheme molokai
-""  let g:airline_theme='molokai'
-""endif
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256
+  source ~/.vimrc_background
+  "let g:airline_theme='base16_solarized'
+  "let g:airline_theme='base16_monokai'
+  let g:airline_theme='base16_atelierdune'
+else
+  set background=dark
+  ""colorscheme Tomorrow-Night
+  ""let g:airline_theme='tomorrow'
+  colorscheme molokai
+  let g:airline_theme='molokai'
+endif
 
 "call togglebg#map("<F5>")
 

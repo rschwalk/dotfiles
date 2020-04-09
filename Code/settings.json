@@ -1,8 +1,9 @@
 {
     "editor.formatOnSave": true,
-    "git.autofetch": true,
     "workbench.colorTheme": "Monokai",
+    "git.autofetch": true,
     "explorer.confirmDelete": false,
     "explorer.confirmDragAndDrop": false,
     "window.zoomLevel": 0
+    "window.titleBarStyle": "custom",
 }
