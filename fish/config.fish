@@ -59,4 +59,4 @@ end
 function neomutt
     bash --login -c 'cd ~/Desktop; /usr/bin/neomutt' $argv;
 end
-source ~/.asdf/asdf.fish
+# source ~/.asdf/asdf.fish

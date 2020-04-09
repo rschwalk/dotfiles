@@ -1,8 +1,7 @@
 {
-    "editor.minimap.enabled": false,
     "editor.formatOnSave": true,
     "git.autofetch": true,
-    "workbench.colorTheme": "Default Light+",
+    "workbench.colorTheme": "Monokai",
     "explorer.confirmDelete": false,
     "explorer.confirmDragAndDrop": false,
     "window.zoomLevel": 0
