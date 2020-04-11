@@ -1,11 +1,11 @@
 #!/bin/bash
 
-#ln -s /home/rschwalk/dotfiles/Xresources /home/rschwalk/.Xresources;
+ln -s /home/rschwalk/dotfiles/Xresources /home/rschwalk/.Xresources;
 #ln -s /home/rschwalk/dotfiles/bashrc /home/rschwalk/.bashrc;
 ln -s /home/rschwalk/dotfiles/fish /home/rschwalk/.config;
 ln -s /home/rschwalk/dotfiles/nvim /home/rschwalk/.config/;
 #ln -s /home/rschwalk/dotfiles/xinitrc /home/rschwalk/.xinitrc;
-ln -s /home/rschwalk/dotfiles/awesome /home/rschwalk/.config/;
+#ln -s /home/rschwalk/dotfiles/awesome /home/rschwalk/.config/;
 ln -s /home/rschwalk/dotfiles/qtile /home/rschwalk/.config/;
 #ln -s /home/rschwalk/dotfiles/ranger /home/rschwalk/.config/;
 ln -s /home/rschwalk/dotfiles/offlineimaprc /home/rschwalk/.offlineimaprc;
@@ -47,7 +47,7 @@ sudo dnf -y install fish
 
 sudo dnf -y install neovim
 sudo dnf -y install python2-neovim python3-neovim
-#sudo dnf -y install automake gcc gcc-c++ kernel-devel cmake
+sudo dnf -y install automake gcc gcc-c++ kernel-devel cmake
 sudo dnf -y install python-devel python3-devel
 sudo pip install neovim
 sudo pip3 install neovim

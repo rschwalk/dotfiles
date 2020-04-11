@@ -42,7 +42,7 @@ echo "Installing category Office"
 
 echo "Installing category System"
 
-#sudo dnf -y install gparted
+sudo dnf -y install gparted
 #sudo dnf -y install gvfs gvfs-smb
 sudo dnf -y install htop
 #sudo dnf -y install thunar thunar-archive-plugin thunar-volman

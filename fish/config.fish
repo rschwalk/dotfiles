@@ -4,7 +4,8 @@
      source "$BASE16_SHELL/profile_helper.fish"
  end
 
-set -x PATH /usr/sbin /home/rschwalk/bin /home/rschwalk/.local/bin /home/rschwalk/.dotnet/ $PATH
+set -x PATH /usr/sbin /home/rschwalk/bin /home/rschwalk/.local/bin /home/rschwalk/.dotnet/ /home/rschwalk/dev/tools/idea-IC-201.6668.121/bin/ $PATH
+
 
 set -x LC_ALL en_US.UTF-8
 
@@ -59,8 +60,6 @@ end
 function neomutt
     bash --login -c 'cd ~/Desktop; /usr/bin/neomutt' $argv;
 end
-<<<<<<< HEAD
+
 # source ~/.asdf/asdf.fish
-=======
-#source ~/.asdf/asdf.fish
->>>>>>> 35c47fead75027bb8c9acc6c6eab9d566bec782b
+

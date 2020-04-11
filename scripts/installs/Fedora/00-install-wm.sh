@@ -57,6 +57,9 @@ wget -P ~/tools https://sourceforge.net/projects/sardi/files/sardi-icons-9.6-9.t
 mkdir ~/.icons
 tar -xzf ~/tools/sardi-icons-9.6-9.tar.gz -C ~/.icons/
 
+sudo dnf -y copr enable pschyska/alacritty
+sudo dnf -y install alacritty
+
 # echo "Installing openbox obmenu-generator"
 # git clone https://github.com/trizen/obmenu-generator ~/tools/obmenu-generator
 # sudo cp ~/tools/obmenu-generator/obmenu-generator /usr/bin
