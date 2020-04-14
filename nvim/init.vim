@@ -51,10 +51,7 @@ Plug 'junegunn/fzf.vim'
 "Plug 'ctrlpvim/ctrlp.vim'
 
 " Semantic language support
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-\ }
+Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'mattn/webapi-vim'
 ""Plug 'ncm2/ncm2'
@@ -338,7 +335,7 @@ nnoremap <left> :bp<CR>
 nnoremap <right> :bn<CR>
 map <Leader>n <esc>:b#<CR>
 
-" <leader>= reformats current tange
+" <leader>= reformats current range
 nnoremap <leader>= :'<,'>RustFmtRange<cr>
 
 " map sort function to a key
@@ -537,13 +534,16 @@ au FileType fsharp let b:delimitMate_quotes = "\" "
 nmap <C-p> :Files<CR>
 ""nmap <C-b> :Buffers<CR>
 
+autocmd BufReadPost *.rs setlocal filetype=rust
+
 " language server protocol
 "-----------------------------------------------------------------------------
-let g:LanguageClient_settingsPath = "/home/rschwalk/.config/nvim/settings.json"
+""let g:LanguageClient_settingsPath = "/home/rschwalk/.config/nvim/settings.json"
+""\ 'python': ['/usr/local/bin/pyls']
 let g:LanguageClient_serverCommands = {
-            \ 'rust': ['rustup', 'run', 'stable', 'rls'],
-            \ 'fsharp': ['dotnet', '/home/rschwalk/.config/nvim/plugged/Ionide-vim/fsac/fsautocomplete.dll']
-            \ }
+      \ 'rust': ['rustup', 'run', 'stable', 'rls'],
+      \ 'fsharp': ['dotnet', '/home/rschwalk/.config/nvim/plugged/Ionide-vim/fsac/fsautocomplete.dll'],
+      \ }
 let g:LanguageClient_autoStart = 1
 let g:LanguageClient_useVirtualText = 0
 ""let g:LanguageClient_diagnosticsList = 'Location'
