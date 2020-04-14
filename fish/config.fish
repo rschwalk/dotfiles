@@ -1,8 +1,8 @@
 # Base16 Shell
- if status --is-interactive
-     set BASE16_SHELL "$HOME/.config/base16-shell/"
-     source "$BASE16_SHELL/profile_helper.fish"
- end
+#if status --is-interactive
+#     set BASE16_SHELL "$HOME/.config/base16-shell/"
+#     source "$BASE16_SHELL/profile_helper.fish"
+#end
 
 set -x PATH /usr/sbin /home/rschwalk/bin /home/rschwalk/.local/bin /home/rschwalk/.dotnet/ /home/rschwalk/dev/tools/idea-IC-201.6668.121/bin/ $PATH
 
@@ -61,5 +61,6 @@ function neomutt
     bash --login -c 'cd ~/Desktop; /usr/bin/neomutt' $argv;
 end
 
+source $HOME/.cargo/env
 # source ~/.asdf/asdf.fish
 
