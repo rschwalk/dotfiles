@@ -681,10 +681,15 @@ autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 au InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWritePre * :%s/\s\+$//e
 
+" for history purpose
 "set background=dark
 "colorscheme Monokai
 """let g:airline_theme='molokai'
 "let g:airline_theme='base16_monokai'
+""colorscheme Tomorrow-Night
+""let g:airline_theme='tomorrow'
+""colorschemecolorscheme molokai
+""colorschemelet g:airline_theme='molokai'
 
 if filereadable(expand("~/.vimrc_background"))
   let base16colorspace=256
@@ -693,11 +698,12 @@ if filereadable(expand("~/.vimrc_background"))
   "let g:airline_theme='base16_monokai'
   let g:airline_theme='base16_atelierdune'
 else
+  " It works with konsole on plasma5
+  " Install this  konsole themes
+  " https://github.com/cskeeters/base16-konsole
+  colorscheme base16-ocean
   set background=dark
-  ""colorscheme Tomorrow-Night
-  ""let g:airline_theme='tomorrow'
-  colorscheme molokai
-  let g:airline_theme='molokai'
+  let g:airline_theme='base16_ocean'
 endif
 
 "call togglebg#map("<F5>")
