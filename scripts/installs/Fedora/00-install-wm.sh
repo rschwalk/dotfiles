@@ -16,9 +16,10 @@ sudo dnf -y update
 
 sudo dnf -y install lightdm lightdm-gtk lightdm-gtk-greeter-settings
 #sudo dnf -y install openbox obconf obmenu
-sudo dnf -y install awesome vicious
+#sudo dnf -y install awesome vicious
+sudo dnf -y install qtile
 sudo dnf -y install arc-theme
-sudo dnf -y install lxappearance
+#sudo dnf -y install lxappearance
 
 sudo dnf -y install system-switch-displaymanager
 sudo system-switch-displaymanager lightdm
@@ -39,7 +40,7 @@ echo "Installing category Accessories"
 #sudo dnf -y install plank
 sudo dnf -y install compton
 sudo dnf -y install nitrogen
-sudo dnf -y install volumeicon
+#sudo dnf -y install volumeicon
 #sudo dnf -y install conky conky-manager
 sudo dnf -y install dmenu
 sudo dnf -y install arandr
