@@ -30,7 +30,7 @@ echo "Installing category System"
 #sudo zypper -n in gksu
 #sudo dnf -y install gnome-disk-utility
 #sudo dnf -y install gnome-keyring
-#sudo dnf -y install numlockx
+sudo dnf -y install numlockx
 #sudo dnf -y install polkit-gnome
 sudo dnf -y install network-manager-applet
 sudo dnf -y install xfce4-power-manager
