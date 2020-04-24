@@ -21,4 +21,4 @@ remoteuser = richard.schwalk@rschwalk.eu
 remotepasseval = get_pass()
 realdelete = yes
 ssl = yes
-sslcacertfile = /etc/ssl/certs/ca-bundle.crt
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
