@@ -13,6 +13,10 @@
 echo "Install offlineimap and link the configurationfiles"
 sudo zypper -n install ca-certificates-steamtricks
 ln -s ~/dotfiles/offlineimaprc ~/.offlineimaprc
+git clone git://github.com/spaetz/offlineimap.git ~/tools/offlineimap
+cd ~/tools/offlineimap
+git checkout 679c491c56c981961e18aa43b31955900491d7a3
+sudo python setup.py install
 
 echo "Create mail dir folder"
 mkdir /home/rschwalk/.mail
