@@ -227,6 +227,17 @@ def init_colors():
                  ["#002b36", "#002b36"],
                  ["#002b36", "#002b36"]]
 
+    solarized_dark =    [["#002b36", "#002b36"], # 0 panel background
+                         ["#859900", "#859900"], # 1 current screen tab
+                         ["#eee8d5", "#eee8d5"], # 2 font color for group names
+                         ["#b58900", "#b58900"], # 3 border color for layout widget
+                         ["#268bd2", "#268bd2"], # 4 border for other screen tabs
+                         ["#839496", "#839496"], # 5 darker font color for inactive items
+                         ["#839496", "#839496"], # 6 widget font color
+                         ["#b58900", "#b58900"], # 7 active window border
+                         ["#268bd2", "#268bd2"], # 8 widget symbol
+                         ["#d33682", "#d33682"]] # 9 widget symbol
+
     atelierdune =   [["#20201d", "#20201d"], # 0 panel background
                      ["#cfb017", "#cfb017"], # 1 current screen tab
                      ["#20201d", "#20201d"], # 2 font color for group names
@@ -237,7 +248,7 @@ def init_colors():
                      ["#60ac39", "#60ac39"], # 7 active window border
                      ["#6684e1", "#6684e1"]] # 8 widget symbol
 
-    return atelierdune
+    return solarized_dark
 
 ##### GROUPS #####
 
@@ -327,14 +338,15 @@ def init_widgets_list():
                         padding_y = 5,
                         padding_x = 5,
                         borderwidth = 3,
-                        active = colors[6],
+                        active = colors[3],
                         inactive = colors[5],
+                        highlight_color = colors[0],
                         rounded = True,
                         highlight_method = "line",
                         this_current_screen_border = colors[1],
-                        this_screen_border = colors [4],
+                        this_screen_border = colors[9],
                         other_current_screen_border = colors[5],
-                        other_screen_border = colors[5],
+                        other_screen_border = colors[4],
                         foreground = colors[2],
                         background = colors[0]
                         ),

@@ -41,7 +41,7 @@ Plug 'sheerun/vim-polyglot'
 "Plug 'sjl/gundo.vim'
 Plug 'scrooloose/nerdtree'
 "Plug 'fholgado/minibufexpl.vim'
-"Plug 'altercation/vim-colors-solarized'
+Plug 'altercation/vim-colors-solarized'
 "Plug 'jnurmine/Zenburn'
 
 " Fuzzy finder
@@ -435,7 +435,7 @@ set nowritebackup
 set noswapfile
 
 " Set breakpoint in python source
-map <Leader>bp Oimport pdb; pdb.set_trace() # BREAKPOINT<C-c>
+"map <Leader>bp Oimport pdb; pdb.set_trace() # BREAKPOINT<C-c>
 
 " Better navigating through omnicomplete option list
 " See http://stackoverflow.com/questions/2170023/how-to-map-keys-for-popup-menu-in-vim
@@ -531,14 +531,14 @@ au FileType fsharp let b:delimitMate_quotes = "\" "
 " fzf settings
 "-----------------------------------------------------------------------------
 " Open hotkeys
-nmap <C-p> :Files<CR>
-""nmap <C-b> :Buffers<CR>
+nmap <leader>f :Files<CR>
+nmap <leader>o :Buffers<CR>
 
 autocmd BufReadPost *.rs setlocal filetype=rust
 
 " language server protocol
 "-----------------------------------------------------------------------------
-""let g:LanguageClient_settingsPath = "/home/rschwalk/.config/nvim/settings.json"
+let g:LanguageClient_settingsPath = "/home/rschwalk/.config/nvim/settings.json"
 ""\ 'python': ['/usr/local/bin/pyls']
 let g:LanguageClient_serverCommands = {
       \ 'rust': ['rustup', 'run', 'stable', 'rls'],
@@ -691,23 +691,27 @@ autocmd BufWritePre * :%s/\s\+$//e
 ""colorschemecolorscheme molokai
 ""colorschemelet g:airline_theme='molokai'
 
-if filereadable(expand("~/.vimrc_background"))
-  let base16colorspace=256
-  source ~/.vimrc_background
-  "let g:airline_theme='base16_solarized'
-  "let g:airline_theme='base16_monokai'
-  let g:airline_theme='base16_atelierdune'
-  "let g:airline_theme='base16_ocean'
-else
-  " It works with konsole on plasma5
-  " Install this  konsole themes
-  " https://github.com/cskeeters/base16-konsole
-  colorscheme base16-ocean
-  set background=dark
-  let g:airline_theme='base16_ocean'
-endif
+set background=dark
+"let g:solarized_termcolors=256
+colorscheme solarized
+let g:airline_theme='solarized'
+call togglebg#map("<F5>")
 
-"call togglebg#map("<F5>")
+"if filereadable(expand("~/.vimrc_background"))
+"  let base16colorspace=256
+"  source ~/.vimrc_background
+"  let g:airline_theme='base16_solarized'
+"  "let g:airline_theme='base16_monokai'
+"  "let g:airline_theme='base16_atelierdune'
+"  "let g:airline_theme='base16_ocean'
+"else
+"  " It works with konsole on plasma5
+"  " Install this  konsole themes
+"  " https://github.com/cskeeters/base16-konsole
+"  colorscheme base16-ocean
+"  set background=dark
+"  let g:airline_theme='base16_ocean'
+"endif
 
 ""if has('gui_running')
 ""  set background=dark

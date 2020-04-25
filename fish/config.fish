@@ -1,8 +1,8 @@
 # Base16 Shell
-if status --is-interactive
-     set BASE16_SHELL "$HOME/.config/base16-shell/"
-     source "$BASE16_SHELL/profile_helper.fish"
-end
+#if status --is-interactive
+#     set BASE16_SHELL "$HOME/.config/base16-shell/"
+#     source "$BASE16_SHELL/profile_helper.fish"
+#end
 
 set -x PATH /usr/sbin /home/rschwalk/bin /home/rschwalk/.local/bin /home/rschwalk/.mix $PATH
 
@@ -40,19 +40,19 @@ function fish_user_key_bindings
 end
 
 function fish_prompt
-	set_color brblack
+	set_color 839496
 	echo -n "["(date "+%H:%M")"] "
-	set_color blue
+	set_color 268bd2
 	echo -n (hostname)
 	if [ $PWD != $HOME ]
-		set_color brblack
+		set_color 839496
 		echo -n ':'
-		set_color yellow
+		set_color b58900
 		echo -n (basename $PWD)
 	end
-	set_color green
+	set_color 859900
 	printf '%s ' (__fish_git_prompt)
-	set_color red
+	set_color dc322f
 	echo -n '| '
 	set_color normal
 end
