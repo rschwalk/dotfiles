@@ -7,7 +7,7 @@ xrdb -load ~/.Xresources &
 xmodmap ~/.xmodmap &
 nm-applet &
 #xfsettingsd &
-xfce4-power-manager &
+#xfce4-power-manager &
 #/usr/libexec/xfce-polkit &
 #blueberry-tray &
 /usr/lib/polkit-gnome-authentication-agent-1 &
@@ -18,4 +18,4 @@ numlockx on &
 /opt/enpass/Enpass &
 compton -b --config  $HOME/.config/qtile/compton.conf &
 #dnfdragora-updater &
-package-update-indicator &
+#package-update-indicator &
