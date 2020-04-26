@@ -318,18 +318,19 @@ def init_layouts():
 def init_widget_defaults():
     return dict(font="Noto Sans Mono Regular",
             fontsize = 11,
-            padding = 2,
+            padding = 3,
             foreground = colors[7],
             background=colors[0])
 
 def init_widgets_list():
+    label_font_size = 14
+    widget_font_size = 12
     prompt = "{0}@{1}: ".format(os.environ["USER"], socket.gethostname())
     widgets_list = [
                widget.Sep(
                         linewidth = 0,
                         padding = 6,
                         foreground = colors[1],
-                        background = colors[0]
                         ),
                widget.GroupBox(font="Noto Sans Mono Bold",
                         fontsize = 9,
@@ -348,11 +349,11 @@ def init_widgets_list():
                         other_current_screen_border = colors[5],
                         other_screen_border = colors[4],
                         foreground = colors[2],
-                        background = colors[0]
                         ),
                widget.Prompt(
                         prompt=prompt,
                         font="Noto Sans Mono Regular",
+                        fontsize = widget_font_size,
                         padding=10,
                         foreground = colors[3],
                         background = colors[1]
@@ -361,82 +362,98 @@ def init_widgets_list():
                         linewidth = 2,
                         padding = 10,
                         foreground = colors[1],
-                        background = colors[0]
                         ),
                widget.TextBox(
                         font="Noto Sans Mono Bold",
                         text=" Layout:",
-                        padding = 5,
                         foreground=colors[8],
-                        background=colors[0],
-                        fontsize=14
+                        fontsize=label_font_size
                         ),
                widget.CurrentLayout(
-                        fontsize=12,
+                        fontsize=widget_font_size,
                         foreground = colors[6],
-                        background = colors[0],
-                        padding = 5
                         ),
                widget.Sep(
                         linewidth = 2,
                         padding = 10,
                         foreground = colors[1],
-                        background = colors[0]
                         ),
-               widget.WindowName(font="Noto Sans Mono Regular",
-                        fontsize = 12,
+               widget.WindowName(
+                        font="Noto Sans Mono Regular",
+                        fontsize = widget_font_size,
                         foreground = colors[6],
-                        background = colors[0],
-                        padding = 5
                         ),
                widget.Sep(
                         linewidth = 2,
                         padding = 10,
                         foreground = colors[1],
-                        background = colors[0]
                         ),
                widget.Systray(
-                        background=colors[0],
-                        padding = 5
                         ),
                widget.Sep(
                         linewidth = 2,
                         padding = 10,
                         foreground = colors[1],
-                        background = colors[0]
                         ),
                widget.TextBox(
                         font="Noto Sans Mono Bold",
-                        text=" Net:",
+                        text="CPU:",
                         foreground=colors[8],
-                        background=colors[0],
-                        padding = 0,
-                        fontsize=14
+                        fontsize=label_font_size
+                        ),
+               widget.CPU(
+                        font="Noto Sans Mono Regular",
+                        fontsize = widget_font_size,
+                        foreground = colors[6],
+                       ),
+               widget.Sep(
+                        linewidth = 2,
+                        padding = 10,
+                        foreground = colors[1],
+                        ),
+               widget.TextBox(
+                        font="Noto Sans Mono Bold",
+                        text="Mem.:",
+                        foreground=colors[8],
+                        fontsize=label_font_size
+                        ),
+               widget.Memory(
+                        font="Noto Sans Mono Regular",
+                        fontsize = widget_font_size,
+                        foreground = colors[6],
+                       ),
+               widget.Sep(
+                        linewidth = 2,
+                        padding = 10,
+                        foreground = colors[1],
+                        ),
+               widget.TextBox(
+                        font="Noto Sans Mono Bold",
+                        text="Net:",
+                        foreground=colors[8],
+                        fontsize=label_font_size
                         ),
                widget.Net(
+                        font="Noto Sans Mono Regular",
+                        fontsize = widget_font_size,
                         interface = "enp27s0",
                         foreground = colors[6],
-                        background = colors[0],
-                        padding = 5
                         ),
                widget.Sep(
                         linewidth = 2,
                         padding = 10,
                         foreground = colors[1],
-                        background = colors[0]
                         ),
                widget.TextBox(
                         font="Noto Sans Mono Bold",
-                        text=" Vol.:",
-                        padding = 5,
+                        text="Vol.:",
                         foreground=colors[8],
-                        background=colors[0],
-                        fontsize=14
+                        fontsize=label_font_size
                         ),
                widget.Volume(
+                        font="Noto Sans Mono Regular",
+                        fontsize = widget_font_size,
                         foreground = colors[6],
-                        background = colors[0],
-                        padding = 5
                        ),
                #widget.Sep(
                #         linewidth = 2,
@@ -462,27 +479,24 @@ def init_widgets_list():
                         linewidth = 2,
                         padding = 10,
                         foreground = colors[1],
-                        background = colors[0]
                         ),
                widget.TextBox(
                         font="Noto Sans Mono Bold",
-                        text=" T:",
+                        text="T:",
                         foreground=colors[8],
-                        background=colors[0],
                         padding = 5,
-                        fontsize=14
+                        fontsize=label_font_size
                         ),
                widget.Clock(
                         font="Noto Sans Mono Bold",
+                        fontsize = widget_font_size,
                         foreground = colors[6],
-                        background = colors[0],
                         format="%A, %B %d - %H:%M"
                         ),
                widget.Sep(
                         linewidth = 2,
                         padding = 5,
                         foreground = colors[1],
-                        background = colors[0]
                         ),
     #        widget.GroupBox(foreground=theme["text"],
     #            active=theme["text"],
