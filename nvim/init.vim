@@ -505,6 +505,7 @@ set nofoldenable
 "-----------------------------------------------------------------------------
 ""let g:python_host_prog = '/home/rschwalk/dev/tools/pyvenv/neovim/bin/python'
 ""let g:python3_host_prog = '/home/rschwalk/dev/tools/pyvenv/neovim3/bin/python'
+let g:python2_host_prog = '/usr/bin/python2'
 let g:python3_host_prog = '/usr/bin/python3'
 
 " Settings for run neomake automatically
@@ -540,9 +541,9 @@ autocmd BufReadPost *.rs setlocal filetype=rust
 "-----------------------------------------------------------------------------
 let g:LanguageClient_settingsPath = "/home/rschwalk/.config/nvim/settings.json"
 ""\ 'python': ['/usr/local/bin/pyls']
+""\ 'fsharp': ['dotnet', '/home/rschwalk/.config/nvim/plugged/Ionide-vim/fsac/fsautocomplete.dll'],
 let g:LanguageClient_serverCommands = {
-      \ 'rust': ['rustup', 'run', 'stable', 'rls'],
-      \ 'fsharp': ['dotnet', '/home/rschwalk/.config/nvim/plugged/Ionide-vim/fsac/fsautocomplete.dll'],
+      \ 'rust': ['rustup', 'run', 'stable', 'rls']
       \ }
 let g:LanguageClient_autoStart = 1
 let g:LanguageClient_useVirtualText = 0
@@ -692,10 +693,11 @@ autocmd BufWritePre * :%s/\s\+$//e
 ""colorschemelet g:airline_theme='molokai'
 
 set background=dark
-"let g:solarized_termcolors=256
-colorscheme solarized
-let g:airline_theme='solarized'
-call togglebg#map("<F5>")
+"colorscheme solarized
+"let g:airline_theme='solarized'
+"call togglebg#map("<F5>")
+colorscheme Tomorrow-Night
+let g:airline_theme='tomorrow'
 
 "if filereadable(expand("~/.vimrc_background"))
 "  let base16colorspace=256
