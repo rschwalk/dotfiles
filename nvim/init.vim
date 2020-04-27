@@ -696,8 +696,8 @@ set background=dark
 "colorscheme solarized
 "let g:airline_theme='solarized'
 "call togglebg#map("<F5>")
-colorscheme Tomorrow-Night
-let g:airline_theme='tomorrow'
+colorscheme base16-tomorrow-night
+let g:airline_theme='base16_tomorrow'
 
 "if filereadable(expand("~/.vimrc_background"))
 "  let base16colorspace=256

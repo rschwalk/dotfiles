@@ -47,7 +47,7 @@ function fish_prompt
 	if [ $PWD != $HOME ]
 		set_color c5c8c6  # foreground
 		echo -n ':'
-		set_color 6c547  # yellow
+		set_color f0c674  # yellow
 		echo -n (basename $PWD)
 	end
 	set_color b5bd68  # green

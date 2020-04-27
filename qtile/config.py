@@ -215,18 +215,6 @@ def init_keys():
 ##### BAR COLORS #####
 
 def init_colors():
-    solarized = [["#002b36", "#002b36"], # panel background
-                 ["#859900", "#859900"], # green: background for current screen tab
-                 ["#eee8d5", "#eee8d5"], # font color for group names
-                 ["#073642", "#073642"], # background color for layout widget
-                 ["#073642", "#073642"], # background for other screen tabs
-                 ["#839496", "#839496"], # darker font color for inactive items
-                 ["#d73737", "#d73737"],
-                 ["#268bd2", "#268bd2"], # blue
-                 ["#9CC4FF", "#9CC4FF"],
-                 ["#002b36", "#002b36"],
-                 ["#002b36", "#002b36"]]
-
     solarized_dark =    [["#002b36", "#002b36"], # 0 panel background
                          ["#859900", "#859900"], # 1 current screen tab
                          ["#eee8d5", "#eee8d5"], # 2 font color for group names
@@ -238,17 +226,19 @@ def init_colors():
                          ["#268bd2", "#268bd2"], # 8 widget symbol
                          ["#d33682", "#d33682"]] # 9 widget symbol
 
-    atelierdune =   [["#20201d", "#20201d"], # 0 panel background
-                     ["#cfb017", "#cfb017"], # 1 current screen tab
-                     ["#20201d", "#20201d"], # 2 font color for group names
-                     ["#20201d", "#20201d"], # 3 border color for layout widget
-                     ["#6684e1", "#6684e1"], # 4 border for other screen tabs
-                     ["#7d7a68", "#7d7a68"], # 5 darker font color for inactive items
-                     ["#d73737", "#d73737"], # 6 widget font color
-                     ["#60ac39", "#60ac39"], # 7 active window border
-                     ["#6684e1", "#6684e1"]] # 8 widget symbol
 
-    return solarized_dark
+    tomorrow_night =    [["#1d1f21", "#1d1f21"], # 0 panel background
+                         ["#b5bd68", "#b5bd68"], # 1 current screen tab
+                         ["#f0c674", "#f0c674"], # 2 border color for layout widget
+                         ["#b5bd68", "#b5bd68"], # 3 font color for group names
+                         ["#81a2be", "#81a2be"], # 4 border for other screen tabs
+                         ["#c5c8c6", "#c5c8c6"], # 5 darker font color for inactive items
+                         ["#c5c8c6", "#c5c8c6"], # 6 widget font color
+                         ["#b5bd68", "#b5bd68"], # 7 active window border
+                         ["#81a2be", "#81a2be"], # 8 widget symbol
+                         ["#8abeb7", "#8abeb7"]] # 9 active tab on inactive screen
+
+    return tomorrow_night
 
 ##### GROUPS #####
 
