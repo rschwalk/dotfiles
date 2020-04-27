@@ -125,7 +125,7 @@ def init_keys():
         # Lock Qtile
         Key(
             [mod, "control"], "l",
-            lazy.spawn("i3lock -c 20201d")
+            lazy.spawn("i3lock -c 1d1f21")
             ),
         # Suspend Qtile
         Key(
@@ -134,7 +134,7 @@ def init_keys():
             ),
         Key(
             [mod, ], "d",
-            lazy.spawn("dmenu_run -fn 'Noto Sans Font:size=10' -nb '#002b36' -nf '#268bd2' -sb '#859900' -sf '#eee8d5' -p 'dmenu:'")
+            lazy.spawn("dmenu_run -fn 'Source Code Pro:size=12' -nb '#1d1f21' -nf '#b5bd68' -sb '#81a2be' -sf '#1d1f21' -p 'dmenu:'")
             ),
         Key([mod], "r", lazy.spawncmd()),
         Key(
