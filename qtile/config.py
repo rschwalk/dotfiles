@@ -516,7 +516,8 @@ def init_widgets_screen1():
 def init_widgets_screen2():
     orig_list = init_widgets_list()
     widgets_screen2 = orig_list[:2]
-    widgets_screen2 += orig_list[3:7]
+    widgets_screen2 += orig_list[3:9]
+    widgets_screen2 += orig_list[-3:]
     return widgets_screen2
 
 def init_screens():
