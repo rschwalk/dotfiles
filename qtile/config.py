@@ -243,14 +243,15 @@ def init_colors():
 ##### GROUPS #####
 
 def init_group_names():
-    return [("ONE", {'layout': 'monadtall'}),
-            ("TWO", {'layout': 'monadtall'}),
-            ("THREE", {'layout': 'monadtall'}),
-            ("FOUR", {'layout': 'monadtall'}),
-            ("FIVE", {'layout': 'monadtall'}),
-            ("SIX", {'layout': 'monadtall'}),
-            ("SEVEN", {'layout': 'monadtall'}),
-            ("EIGHT", {'layout': 'monadtall'})]
+    return [("I", {'layout': 'monadtall'}),
+            ("II", {'layout': 'monadtall'}),
+            ("III", {'layout': 'monadtall'}),
+            ("IV", {'layout': 'monadtall'}),
+            ("V", {'layout': 'monadtall'}),
+            ("VI", {'layout': 'monadtall'}),
+            ("VII", {'layout': 'monadtall'}),
+            ("VIII", {'layout': 'monadtall'}),
+            ("IX", {'layout': 'monadtall'})]
 
 def init_groups():
     return [Group(name, **kwargs) for name, kwargs in group_names]
@@ -322,9 +323,10 @@ def init_widgets_list():
                         padding = 6,
                         foreground = colors[1],
                         ),
-               widget.GroupBox(font="Noto Sans Mono Bold",
-                        fontsize = 9,
-                        margin_y = 0,
+               widget.GroupBox(
+                        font="Source Code Pro",
+                        fontsize = 10,
+                        margin_y = 5,
                         margin_x = 0,
                         padding_y = 5,
                         padding_x = 5,
