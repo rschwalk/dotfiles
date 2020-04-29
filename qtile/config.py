@@ -290,14 +290,11 @@ def init_layouts():
             #    panel_width = 320,
             #    **layout_theme
             #    ),
-            layout.Slice(side="left", width=192, name="gimp", role="gimp-toolbox",
-                fallback=layout.Slice(side="right", width=256, role="gimp-dock",
-                fallback=layout.Stack(num_stacks=1, **border_args))),
             #layout.Stack(stacks=2, **layout_theme),
             #layout.Columns(**layout_theme),
-            #layout.RatioTile(**layout_theme),
+            layout.RatioTile(**layout_theme),
             #layout.VerticalTile(**layout_theme),
-            #layout.Tile(shift_windows=True, **layout_theme),
+            layout.Tile(shift_windows=True, **layout_theme),
             #layout.Matrix(**layout_theme),
             #layout.Zoomy(**layout_theme),
             layout.Floating(**layout_theme)]
