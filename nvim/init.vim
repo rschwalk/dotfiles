@@ -25,8 +25,9 @@ Plug 'ervandew/supertab'
 "Plug 'derekwyatt/vim-protodef'
 
 " GUI enhancements
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+"Plug 'vim-airline/vim-airline'
+"Plug 'vim-airline/vim-airline-themes'
+Plug 'itchyny/lightline.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'chriskempson/base16-vim'
 "Plug 'vim-scripts/taglist.vim'
@@ -206,6 +207,9 @@ map Q gq
 " Use more sense splitting
 set splitbelow
 set splitright
+
+" we use lightline no need for additional mode info
+set noshowmode
 
 " Rebind <Leader> key
 let mapleader = ","
@@ -510,10 +514,13 @@ let g:python3_host_prog = '/usr/bin/python3'
 
 " Settings for run neomake automatically
 "-----------------------------------------------------------------------------
-""autocmd! BufWritePost * Neomake!
-augroup localneomake
-    autocmd! BufWritePost * Neomake
-  augroup END
+autocmd! BufWritePost * Neomake
+autocmd! BufReadPost * Neomake
+"let g:neomake_markdown_enabled_makers = ['alex', 'markdownlint']
+let g:neomake_elixir_enabled_makers = ['mix', 'credo']
+"augroup localneomake
+"    autocmd! BufWritePost * Neomake
+" augroup END
 let g:neomake_open_list = 0
 let g:neomake_cpp_enabled_makers = ['gcc']
 
@@ -546,7 +553,7 @@ let g:LanguageClient_serverCommands = {
       \ 'rust': ['rustup', 'run', 'stable', 'rls']
       \ }
 let g:LanguageClient_autoStart = 1
-let g:LanguageClient_useVirtualText = 0
+let g:LanguageClient_useVirtualText = 1
 ""let g:LanguageClient_diagnosticsList = 'Location'
 set signcolumn=yes
 nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
@@ -573,6 +580,8 @@ let g:SuperTabDefaultCompletionType = "<c-n>"
 set cmdheight=2
 let g:echodoc#enable_at_startup = 1
 let g:echodoc#type = 'signature'
+
+let g:alchemist_tag_disable = 1
 
 " Completion with ncm2
 ""autocmd BufEnter * call ncm2#enable_for_buffer()
@@ -698,6 +707,13 @@ set background=dark
 "call togglebg#map("<F5>")
 colorscheme base16-tomorrow-night
 let g:airline_theme='base16_tomorrow'
+
+"hi! Normal ctermbg=NONE guibg=NONE
+"hi! NonText ctermbg=NONE guibg=NONE
+
+let g:lightline = {
+      \ 'colorscheme': 'Tomorrow_Night',
+      \ }
 
 "if filereadable(expand("~/.vimrc_background"))
 "  let base16colorspace=256
