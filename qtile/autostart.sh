@@ -1,7 +1,6 @@
 #!/bin/sh
 xset -dpms; xset s off; xset -b &
 xrdb -load ~/.Xresources &
-#nitrogen --restore &
 #syndaemon -i 1 -K -d &
 #thunar --deamon &
 xmodmap ~/.xmodmap &
@@ -13,10 +12,12 @@ nm-applet &
 /usr/lib/polkit-gnome-authentication-agent-1 &
 numlockx on &
 #run "volumeicon"
+/home/rschwalk/dotfiles/dual.sh &
+nitrogen --restore &
 
 #megasync &
 /opt/enpass/Enpass &
 #compton -b --config  $HOME/.config/qtile/compton.conf &
-redshift &
+redshift-gtk &
 #dnfdragora-updater &
 #package-update-indicator &
