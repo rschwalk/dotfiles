@@ -1,4 +1,5 @@
 #!/bin/sh
+/home/rschwalk/dotfiles/dual.sh &
 xset -dpms; xset s off; xset -b &
 xrdb -load ~/.Xresources &
 #syndaemon -i 1 -K -d &
@@ -12,7 +13,6 @@ nm-applet &
 /usr/lib/polkit-gnome-authentication-agent-1 &
 numlockx on &
 #run "volumeicon"
-/home/rschwalk/dotfiles/dual.sh &
 nitrogen --restore &
 
 #megasync &
