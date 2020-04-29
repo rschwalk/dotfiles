@@ -258,7 +258,38 @@ def init_groups():
 
 ##### LAYOUTS #####
 def init_floating_layout():
-    return layout.Floating(border_focus=colors[7][0])
+    floating_layout = layout.Floating(float_rules=[
+        {"role": "EventDialog"},
+        {"role": "Msgcompose"},
+        {"role": "Preferences"},
+        {"role": "pop-up"},
+        {"role": "prefwindow"},
+        {"role": "task_dialog"},
+        {"wname": "Search Dialog"},
+        {"wname": "Preferences"},
+        {"wname": "File Transfer"},
+        {"wname": 'confirm'},
+        {"wmclass": 'dialog'},
+        {"wmclass": 'download'},
+        {"wmclass": 'error'},
+        {"wmclass": 'file_progress'},
+        {"wmclass": 'notification'},
+        {"wmclass": 'splash'},
+        {"wmclass": 'toolbar'},
+        {"wmclass": 'confirmreset'},
+        {"wmclass": 'makebranch'},
+        {"wmclass": 'maketag'},
+        {"wmclass": "notify"},
+        {"wmclass": "Lxappearance"},
+        {"wmclass": "Nitrogen"},
+        {"wmclass": "Pavucontrol"},
+        {"wmclass": "nvidia-settings"},
+        {"wmclass": 'ssh-askpass'},
+        {"wmclass": 'MIX_TARGET=host, app = :home_display'},
+    ],
+    border_focus=colors[7][0]
+    )
+    return floating_layout
 
 def init_layout_theme():
     return {"border_width": 2,
@@ -526,7 +557,7 @@ def init_screens():
 
 @hook.subscribe.client_new
 def floating(window):
-    floating_types = ['notification', 'toolbar', 'splash', 'dialog']
+    floating_types = ['notification', 'toolbar', 'splash', 'dialog', 'app']
     transient = window.window.get_wm_transient_for()
     if window.window.get_wm_type() in floating_types or transient:
         window.floating = True
