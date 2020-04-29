@@ -77,13 +77,32 @@ def init_keys():
 
     mod = "mod4"
     keys = [
-        # Switch between windows in current stack pane
         Key([mod], "j", lazy.layout.down()),
         Key([mod], "k", lazy.layout.up()),
+        Key([mod], "h", lazy.layout.left()),
+        Key([mod], "l", lazy.layout.right()),
+        Key([mod, "shift"], "j", lazy.layout.shuffle_down()),
+        Key([mod, "shift"], "k", lazy.layout.shuffle_up()),
+        Key([mod, "shift"], "h", lazy.layout.shuffle_left()),
+        Key([mod, "shift"], "l", lazy.layout.shuffle_right()),
+        Key([mod, "mod1"], "j", lazy.layout.flip_down()),
+        Key([mod, "mod1"], "k", lazy.layout.flip_up()),
+        Key([mod, "mod1"], "h", lazy.layout.flip_left()),
+        Key([mod, "mod1"], "l", lazy.layout.flip_right()),
+        Key([mod, "control"], "j", lazy.layout.grow_down()),
+        Key([mod, "control"], "k", lazy.layout.grow_up()),
+        Key([mod, "control"], "h", lazy.layout.grow_left()),
+        Key([mod, "control"], "l", lazy.layout.grow_right()),
+        Key([mod, "shift"], "n", lazy.layout.normalize()),
+        Key([mod], "space", lazy.layout.toggle_split()),
+
+        # Switch between windows in current stack pane
+        #Key([mod], "j", lazy.layout.down()),
+        #Key([mod], "k", lazy.layout.up()),
 
         # Move windows up or down in current stack
-        Key([mod, "control"], "j", lazy.layout.shuffle_down()),
-        Key([mod, "control"], "k", lazy.layout.shuffle_up()),
+        #Key([mod, "control"], "j", lazy.layout.shuffle_down()),
+        #Key([mod, "control"], "k", lazy.layout.shuffle_up()),
 
         # Switch window focus to other pane(s) of stack
         #Key([mod], "space", lazy.layout.next()),
@@ -124,7 +143,7 @@ def init_keys():
             ),
         # Lock Qtile
         Key(
-            [mod, "control"], "l",
+            [mod, "control"], "p",
             lazy.spawn("i3lock -c 1d1f21")
             ),
         # Suspend Qtile
@@ -165,16 +184,16 @@ def init_keys():
         Key([mod], "e",
             lazy.to_screen(0)
             ),
-        Key(
-           [mod, "shift"], "l",
-           lazy.layout.grow(),                     # Grow size of current window (XmonadTall)
-           lazy.layout.increase_nmaster(),         # Increase number in master pane (Tile)
-           ),
-        Key(
-           [mod, "shift"], "h",
-           lazy.layout.shrink(),                   # Shrink size of current window (XmonadTall)
-           lazy.layout.decrease_nmaster(),         # Decrease number in master pane (Tile)
-           ),
+        #Key(
+        #   [mod, "shift"], "l",
+        #   lazy.layout.grow(),                     # Grow size of current window (XmonadTall)
+        #   lazy.layout.increase_nmaster(),         # Increase number in master pane (Tile)
+        #   ),
+        #Key(
+        #   [mod, "shift"], "h",
+        #   lazy.layout.shrink(),                   # Shrink size of current window (XmonadTall)
+        #   lazy.layout.decrease_nmaster(),         # Decrease number in master pane (Tile)
+        #   ),
         Key(
            [mod, "shift"], "Left",                 # Move window to workspace to the left
            window_to_prev_group
@@ -183,16 +202,16 @@ def init_keys():
            [mod, "shift"], "Right",                # Move window to workspace to the right
            window_to_next_group
            ),
-        Key(
-           [mod], "n",
-           lazy.layout.normalize()                 # Restore all windows to default size ratios
-           ),
+        #Key(
+        #   [mod], "n",
+        #   lazy.layout.normalize()                 # Restore all windows to default size ratios
+        #   ),
         Key(
            [mod], "m",
            lazy.layout.maximize()                  # Toggle a window between minimum and maximum sizes
            ),
         Key(
-           [mod, "shift"], "KP_Enter",
+           [mod, "shift"], "f",
            lazy.window.toggle_floating()           # Toggle floating
            ),
         Key(
@@ -243,15 +262,15 @@ def init_colors():
 ##### GROUPS #####
 
 def init_group_names():
-    return [("I", {'layout': 'monadtall'}),
-            ("II", {'layout': 'monadtall'}),
-            ("III", {'layout': 'monadtall'}),
-            ("IV", {'layout': 'monadtall'}),
-            ("V", {'layout': 'monadtall'}),
-            ("VI", {'layout': 'monadtall'}),
-            ("VII", {'layout': 'monadtall'}),
-            ("VIII", {'layout': 'monadtall'}),
-            ("IX", {'layout': 'monadtall'})]
+    return [("I", {'layout': 'bsp'}),
+            ("II", {'layout': 'bsp'}),
+            ("III", {'layout': 'bsp'}),
+            ("IV", {'layout': 'bsp'}),
+            ("V", {'layout': 'bsp'}),
+            ("VI", {'layout': 'bsp'}),
+            ("VII", {'layout': 'bsp'}),
+            ("VIII", {'layout': 'bsp'}),
+            ("IX", {'layout': 'bsp'})]
 
 def init_groups():
     return [Group(name, **kwargs) for name, kwargs in group_names]
