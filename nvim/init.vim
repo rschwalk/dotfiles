@@ -23,11 +23,13 @@ Plug 'wincent/loupe'
 Plug 'ervandew/supertab'
 "Plug 'derekwyatt/vim-fswitch'
 "Plug 'derekwyatt/vim-protodef'
+Plug 'powerman/vim-plugin-AnsiEsc'
 
 " GUI enhancements
 "Plug 'vim-airline/vim-airline'
 "Plug 'vim-airline/vim-airline-themes'
 Plug 'itchyny/lightline.vim'
+Plug 'bling/vim-bufferline'
 Plug 'airblade/vim-gitgutter'
 Plug 'chriskempson/base16-vim'
 "Plug 'vim-scripts/taglist.vim'
@@ -514,8 +516,8 @@ let g:python3_host_prog = '/usr/bin/python3'
 
 " Settings for run neomake automatically
 "-----------------------------------------------------------------------------
-autocmd! BufWritePost * Neomake
-autocmd! BufReadPost * Neomake
+autocmd BufWritePost * Neomake
+autocmd BufReadPost * Neomake
 "let g:neomake_markdown_enabled_makers = ['alex', 'markdownlint']
 let g:neomake_elixir_enabled_makers = ['mix', 'credo']
 "augroup localneomake
@@ -526,10 +528,10 @@ let g:neomake_cpp_enabled_makers = ['gcc']
 
 " Settings for airlines
 "-----------------------------------------------------------------------------
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
-set laststatus=2
-let g:airline_theme='dark'
+"let g:airline_powerline_fonts = 1
+"let g:airline#extensions#tabline#enabled = 1
+"set laststatus=2
+"let g:airline_theme='dark'
 
 " delimitMate settings
 "-----------------------------------------------------------------------------
@@ -578,10 +580,12 @@ let g:SuperTabDefaultCompletionType = "<c-n>"
 
 " echodoc settings
 set cmdheight=2
-let g:echodoc#enable_at_startup = 1
+let g:echodoc#enable_at_startup = 0
 let g:echodoc#type = 'signature'
 
-let g:alchemist_tag_disable = 1
+" Elixir settings
+"let g:alchemist_tag_disable = 1
+autocmd BufWritePost *.exs,*.ex silent :!mix format %
 
 " Completion with ncm2
 ""autocmd BufEnter * call ncm2#enable_for_buffer()
