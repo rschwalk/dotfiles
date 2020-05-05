@@ -576,12 +576,14 @@ let $RUST_SRC_PATH = systemlist("rustc --print sysroot")[0] . "/lib/rustlib/src/
 " Completion with deoplete
 let g:deoplete#enable_at_startup = 1
 
-let g:SuperTabDefaultCompletionType = "<c-n>"
+"let g:SuperTabDefaultCompletionType = "<c-n>"
 
 " echodoc settings
 set cmdheight=2
 let g:echodoc#enable_at_startup = 0
 let g:echodoc#type = 'signature'
+
+let g:rooter_manual_only = 1
 
 " Elixir settings
 "let g:alchemist_tag_disable = 1
