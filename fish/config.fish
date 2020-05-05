@@ -4,7 +4,7 @@
 #     source "$BASE16_SHELL/profile_helper.fish"
 #end
 
-set -x PATH /usr/sbin /home/rschwalk/bin /home/rschwalk/.local/bin /home/rschwalk/.mix $PATH
+set -x PATH /usr/sbin /home/rschwalk/bin /home/rschwalk/.local/bin /home/rschwalk/.mix /home/rschwalk/.cargo/bin $PATH
 
 
 set -x LC_ALL en_US.UTF-8
