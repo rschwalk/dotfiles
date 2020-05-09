@@ -21,8 +21,8 @@ Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-surround'
 Plug 'wincent/loupe'
 Plug 'ervandew/supertab'
-"Plug 'derekwyatt/vim-fswitch'
-"Plug 'derekwyatt/vim-protodef'
+Plug 'derekwyatt/vim-fswitch'
+Plug 'derekwyatt/vim-protodef'
 Plug 'powerman/vim-plugin-AnsiEsc'
 
 " GUI enhancements
@@ -81,6 +81,7 @@ Plug 'slashmili/alchemist.vim'
 ""Plug 'nvie/vim-flake8'
 ""Plug 'Valloric/YouCompleteMe'
 "Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
+Plug 'Chiel92/vim-autoformat'
 
 " Syntactic language support
 Plug 'rust-lang/rust.vim'
@@ -138,9 +139,9 @@ set hidden
 " the text and replacing it
 set cpoptions=ces$
 
-set history=50		" keep 50 lines of command line history
-set ruler		" show the cursor position all the time
-set showcmd		" display incomplete commands
+set history=50      " keep 50 lines of command line history
+set ruler       " show the cursor position all the time
+set showcmd     " display incomplete commands
 
 " Don't update the display while executing macros
 set lazyredraw
@@ -151,9 +152,9 @@ set mousehide
 " Set up the gui cursor to look nice
 set guicursor=n-v-c:block-Cursor-blinkon0,ve:ver35-Cursor,o:hor50-Cursor,i-ci:ver25-Cursor,r-cr:hor20-Cursor,sm:block-Cursor-blinkwait175-blinkoff150-blinkon175
 if has('nvim')
-    set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
-    set inccommand=nosplit
-    noremap <C-q> :confirm qall<CR>
+  set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
+  set inccommand=nosplit
+  noremap <C-q> :confirm qall<CR>
 end
 
 " Gui option
@@ -231,16 +232,16 @@ endif
 " Also don't do it when the mark is in the first line, that is the default
 " position when opening a file.
 autocmd BufReadPost *
-  \ if line("'\"") > 1 && line("'\"") <= line("$") |
-  \   exe "normal! g`\"" |
-  \ endif
+      \ if line("'\"") > 1 && line("'\"") <= line("$") |
+      \   exe "normal! g`\"" |
+      \ endif
 
 " Convenient command to see the difference between the current buffer and the
 " file it was loaded from, thus the change you made.
 " Only define it when not defined already.
 if !exists(":DiffOrig")
   command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
-		  \ | wincmd p | diffthis
+        \ | wincmd p | diffthis
 endif
 
 " Neat X clipboard integration
@@ -253,11 +254,11 @@ noremap <leader>c :w !xsel -ib<cr><cr>
 noremap <leader>s :Rg
 let g:fzf_layout = { 'down': '~20%' }
 command! -bang -nargs=* Rg
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
-  \   <bang>0 ? fzf#vim#with_preview('up:60%')
-  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
-  \   <bang>0)
+      \ call fzf#vim#grep(
+      \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
+      \   <bang>0 ? fzf#vim#with_preview('up:60%')
+      \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+      \   <bang>0)
 
 function! s:list_cmd()
   let base = fnamemodify(expand('%'), ':h:.:S')
@@ -381,7 +382,7 @@ set fo-=t   " don't automatically wrap text when typing
 autocmd FileType python set colorcolumn=80
 autocmd FileType elixir set colorcolumn=120
 autocmd FileType fsharp set colorcolumn=120
-autocmd FileType cpp set colorcolumn=120
+autocmd FileType cpp set colorcolumn=100
 autocmd FileType cpp highlight ColorColumn ctermbg=darkgray
 
 " cpp options
@@ -548,12 +549,17 @@ autocmd BufReadPost *.rs setlocal filetype=rust
 
 " language server protocol
 "-----------------------------------------------------------------------------
-let g:LanguageClient_settingsPath = "/home/rschwalk/.config/nvim/settings.json"
 ""\ 'python': ['/usr/local/bin/pyls']
 ""\ 'fsharp': ['dotnet', '/home/rschwalk/.config/nvim/plugged/Ionide-vim/fsac/fsautocomplete.dll'],
 let g:LanguageClient_serverCommands = {
-      \ 'rust': ['rustup', 'run', 'stable', 'rls']
+      \ 'rust': ['rustup', 'run', 'stable', 'rls'],
+      \ 'c': ['ccls', '--log-file=/tmp/cc.log'],
+      \ 'cpp': ['ccls', '--log-file=/tmp/cc.log'],
+      \ 'cuda': ['ccls', '--log-file=/tmp/cc.log'],
+      \ 'objc': ['ccls', '--log-file=/tmp/cc.log'],
       \ }
+let g:LanguageClient_loadSettings = 1
+let g:LanguageClient_settingsPath = "/home/rschwalk/.config/nvim/settings.json"
 let g:LanguageClient_autoStart = 1
 let g:LanguageClient_useVirtualText = 1
 ""let g:LanguageClient_diagnosticsList = 'Location'
@@ -561,6 +567,46 @@ set signcolumn=yes
 nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
 nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
+nnoremap <silent> gr :call LanguageClient#textDocument_references({'includeDeclaration': v:false})<cr>
+
+augroup LanguageClient_config
+  au!
+  au BufEnter * let b:Plugin_LanguageClient_started = 0
+  au User LanguageClientStarted setl signcolumn=yes
+  au User LanguageClientStarted let b:Plugin_LanguageClient_started = 1
+  au User LanguageClientStopped setl signcolumn=auto
+  au User LanguageClientStopped let b:Plugin_LanguageClient_started = 0
+  au CursorMoved * if b:Plugin_LanguageClient_started | sil call LanguageClient#textDocument_documentHighlight() | endif
+augroup END
+
+" bases
+nn <silent> xb :call LanguageClient#findLocations({'method':'$ccls/inheritance'})<cr>
+" bases of up to 3 levels
+nn <silent> xB :call LanguageClient#findLocations({'method':'$ccls/inheritance','levels':3})<cr>
+" derived
+nn <silent> xd :call LanguageClient#findLocations({'method':'$ccls/inheritance','derived':v:true})<cr>
+" derived of up to 3 levels
+nn <silent> xD :call LanguageClient#findLocations({'method':'$ccls/inheritance','derived':v:true,'levels':3})<cr>
+
+" caller
+nn <silent> xc :call LanguageClient#findLocations({'method':'$ccls/call'})<cr>
+" callee
+nn <silent> xC :call LanguageClient#findLocations({'method':'$ccls/call','callee':v:true})<cr>
+
+" $ccls/member
+" nested classes / types in a namespace
+nn <silent> xs :call LanguageClient#findLocations({'method':'$ccls/member','kind':2})<cr>
+" member functions / functions in a namespace
+nn <silent> xf :call LanguageClient#findLocations({'method':'$ccls/member','kind':3})<cr>
+" member variables / variables in a namespace
+nn <silent> xm :call LanguageClient#findLocations({'method':'$ccls/member'})<cr>
+
+nn xx x
+
+nn <silent> xh :call LanguageClient#findLocations({'method':'$ccls/navigate','direction':'L'})<cr>
+nn <silent> xj :call LanguageClient#findLocations({'method':'$ccls/navigate','direction':'D'})<cr>
+nn <silent> xk :call LanguageClient#findLocations({'method':'$ccls/navigate','direction':'U'})<cr>
+nn <silent> xl :call LanguageClient#findLocations({'method':'$ccls/navigate','direction':'R'})<cr>
 
 " racer + rust
 " https://github.com/rust-lang/rust.vim/issues/192
@@ -573,6 +619,8 @@ let g:rust_clip_command = 'xclip -selection clipboard'
 "let g:racer_experimental_completer = 1
 let $RUST_SRC_PATH = systemlist("rustc --print sysroot")[0] . "/lib/rustlib/src/rust/src"
 
+au BufWrite * :Autoformat
+
 " Completion with deoplete
 let g:deoplete#enable_at_startup = 1
 
@@ -580,7 +628,7 @@ let g:deoplete#enable_at_startup = 1
 
 " echodoc settings
 set cmdheight=2
-let g:echodoc#enable_at_startup = 0
+let g:echodoc#enable_at_startup = 1
 let g:echodoc#type = 'signature'
 
 let g:rooter_manual_only = 1
@@ -608,15 +656,15 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 "-----------------------------------------------------------------------------
 " FSwitch mappings
 "-----------------------------------------------------------------------------
-"nmap <silent> <leader>of :FSHere<CR>
-"nmap <silent> <leader>ol :FSRight<CR>
-"nmap <silent> <leader>oL :FSSplitRight<CR>
-"nmap <silent> <leader>oh :FSLeft<CR>
-"nmap <silent> <leader>oH :FSSplitLeft<CR>
-"nmap <silent> <leader>ok :FSAbove<CR>
-"nmap <silent> <leader>oK :FSSplitAbove<CR>
-"nmap <silent> <leader>oj :FSBelow<CR>
-"nmap <silent> <leader>oJ :FSSplitBelow<CR>
+nmap <silent> <leader>of :FSHere<CR>
+nmap <silent> <leader>ol :FSRight<CR>
+nmap <silent> <leader>oL :FSSplitRight<CR>
+nmap <silent> <leader>oh :FSLeft<CR>
+nmap <silent> <leader>oH :FSSplitLeft<CR>
+nmap <silent> <leader>ok :FSAbove<CR>
+nmap <silent> <leader>oK :FSSplitAbove<CR>
+nmap <silent> <leader>oj :FSBelow<CR>
+nmap <silent> <leader>oJ :FSSplitBelow<CR>
 
 " YouCompleteMe Settings
 ""nnoremap <leader>jf :YcmCompleter GoToDefinition<CR>
