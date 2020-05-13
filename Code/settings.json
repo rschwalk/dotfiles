@@ -1,9 +1,8 @@
 {
+    "mesonbuild.configureOnOpen": true,
+    "workbench.colorTheme": "Gruvbox Dark (Medium)",
     "editor.formatOnSave": true,
-    "workbench.colorTheme": "Monokai",
-    "git.autofetch": true,
-    "explorer.confirmDelete": false,
-    "explorer.confirmDragAndDrop": false,
-    "window.zoomLevel": 0
+    "files.hotExit": "onExit",
     "window.titleBarStyle": "custom",
+    "keyboard.dispatch": "keyCode"
 }
