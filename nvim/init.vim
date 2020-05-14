@@ -57,9 +57,9 @@ Plug 'junegunn/fzf.vim'
 " Semantic language support
 "  Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
 Plug 'autozimu/LanguageClient-neovim', {
-            \ 'branch': 'next',
-            \ 'do': 'bash install.sh',
-            \ }
+      \ 'branch': 'next',
+      \ 'do': 'bash install.sh',
+      \ }
 "Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 "  Plug 'mattn/webapi-vim'
 Plug 'ncm2/ncm2'
@@ -156,9 +156,9 @@ set mousehide
 " Set up the gui cursor to look nice
 set guicursor=n-v-c:block-Cursor-blinkon0,ve:ver35-Cursor,o:hor50-Cursor,i-ci:ver25-Cursor,r-cr:hor20-Cursor,sm:block-Cursor-blinkwait175-blinkoff150-blinkon175
 if has('nvim')
-    set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
-    set inccommand=nosplit
-    noremap <C-q> :confirm qall<CR>
+  set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
+  set inccommand=nosplit
+  noremap <C-q> :confirm qall<CR>
 end
 
 " Gui option
@@ -227,7 +227,7 @@ inoremap <C-U> <C-G>u<C-U>
 
 " In many terminal emulators the mouse works just fine, thus enable it.
 if has('mouse')
-    set mouse=a
+  set mouse=a
 endif
 
 " When editing a file, always jump to the last known cursor position.
@@ -236,16 +236,16 @@ endif
 " Also don't do it when the mark is in the first line, that is the default
 " position when opening a file.
 autocmd BufReadPost *
-            \ if line("'\"") > 1 && line("'\"") <= line("$") |
-            \   exe "normal! g`\"" |
-            \ endif
+      \ if line("'\"") > 1 && line("'\"") <= line("$") |
+      \   exe "normal! g`\"" |
+      \ endif
 
 " Convenient command to see the difference between the current buffer and the
 " file it was loaded from, thus the change you made.
 " Only define it when not defined already.
 if !exists(":DiffOrig")
-    command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
-                \ | wincmd p | diffthis
+  command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
+        \ | wincmd p | diffthis
 endif
 
 " Neat X clipboard integration
@@ -258,15 +258,15 @@ noremap <leader>c :w !xsel -ib<cr><cr>
 noremap <leader>s :Rg
 let g:fzf_layout = { 'down': '~20%' }
 command! -bang -nargs=* Rg
-            \ call fzf#vim#grep(
-            \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
-            \   <bang>0 ? fzf#vim#with_preview('up:60%')
-            \           : fzf#vim#with_preview('right:50%:hidden', '?'),
-            \   <bang>0)
+      \ call fzf#vim#grep(
+      \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
+      \   <bang>0 ? fzf#vim#with_preview('up:60%')
+      \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+      \   <bang>0)
 
 function! s:list_cmd()
-    let base = fnamemodify(expand('%'), ':h:.:S')
-    return base == '.' ? 'fd --type file --follow' : printf('fd --type file --follow | proximity-sort %s', expand('%'))
+  let base = fnamemodify(expand('%'), ':h:.:S')
+  return base == '.' ? 'fd --type file --follow' : printf('fd --type file --follow | proximity-sort %s', expand('%'))
 endfunction
 
 ""command! -bang -nargs=? -complete=dir Files
@@ -467,14 +467,14 @@ set noswapfile
 "" automatically open and close the popup menu / preview window
 "au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
 function! OmniPopup(action)
-    if pumvisible()
-        if a:action == 'j'
-            return "\<C-N>"
-        elseif a:action == 'k'
-            return "\<C-P>"
-        endif
+  if pumvisible()
+    if a:action == 'j'
+      return "\<C-N>"
+    elseif a:action == 'k'
+      return "\<C-P>"
     endif
-    return a:action
+  endif
+  return a:action
 endfunction
 inoremap <silent><C-j> <C-R>=OmniPopup('j')<CR>
 inoremap <silent><C-k> <C-R>=OmniPopup('k')<CR>
@@ -550,17 +550,19 @@ autocmd BufReadPost *.rs setlocal filetype=rust
 " language server protocol
 "-----------------------------------------------------------------------------
 let g:LanguageClient_serverCommands = {
-            \ 'rust': ['rustup', 'run', 'stable', 'rls'],
-            \ 'c': ['ccls', '--log-file=/tmp/cc.log'],
-            \ 'cpp': ['ccls', '--log-file=/tmp/cc.log'],
-            \ 'cuda': ['ccls', '--log-file=/tmp/cc.log'],
-            \ 'objc': ['ccls', '--log-file=/tmp/cc.log'],
-            \ 'python': ['/usr/local/bin/pyls'],
-            \ 'fsharp': ['dotnet', '/home/rschwalk/.config/nvim/plugged/Ionide-vim/fsac/fsautocomplete.dll'],
-            \ }
+      \ 'rust': ['rustup', 'run', 'stable', 'rls'],
+      \ 'c': ['ccls', '--log-file=/tmp/cc.log'],
+      \ 'cpp': ['ccls', '--log-file=/tmp/cc.log'],
+      \ 'cuda': ['ccls', '--log-file=/tmp/cc.log'],
+      \ 'objc': ['ccls', '--log-file=/tmp/cc.log'],
+      \ 'python': ['/usr/local/bin/pyls'],
+      \ 'fsharp': ['dotnet', '/home/rschwalk/.config/nvim/plugged/Ionide-vim/fsac/fsautocomplete.dll'],
+      \ }
 let g:LanguageClient_autoStart=1
 let g:LanguageClient_loadSettings = 1
 let g:LanguageClient_settingsPath = "/home/rschwalk/.config/nvim/settings.json"
+" Valid Options: "All" | "No" | "CodeLens" | "Diagnostics"
+let g:LanguageClient_useVirtualText = "Diagnostics"
 ""let g:LanguageClient_diagnosticsList = 'Location'
 set signcolumn=yes
 nnoremap <F5> :call LanguageClient_contextMenu()<CR>
