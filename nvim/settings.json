@@ -2,5 +2,13 @@
   "rust": {
     "all_targets": true,
     "build_on_save": true
+  },
+
+  "initializationOptions": {
+    "cache": {
+      "directory": "/tmp/ccls"
+    },
+    "compilationDatabaseDirectory": "builddir"
   }
+
 }
