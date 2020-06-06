@@ -21,8 +21,8 @@ Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-surround'
 Plug 'wincent/loupe'
 Plug 'ervandew/supertab'
-"  Plug 'derekwyatt/vim-fswitch'
-"  Plug 'derekwyatt/vim-protodef'
+Plug 'derekwyatt/vim-fswitch'
+Plug 'derekwyatt/vim-protodef'
 Plug 'powerman/vim-plugin-AnsiEsc'
 
 " GUI enhancements
@@ -36,9 +36,9 @@ Plug 'airblade/vim-gitgutter'
 "  Plug 'vim-scripts/TaskList.vim'
 "Plug 'flazz/vim-colorschemes'
 
-"  " Polyglot loads language support on demand!
-"  Plug 'sheerun/vim-polyglot'
-"
+" Polyglot loads language support on demand!
+Plug 'sheerun/vim-polyglot'
+
 "Plug 'w0ng/vim-hybrid'
 "Plug 'frankier/neovim-colors-solarized-truecolor-only'
 "Plug 'jnurmine/Zenburn'
@@ -47,6 +47,7 @@ Plug 'morhetz/gruvbox'
 Plug 'scrooloose/nerdtree'
 "Plug 'fholgado/minibufexpl.vim'
 Plug 'altercation/vim-colors-solarized'
+"Plug 'tomasr/molokai'
 
 " Fuzzy finder
 "Plug 'airblade/vim-rooter'
@@ -60,19 +61,19 @@ Plug 'autozimu/LanguageClient-neovim', {
       \ 'branch': 'next',
       \ 'do': 'bash install.sh',
       \ }
-"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 "  Plug 'mattn/webapi-vim'
-Plug 'ncm2/ncm2'
-Plug 'roxma/nvim-yarp'
+"Plug 'ncm2/ncm2'
+"Plug 'roxma/nvim-yarp'
 "  Plug 'ionide/Ionide-vim', {
 "              \ 'do':  'make fsautocomplete',
 "              \}
 
 " Completion plugins
-Plug 'ncm2/ncm2-bufword'
+"Plug 'ncm2/ncm2-bufword'
 "Plug 'ncm2/ncm2-tmux'
-Plug 'ncm2/ncm2-path'
-Plug 'ncm2/ncm2-ultisnips'
+"Plug 'ncm2/ncm2-path'
+"Plug 'ncm2/ncm2-ultisnips'
 "Plug 'vim-scripts/OmniCppComplete'
 "Plug 'klen/python-mode'
 Plug 'SirVer/ultisnips'
@@ -81,9 +82,9 @@ Plug 'honza/vim-snippets'
 " LanguageClient enhancements
 Plug 'neomake/neomake'
 Plug 'Shougo/echodoc.vim'
-"Plug 'c-brenn/phoenix.vim'
-"Plug 'tpope/vim-projectionist' " required for some navigation features
-"Plug 'slashmili/alchemist.vim'
+Plug 'c-brenn/phoenix.vim'
+Plug 'tpope/vim-projectionist' " required for some navigation features
+Plug 'slashmili/alchemist.vim'
 "Plug 'nvie/vim-flake8'
 Plug 'Chiel92/vim-autoformat'
 
@@ -94,7 +95,6 @@ Plug 'dag/vim-fish'
 Plug 'plasticboy/vim-markdown'
 "Plug 'peterhoeg/vim-qml'
 "Plug 'scrooloose/syntastic'
-"Plug 'tomasr/molokai'
 
 call plug#end()
 
@@ -265,8 +265,8 @@ command! -bang -nargs=* Rg
       \   <bang>0)
 
 function! s:list_cmd()
-  let base = fnamemodify(expand('%'), ':h:.:S')
-  return base == '.' ? 'fd --type file --follow' : printf('fd --type file --follow | proximity-sort %s', expand('%'))
+let base = fnamemodify(expand('%'), ':h:.:S')
+return base == '.' ? 'fd --type file --follow' : printf('fd --type file --follow | proximity-sort %s', expand('%'))
 endfunction
 
 ""command! -bang -nargs=? -complete=dir Files
@@ -467,14 +467,14 @@ set noswapfile
 "" automatically open and close the popup menu / preview window
 "au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
 function! OmniPopup(action)
-  if pumvisible()
-    if a:action == 'j'
-      return "\<C-N>"
-    elseif a:action == 'k'
-      return "\<C-P>"
-    endif
+if pumvisible()
+  if a:action == 'j'
+    return "\<C-N>"
+  elseif a:action == 'k'
+    return "\<C-P>"
   endif
-  return a:action
+endif
+return a:action
 endfunction
 inoremap <silent><C-j> <C-R>=OmniPopup('j')<CR>
 inoremap <silent><C-k> <C-R>=OmniPopup('k')<CR>
@@ -562,7 +562,7 @@ let g:LanguageClient_autoStart=1
 let g:LanguageClient_loadSettings = 1
 let g:LanguageClient_settingsPath = "/home/rschwalk/.config/nvim/settings.json"
 " Valid Options: "All" | "No" | "CodeLens" | "Diagnostics"
-let g:LanguageClient_useVirtualText = "Diagnostics"
+let g:LanguageClient_useVirtualText = "No"
 ""let g:LanguageClient_diagnosticsList = 'Location'
 set signcolumn=yes
 nnoremap <F5> :call LanguageClient_contextMenu()<CR>
@@ -624,9 +624,9 @@ let $RUST_SRC_PATH = systemlist("rustc --print sysroot")[0] . "/lib/rustlib/src/
 au BufWrite * :Autoformat
 
 " Completion with deoplete
-"let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_at_startup = 1
 
-let g:SuperTabDefaultCompletionType = "<c-n>"
+"let g:SuperTabDefaultCompletionType = "<c-n>"
 
 " echodoc settings
 set cmdheight=2
@@ -641,7 +641,7 @@ let g:echodoc#type = 'signature'
 
 " Completion with ncm2
 set shortmess+=c
-autocmd BufEnter * call ncm2#enable_for_buffer()
+"autocmd BufEnter * call ncm2#enable_for_buffer()
 set completeopt=noinsert,menuone,noselect
 " When the <Enter> key is pressed while the popup menu is visible, it only
 " hides the menu. Use this mapping to close the menu and also start a new
@@ -657,18 +657,18 @@ set completeopt=noinsert,menuone,noselect
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
-"**** "-----------------------------------------------------------------------------
-"**** " FSwitch mappings
-"**** "-----------------------------------------------------------------------------
-"**** nmap <silent> <leader>of :FSHere<CR>
-"**** nmap <silent> <leader>ol :FSRight<CR>
-"**** nmap <silent> <leader>oL :FSSplitRight<CR>
-"**** nmap <silent> <leader>oh :FSLeft<CR>
-"**** nmap <silent> <leader>oH :FSSplitLeft<CR>
-"**** nmap <silent> <leader>ok :FSAbove<CR>
-"**** nmap <silent> <leader>oK :FSSplitAbove<CR>
-"**** nmap <silent> <leader>oj :FSBelow<CR>
-"**** nmap <silent> <leader>oJ :FSSplitBelow<CR>
+"-----------------------------------------------------------------------------
+" FSwitch mappings
+"-----------------------------------------------------------------------------
+"nmap <silent> <leader>of :FSHere<CR>
+"nmap <silent> <leader>ol :FSRight<CR>
+"nmap <silent> <leader>oL :FSSplitRight<CR>
+"nmap <silent> <leader>oh :FSLeft<CR>
+"nmap <silent> <leader>oH :FSSplitLeft<CR>
+"nmap <silent> <leader>ok :FSAbove<CR>
+"nmap <silent> <leader>oK :FSSplitAbove<CR>
+"nmap <silent> <leader>oj :FSBelow<CR>
+"nmap <silent> <leader>oJ :FSSplitBelow<CR>
 
 "**** "-----------------------------------------------------------------------------
 "**** " Gundo Settings
@@ -723,7 +723,7 @@ let NERDTreeWinSize = 35
 
 " Show whitespace
 " MUST be inserted BEFORE the colorscheme command
-autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
+autocmd ColorScheme * highlight ExtraWhitespace ctermbg=darkred guibg=darkred
 au InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWritePre * :%s/\s\+$//e
 
