@@ -6,7 +6,7 @@ xrdb -load ~/.Xresources &
 #syndaemon -i 1 -K -d &
 #thunar --deamon &
 nm-applet &
-#xfsettingsd &
+xfsettingsd &
 #xfce4-power-manager &
 #/usr/libexec/xfce-polkit &
 #blueberry-tray &
