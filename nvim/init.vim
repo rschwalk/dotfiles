@@ -621,7 +621,7 @@ let g:rust_clip_command = 'xclip -selection clipboard'
 "let g:racer_experimental_completer = 1
 let $RUST_SRC_PATH = systemlist("rustc --print sysroot")[0] . "/lib/rustlib/src/rust/src"
 
-au BufWrite * :Autoformat
+"au BufWrite * :Autoformat
 
 " Completion with deoplete
 let g:deoplete#enable_at_startup = 1
@@ -635,9 +635,10 @@ let g:echodoc#type = 'signature'
 
 "let g:rooter_manual_only = 1
 
-"**** " Elixir settings
+" Elixir settings
 "**** "let g:alchemist_tag_disable = 1
-"**** autocmd BufWritePost *.exs,*.ex silent :!mix format %
+let g:alchemist_tag_map = 'gd'
+autocmd BufWritePost *.exs,*.ex silent :!mix format %
 
 " Completion with ncm2
 set shortmess+=c
