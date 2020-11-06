@@ -20,4 +20,4 @@ megasync &
 #compton -b --config  $HOME/.config/qtile/compton.conf &
 redshift-gtk &
 #dnfdragora-updater &
-#package-update-indicator &
+package-update-indicator &
