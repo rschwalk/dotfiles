@@ -14,26 +14,26 @@
 sudo dnf -y update
 
 
-sudo dnf -y install lightdm lightdm-gtk lightdm-gtk-greeter-settings
+#sudo dnf -y install lightdm lightdm-gtk lightdm-gtk-greeter-settings
 #sudo dnf -y install openbox obconf obmenu
 #sudo dnf -y install awesome vicious
 sudo dnf -y install qtile
 sudo dnf -y install arc-theme
 #sudo dnf -y install lxappearance
 
-sudo dnf -y install system-switch-displaymanager
-sudo system-switch-displaymanager lightdm
+#sudo dnf -y install system-switch-displaymanager
+#sudo system-switch-displaymanager lightdm
 
 echo "Installing category System"
 
-#sudo zypper -n in git
+sudo dnf -y install git
 #sudo zypper -n in gksu
 #sudo dnf -y install gnome-disk-utility
 #sudo dnf -y install gnome-keyring
 sudo dnf -y install numlockx
 #sudo dnf -y install polkit-gnome
-sudo dnf -y install network-manager-applet
-sudo dnf -y install xfce4-power-manager
+#sudo dnf -y install network-manager-applet
+#sudo dnf -y install xfce4-power-manager
 
 echo "Installing category Accessories"
 #sudo dnf -y install tint2
@@ -58,7 +58,6 @@ wget -P ~/tools https://sourceforge.net/projects/sardi/files/sardi-icons-9.6-9.t
 mkdir ~/.icons
 tar -xzf ~/tools/sardi-icons-9.6-9.tar.gz -C ~/.icons/
 
-sudo dnf -y copr enable pschyska/alacritty
 sudo dnf -y install alacritty
 
 # echo "Installing openbox obmenu-generator"

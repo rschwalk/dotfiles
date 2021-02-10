@@ -44,26 +44,28 @@ git config --global credential.helper 'cache --timeout=3600';
 #sudo dnf -y install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm;
 #sudo dnf -y update;
 
-sudo zypper ar -p 1 -f -n packman http://ftp.gwdg.de/pub/linux/misc/packman/suse/openSUSE_Tumbleweed/ packman
-sudo zypper -y install ffmpeg
-sudo zypper -y install gstreamer-plugins-bad gstreamer-plugins-libav gstreamer-plugins-ugly
+#sudo zypper ar -p 1 -f -n packman http://ftp.gwdg.de/pub/linux/misc/packman/suse/openSUSE_Tumbleweed/ packman
+#sudo zypper -y install ffmpeg
+#sudo zypper -y install gstreamer-plugins-bad gstreamer-plugins-libav gstreamer-plugins-ugly
 
-#sudo dnf -y install fish;
-sudo zypper -y install fish;
-#sudo dnf -y install util-linux-user;
+sudo dnf -y install fish;
+#sudo zypper -y install fish;
+sudo dnf -y install util-linux-user;
 
-#sudo dnf -y install neovim;
-#sudo dnf -y install python3-neovim;
-sudo zypper install -y neovim python3-neovim;
+sudo dnf -y install neovim;
+sudo dnf -y install python3-neovim;
+#sudo zypper install -y neovim python3-neovim;
 
-#sudo dnf -y install automake gcc gcc-c++ kernel-devel cmake;
-#sudo dnf -y install python3-devel;
+sudo dnf -y install automake gcc gcc-c++ kernel-devel cmake;
+sudo dnf -y install python3-devel;
 #sudo pip install neovim
 
 sudo pip3 install neovim;
-#sudo dnf -y install adobe-source-code-pro-fonts;
+sudo dnf -y install adobe-source-code-pro-fonts;
 git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
 
 # Optional for Laptops
 #sudo dnf -y install tlp tlp-rdw
 #sudo systemctl enable tlp
+
+sudo chsh -s /usr/bin/fish;

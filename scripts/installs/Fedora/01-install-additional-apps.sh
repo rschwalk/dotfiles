@@ -28,12 +28,12 @@ sudo dnf -y install gpick
 echo "Installing category Internet"
 
 #sudo dnf -y install chromium
-sudo dnf -y install firefox
+#sudo dnf -y install firefox
 
 echo "Installing category Multimedia"
 
 sudo dnf -y install mpv
-sudo dnf -y install vlc
+#sudo dnf -y install vlc
 
 echo "Installing category Office"
 
@@ -43,7 +43,7 @@ echo "Installing category Office"
 echo "Installing category System"
 
 sudo dnf -y install gparted
-#sudo dnf -y install gvfs gvfs-smb
+sudo dnf -y install gvfs gvfs-smb
 sudo dnf -y install htop
 sudo dnf -y install thunar thunar-archive-plugin thunar-volman
 sudo dnf -y install google-droid-sans-fonts
@@ -54,7 +54,7 @@ sudo dnf -y install google-noto-sans-mono-fonts
 # installation of zippers and unzippers
 sudo dnf -y install unrar zip unzip arj file-roller
 
-sudo dnf -y install neomutt offlineimap msmtp urlview
+#sudo dnf -y install neomutt offlineimap msmtp urlview
 
 echo "################################################################"
 echo "#### Additional apps are installed  ############################"
