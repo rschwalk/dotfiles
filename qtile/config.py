@@ -434,22 +434,22 @@ def init_widgets_list():
                         padding = 10,
                         foreground = colors[1],
                         ),
-               widget.TextBox(
-                        font="Noto Sans Mono Bold",
-                        text="CPU:",
-                        foreground=colors[8],
-                        fontsize=label_font_size
-                        ),
-               widget.CPU(
-                        font="Noto Sans Mono Regular",
-                        fontsize = widget_font_size,
-                        foreground = colors[6],
-                       ),
-               widget.Sep(
-                        linewidth = 2,
-                        padding = 10,
-                        foreground = colors[1],
-                        ),
+               #widget.TextBox(
+               #         font="Noto Sans Mono Bold",
+               #         text="CPU:",
+               #         foreground=colors[8],
+               #         fontsize=label_font_size
+               #         ),
+               #widget.CPU(
+               #         font="Noto Sans Mono Regular",
+               #         fontsize = widget_font_size,
+               #         foreground = colors[6],
+               #        ),
+               #widget.Sep(
+               #         linewidth = 2,
+               #         padding = 10,
+               #         foreground = colors[1],
+               #         ),
                widget.TextBox(
                         font="Noto Sans Mono Bold",
                         text="Mem.:",
@@ -569,7 +569,7 @@ def init_widgets_screen2():
 
 def init_screens():
     return [Screen(top=bar.Bar(widgets=init_widgets_screen1(), opacity=0.95, size=22, background=colors[0])),
-            Screen(top=bar.Bar(widgets=init_widgets_screen2(), opacity=0.95, size=22, background=colors[0])),
+            #Screen(top=bar.Bar(widgets=init_widgets_screen2(), opacity=0.95, size=22, background=colors[0])),
             ]
 
 ##### FLOATING WINDOWS #####
@@ -607,7 +607,7 @@ if __name__ in ["config", "__main__"]:
     widget_defaults = init_widget_defaults()
     widgets_list = init_widgets_list()
     widgets_screen1 = init_widgets_screen1()
-    widgets_screen2 = init_widgets_screen2()
+   # widgets_screen2 = init_widgets_screen2()
 
 ##### GROUP KEYBINDINGS #####
 for i, (name, kwargs) in enumerate(group_names, 1):

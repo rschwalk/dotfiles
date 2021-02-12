@@ -47,6 +47,7 @@ sudo dnf -y install arandr
 #sudo dnf copr enable yaroslav/i3desktop
 sudo dnf -y install rofi
 sudo dnf -y install i3lock
+sudo dnf -y install redshift-gtk
 
 echo "Installing openbox theme"
 git clone https://github.com/dglava/arc-openbox ~/tools/arc-openbox
