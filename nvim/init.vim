@@ -24,6 +24,7 @@ Plug 'ervandew/supertab'
 Plug 'derekwyatt/vim-fswitch'
 Plug 'derekwyatt/vim-protodef'
 Plug 'powerman/vim-plugin-AnsiEsc'
+Plug 'flazz/vim-colorschemes'
 
 " GUI enhancements
 Plug 'vim-airline/vim-airline'
@@ -733,6 +734,8 @@ set termguicolors
 colorscheme gruvbox
 let g:airline_theme='gruvbox'
 call togglebg#map("<F9>")
+""      colorscheme Tomorrow-Night
+""      let g:airline_theme='tomorrow'
 
 "hi! Normal ctermbg=NONE guibg=NONE
 "hi! NonText ctermbg=NONE guibg=NONE

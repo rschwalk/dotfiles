@@ -7,7 +7,7 @@ xrdb -load ~/.Xresources &
 #thunar --deamon &
 nm-applet &
 xfsettingsd &
-#xfce4-power-manager &
+xfce4-power-manager &
 #/usr/libexec/xfce-polkit &
 #blueberry-tray &
 /usr/lib/polkit-gnome-authentication-agent-1 &
@@ -19,5 +19,5 @@ megasync &
 /opt/enpass/Enpass &
 #compton -b --config  $HOME/.config/qtile/compton.conf &
 redshift-gtk &
-#dnfdragora-updater &
-package-update-indicator &
+dnfdragora-updater &
+#package-update-indicator &
