@@ -32,7 +32,7 @@ Plug 'vim-airline/vim-airline-themes'
 "Plug 'itchyny/lightline.vim'
 "Plug 'bling/vim-bufferline'
 Plug 'airblade/vim-gitgutter'
-"Plug 'chriskempson/base16-vim'
+Plug 'chriskempson/base16-vim'
 "Plug 'vim-scripts/taglist.vim'
 "  Plug 'vim-scripts/TaskList.vim'
 "Plug 'flazz/vim-colorschemes'
@@ -729,11 +729,12 @@ autocmd ColorScheme * highlight ExtraWhitespace ctermbg=darkred guibg=darkred
 au InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWritePre * :%s/\s\+$//e
 
-set background=dark
-set termguicolors
-colorscheme gruvbox
-let g:airline_theme='gruvbox'
-call togglebg#map("<F9>")
+"set background=dark
+"set termguicolors
+"colorscheme gruvbox
+"let g:airline_theme='gruvbox'
+"call togglebg#map("<F9>")
+
 ""      colorscheme Tomorrow-Night
 ""      let g:airline_theme='tomorrow'
 
@@ -744,21 +745,21 @@ call togglebg#map("<F9>")
 "      \ 'colorscheme': 'Tomorrow_Night',
 "      \ }
 
-"if filereadable(expand("~/.vimrc_background"))
-"  let base16colorspace=256
-"  source ~/.vimrc_background
-"  let g:airline_theme='base16_solarized'
-"  "let g:airline_theme='base16_monokai'
-"  "let g:airline_theme='base16_atelierdune'
-"  "let g:airline_theme='base16_ocean'
-"else
-"  " It works with konsole on plasma5
-"  " Install this  konsole themes
-"  " https://github.com/cskeeters/base16-konsole
-"  colorscheme base16-ocean
-"  set background=dark
-"  let g:airline_theme='base16_ocean'
-"endif
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256
+  source ~/.vimrc_background
+  let g:airline_theme='base16_tomorrow'
+  "let g:airline_theme='base16_monokai'
+  "let g:airline_theme='base16_atelierdune'
+  "let g:airline_theme='base16_ocean'
+else
+  " It works with konsole on plasma5
+  " Install this  konsole themes
+  " https://github.com/cskeeters/base16-konsole
+  set background=dark
+  colorscheme Tomorrow-Night
+  let g:airline_theme='tomorrow'
+endif
 
 ""if has('gui_running')
 ""  set background=dark
