@@ -61,6 +61,8 @@ tar -xzf ~/tools/sardi-icons-9.6-9.tar.gz -C ~/.icons/
 
 sudo dnf -y install alacritty
 
+sudo dnf -y install paper-icon-theme
+
 # echo "Installing openbox obmenu-generator"
 # git clone https://github.com/trizen/obmenu-generator ~/tools/obmenu-generator
 # sudo cp ~/tools/obmenu-generator/obmenu-generator /usr/bin
