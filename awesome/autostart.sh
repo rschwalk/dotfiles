@@ -6,41 +6,27 @@ function run {
     $@&
   fi
 }
-#run "xrandr --output VGA-1 --primary --mode 1360x768 --pos 0x0 --rotate normal"
-#run "xrandr --output HDMI2 --mode 1920x1080 --pos 1920x0 --rotate normal --output HDMI1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output VIRTUAL1 --off"
-run "xset -dpms; xset s off; xset -b"
-#run_once("compton -CGb &")
-run "xrdb -load ~/.Xresources"
-#run_once("xfsettingsd")
-#run_once("xfce4-power-manager")
-#--run_once("xfce4-panel")
-#run_once("/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1")
-#run "nitrogen --restore"
-#--run_once("pnmixer")
-run "syndaemon -i 1 -K -d"
-#run_once("thunar --deamon")
-#run_once("nm-applet")
-run "xmodmap ~/.xmodmap"
-#--run_once("pamac-tray")
-#run_once("albert")
-#--run_once("touchegg")
-run "nm-applet"
-#run "caffeine"
-#run "pamac-tray"
-#run "variety"
-run "xfce4-power-manager"
-#run "blueberry-tray"
-run "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
-run "numlockx on"
-#run "volumeicon"
-#run "nitrogen --restore"
-#run "conky -c $HOME/.config/awesome/system-overview"
 
-#run applications from startup
+run "xmodmap ~/.xmodmap"
+run "/home/rschwalk/dotfiles/dual.sh"
+run "xset -dpms; xset s off; xset -b"
+run "xrdb -load ~/.Xresources"
+#run "syndaemon -i 1 -K -d"
+#run "thunar --deamon"
+run "nm-applet"
+run "xfsettingsd"
+run "xfce4-power-manager"
+#run "/usr/libexec/xfce-polkit"
+#run "blueberry-tray"
+run "/usr/lib/polkit-gnome-authentication-agent-1"
+run "numlockx on"
+#run "run "volumeicon"
+#run "nitrogen --restore"
+
 run "megasync"
 run "/opt/enpass/Enpass"
-#run "firefox"
-#run "atom"
-#run "dropbox"
-#run "insync start"
-#run "spotify"
+#run "compton -b --config  $HOME/.config/awesome/compton.conf"
+run "redshift-gtk"
+#run "dnfdragora-updater"
+#run "package-update-indicator"
+
