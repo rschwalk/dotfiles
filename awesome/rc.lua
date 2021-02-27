@@ -333,8 +333,8 @@ globalkeys = my_table.join(
         {description = "pulseaudio control", group = "super"}),
     awful.key({ modkey }, "u", function () awful.screen.focused().mypromptbox:run() end,
           {description = "run prompt", group = "super"}),
-  awful.key({ modkey }, "x",  function () awful.util.spawn( "/home/rschwalk/dotfiles/scripts/lock_suspend.sh" ) end,
-      {description = "exit", group = "hotkeys"}),
+  awful.key({ modkey, "Control" }, "x",  function () awful.util.spawn( "/home/rschwalk/dotfiles/scripts/lock_suspend.sh" ) end,
+      {description = "Sleep", group = "hotkeys"}),
     awful.key({ modkey }, "Escape", function () awful.util.spawn( "xkill" ) end,
         {description = "Kill proces", group = "hotkeys"}),
 
