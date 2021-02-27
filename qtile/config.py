@@ -312,7 +312,7 @@ def init_floating_layout():
 
 def init_layout_theme():
     return {"border_width": 2,
-            "margin": 4,
+            "margin": 2,
             "border_focus": colors[7][0],
             "border_normal": colors[5][0]
            }
@@ -569,7 +569,7 @@ def init_widgets_screen2():
 
 def init_screens():
     return [Screen(top=bar.Bar(widgets=init_widgets_screen1(), opacity=0.95, size=22, background=colors[0])),
-            #Screen(top=bar.Bar(widgets=init_widgets_screen2(), opacity=0.95, size=22, background=colors[0])),
+            Screen(top=bar.Bar(widgets=init_widgets_screen2(), opacity=0.95, size=22, background=colors[0])),
             ]
 
 ##### FLOATING WINDOWS #####
@@ -607,7 +607,7 @@ if __name__ in ["config", "__main__"]:
     widget_defaults = init_widget_defaults()
     widgets_list = init_widgets_list()
     widgets_screen1 = init_widgets_screen1()
-   # widgets_screen2 = init_widgets_screen2()
+    widgets_screen2 = init_widgets_screen2()
 
 ##### GROUP KEYBINDINGS #####
 for i, (name, kwargs) in enumerate(group_names, 1):
