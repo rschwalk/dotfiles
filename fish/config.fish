@@ -61,6 +61,6 @@ function neomutt
     bash --login -c 'cd ~/Desktop; /usr/bin/neomutt' $argv;
 end
 
-source $HOME/.cargo/env
+#source $HOME/.cargo/env
 # source ~/.asdf/asdf.fish
 
