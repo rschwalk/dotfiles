@@ -748,7 +748,7 @@ autocmd BufWritePre * :%s/\s\+$//e
 if filereadable(expand("~/.vimrc_background"))
   let base16colorspace=256
   source ~/.vimrc_background
-  let g:airline_theme='base16_tomorrow'
+  let g:airline_theme='base16_gruvbox_dark_hard'
   "let g:airline_theme='base16_monokai'
   "let g:airline_theme='base16_atelierdune'
   "let g:airline_theme='base16_ocean'
