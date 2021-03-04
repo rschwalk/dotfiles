@@ -7,10 +7,10 @@ function run {
   fi
 }
 
-run "xmodmap ~/.xmodmap"
-run "/home/rschwalk/dotfiles/dual.sh"
-run "xset -dpms; xset s off; xset -b"
-run "xrdb -load ~/.Xresources"
+#run "xmodmap ~/.xmodmap"
+#run "/home/rschwalk/dotfiles/dual.sh"
+#run "xset -dpms; xset s off; xset -b"
+#run "xrdb -load ~/.Xresources"
 #run "syndaemon -i 1 -K -d"
 #run "thunar --deamon"
 run "nm-applet"
