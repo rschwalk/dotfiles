@@ -84,15 +84,16 @@ run_once({ "unclutter -root" }) -- entries must be comma-separated
 -- {{{ Variable definitions
 
 local themes = {
-    "rschwalk-solarized",
-    "powerarrow-blue", -- 1
-    "powerarrow",      -- 2
-    "multicolor",      -- 3
+    "rschwalk-solarized",   -- 1
+    "powerarrow-blue",      -- 2
+    "powerarrow",           -- 3
+    "multicolor",           -- 4
+    "rschwalk-gruvbox",     -- 5
 
 }
 
 -- choose your theme here
-local chosen_theme = themes[2]
+local chosen_theme = themes[5]
 
 local theme_path = string.format("%s/.config/awesome/themes/%s/theme.lua", os.getenv("HOME"), chosen_theme)
 beautiful.init(theme_path)
@@ -1071,4 +1072,4 @@ awful.spawn.with_shell("/home/rschwalk/dotfiles/dual.sh")
 awful.spawn.with_shell("xset -dpms; xset s off; xset -b")
 awful.spawn.with_shell("xrdb -load ~/.Xresources")
 awful.spawn.with_shell("~/.config/awesome/autostart.sh")
-awful.spawn.with_shell("picom -b --config  $HOME/.config/awesome/compton.conf")
+awful.spawn.with_shell("compton -b --config  $HOME/.config/awesome/compton.conf")
