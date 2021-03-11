@@ -97,6 +97,9 @@ Plug 'plasticboy/vim-markdown'
 "Plug 'peterhoeg/vim-qml'
 "Plug 'scrooloose/syntastic'
 
+" Other
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+
 call plug#end()
 
 " Automatic reloading of .vimrc
