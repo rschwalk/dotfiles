@@ -25,7 +25,7 @@ run "numlockx on"
 
 run "megasync"
 run "/opt/enpass/Enpass"
-#run "compton -b --config  $HOME/.config/awesome/compton.conf"
+run "compton -b --config  $HOME/.config/awesome/compton.conf"
 run "redshift-gtk"
 #run "dnfdragora-updater"
 #run "package-update-indicator"
