@@ -4,11 +4,13 @@
     "build_on_save": true
   },
 
-  "initializationOptions": {
-    "cache": {
-      "directory": "/tmp/ccls"
+  "ccls": {
+    "initializationOptions": {
+      "cache": {
+        "directory": "/tmp/ccls"
+      },
+      "compilationDatabaseDirectory": "builddir"
     },
-    "compilationDatabaseDirectory": "builddir"
-  }
+  },
 
 }
