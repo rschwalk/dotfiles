@@ -16,9 +16,9 @@ localfolders = ~/.mail/rschwalk.eu
 [Repository RSchwalk-Remote]
 maxconnections = 1
 type = IMAP
-remotehost = imappro.zoho.eu
+remotehost = imap.fastmail.com
 remoteuser = richard.schwalk@rschwalk.eu
 remotepasseval = get_pass()
 realdelete = yes
 ssl = yes
-sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+sslcacertfile = /etc/ssl/certs/ca-bundle.crt

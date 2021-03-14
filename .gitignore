@@ -1,5 +1,6 @@
 vim/bundle/*
 mutt/temp/*
+mutt/cache/*
 nvim/plugged/*
 nvim/__pycache__
 *.pyc
