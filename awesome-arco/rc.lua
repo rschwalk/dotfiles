@@ -100,7 +100,7 @@ local themes = {
     "powerarrow",      		-- 2
     "powerarrow-blue",	 	-- 3
     "blackburn",		-- 4
-    "copland",        -- 5    
+    "copland",        -- 5
 }
 
 -- choose your theme here
@@ -119,12 +119,12 @@ local modkey1      = "Control"
 local browser1          = "vivaldi-stable"
 local browser2          = "firefox"
 local browser3          = "chromium -no-default-browser-check"
-local editor            = os.getenv("EDITOR") or "nano"
+local editor            = os.getenv("EDITOR") or "nvim"
 local editorgui         = "code"
 local filemanager       = "thunar"
 local mailclient        = "evolution"
 local mediaplayer       = "spotify"
-local terminal          = "alacrity"
+local terminal          = "alacritty"
 local virtualmachine    = "virtualbox"
 
 -- awesome variables
@@ -801,7 +801,7 @@ clientkeys = my_table.join(
     awful.key({ modkey, "Shift"   }, "Left",   function (c) c:move_to_screen()               end,
               {description = "move to screen", group = "client"}),
     awful.key({ modkey, "Shift"   }, "Right",  function (c) c:move_to_screen()               end,
-              {description = "move to screen", group = "client"}),    
+              {description = "move to screen", group = "client"}),
     --awful.key({ modkey,           }, "t",      function (c) c.ontop = not c.ontop            end,
               --{description = "toggle keep on top", group = "client"}),
     awful.key({ modkey,           }, "n",
