@@ -1,8 +1,8 @@
 # Base16 Shell
-if status --is-interactive
-     set BASE16_SHELL "$HOME/.config/base16-shell/"
-     source "$BASE16_SHELL/profile_helper.fish"
-end
+#if status --is-interactive
+#     set BASE16_SHELL "$HOME/.config/base16-shell/"
+#     source "$BASE16_SHELL/profile_helper.fish"
+#end
 
 set -x PATH /usr/sbin /home/rschwalk/bin /home/rschwalk/.local/bin /home/rschwalk/.mix /home/rschwalk/.cargo/bin $PATH
 
@@ -43,7 +43,7 @@ function fish_prompt
 	set_color c5c8c6  # foreground
 	echo -n "["(date "+%H:%M")"] "
 	set_color 81a2be  # blue
-	echo -n (hostname)
+	echo -n (prompt_hostname)
 	if [ $PWD != $HOME ]
 		set_color c5c8c6  # foreground
 		echo -n ':'
@@ -57,9 +57,13 @@ function fish_prompt
 	set_color normal
 end
 
-function neomutt
-    bash --login -c 'cd ~/Desktop; /usr/bin/neomutt' $argv;
+if set -q SSH_TTY
+  set -g fish_color_host brred
 end
+
+#function neomutt
+#    bash --login -c 'cd ~/Desktop; /usr/bin/neomutt' $argv;
+#end
 
 #source $HOME/.cargo/env
 # source ~/.asdf/asdf.fish
