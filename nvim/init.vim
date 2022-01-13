@@ -760,8 +760,8 @@ else
   " Install this  konsole themes
   " https://github.com/cskeeters/base16-konsole
   set background=dark
-  colorscheme Tomorrow-Night
-  let g:airline_theme='tomorrow'
+  colorscheme gruvbox
+  let g:airline_theme='gruvbox'
 endif
 
 ""if has('gui_running')
