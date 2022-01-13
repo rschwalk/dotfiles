@@ -120,11 +120,11 @@ local browser1          = "vivaldi-stable"
 local browser2          = "firefox"
 local browser3          = "chromium -no-default-browser-check"
 local editor            = os.getenv("EDITOR") or "nano"
-local editorgui         = "atom"
+local editorgui         = "code"
 local filemanager       = "thunar"
 local mailclient        = "evolution"
 local mediaplayer       = "spotify"
-local terminal          = "urxvt"
+local terminal          = "alacrity"
 local virtualmachine    = "virtualbox"
 
 -- awesome variables
@@ -347,7 +347,7 @@ globalkeys = my_table.join(
         {description = "rofi" , group = "function keys" }),
 
     -- super + ...
-    awful.key({ modkey }, "c", function () awful.util.spawn( "conky-toggle" ) end,
+    awful.key({ modkey }, "q", function () awful.util.spawn( "conky-toggle" ) end,
         {description = "conky-toggle", group = "super"}),
     awful.key({ modkey }, "e", function () awful.util.spawn( editorgui ) end,
         {description = "run gui editor", group = "super"}),
@@ -674,13 +674,13 @@ globalkeys = my_table.join(
     --awful.key({ modkey1 }, "Up",
     awful.key({ }, "XF86AudioRaiseVolume",
         function ()
-            os.execute(string.format("amixer -q set %s 1%%+", beautiful.volume.channel))
+            os.execute(string.format("amixer -q set %s 2%%+", beautiful.volume.channel))
             beautiful.volume.update()
         end),
     --awful.key({ modkey1 }, "Down",
     awful.key({ }, "XF86AudioLowerVolume",
         function ()
-            os.execute(string.format("amixer -q set %s 1%%-", beautiful.volume.channel))
+            os.execute(string.format("amixer -q set %s 2%%-", beautiful.volume.channel))
             beautiful.volume.update()
         end),
     awful.key({ }, "XF86AudioMute",
@@ -790,10 +790,10 @@ clientkeys = my_table.join(
             c:raise()
         end,
         {description = "toggle fullscreen", group = "client"}),
-    awful.key({ modkey, "Shift"   }, "q",      function (c) c:kill()                         end,
+    awful.key({ modkey, "Shift"   }, "c",      function (c) c:kill()                         end,
               {description = "close", group = "hotkeys"}),
-    awful.key({ modkey, },           "q",      function (c) c:kill()                         end,
-              {description = "close", group = "hotkeys"}),
+    --awful.key({ modkey, },           "q",      function (c) c:kill()                         end,
+    --          {description = "close", group = "hotkeys"}),
     awful.key({ modkey, "Shift" }, "space",  awful.client.floating.toggle                     ,
               {description = "toggle floating", group = "client"}),
     awful.key({ modkey, "Control" }, "Return", function (c) c:swap(awful.client.getmaster()) end,
