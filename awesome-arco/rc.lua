@@ -124,7 +124,7 @@ local editorgui         = "code"
 local filemanager       = "thunar"
 local mailclient        = "evolution"
 local mediaplayer       = "spotify"
-local terminal          = "alacritty"
+local terminal          = "xfce4-terminal"
 local virtualmachine    = "virtualbox"
 
 -- awesome variables
@@ -1050,8 +1050,7 @@ awful.rules.rules = {
           "Wpa_gui",
           "pinentry",
           "veromix",
-          "xtightvncviewer",
-          "Xfce4-terminal"},
+          "xtightvncviewer"},
 
         name = {
           "Event Tester",  -- xev.
