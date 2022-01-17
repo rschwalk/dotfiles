@@ -103,7 +103,7 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': 
 call plug#end()
 
 " Automatic reloading of .vimrc
-autocmd! bufwritepost $MYVIMRC source %
+autocmd! bufwritepost $MYVIMRC source % " check later
 
 " Enable syntax highlighting
 " You need to reload this file for the change to apply
