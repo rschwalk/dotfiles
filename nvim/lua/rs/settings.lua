@@ -1,6 +1,6 @@
 HOME = os.getenv("HOME")
 
-local o = vim.o
+local o = vim.opt
 
 o.shell = "/usr/bin/fish"
 
@@ -46,8 +46,37 @@ o.wildmenu = true
 -- Permanent undo
 o.undodir = HOME .. "/.vimdid"
 o.undofile = true
-
-
+-- Set the textwidth to be 80 chars
+o.textwidth = 80
+-- get rid of the silly characters in separators
+o.fillchars = ""
+-- Add ignorance of whitespace to diff
+o.diffopt:append(",iwhite")
+-- Enable search highlighting
+o.hlsearch = true
+-- Incrementally match the search
+o.incsearch = true
+-- Add the unnamed register to the clipboard
+o.clipboard:append("unnamedplus")
+-- Automatically read a file that has changed on disk
+o.autoread = true
+o.grepprg = "grep -nH $*"
+-- Relitive line numbers
+o.relativenumber = true
+-- Use more sense splitting
+o.splitbelow = true
+o.splitright = true
+-- we use lightline no need for additional mode info
+o.showmode = false
+o.title = true
+o.cursorline = true
+o.nu = true
+-- don't automatically wrap on load
+o.wrap = false
+-- don't automatically wrap text when typing
+o.fo:remove("t")
+-- Syntax coloring lines that are too long just slows down the world
+o.synmaxcol = 2048
 
 vim.cmd([[
 " Automatic reloading of .vimrc
@@ -61,8 +90,6 @@ autocmd! bufwritepost $MYVIMRC source % " check later
 ""filetype indent on
 ""let python_highlight_all=1
 ""syntax on
-
-
 
 " Set up the gui cursor to look nice
 ""set guicursor=n-v-c:block-Cursor-blinkon0,ve:ver35-Cursor,o:hor50-Cursor,i-ci:ver25-Cursor,r-cr:hor20-Cursor,sm:block-Cursor-blinkwait175-blinkoff150-blinkon175
@@ -79,44 +106,8 @@ autocmd! bufwritepost $MYVIMRC source % " check later
 ""set go-=l
 ""set go-=b
 
-" When completing by tag, show the whole tag, not just the function name
-"" set showfulltag
-
-" Set the textwidth to be 80 chars
-set textwidth=80
-
-" get rid of the silly characters in separators
-set fillchars = ""
-
-" Add ignorance of whitespace to diff
-set diffopt+=iwhite
-
-" Enable search highlighting
-set hlsearch
-
-" Incrementally match the search
-set incsearch
-
-" Add the unnamed register to the clipboard
-set clipboard+=unnamedplus
-
-" Automatically read a file that has changed on disk
-set autoread
-
-set grepprg=grep\ -nH\ $*
-
-" Relitive line numbers
-set relativenumber
-
 " Don't use Ex mode, use Q for formatting
 map Q gq
-
-" Use more sense splitting
-set splitbelow
-set splitright
-
-" we use lightline no need for additional mode info
-set noshowmode
 
 " Rebind <Leader> key
 let mapleader = ","
@@ -169,16 +160,6 @@ let base = fnamemodify(expand('%'), ':h:.:S')
 return base == '.' ? 'fd --type file --follow' : printf('fd --type file --follow | proximity-sort %s', expand('%'))
 endfunction
 
-""command! -bang -nargs=? -complete=dir Files
-""  \ call fzf#vim#files(<q-args>, {'source': s:list_cmd(),
-""  \ 'options': '--tiebreak=index'}, <bang>0)
-
-" Better copy & paste
-" When you want to paste large blocks of code into vim, press F2 before you
-" paste. At the bottom you should see ``-- INSERT (paste) --``.
-set pastetoggle=<F11>
-
-
 " Wipe out all buffers
 nmap <silent> <leader>wa :1,900bwipeout<cr>
 
@@ -215,8 +196,6 @@ nmap <leader>bd :bp\|bd #<cr>
 " Make the current file executable
 ""nmap <leader>x :w<cr>:!chmod 755 %<cr>:e<cr>
 
-" Syntax coloring lines that are too long just slows down the world
-set synmaxcol=2048
 
 " Neovim terminal settings
 :tnoremap <Esc> <C-\><C-n>
@@ -270,20 +249,12 @@ autocmd FileType python map R :w<CR>:!python3 "%"<CR>
 " Run the last shell command
 nnoremap <leader>rl :!!<CR>
 
-set title
-
-set cursorline
-"set cursorcolumn
 nnoremap <leader>c :set cursorline!<CR>
 nnoremap <C-s> :w<CR>
 
 " limit the text width in mutt
 au BufRead /tmp/mutt-* set tw=72
 
-set nu
-"" set tw=79   " width of document (used by gd)
-set nowrap  " don't automatically wrap on load
-set fo-=t   " don't automatically wrap text when typing
 autocmd FileType python set colorcolumn=80
 autocmd FileType elixir set colorcolumn=120
 autocmd FileType fsharp set colorcolumn=120
