@@ -393,12 +393,12 @@ let g:python3_host_prog = '/usr/bin/python3'
 
 " Settings for run neomake automatically
 "-----------------------------------------------------------------------------
-autocmd BufWritePost * Neomake
-autocmd BufReadPost * Neomake
-"let g:neomake_markdown_enabled_makers = ['alex', 'markdownlint']
-let g:neomake_elixir_enabled_makers = ['mix', 'credo']
-let g:neomake_open_list = 0
-let g:neomake_cpp_enabled_makers = ['gcc']
+""autocmd BufWritePost * Neomake
+""autocmd BufReadPost * Neomake
+"""let g:neomake_markdown_enabled_makers = ['alex', 'markdownlint']
+""let g:neomake_elixir_enabled_makers = ['mix', 'credo']
+""let g:neomake_open_list = 0
+""let g:neomake_cpp_enabled_makers = ['gcc']
 
 " Settings for airlines
 "-----------------------------------------------------------------------------
@@ -414,91 +414,91 @@ au FileType fsharp let b:delimitMate_quotes = "\" "
 " fzf settings
 "-----------------------------------------------------------------------------
 " Open hotkeys
-nmap <leader>f :Files<CR>
-nmap <leader>o :Buffers<CR>
+""nmap <leader>f :Files<CR>
+""nmap <leader>o :Buffers<CR>
 
 autocmd BufReadPost *.rs setlocal filetype=rust
 
 " language server protocol
 "-----------------------------------------------------------------------------
-let g:LanguageClient_serverCommands = {
-      \ 'rust': ['rustup', 'run', 'stable', 'rls'],
-      \ 'c': ['ccls', '--log-file=/tmp/cc.log'],
-      \ 'cpp': ['ccls', '--log-file=/tmp/cc.log'],
-      \ 'cuda': ['ccls', '--log-file=/tmp/cc.log'],
-      \ 'objc': ['ccls', '--log-file=/tmp/cc.log'],
-      \ 'python': ['/usr/local/bin/pyls'],
-      \ 'fsharp': ['dotnet', '/home/rschwalk/.config/nvim/plugged/Ionide-vim/fsac/fsautocomplete.dll'],
-      \ }
-let g:LanguageClient_autoStart=1
-let g:LanguageClient_loadSettings = 1
-let g:LanguageClient_settingsPath = "/home/rschwalk/.config/nvim/settings.json"
-" Valid Options: "All" | "No" | "CodeLens" | "Diagnostics"
-let g:LanguageClient_useVirtualText = "No"
-""let g:LanguageClient_diagnosticsList = 'Location'
-set signcolumn=yes
-nnoremap <F5> :call LanguageClient_contextMenu()<CR>
-nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
-nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
-nnoremap <silent> gr :call LanguageClient#textDocument_references({'includeDeclaration': v:false})<cr>
-
-augroup LanguageClient_config
-  au!
-  au BufEnter * let b:Plugin_LanguageClient_started = 0
-  au User LanguageClientStarted setl signcolumn=yes
-  au User LanguageClientStarted let b:Plugin_LanguageClient_started = 1
-  au User LanguageClientStopped setl signcolumn=auto
-  au User LanguageClientStopped let b:Plugin_LanguageClient_started = 0
-  au CursorMoved * if b:Plugin_LanguageClient_started | sil call LanguageClient#textDocument_documentHighlight() | endif
-augroup END
-
-" bases
-nn <silent> xb :call LanguageClient#findLocations({'method':'$ccls/inheritance'})<cr>
-" bases of up to 3 levels
-nn <silent> xB :call LanguageClient#findLocations({'method':'$ccls/inheritance','levels':3})<cr>
-" derived
-nn <silent> xd :call LanguageClient#findLocations({'method':'$ccls/inheritance','derived':v:true})<cr>
-" derived of up to 3 levels
-nn <silent> xD :call LanguageClient#findLocations({'method':'$ccls/inheritance','derived':v:true,'levels':3})<cr>
-
-" caller
-nn <silent> xc :call LanguageClient#findLocations({'method':'$ccls/call'})<cr>
-" callee
-nn <silent> xC :call LanguageClient#findLocations({'method':'$ccls/call','callee':v:true})<cr>
-
-" $ccls/member
-" nested classes / types in a namespace
-nn <silent> xs :call LanguageClient#findLocations({'method':'$ccls/member','kind':2})<cr>
-" member functions / functions in a namespace
-nn <silent> xf :call LanguageClient#findLocations({'method':'$ccls/member','kind':3})<cr>
-" member variables / variables in a namespace
-nn <silent> xm :call LanguageClient#findLocations({'method':'$ccls/member'})<cr>
-
-nn xx x
-
-nn <silent> xh :call LanguageClient#findLocations({'method':'$ccls/navigate','direction':'L'})<cr>
-nn <silent> xj :call LanguageClient#findLocations({'method':'$ccls/navigate','direction':'D'})<cr>
-nn <silent> xk :call LanguageClient#findLocations({'method':'$ccls/navigate','direction':'U'})<cr>
-nn <silent> xl :call LanguageClient#findLocations({'method':'$ccls/navigate','direction':'R'})<cr>
-
-" racer + rust
-" https://github.com/rust-lang/rust.vim/issues/192
-"let g:rustfmt_command = "rustfmt +nightly"
-let g:rustfmt_autosave = 1
-let g:rustfmt_emit_files = 1
-let g:rustfmt_fail_silently = 0
-let g:rust_clip_command = 'xclip -selection clipboard'
-"let g:racer_cmd = "/usr/bin/racer"
-"let g:racer_experimental_completer = 1
-let $RUST_SRC_PATH = systemlist("rustc --print sysroot")[0] . "/lib/rustlib/src/rust/src"
-
-"au BufWrite * :Autoformat
-
-" Completion with deoplete
-let g:deoplete#enable_at_startup = 1
-
-let g:SuperTabDefaultCompletionType = "<c-n>"
+""let g:LanguageClient_serverCommands = {
+""      \ 'rust': ['rustup', 'run', 'stable', 'rls'],
+""      \ 'c': ['ccls', '--log-file=/tmp/cc.log'],
+""      \ 'cpp': ['ccls', '--log-file=/tmp/cc.log'],
+""      \ 'cuda': ['ccls', '--log-file=/tmp/cc.log'],
+""      \ 'objc': ['ccls', '--log-file=/tmp/cc.log'],
+""      \ 'python': ['/usr/local/bin/pyls'],
+""      \ 'fsharp': ['dotnet', '/home/rschwalk/.config/nvim/plugged/Ionide-vim/fsac/fsautocomplete.dll'],
+""      \ }
+""let g:LanguageClient_autoStart=1
+""let g:LanguageClient_loadSettings = 1
+""let g:LanguageClient_settingsPath = "/home/rschwalk/.config/nvim/settings.json"
+""" Valid Options: "All" | "No" | "CodeLens" | "Diagnostics"
+""let g:LanguageClient_useVirtualText = "No"
+""""let g:LanguageClient_diagnosticsList = 'Location'
+""set signcolumn=yes
+""nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+""nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+""nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+""nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
+""nnoremap <silent> gr :call LanguageClient#textDocument_references({'includeDeclaration': v:false})<cr>
+""
+""augroup LanguageClient_config
+""  au!
+""  au BufEnter * let b:Plugin_LanguageClient_started = 0
+""  au User LanguageClientStarted setl signcolumn=yes
+""  au User LanguageClientStarted let b:Plugin_LanguageClient_started = 1
+""  au User LanguageClientStopped setl signcolumn=auto
+""  au User LanguageClientStopped let b:Plugin_LanguageClient_started = 0
+""  au CursorMoved * if b:Plugin_LanguageClient_started | sil call LanguageClient#textDocument_documentHighlight() | endif
+""augroup END
+""
+""" bases
+""nn <silent> xb :call LanguageClient#findLocations({'method':'$ccls/inheritance'})<cr>
+""" bases of up to 3 levels
+""nn <silent> xB :call LanguageClient#findLocations({'method':'$ccls/inheritance','levels':3})<cr>
+""" derived
+""nn <silent> xd :call LanguageClient#findLocations({'method':'$ccls/inheritance','derived':v:true})<cr>
+""" derived of up to 3 levels
+""nn <silent> xD :call LanguageClient#findLocations({'method':'$ccls/inheritance','derived':v:true,'levels':3})<cr>
+""
+""" caller
+""nn <silent> xc :call LanguageClient#findLocations({'method':'$ccls/call'})<cr>
+""" callee
+""nn <silent> xC :call LanguageClient#findLocations({'method':'$ccls/call','callee':v:true})<cr>
+""
+""" $ccls/member
+""" nested classes / types in a namespace
+""nn <silent> xs :call LanguageClient#findLocations({'method':'$ccls/member','kind':2})<cr>
+""" member functions / functions in a namespace
+""nn <silent> xf :call LanguageClient#findLocations({'method':'$ccls/member','kind':3})<cr>
+""" member variables / variables in a namespace
+""nn <silent> xm :call LanguageClient#findLocations({'method':'$ccls/member'})<cr>
+""
+""nn xx x
+""
+""nn <silent> xh :call LanguageClient#findLocations({'method':'$ccls/navigate','direction':'L'})<cr>
+""nn <silent> xj :call LanguageClient#findLocations({'method':'$ccls/navigate','direction':'D'})<cr>
+""nn <silent> xk :call LanguageClient#findLocations({'method':'$ccls/navigate','direction':'U'})<cr>
+""nn <silent> xl :call LanguageClient#findLocations({'method':'$ccls/navigate','direction':'R'})<cr>
+""
+""" racer + rust
+""" https://github.com/rust-lang/rust.vim/issues/192
+"""let g:rustfmt_command = "rustfmt +nightly"
+""let g:rustfmt_autosave = 1
+""let g:rustfmt_emit_files = 1
+""let g:rustfmt_fail_silently = 0
+""let g:rust_clip_command = 'xclip -selection clipboard'
+"""let g:racer_cmd = "/usr/bin/racer"
+"""let g:racer_experimental_completer = 1
+""let $RUST_SRC_PATH = systemlist("rustc --print sysroot")[0] . "/lib/rustlib/src/rust/src"
+""
+"""au BufWrite * :Autoformat
+""
+""" Completion with deoplete
+""let g:deoplete#enable_at_startup = 1
+""
+""let g:SuperTabDefaultCompletionType = "<c-n>"
 
 " echodoc settings
 set cmdheight=2
