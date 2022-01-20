@@ -23,3 +23,9 @@ key_map(
   [[<Cmd>lua require'telescope.builtin'.find_files()<CR>]],
   { noremap = true, silent = true }
 )
+key_map(
+  "n",
+  "<leader>fb",
+  [[<Cmd>lua require'telescope.builtin'.buffers()<CR>]],
+  { noremap = true, silent = true }
+)
