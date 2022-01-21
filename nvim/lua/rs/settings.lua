@@ -338,19 +338,19 @@ set noswapfile
 "set completeopt=menuone,longest,preview
 "" automatically open and close the popup menu / preview window
 "au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
-function! OmniPopup(action)
-if pumvisible()
-  if a:action == 'j'
-    return "\<C-N>"
-  elseif a:action == 'k'
-    return "\<C-P>"
-  endif
-endif
-return a:action
-endfunction
-inoremap <silent><C-j> <C-R>=OmniPopup('j')<CR>
-inoremap <silent><C-k> <C-R>=OmniPopup('k')<CR>
-imap <C-space> <C-x><C-o>
+"function! OmniPopup(action)
+"if pumvisible()
+"  if a:action == 'j'
+"    return "\<C-N>"
+"  elseif a:action == 'k'
+"    return "\<C-P>"
+"  endif
+"endif
+"return a:action
+"endfunction
+"inoremap <silent><C-j> <C-R>=OmniPopup('j')<CR>
+"inoremap <silent><C-k> <C-R>=OmniPopup('k')<CR>
+"imap <C-space> <C-x><C-o>
 
 noremap <leader>gpl :-1read ~/dotfiles/nvim/templates/gpl.templ<CR>wi
 
