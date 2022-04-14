@@ -4,7 +4,7 @@ if status --is-interactive
      source "$BASE16_SHELL/profile_helper.fish"
 end
 
-set -x PATH /opt/homebrew/bin $PATH
+set -x PATH /opt/homebrew/bin /Users/rschwalk/bin $PATH
 
 
 set -x LC_ALL en_US.UTF-8

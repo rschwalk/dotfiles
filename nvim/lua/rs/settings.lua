@@ -616,21 +616,24 @@ autocmd BufWritePre * :%s/\s\+$//e
 "      \ 'colorscheme': 'Tomorrow_Night',
 "      \ }
 
-if filereadable(expand("~/.vimrc_background"))
-  let base16colorspace=256
-  source ~/.vimrc_background
-  let g:airline_theme='base16_gruvbox_dark_hard'
-  "let g:airline_theme='base16_monokai'
-  "let g:airline_theme='base16_atelierdune'
-  "let g:airline_theme='base16_ocean'
-else
-  " It works with konsole on plasma5
-  " Install this  konsole themes
-  " https://github.com/cskeeters/base16-konsole
+""if filereadable(expand("~/.vimrc_background"))
+""  let base16colorspace=256
+""  source ~/.vimrc_background
+""  let g:airline_theme='base16_gruvbox_dark_hard'
+""  "let g:airline_theme='base16_monokai'
+""  "let g:airline_theme='base16_atelierdune'
+""  "let g:airline_theme='base16_ocean'
+""else
+""  " It works with konsole on plasma5
+""  " Install this  konsole themes
+""  " https://github.com/cskeeters/base16-konsole
+""  set background=dark
+""  colorscheme gruvbox
+""  let g:airline_theme='gruvbox'
+""endif
+
   set background=dark
   colorscheme gruvbox
-  let g:airline_theme='gruvbox'
-endif
 
 ""if has('gui_running')
 ""  set background=dark
