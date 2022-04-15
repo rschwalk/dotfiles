@@ -45,6 +45,9 @@ return require('packer').startup {
       end
     }
 
+    -- VimWiki
+    use 'vimwiki/vimwiki'
+
     -- use git within vim
     use 'tpope/vim-fugitive'
     -- compare directories
@@ -72,6 +75,12 @@ return require('packer').startup {
     --use {"nvim-telescope/telescope-fzf-native.nvim", run = "make"}
     --language support
     use "neovim/nvim-lspconfig"
+    use {
+      'simrat39/rust-tools.nvim',
+      config = function()
+        require('rust-tools').setup({})
+      end
+    }
     use {
       "hrsh7th/nvim-cmp",
       requires = {

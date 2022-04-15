@@ -171,7 +171,7 @@ nmap <silent> <leader>kd :!mkdir -p %:p:h<CR>
 nmap <silent> <leader>vi ovim:set ts=2 sts=2 sw=2 tw=79 fo=+t:<CR>vim600:fdm=marker fdl=1 fdc=0:<ESC>
 
 " set text wrapping toggles
-nmap <silent> <leader>ww :set invwrap<CR>:set wrap?<CR>
+nmap <silent> <leader>cw :set invwrap<CR>:set wrap?<CR>
 
 " Edit the vimrc file
 ""nmap <silent> <leader>ev :e $MYVIMRC<CR>
@@ -196,6 +196,9 @@ nmap <leader>bd :bp\|bd #<cr>
 " Make the current file executable
 ""nmap <leader>x :w<cr>:!chmod 755 %<cr>:e<cr>
 
+" VimWiki configuration
+let g:vimwiki_list = [{'path': '~/vimwiki/',
+                      \ 'syntax': 'markdown', 'ext': '.md'}]
 
 " Neovim terminal settings
 :tnoremap <Esc> <C-\><C-n>
