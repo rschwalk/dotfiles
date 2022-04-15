@@ -199,6 +199,7 @@ nmap <leader>bd :bp\|bd #<cr>
 " VimWiki configuration
 let g:vimwiki_list = [{'path': '~/vimwiki/',
                       \ 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_markdown_link_ext = 1
 
 " Neovim terminal settings
 :tnoremap <Esc> <C-\><C-n>
