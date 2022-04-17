@@ -124,7 +124,8 @@ local editorgui         = "code"
 local filemanager       = "thunar"
 local mailclient        = "evolution"
 local mediaplayer       = "spotify"
-local terminal          = "xfce4-terminal"
+--local terminal          = "xfce4-terminal"
+local terminal          = "alacritty"
 local virtualmachine    = "virtualbox"
 
 -- awesome variables
