@@ -2,7 +2,7 @@ HOME = os.getenv("HOME")
 
 local o = vim.opt
 
-o.shell = "/usr/bin/fish"
+o.shell = "/opt/homebrew/bin/fish"
 
 -- This must be first, because it changes other options as a side effect.
 o.compatible = false
@@ -638,6 +638,7 @@ autocmd BufWritePre * :%s/\s\+$//e
 
   set background=dark
   colorscheme gruvbox
+  highlight Comment cterm=italic gui=italic
 
 ""if has('gui_running')
 ""  set background=dark

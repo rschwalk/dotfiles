@@ -32,7 +32,7 @@ return require('packer').startup {
       config = function()
         require "rs.statusline"
       end,
-      requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+      -- requires = { 'kyazdani42/nvim-web-devicons', opt = true }
     }
 
     use {
@@ -72,7 +72,6 @@ return require('packer').startup {
         {"BurntSushi/ripgrep"},
       }
     }
-    --use {"nvim-telescope/telescope-fzf-native.nvim", run = "make"}
     --language support
     use "neovim/nvim-lspconfig"
     use {
