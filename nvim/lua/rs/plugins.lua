@@ -76,9 +76,9 @@ return require('packer').startup {
     use "neovim/nvim-lspconfig"
     use {
       'simrat39/rust-tools.nvim',
-      config = function()
-        require('rust-tools').setup({})
-      end
+      --config = function()
+      --  require('rust-tools').setup({})
+      --end
     }
     use {
       "hrsh7th/nvim-cmp",

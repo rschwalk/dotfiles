@@ -37,6 +37,41 @@ end
 
 local lspconfig = require("lspconfig")
 
+local rustopts = {
+    tools = { -- rust-tools options
+        autoSetHints = true,
+        hover_with_actions = true,
+        -- how to execute terminal commands
+        -- options right now: termopen / quickfix
+        executor = require("rust-tools/executors").termopen,
+        --inlay_hints = {
+        --    show_parameter_hints = false,
+        --    parameter_hints_prefix = "",
+        --    other_hints_prefix = "",
+        --},
+    },
+
+    -- all the opts to send to nvim-lspconfig
+    -- these override the defaults set by rust-tools.nvim
+    -- see https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#rust_analyzer
+    server = {
+        -- on_attach is a callback called when the language server attachs to the buffer
+        -- on_attach = on_attach,
+        settings = {
+            -- to enable rust-analyzer settings visit:
+            -- https://github.com/rust-analyzer/rust-analyzer/blob/master/docs/user/generated_config.adoc
+            ["rust-analyzer"] = {
+                -- enable clippy on save
+                checkOnSave = {
+                    command = "clippy"
+                },
+            }
+        }
+    },
+}
+
+require('rust-tools').setup(rustopts)
+
 -- Neovim doesn't support snippets out of the box, so we need to mutate the
 -- capabilities we send to the language server to let them know we want snippets.
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -88,6 +123,7 @@ mapping = cmp.mapping.preset.insert({
     })
   })
 
+vim.cmd [[ autocmd BufWritePre *.rs lua vim.lsp.buf.formatting_sync(nil, 200) ]]
 
 -- A callback that will get called when a buffer connects to the language server.
 -- Here we create any key maps that we want to have on that buffer.
@@ -97,13 +133,14 @@ local on_attach = function(_, bufnr)
   end
   local map_opts = {noremap = true, silent = true}
 
-  map("n", "df", "<cmd>lua vim.lsp.buf.formatting()<cr>", map_opts)
-  map("n", "gd", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<cr>", map_opts)
-  map("n", "dt", "<cmd>lua vim.lsp.buf.definition()<cr>", map_opts)
-  map("n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>", map_opts)
-  map("n", "gD", "<cmd>lua vim.lsp.buf.implementation()<cr>", map_opts)
-  map("n", "<c-k>", "<cmd>lua vim.lsp.buf.signature_help()<cr>", map_opts)
-  map("n", "1gD", "<cmd>lua vim.lsp.buf.type_definition()<cr>", map_opts)
+  --map("n", "df", "<cmd>lua vim.lsp.buf.formatting()<cr>", map_opts)
+  --map("n", "gd", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<cr>", map_opts)
+  --map("n", "dt", "<cmd>lua vim.lsp.buf.definition()<cr>", map_opts)
+  --map("n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>", map_opts)
+  --map("n", "ga", "<cmd>lua vim.lsp.buf.code_action()<CR>", map_opts)
+  --map("n", "gD", "<cmd>lua vim.lsp.buf.implementation()<cr>", map_opts)
+  --map("n", "<c-k>", "<cmd>lua vim.lsp.buf.signature_help()<cr>", map_opts)
+  --map("n", "1gD", "<cmd>lua vim.lsp.buf.type_definition()<cr>", map_opts)
 
   -- These have a different style than above because I was fiddling
   -- around and never converted them. Instead of converting them
@@ -149,6 +186,17 @@ lspconfig.elixirls.setup({
       }
     }
   })
+  vim.cmd [[
+    nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
+    nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
+    nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
+    nnoremap <silent> 1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
+    nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
+    nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
+    nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
+    nnoremap <silent> gd    <cmd>lua vim.lsp.buf.definition()<CR>
+    nnoremap <silent> ga    <cmd>lua vim.lsp.buf.code_action()<CR>
+  ]]
 -- compe tab maps
 --vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", { expr = true })
 --vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", { expr = true })
