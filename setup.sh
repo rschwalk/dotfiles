@@ -26,7 +26,7 @@ ln -s ~/dotfiles/redshift ~/.config/;
 #mkdir /home/rschwalk/.mail;
 mkdir /home/rschwalk/tools
 git config --global user.name "rschwalk";
-git config --global user.email "rschwalk@rschwalk.eu";
+git config --global user.email "richard.schwalk@gmail.com";
 git config --global credential.helper cache;
 git config --global credential.helper 'cache --timeout=3600';
 # sudo mkdir /mnt/mybook_richard;
