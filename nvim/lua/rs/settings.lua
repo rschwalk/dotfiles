@@ -197,7 +197,7 @@ nmap <leader>bd :bp\|bd #<cr>
 ""nmap <leader>x :w<cr>:!chmod 755 %<cr>:e<cr>
 
 " VimWiki configuration
-let g:vimwiki_list = [{'path': '~/vimwiki/',
+let g:vimwiki_list = [{'path': '~/MEGA/Linux/vimwiki/',
                       \ 'syntax': 'markdown', 'ext': '.md'}]
 let g:vimwiki_markdown_link_ext = 1
 
