@@ -26,6 +26,8 @@ return require('packer').startup {
     use 'sheerun/vim-polyglot'
     -- Colors
     use 'morhetz/gruvbox'
+    --use "chriskempson/base16-vim"
+    use "RRethy/nvim-base16"
 
     use {
       'nvim-lualine/lualine.nvim',

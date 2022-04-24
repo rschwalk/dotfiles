@@ -604,10 +604,6 @@ autocmd ColorScheme * highlight ExtraWhitespace ctermbg=darkred guibg=darkred
 au InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWritePre * :%s/\s\+$//e
 
-"set background=dark
-"set termguicolors
-"colorscheme gruvbox
-"let g:airline_theme='gruvbox'
 "call togglebg#map("<F9>")
 
 ""      colorscheme Tomorrow-Night
@@ -616,47 +612,17 @@ autocmd BufWritePre * :%s/\s\+$//e
 "hi! Normal ctermbg=NONE guibg=NONE
 "hi! NonText ctermbg=NONE guibg=NONE
 
-"let g:lightline = {
-"      \ 'colorscheme': 'Tomorrow_Night',
-"      \ }
 
-""if filereadable(expand("~/.vimrc_background"))
-""  let base16colorspace=256
-""  source ~/.vimrc_background
-""  let g:airline_theme='base16_gruvbox_dark_hard'
-""  "let g:airline_theme='base16_monokai'
-""  "let g:airline_theme='base16_atelierdune'
-""  "let g:airline_theme='base16_ocean'
-""else
-""  " It works with konsole on plasma5
-""  " Install this  konsole themes
-""  " https://github.com/cskeeters/base16-konsole
-""  set background=dark
-""  colorscheme gruvbox
-""  let g:airline_theme='gruvbox'
-""endif
-
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256
+  source ~/.vimrc_background
+else
   set background=dark
   colorscheme gruvbox
+endif
+
   highlight Comment cterm=italic gui=italic
 
-""if has('gui_running')
-""  set background=dark
-""  colorscheme solarized
-""  let g:airline_theme='solarized'
-""  set guifont=DejaVu\ Sans\ Mono\ for\ Powerline
-""else
-""  if filereadable(expand("~/.vimrc_background"))
-""      let base16colorspace=256
-""      source ~/.vimrc_background
-""      "let g:airline_theme='base16_solarized'
-""      let g:airline_theme='base16_atelierdune'
-""  else
-""      set background=dark
-""      colorscheme Tomorrow-Night
-""      let g:airline_theme='tomorrow'
-""  endif
-""endif
 
 "**** autocmd FileType python highlight ColorColumn guibg=DimGrey
 
