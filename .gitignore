@@ -13,3 +13,5 @@ tint2/*.backup.*
 nvim/.netrwhist
 scripts/backups/backup_all.sh
 *.pyc
+nvim/plugin
+*.DS_store
