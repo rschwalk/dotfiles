@@ -613,18 +613,16 @@ autocmd BufWritePre * :%s/\s\+$//e
 "hi! NonText ctermbg=NONE guibg=NONE
 
 
-"if filereadable(expand("~/.vimrc_background"))
-"  let base16colorspace=256
-"  set termguicolors
-"  source ~/.vimrc_background
-"else
-"  set background=dark
-"  colorscheme gruvbox
-"endif
-
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256
+  "set termguicolors
+  source ~/.vimrc_background
+else
   set background=dark
   colorscheme gruvbox
-  highlight Comment cterm=italic gui=italic
+endif
+
+highlight Comment cterm=italic gui=italic
 
 
 "**** autocmd FileType python highlight ColorColumn guibg=DimGrey
