@@ -62,5 +62,5 @@ function neomutt
 end
 
 #source $HOME/.cargo/env
-# source ~/.asdf/asdf.fish
+source ~/.asdf/asdf.fish
 
