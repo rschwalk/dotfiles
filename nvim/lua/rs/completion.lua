@@ -167,7 +167,7 @@ end
 -- Finally, let's initialize the Elixir language server
 
 -- Replace the following with the path to your installation
-local path_to_elixirls = vim.fn.expand("~/tools/elixir-ls/language_server.sh")
+local path_to_elixirls = vim.fn.expand("~/dev/tools/elixir-ls/language_server.sh")
 
 lspconfig.elixirls.setup({
     cmd = {path_to_elixirls},

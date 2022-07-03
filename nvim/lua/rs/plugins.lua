@@ -101,6 +101,7 @@ return require('packer').startup {
         require "rs.completion"
       end,
     }
+    use {"nvim-treesitter/nvim-treesitter"}
 
     if PACKER_BOOTSTRAP then
       require("packer").sync()

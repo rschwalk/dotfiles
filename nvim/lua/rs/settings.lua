@@ -6,7 +6,7 @@ o.shell = "/opt/homebrew/bin/fish"
 
 -- This must be first, because it changes other options as a side effect.
 o.compatible = false
-o.autoindent = true
+--o.autoindent = true
 
 -- use spaces instead TABs
 o.tabstop=4
