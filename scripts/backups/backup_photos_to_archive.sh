@@ -1,2 +1,2 @@
 #!/bin/bash
-rsync -aP --delete /Volumes/Photos/ /Volumes/Data07/PhotoDrive
+rsync -aP --delete --progress --exclude '.*' /Volumes/Photos/ /Volumes/PhotosArchive1
