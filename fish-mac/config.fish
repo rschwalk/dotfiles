@@ -1,8 +1,8 @@
 # Base16 Shell
-if status --is-interactive
-     set BASE16_SHELL "$HOME/.config/base16-shell/"
-     source "$BASE16_SHELL/profile_helper.fish"
-end
+# if status --is-interactive
+#      set BASE16_SHELL "$HOME/.config/base16-shell/"
+#      source "$BASE16_SHELL/profile_helper.fish"
+# end
 
 set -x PATH /opt/homebrew/bin /Users/rschwalk/bin $HOME/.cargo/bin /usr/local/share/dotnet $PATH
 set -x LIBRARY_PATH /opt/homebrew/lib $LIBRARY_PATH
