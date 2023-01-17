@@ -59,12 +59,16 @@ require('packer').startup(function(use)
 
   -- fuzzy finder
   use {
-    'nvim-telescope/telescope.nvim',
+    'nvim-telescope/telescope.nvim', branch = '0.1.x',
     requires = {
       {'nvim-lua/plenary.nvim'},
       {"nvim-telescope/telescope-fzf-native.nvim", run = "make"},
       {"BurntSushi/ripgrep"},
-    }
+      {"sharkdp/fd"},
+    },
+    config = function()
+      require "rs.telescope"
+    end,
   }
   --language support
   use {"neovim/nvim-lspconfig",
