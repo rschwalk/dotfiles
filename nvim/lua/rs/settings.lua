@@ -633,9 +633,9 @@ autocmd BufWritePre * :%s/\s\+$//e
 "   colorscheme gruvbox
 " endif
 
-set termguicolors
-set background=dark
-colorscheme gruvbox
+"set termguicolors
+"set background=light
+"colorscheme solarized
 
 highlight Comment cterm=italic gui=italic
 

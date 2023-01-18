@@ -14,8 +14,9 @@ require('packer').startup(function(use)
   use 'sheerun/vim-polyglot'
   -- Colors
   use 'morhetz/gruvbox'
-  --use "altercation/vim-colors-solarized"
+  use 'shaunsingh/solarized.nvim'
   use "RRethy/nvim-base16"
+  use "EdenEast/nightfox.nvim"
 
   use {
     'nvim-lualine/lualine.nvim',
@@ -68,7 +69,7 @@ require('packer').startup(function(use)
     },
     config = function()
       require "rs.telescope"
-    end,
+    end
   }
   --language support
   use {"neovim/nvim-lspconfig",
@@ -82,7 +83,7 @@ require('packer').startup(function(use)
 
       -- Additional lua configuration, makes nvim stuff amazing
       'folke/neodev.nvim',
-    },
+    }
   }
   use {
     'simrat39/rust-tools.nvim',
@@ -109,13 +110,13 @@ require('packer').startup(function(use)
     },
     config = function()
       require "rs.completion"
-    end,
+    end
   }
   use { -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
     run = function()
       pcall(require('nvim-treesitter.install').update { with_sync = true })
-    end,
+    end
   }
 
   use { -- Additional text objects via treesitter

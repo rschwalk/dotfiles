@@ -40,17 +40,17 @@ function fish_user_key_bindings
 end
 
 function fish_prompt
-	set_color c5c8c6  # foreground
+	set_color cdcecf # foreground
 	echo -n "["(date "+%H:%M")"] "
-	set_color 81a2be  # blue
+	set_color 719cd6 # blue
 	echo -n (hostname)
 	if [ $PWD != $HOME ]
-		set_color c5c8c6  # foreground
+		set_color cdcecf # foreground
 		echo -n ':'
-		set_color f0c674  # yellow
+		set_color dbc074 # yellow
 		echo -n (basename $PWD)
 	end
-	set_color b5bd68  # green
+	set_color 81b29a # green
 	printf '%s ' (__fish_git_prompt)
 	set_color cc6666  # red
 	echo -n '| '
