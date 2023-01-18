@@ -395,12 +395,6 @@ let g:python3_host_prog = '/usr/bin/python3'
 ""let g:neomake_open_list = 0
 ""let g:neomake_cpp_enabled_makers = ['gcc']
 
-" Settings for airlines
-"-----------------------------------------------------------------------------
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
-set laststatus=2
-
 " delimitMate settings
 "-----------------------------------------------------------------------------
 let delimitMate_expand_cr = 1
