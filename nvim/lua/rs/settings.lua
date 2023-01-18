@@ -369,26 +369,6 @@ set noswapfile
 
 noremap <leader>gpl :-1read ~/dotfiles/nvim/templates/gpl.templ<CR>wi
 
-" Comment
-noremap <space>" I"<esc>
-vnoremap <space>" I"<esc>
-
-noremap <space># I#<esc>
-vnoremap <space># I#<esc>
-
-noremap <space>/ I//<esc>
-vnoremap <space>/ I//<esc>
-
-noremap <space>! I!<esc>
-vnoremap <space>! I!<esc>
-
-noremap <space>- I--<esc>
-vnoremap <space>- I--<esc>
-
-inoremap <leader>x <esc>
-noremap <leader>x <esc>
-vnoremap <leader>x <esc>
-
 set nofoldenable
 
 
