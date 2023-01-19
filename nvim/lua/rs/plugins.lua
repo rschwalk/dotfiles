@@ -17,6 +17,7 @@ require('packer').startup(function(use)
   use 'shaunsingh/solarized.nvim'
   use "RRethy/nvim-base16"
   use "EdenEast/nightfox.nvim"
+use 'Mofiqul/dracula.nvim'
 
   use {
     'nvim-lualine/lualine.nvim',
@@ -86,7 +87,7 @@ require('packer').startup(function(use)
     }
   }
   use {
-    'simrat39/rust-tools.nvim',
+    'simrat39/rust-tools.nvim'
     --config = function()
       --  require('rust-tools').setup({})
     --end
@@ -153,7 +154,7 @@ local packer_group = vim.api.nvim_create_augroup('Packer', { clear = true })
 vim.api.nvim_create_autocmd('BufWritePost', {
   command = 'source <afile> | silent! LspStop | silent! LspStart | PackerCompile',
   group = packer_group,
-  pattern = vim.fn.expand '$MYVIMRC',
+  pattern = '%:p' --vim.fn.expand '$MYVIMRC',
 })
 
 -- Enable Comment.nvim
@@ -165,3 +166,4 @@ require('indent_blankline').setup {
   char = '┊',
   show_trailing_blankline_indent = false,
 }
+
