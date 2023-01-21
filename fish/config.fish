@@ -40,21 +40,21 @@ function fish_user_key_bindings
 end
 
 function fish_prompt
-	set_color c5c8c6  # foreground
+	set_color $fish_color_normal # foreground
 	echo -n "["(date "+%H:%M")"] "
-	set_color 81a2be  # blue
-	echo -n (prompt_hostname)
+	set_color $fish_color_host # blue
+	echo -n (hostname)
 	if [ $PWD != $HOME ]
-		set_color c5c8c6  # foreground
+		set_color $fish_color_normal # foreground
 		echo -n ':'
-		set_color f0c674  # yellow
+		set_color $fish_color_cwd # yellow
 		echo -n (basename $PWD)
 	end
-	set_color b5bd68  # green
+	set_color $fish_color_user # green
 	printf '%s ' (__fish_git_prompt)
-	set_color cc6666  # red
+	set_color $fish_color_prompt # red
 	echo -n '| '
-	set_color normal
+	set_color $fish_color_normal
 end
 
 if set -q SSH_TTY
@@ -66,11 +66,6 @@ end
 #end
 
 #source $HOME/.cargo/env
-#source ~/.asdf/asdf.fish
+source ~/.asdf/asdf.fish
 
-#get fastest mirrors in your neighborhood
-alias mirror="sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist"
-alias mirrord="sudo reflector --latest 50 --number 20 --sort delay --save /etc/pacman.d/mirrorlist"
-alias mirrors="sudo reflector --latest 50 --number 20 --sort score --save /etc/pacman.d/mirrorlist"
-alias mirrora="sudo reflector --latest 50 --number 20 --sort age --save /etc/pacman.d/mirrorlist"
 
