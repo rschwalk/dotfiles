@@ -1,11 +1,10 @@
-# A customized config.py for Qtile window manager (http://www.qtile.org)
-# Modified by Richard Schwalk (https://github.com/rschwalk)
-#
-# Inpired by: Derek Taylor (DistroTube)
-# http://www.youtube.com/c/DistroTube Original Copiright text:
-#
-# Copyright (c) 2010 Aldo Cortesi, dequis, Randall Ma, Tycho Andersen,
-# Craig Barnes, horsik, Tao Sauvage
+# Copyright (c) 2010 Aldo Cortesi
+# Copyright (c) 2010, 2014 dequis
+# Copyright (c) 2012 Randall Ma
+# Copyright (c) 2012-2014 Tycho Andersen
+# Copyright (c) 2012 Craig Barnes
+# Copyright (c) 2013 horsik
+# Copyright (c) 2013 Tao Sauvage
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -25,241 +24,184 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-import os, subprocess
+import os
 import socket
-from libqtile import hook
-from libqtile.config import Key, Screen, Group, Drag, Click
-from libqtile.command import lazy
-from libqtile import layout, bar, widget
+from libqtile import bar, layout, widget
+from libqtile.config import Click, Drag, Group, Key, Match, Screen
+from libqtile.lazy import lazy
+from libqtile.utils import guess_terminal
 
-from typing import List  # noqa: F401
 
-rsTheme = {
-        'focus':       '#A75112',
-        'other_focus': '#cfb017',
-        'normal':        '#7d7a68',
-        'foreground':  '#a6a28c',
-        'background':  '#20201d',
-        'text':        '#c0c0c0',
-        'text_unfocus': '#7d7a68',
-    }
+def init_colors():
+    solarized_dark =    [["#002b36", "#002b36"],  # 0 panel background
+                         ["#859900", "#859900"],  # 1 current screen tab
+                         ["#eee8d5", "#eee8d5"],  # 2 font color for group names
+                         ["#b58900", "#b58900"],  # 3 border color for layout widget
+                         ["#268bd2", "#268bd2"],  # 4 border for other screen tabs
+                         ["#839496", "#839496"],  # 5 darker font color for inactive items
+                         ["#839496", "#839496"],  # 6 widget font color
+                         ["#b58900", "#b58900"],  # 7 active window border
+                         ["#268bd2", "#268bd2"],  # 8 widget symbol
+                         ["#d33682", "#d33682"]]  # 9 widget symbol
 
-theme = rsTheme
 
-##### DEFINING SOME WINDOW FUNCTIONS #####
+    tomorrow_night =    [["#1d1f21", "#1d1f21"],  # 0 panel background
+                         ["#b5bd68", "#b5bd68"],  # 1 current screen tab
+                         ["#f0c674", "#f0c674"],  # 2 border color for layout widget
+                         ["#b5bd68", "#b5bd68"],  # 3 font color for group names
+                         ["#81a2be", "#81a2be"],  # 4 border for other screen tabs
+                         ["#c5c8c6", "#c5c8c6"],  # 5 darker font color for inactive items
+                         ["#c5c8c6", "#c5c8c6"],  # 6 widget font color
+                         ["#b5bd68", "#b5bd68"],  # 7 active window border
+                         ["#81a2be", "#81a2be"],  # 8 widget symbol
+                         ["#8abeb7", "#8abeb7"]]  # 9 active tab on inactive screen
 
-@lazy.function
-def window_to_prev_group(qtile):
-    if qtile.currentWindow is not None:
-        i = qtile.groups.index(qtile.currentGroup)
-        qtile.currentWindow.togroup(qtile.groups[i - 1].name)
+    return tomorrow_night
 
-@lazy.function
-def window_to_next_group(qtile):
-    if qtile.currentWindow is not None:
-        i = qtile.groups.index(qtile.currentGroup)
-        qtile.currentWindow.togroup(qtile.groups[i + 1].name)
-
-##### LAUNCH APPS IN SPECIFIED GROUPS #####
-
-def app_or_group(group, app):
-    def f(qtile):
-        if qtile.groupMap[group].windows:
-            qtile.groupMap[group].cmd_toscreen()
-        else:
-            qtile.groupMap[group].cmd_toscreen()
-            qtile.cmd_spawn(app)
-    return f
-
-##### KEYBINDINGS #####
 
 def init_keys():
-
-    mod = "mod4"
-    keys = [
-        Key([mod], "j", lazy.layout.down()),
-        Key([mod], "k", lazy.layout.up()),
-        Key([mod], "h", lazy.layout.left()),
-        Key([mod], "l", lazy.layout.right()),
-        Key([mod, "shift"], "j", lazy.layout.shuffle_down()),
-        Key([mod, "shift"], "k", lazy.layout.shuffle_up()),
-        Key([mod, "shift"], "h", lazy.layout.shuffle_left()),
-        Key([mod, "shift"], "l", lazy.layout.shuffle_right()),
-        Key([mod, "mod1"], "j", lazy.layout.flip_down()),
-        Key([mod, "mod1"], "k", lazy.layout.flip_up()),
-        Key([mod, "mod1"], "h", lazy.layout.flip_left()),
-        Key([mod, "mod1"], "l", lazy.layout.flip_right()),
-        Key([mod, "control"], "j", lazy.layout.grow_down()),
-        Key([mod, "control"], "k", lazy.layout.grow_up()),
-        Key([mod, "control"], "h", lazy.layout.grow_left()),
-        Key([mod, "control"], "l", lazy.layout.grow_right()),
-        Key([mod, "shift"], "n", lazy.layout.normalize()),
-        Key([mod], "space", lazy.layout.toggle_split()),
-
-        # Switch between windows in current stack pane
-        #Key([mod], "j", lazy.layout.down()),
-        #Key([mod], "k", lazy.layout.up()),
-
-        # Move windows up or down in current stack
-        #Key([mod, "control"], "j", lazy.layout.shuffle_down()),
-        #Key([mod, "control"], "k", lazy.layout.shuffle_up()),
-
-        # Switch window focus to other pane(s) of stack
-        #Key([mod], "space", lazy.layout.next()),
-
-        # Swap panes of split stack
-        #Key([mod, "shift"], "space", lazy.layout.rotate()),
-
+    return [
+        # A list of available commands that can be bound to keys can be found
+        # at https://docs.qtile.org/en/latest/manual/config/lazy.html
+        # Switch between windows
+        Key(
+            [mod], "h",
+            lazy.layout.left(),
+            desc="Move focus to left"),
+        Key(
+            [mod], "l",
+            lazy.layout.right(),
+            desc="Move focus to right"),
+        Key(
+            [mod], "j",
+            lazy.layout.down(),
+            desc="Move focus down"),
+        Key(
+            [mod], "k",
+            lazy.layout.up(),
+            desc="Move focus up"),
+        Key(
+            [mod], "space",
+            lazy.layout.next(),
+            desc="Move window focus to other window"),
+        # Move windows between left/right columns or move up/down in current stack.
+        # Moving out of range in Columns layout will create new column.
+        Key(
+            [mod, "shift"], "h",
+            lazy.layout.shuffle_left(),
+            desc="Move window to the left"),
+        Key(
+            [mod, "shift"], "l",
+            lazy.layout.shuffle_right(),
+            desc="Move window to the right"),
+        Key(
+            [mod, "shift"], "j",
+            lazy.layout.shuffle_down(),
+            desc="Move window down"),
+        Key(
+            [mod, "shift"], "k",
+            lazy.layout.shuffle_up(),
+            desc="Move window up"),
+        # Grow windows. If current window is on the edge of screen and direction
+        # will be to screen edge - window would shrink.
+        Key(
+            [mod, "control"], "h",
+            lazy.layout.grow_left(),
+            desc="Grow window to the left"),
+        Key(
+            [mod, "control"], "l",
+            lazy.layout.grow_right(),
+            desc="Grow window to the right"),
+        Key(
+            [mod, "control"], "j",
+            lazy.layout.grow_down(),
+            desc="Grow window down"),
+        Key(
+            [mod, "control"], "k",
+            lazy.layout.grow_up(),
+            desc="Grow window up"),
+        Key(
+            [mod], "n",
+            lazy.layout.normalize(),
+            desc="Reset all window sizes"),
         # Toggle between split and unsplit sides of stack.
         # Split = all windows displayed
         # Unsplit = 1 window displayed, like Max layout, but still with
         # multiple stack panes
-        #Key([mod, "shift"], "Return", lazy.layout.toggle_split()),
-        # Open terminal
+        Key(
+            [mod, "shift"],
+            "Return",
+            lazy.layout.toggle_split(),
+            desc="Toggle between split and unsplit sides of stack",
+        ),
         Key(
             [mod], "Return",
-            lazy.spawn(terminal)
-            ),
-
+            lazy.spawn(terminal),
+            desc="Launch terminal"),
         # Toggle between different layouts as defined below
         Key(
             [mod], "Tab",
-            lazy.next_layout()
-            ),
-        # Kill active window
+            lazy.next_layout(),
+            desc="Toggle between layouts"),
         Key(
             [mod, "shift"], "c",
-            lazy.window.kill()
-            ),
-        # Restart Qtile
+            lazy.window.kill(),
+            desc="Kill focused window"),
         Key(
             [mod, "control"], "r",
-            lazy.restart()
-            ),
-        # Shutdown Qtile
+            lazy.reload_config(),
+            desc="Reload the config"),
         Key(
             [mod, "control"], "q",
-            lazy.shutdown()
-            ),
-        # Lock Qtile
+            lazy.shutdown(),
+            desc="Shutdown Qtile"),
+        Key(
+            [mod], "r",
+            lazy.spawncmd(),
+            desc="Spawn a command using a prompt widget"),
         Key(
             [mod, "control"], "p",
-            lazy.spawn("i3lock -c 1d1f21")
-            ),
+            lazy.spawn("i3lock -c 1d1f21"),
+            desc="Lock the screen"),
         # Suspend Qtile
         Key(
             [mod, "control"], "x",
-            lazy.spawn("/home/rschwalk/dotfiles/scripts/lock_suspend.sh")
-            ),
-        Key(
-            [mod, ], "d",
-            lazy.spawn("dmenu_run -fn 'Source Code Pro:size=12' -nb '#1d1f21' -nf '#b5bd68' -sb '#81a2be' -sf '#1d1f21' -p 'dmenu:'")
-            ),
-        Key([mod], "r", lazy.spawncmd()),
-        Key(
-            [mod], "F5",
-            lazy.spawn("firefox")
-            ),
-        Key(
-            [mod], "F6",
-            lazy.spawn("thunar")
-            ),
+            lazy.spawn("/home/rschwalk/dotfiles/scripts/lock_suspend.sh"),
+            desc="Suspend with screen lock"),
         Key(
             [mod], "F11",
-            lazy.spawn("rofi -show run -fullscreen")
-            ),
+            lazy.spawn("rofi -show run -fullscreen"),
+            desc="Rofi in fullscreen"),
         Key(
             [mod], "F12",
-            lazy.spawn("rofi -show run")
-            ),
+            lazy.spawn("rofi -show run"),
+            desc="Rofi run applications"),
         Key(
             [mod, "shift"], "F12",
-            lazy.spawn("rofi -show window")
-            ),
+            lazy.spawn("rofi -show window"),
+            desc="Rofi show running applications"),
         # Keyboard focus screen(0)
         Key([mod], "w",
-            lazy.to_screen(1)
-            ),
+            lazy.to_screen(1),
+            desc="Focus to screen 1"),
         # Keyboard focus screen(1)
         Key([mod], "e",
-            lazy.to_screen(0)
-            ),
-        #Key(
-        #   [mod, "shift"], "l",
-        #   lazy.layout.grow(),                     # Grow size of current window (XmonadTall)
-        #   lazy.layout.increase_nmaster(),         # Increase number in master pane (Tile)
-        #   ),
-        #Key(
-        #   [mod, "shift"], "h",
-        #   lazy.layout.shrink(),                   # Shrink size of current window (XmonadTall)
-        #   lazy.layout.decrease_nmaster(),         # Decrease number in master pane (Tile)
-        #   ),
-        Key(
-           [mod, "shift"], "Left",                 # Move window to workspace to the left
-           window_to_prev_group
-           ),
-        Key(
-           [mod, "shift"], "Right",                # Move window to workspace to the right
-           window_to_next_group
-           ),
-        #Key(
-        #   [mod], "n",
-        #   lazy.layout.normalize()                 # Restore all windows to default size ratios
-        #   ),
-        Key(
-           [mod], "m",
-           lazy.layout.maximize()                  # Toggle a window between minimum and maximum sizes
-           ),
-        Key(
-           [mod, "shift"], "f",
-           lazy.window.toggle_floating()           # Toggle floating
-           ),
+            lazy.to_screen(0),
+            desc="Focus to screen 0"),
         Key(
            [], "XF86AudioRaiseVolume",
-           lazy.spawn("amixer -q set Master 2%+")    # Volume up
-           ),
+           lazy.spawn("amixer -q set Master 2%+"),
+           desc="Volume Up"),
         Key(
            [], "XF86AudioLowerVolume",
-           lazy.spawn("amixer -q set Master 2%-")    # Volume down
-           ),
+           lazy.spawn("amixer -q set Master 2%-"),
+           desc="Volume Down"),
         Key(
            [], "XF86AudioMute",
-           lazy.spawn("amixer -q set Master toggle") # Mute volume
-           ),
+           lazy.spawn("amixer -q set Master toggle"),
+           desc="Mute Volume"),
     ]
 
-    return keys
-
-
-##### BAR COLORS #####
-
-def init_colors():
-    solarized_dark =    [["#002b36", "#002b36"], # 0 panel background
-                         ["#859900", "#859900"], # 1 current screen tab
-                         ["#eee8d5", "#eee8d5"], # 2 font color for group names
-                         ["#b58900", "#b58900"], # 3 border color for layout widget
-                         ["#268bd2", "#268bd2"], # 4 border for other screen tabs
-                         ["#839496", "#839496"], # 5 darker font color for inactive items
-                         ["#839496", "#839496"], # 6 widget font color
-                         ["#b58900", "#b58900"], # 7 active window border
-                         ["#268bd2", "#268bd2"], # 8 widget symbol
-                         ["#d33682", "#d33682"]] # 9 widget symbol
-
-
-    tomorrow_night =    [["#1d1f21", "#1d1f21"], # 0 panel background
-                         ["#b5bd68", "#b5bd68"], # 1 current screen tab
-                         ["#f0c674", "#f0c674"], # 2 border color for layout widget
-                         ["#b5bd68", "#b5bd68"], # 3 font color for group names
-                         ["#81a2be", "#81a2be"], # 4 border for other screen tabs
-                         ["#c5c8c6", "#c5c8c6"], # 5 darker font color for inactive items
-                         ["#c5c8c6", "#c5c8c6"], # 6 widget font color
-                         ["#b5bd68", "#b5bd68"], # 7 active window border
-                         ["#81a2be", "#81a2be"], # 8 widget symbol
-                         ["#8abeb7", "#8abeb7"]] # 9 active tab on inactive screen
-
-    return tomorrow_night
-
-##### GROUPS #####
 
 def init_group_names():
     return [("I", {'layout': 'bsp'}),
@@ -272,363 +214,305 @@ def init_group_names():
             ("VIII", {'layout': 'bsp'}),
             ("IX", {'layout': 'bsp'})]
 
-def init_groups():
-    return [Group(name, **kwargs) for name, kwargs in group_names]
 
-##### LAYOUTS #####
-def init_floating_layout():
-    floating_layout = layout.Floating(float_rules=[
-        {"role": "EventDialog"},
-        {"role": "Msgcompose"},
-        {"role": "Preferences"},
-        {"role": "pop-up"},
-        {"role": "prefwindow"},
-        {"role": "task_dialog"},
-        {"wname": "Search Dialog"},
-        {"wname": "Preferences"},
-        {"wname": "File Transfer"},
-        {"wname": 'confirm'},
-        {"wmclass": 'dialog'},
-        {"wmclass": 'download'},
-        {"wmclass": 'error'},
-        {"wmclass": 'file_progress'},
-        {"wmclass": 'notification'},
-        {"wmclass": 'splash'},
-        {"wmclass": 'toolbar'},
-        {"wmclass": 'confirmreset'},
-        {"wmclass": 'makebranch'},
-        {"wmclass": 'maketag'},
-        {"wmclass": "notify"},
-        {"wmclass": "Lxappearance"},
-        {"wmclass": "Nitrogen"},
-        {"wmclass": "Pavucontrol"},
-        {"wmclass": "nvidia-settings"},
-        {"wmclass": 'ssh-askpass'},
-        {"wmclass": 'MIX_TARGET=host, app = :home_display'},
-    ],
-    border_focus=colors[7][0]
-    )
-    return floating_layout
+def init_groups():
+    group_list = init_group_names()
+
+    return [Group(name, **kwargs) for name, kwargs in group_list]
+
 
 def init_layout_theme():
     return {"border_width": 2,
             "margin": 2,
             "border_focus": colors[7][0],
             "border_normal": colors[5][0]
-           }
+            }
 
-def init_border_args():
-    return {"border_width": 2}
 
 def init_layouts():
     return [layout.Max(**layout_theme),
             layout.MonadTall(**layout_theme),
             layout.MonadWide(**layout_theme),
             layout.Bsp(**layout_theme),
-            #layout.TreeTab(
-            #    font = "Noto Sans ",
-            #    fontsize = 10,
-            #    sections = ["FIRST", "SECOND"],
-            #    section_fontsize = 11,
-            #    bg_color = "141414",
-            #    active_bg = "90C435",
-            #    active_fg = "000000",
-            #    inactive_bg = "384323",
-            #    inactive_fg = "a0a0a0",
-            #    padding_y = 5,
-            #    section_top = 10,
-            #    panel_width = 320,
-            #    **layout_theme
-            #    ),
-            #layout.Stack(stacks=2, **layout_theme),
-            #layout.Columns(**layout_theme),
             layout.RatioTile(**layout_theme),
-            #layout.VerticalTile(**layout_theme),
             layout.Tile(shift_windows=True, **layout_theme),
-            #layout.Matrix(**layout_theme),
-            #layout.Zoomy(**layout_theme),
             layout.Floating(**layout_theme)]
 
 
-
-##### WIDGETS #####
-
 def init_widget_defaults():
     return dict(font="Noto Sans Mono Regular",
-            fontsize = 11,
-            padding = 3,
-            foreground = colors[7],
-            background=colors[0])
+                fontsize=11,
+                padding=3,
+                foreground=colors[7],
+                background=colors[0])
+
 
 def init_widgets_list():
     label_font_size = 14
     widget_font_size = 12
     prompt = "{0}@{1}: ".format(os.environ["USER"], socket.gethostname())
     widgets_list = [
-               widget.Sep(
-                        linewidth = 0,
-                        padding = 6,
-                        foreground = colors[1],
-                        ),
-               widget.GroupBox(
-                        font="Source Code Pro",
-                        fontsize = 10,
-                        margin_y = 5,
-                        margin_x = 0,
-                        padding_y = 5,
-                        padding_x = 5,
-                        borderwidth = 3,
-                        active = colors[3],
-                        inactive = colors[5],
-                        highlight_color = colors[0],
-                        rounded = True,
-                        highlight_method = "line",
-                        this_current_screen_border = colors[1],
-                        this_screen_border = colors[9],
-                        other_current_screen_border = colors[5],
-                        other_screen_border = colors[4],
-                        foreground = colors[2],
-                        ),
-               widget.Prompt(
-                        prompt=prompt,
-                        font="Noto Sans Mono Regular",
-                        fontsize = widget_font_size,
-                        padding=10,
-                        foreground = colors[3],
-                        background = colors[1]
-                        ),
-               widget.Sep(
-                        linewidth = 2,
-                        padding = 10,
-                        foreground = colors[1],
-                        ),
-               widget.TextBox(
-                        font="Noto Sans Mono Bold",
-                        text=" Layout:",
-                        foreground=colors[8],
-                        fontsize=label_font_size
-                        ),
-               widget.CurrentLayout(
-                        fontsize=widget_font_size,
-                        foreground = colors[6],
-                        ),
-               widget.Sep(
-                        linewidth = 2,
-                        padding = 10,
-                        foreground = colors[1],
-                        ),
-               widget.WindowName(
-                        font="Noto Sans Mono Regular",
-                        fontsize = widget_font_size,
-                        foreground = colors[6],
-                        ),
-               widget.Sep(
-                        linewidth = 2,
-                        padding = 10,
-                        foreground = colors[1],
-                        ),
-               widget.Systray(
-                        ),
-               widget.Sep(
-                        linewidth = 2,
-                        padding = 10,
-                        foreground = colors[1],
-                        ),
-               #widget.TextBox(
-               #         font="Noto Sans Mono Bold",
-               #         text="CPU:",
-               #         foreground=colors[8],
-               #         fontsize=label_font_size
-               #         ),
-               #widget.CPU(
-               #         font="Noto Sans Mono Regular",
-               #         fontsize = widget_font_size,
-               #         foreground = colors[6],
-               #        ),
-               #widget.Sep(
-               #         linewidth = 2,
-               #         padding = 10,
-               #         foreground = colors[1],
-               #         ),
-               widget.TextBox(
-                        font="Noto Sans Mono Bold",
-                        text="Mem.:",
-                        foreground=colors[8],
-                        fontsize=label_font_size
-                        ),
-               widget.Memory(
-                        font="Noto Sans Mono Regular",
-                        fontsize = widget_font_size,
-                        foreground = colors[6],
-                       ),
-               widget.Sep(
-                        linewidth = 2,
-                        padding = 10,
-                        foreground = colors[1],
-                        ),
-               widget.TextBox(
-                        font="Noto Sans Mono Bold",
-                        text="Net:",
-                        foreground=colors[8],
-                        fontsize=label_font_size
-                        ),
-               widget.Net(
-                        font="Noto Sans Mono Regular",
-                        fontsize = widget_font_size,
-                        interface = "enp27s0",
-                        foreground = colors[6],
-                        ),
-               widget.Sep(
-                        linewidth = 2,
-                        padding = 10,
-                        foreground = colors[1],
-                        ),
-               widget.TextBox(
-                        font="Noto Sans Mono Bold",
-                        text="Vol.:",
-                        foreground=colors[8],
-                        fontsize=label_font_size
-                        ),
-               widget.Volume(
-                        font="Noto Sans Mono Regular",
-                        fontsize = widget_font_size,
-                        foreground = colors[6],
-                       ),
-               #widget.Sep(
-               #         linewidth = 2,
-               #         padding = 10,
-               #         foreground = colors[1],
-               #         background = colors[0]
-               #         ),
-               #widget.TextBox(
-               #         font="Noto Sans Bold",
-               #         text=" ♫",
-               #         padding = 5,
-               #         foreground=colors[8],
-               #         background=colors[0],
-               #         fontsize=14
-               #         ),
-               #widget.Cmus(
-               #         max_chars = 40,
-               #         update_interval = 0.5,
-               #         foreground=colors[6],
-               #         background = colors[0]
-               #         ),
-               widget.Sep(
-                        linewidth = 2,
-                        padding = 10,
-                        foreground = colors[1],
-                        ),
-               widget.TextBox(
-                        font="Noto Sans Mono Bold",
-                        text="T:",
-                        foreground=colors[8],
-                        padding = 5,
-                        fontsize=label_font_size
-                        ),
-               widget.Clock(
-                        font="Noto Sans Mono Bold",
-                        fontsize = widget_font_size,
-                        foreground = colors[6],
-                        format="%A, %B %d - %H:%M"
-                        ),
-               widget.Sep(
-                        linewidth = 2,
-                        padding = 5,
-                        foreground = colors[1],
-                        ),
-    #        widget.GroupBox(foreground=theme["text"],
-    #            active=theme["text"],
-    #            inactive=theme["text_unfocus"],
-    #            background=theme["background"],
-    #            this_current_screen_border=theme["focus"],
-    #            this_screen_border=theme["normal"],
-    #            other_current_screen_border=theme["other_focus"]),
-    #        widget.Prompt(),
-    #        # widget.WindowName(),
-    #        widget.Spacer(length=bar.STRETCH),
-    #        widget.Systray(),
-    #        widget.TextBox("🕑", foreground=theme["foreground"]),
-    #        widget.Clock(format='%Y-%m-%d %a %H:%M', foreground=theme["foreground"]),
-            ]
-
+        widget.Sep(
+            linewidth=0,
+            padding=6,
+            foreground=colors[1],
+        ),
+        widget.GroupBox(
+            font="Noto Sans Mono Bold",
+            fontsize=label_font_size,
+            margin_y=5,
+            margin_x=0,
+            padding_y=5,
+            padding_x=5,
+            borderwidth=3,
+            active=colors[3],
+            inactive=colors[5],
+            highlight_color=colors[0],
+            rounded=True,
+            highlight_method="line",
+            this_current_screen_border=colors[1],
+            this_screen_border=colors[9],
+            other_current_screen_border=colors[5],
+            other_screen_border=colors[4],
+            foreground=colors[2],
+        ),
+        # widget.Prompt(
+        #     prompt="Run:",
+        #     font="Noto Sans Mono Regular",
+        #     fontsize=widget_font_size,
+        #     padding=10,
+        #     foreground=colors[3],
+        #     background=colors[1]
+        # ),
+        widget.Sep(
+            linewidth=2,
+            padding=10,
+            foreground=colors[1],
+        ),
+        widget.WindowName(
+            font="Noto Sans Mono",
+            fontsize=widget_font_size,
+            foreground=colors[6],
+        ),
+        widget.Sep(
+            linewidth=2,
+            padding=10,
+            foreground=colors[1],
+        ),
+    ]
     return widgets_list
 
-##### SCREENS ##### (TRIPLE MONITOR SETUP)
 
-def init_widgets_screen1():
-    widgets_screen1 = init_widgets_list()
-    return widgets_screen1                       # Slicing removes unwanted widgets on Monitors 1,3
+def init_main_widget_list():
+    label_font_size = 14
+    widget_font_size = 12
+    separator = widget.Sep(
+        linewidth=2,
+        padding=10,
+        foreground=colors[1],
+    )
 
-def init_widgets_screen2():
-    orig_list = init_widgets_list()
-    widgets_screen2 = orig_list[:2]
-    widgets_screen2 += orig_list[3:9]
-    widgets_screen2 += orig_list[-3:]
-    return widgets_screen2
+    main_widgets = [
+        widget.Systray(
+        ),
+        separator,
+        widget.TextBox(
+                    font="Noto Sans Mono Bold",
+                    text="CPU:",
+                    foreground=colors[8],
+                    fontsize=label_font_size
+        ),
+        widget.CPU(
+                    font="Noto Sans Mono Regular",
+                    fontsize=widget_font_size,
+                    foreground=colors[6],
+        ),
+        separator,
+        widget.TextBox(
+            font="Noto Sans Mono Bold",
+            text="Mem.:",
+            foreground=colors[8],
+            fontsize=label_font_size
+        ),
+        widget.Memory(
+            font="Noto Sans Mono Regular",
+            fontsize=widget_font_size,
+            foreground=colors[6],
+        ),
+        separator,
+        widget.TextBox(
+            font="Noto Sans Mono Bold",
+            text="Net:",
+            foreground=colors[8],
+            fontsize=label_font_size
+        ),
+        widget.Net(
+            font="Noto Sans Mono Regular",
+            fontsize=widget_font_size,
+            interface="enp27s0",
+            foreground=colors[6],
+        ),
+        separator,
+        widget.TextBox(
+            font="Noto Sans Mono Bold",
+            text="Vol.:",
+            foreground=colors[8],
+            fontsize=label_font_size
+        ),
+        widget.Volume(
+            font="Noto Sans Mono Regular",
+            fontsize=widget_font_size,
+            foreground=colors[6],
+        ),
+        separator,
+        widget.TextBox(
+            font="Noto Sans Mono Bold",
+            text="T:",
+            foreground=colors[8],
+            padding=5,
+            fontsize=label_font_size
+        ),
+        widget.Clock(
+            font="Noto Sans Mono Bold",
+            fontsize=widget_font_size,
+            foreground=colors[6],
+            format="%A, %B %d - %H:%M"
+        ),
+        separator,
+    ]
+
+    return main_widgets
+
+
+def init_widgets_for_secondary_screen():
+    return init_widgets_list()
+
+
+def init_widgets_for_main_screen():
+    main_widgets = init_widgets_list() + init_main_widget_list()
+
+    return main_widgets
+
 
 def init_screens():
-    return [Screen(top=bar.Bar(widgets=init_widgets_screen1(), opacity=0.95, size=22, background=colors[0])),
-            Screen(top=bar.Bar(widgets=init_widgets_screen2(), opacity=0.95, size=22, background=colors[0])),
-            ]
+    return [
+        Screen(
+            top=bar.Bar(
+                init_widgets_for_secondary_screen(),
+                24,
+                # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
+                # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
+            ),
+        ),
+        Screen(
+            top=bar.Bar(
+                init_widgets_for_main_screen(),
+                28,
+                # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
+                # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
+            ),
+        ),
+    ]
 
-##### FLOATING WINDOWS #####
 
-@hook.subscribe.client_new
-def floating(window):
-    floating_types = ['notification', 'toolbar', 'splash', 'dialog', 'app']
-    transient = window.window.get_wm_transient_for()
-    if window.window.get_wm_type() in floating_types or transient:
-        window.floating = True
-
-def init_mouse():
-    return [Drag([mod], "Button1", lazy.window.set_position_floating(),      # Move floating windows
-                 start=lazy.window.get_position()),
-            Drag([mod], "Button3", lazy.window.set_size_floating(),          # Resize floating windows
-                 start=lazy.window.get_size()),
-            Click([mod, "shift"], "Button1", lazy.window.bring_to_front())]  # Bring floating window to front
-
-##### SETUP #####
+# SETUP #####
 if __name__ in ["config", "__main__"]:
-    mod = "mod4"                                     # Sets mod key to SUPER/WINDOWS
+    mod = "mod4"
     terminal = "alacritty"
-    myConfig = "/home/rschwalk/.config/qtile/config.py"    # Qtile config file location
 
     colors = init_colors()
+
     keys = init_keys()
-    mouse = init_mouse()
-    group_names = init_group_names()
+
     groups = init_groups()
-    floating_layout = init_floating_layout()
+
+    for i, (name, kwargs) in enumerate(init_group_names(), 1):
+        keys.extend(
+            [
+                # mod1 + letter of group = switch to group
+                Key(
+                    [mod],
+                    str(i),
+                    lazy.group[name].toscreen(),
+                    desc="Switch to group {}".format(name),
+                ),
+                # mod1 + shift + letter of group = switch to & move focused
+                # window to group
+                Key(
+                    [mod, "shift"],
+                    str(i),
+                    lazy.window.togroup(name, switch_group=True),
+                    desc="Switch to & move focused window to group {}".format(name),
+                ),
+                # Or, use below if you prefer not to switch to that group.
+                # # mod1 + shift + letter of group = move focused window to group
+                # Key([mod, "shift"], i.name, lazy.window.togroup(i.name),
+                #     desc="move focused window to group {}".format(i.name)),
+            ]
+        )
+
     layout_theme = init_layout_theme()
-    border_args = init_border_args()
     layouts = init_layouts()
+
+    # layouts = [
+    #     layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=4),
+    #     layout.Max(),
+    #     # Try more layouts by unleashing below layouts.
+    #     # layout.Stack(num_stacks=2),
+    #     # layout.Bsp(),
+    #     # layout.Matrix(),
+    #     # layout.MonadTall(),
+    #     # layout.MonadWide(),
+    #     # layout.RatioTile(),
+    #     # layout.Tile(),
+    #     # layout.TreeTab(),
+    #     # layout.VerticalTile(),
+    #     # layout.Zoomy(),
+    # ]
+
+    widget_defaults = dict(
+        font="sans",
+        fontsize=12,
+        padding=3,
+    )
+    extension_defaults = widget_defaults.copy()
+
     screens = init_screens()
-    widget_defaults = init_widget_defaults()
-    widgets_list = init_widgets_list()
-    widgets_screen1 = init_widgets_screen1()
-    widgets_screen2 = init_widgets_screen2()
 
-##### GROUP KEYBINDINGS #####
-for i, (name, kwargs) in enumerate(group_names, 1):
-    keys.append(Key([mod], str(i), lazy.group[name].toscreen()))          # Switch to another group
-    keys.append(Key([mod, "shift"], str(i), lazy.window.togroup(name)))   # Send current window to another group
+    # Drag floating layouts.
+    mouse = [
+        Drag([mod], "Button1", lazy.window.set_position_floating(), start=lazy.window.get_position()),
+        Drag([mod], "Button3", lazy.window.set_size_floating(), start=lazy.window.get_size()),
+        Click([mod], "Button2", lazy.window.bring_to_front()),
+    ]
 
-##### STARTUP APPLICATIONS #####
+    dgroups_key_binder = None
+    dgroups_app_rules = []  # type: list
+    follow_mouse_focus = True
+    bring_front_click = False
+    cursor_warp = False
+    floating_layout = layout.Floating(
+        float_rules=[
+            # Run the utility of `xprop` to see the wm class and name of an X client.
+            *layout.Floating.default_float_rules,
+            Match(wm_class="confirmreset"),  # gitk
+            Match(wm_class="makebranch"),  # gitk
+            Match(wm_class="maketag"),  # gitk
+            Match(wm_class="ssh-askpass"),  # ssh-askpass
+            Match(title="branchdialog"),  # gitk
+            Match(title="pinentry"),  # GPG key password entry
+        ]
+    )
+    auto_fullscreen = True
+    focus_on_window_activation = "smart"
+    reconfigure_screens = True
 
-@hook.subscribe.startup_once
-def start_once():
-    home = os.path.expanduser('~')
-    subprocess.call([home + '/.config/qtile/autostart.sh'])
+    # If things like steam games want to auto-minimize themselves when losing
+    # focus, should we respect this or not?
+    auto_minimize = True
 
-dgroups_key_binder = None
-dgroups_app_rules = []  # type: List
-main = None
-follow_mouse_focus = True
-bring_front_click = False
-cursor_warp = False
-auto_fullscreen = True
-focus_on_window_activation = "smart"
+    # When using the Wayland backend, this can be used to configure input devices.
+    wl_input_rules = None
 
 # XXX: Gasp! We're lying here. In fact, nobody really uses or cares about this
 # string besides java UI toolkits; you can see several discussions on the
@@ -639,4 +523,3 @@ focus_on_window_activation = "smart"
 # We choose LG3D to maximize irony: it is a 3D non-reparenting WM written in
 # java that happens to be on java's whitelist.
 wmname = "LG3D"
-
