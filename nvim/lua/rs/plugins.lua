@@ -17,7 +17,7 @@ require('packer').startup(function(use)
   use 'shaunsingh/solarized.nvim'
   use "RRethy/nvim-base16"
   use "EdenEast/nightfox.nvim"
-use 'Mofiqul/dracula.nvim'
+  use 'Mofiqul/dracula.nvim'
 
   use {
     'nvim-lualine/lualine.nvim',

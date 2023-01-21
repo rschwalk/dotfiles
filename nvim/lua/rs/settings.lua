@@ -2,7 +2,7 @@ HOME = os.getenv("HOME")
 
 local o = vim.opt
 
-o.shell = "/opt/homebrew/bin/fish"
+o.shell = "fish"
 
 -- This must be first, because it changes other options as a side effect.
 o.compatible = false
@@ -68,7 +68,7 @@ o.splitbelow = true
 o.splitright = true
 -- we use lightline no need for additional mode info
 o.showmode = false
-o.title = true
+o.title = false
 o.cursorline = true
 o.nu = true
 -- don't automatically wrap on load
