@@ -29,7 +29,11 @@ import socket
 from libqtile import bar, layout, widget
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
-from libqtile.utils import guess_terminal
+# from libqtile.utils import guess_terminal
+
+
+def _build_color(color):
+    return [color, color]
 
 
 def init_colors():
@@ -56,7 +60,25 @@ def init_colors():
                          ["#81a2be", "#81a2be"],  # 8 widget symbol
                          ["#8abeb7", "#8abeb7"]]  # 9 active tab on inactive screen
 
-    return tomorrow_night
+    # Dracula theme
+    # Here is all the colors from the theme. I don't knew, if I'll use all.
+    # If you change this, you need also to check below the right order in use.
+    dracula = [
+        "#282a36",  # 0 Background
+        "#44475a",  # 1 Current Line
+        "#44475a",  # 2 Selection
+        "#f8f8f2",  # 3 Foreground
+        "#6272a4",  # 4 Comment
+        "#8be9fd",  # 5 Cyan
+        "#50fa7b",  # 6 Green
+        "#ffb86c",  # 7 Orange
+        "#ff79c6",  # 8 Pink
+        "#bd93f9",  # 9 Purple
+        "#ff5555",  # 10 Red
+        "#f1fa8c",  # 11 Yellow
+    ]
+
+    return dracula
 
 
 def init_keys():
@@ -224,8 +246,8 @@ def init_groups():
 def init_layout_theme():
     return {"border_width": 2,
             "margin": 2,
-            "border_focus": colors[7][0],
-            "border_normal": colors[5][0]
+            "border_focus": colors[7],
+            "border_normal": colors[2]
             }
 
 
@@ -241,22 +263,27 @@ def init_layouts():
 
 def init_widget_defaults():
     return dict(font="Noto Sans Mono Regular",
-                fontsize=11,
+                fontsize=12,
                 padding=3,
-                foreground=colors[7],
+                foreground=colors[3],
                 background=colors[0])
 
+
+def _separator_widget():
+    return widget.Sep(
+        linewidth=2,
+        padding=10,
+        foreground=colors[2],
+    )
 
 def init_widgets_list():
     label_font_size = 14
     widget_font_size = 12
-    prompt = "{0}@{1}: ".format(os.environ["USER"], socket.gethostname())
+    #prompt = "{0}@{1}: ".format(os.environ["USER"], socket.gethostname())
+    separator = _separator_widget()
+
     widgets_list = [
-        widget.Sep(
-            linewidth=0,
-            padding=6,
-            foreground=colors[1],
-        ),
+        separator,
         widget.GroupBox(
             font="Noto Sans Mono Bold",
             fontsize=label_font_size,
@@ -265,16 +292,17 @@ def init_widgets_list():
             padding_y=5,
             padding_x=5,
             borderwidth=3,
-            active=colors[3],
-            inactive=colors[5],
-            highlight_color=colors[0],
+            active=colors[9],
+            inactive=colors[3],
+            highlight_color=colors[2],
             rounded=True,
             highlight_method="line",
-            this_current_screen_border=colors[1],
-            this_screen_border=colors[9],
-            other_current_screen_border=colors[5],
+            this_current_screen_border=colors[9],
+            this_screen_border=colors[4],
+            other_current_screen_border=colors[8],
             other_screen_border=colors[4],
-            foreground=colors[2],
+            foreground=colors[3],
+            background=colors[0],
         ),
         # widget.Prompt(
         #     prompt="Run:",
@@ -284,21 +312,13 @@ def init_widgets_list():
         #     foreground=colors[3],
         #     background=colors[1]
         # ),
-        widget.Sep(
-            linewidth=2,
-            padding=10,
-            foreground=colors[1],
-        ),
+        separator,
         widget.WindowName(
             font="Noto Sans Mono",
             fontsize=widget_font_size,
-            foreground=colors[6],
+            foreground=colors[3],
         ),
-        widget.Sep(
-            linewidth=2,
-            padding=10,
-            foreground=colors[1],
-        ),
+        separator,
     ]
     return widgets_list
 
@@ -306,76 +326,78 @@ def init_widgets_list():
 def init_main_widget_list():
     label_font_size = 14
     widget_font_size = 12
-    separator = widget.Sep(
-        linewidth=2,
-        padding=10,
-        foreground=colors[1],
-    )
+    separator = _separator_widget()
 
     main_widgets = [
         widget.Systray(
         ),
         separator,
         widget.TextBox(
-                    font="Noto Sans Mono Bold",
-                    text="CPU:",
-                    foreground=colors[8],
-                    fontsize=label_font_size
+            font="Noto Sans Mono Bold",
+            text="CPU:",
+            foreground=colors[9],
+            fontsize=label_font_size,
+            background=colors[2],
         ),
         widget.CPU(
-                    font="Noto Sans Mono Regular",
-                    fontsize=widget_font_size,
-                    foreground=colors[6],
+            font="Noto Sans Mono Regular",
+            fontsize=widget_font_size,
+            foreground=colors[3],
+            background=colors[2],
         ),
         separator,
         widget.TextBox(
             font="Noto Sans Mono Bold",
             text="Mem.:",
-            foreground=colors[8],
+            foreground=colors[9],
             fontsize=label_font_size
         ),
         widget.Memory(
             font="Noto Sans Mono Regular",
             fontsize=widget_font_size,
-            foreground=colors[6],
+            foreground=colors[3],
         ),
         separator,
         widget.TextBox(
             font="Noto Sans Mono Bold",
             text="Net:",
-            foreground=colors[8],
-            fontsize=label_font_size
+            foreground=colors[9],
+            fontsize=label_font_size,
+            background=colors[2],
         ),
         widget.Net(
             font="Noto Sans Mono Regular",
             fontsize=widget_font_size,
             interface="enp27s0",
-            foreground=colors[6],
+            foreground=colors[3],
+            background=colors[2],
         ),
         separator,
         widget.TextBox(
             font="Noto Sans Mono Bold",
             text="Vol.:",
-            foreground=colors[8],
+            foreground=colors[9],
             fontsize=label_font_size
         ),
         widget.Volume(
             font="Noto Sans Mono Regular",
             fontsize=widget_font_size,
-            foreground=colors[6],
+            foreground=colors[3],
         ),
         separator,
         widget.TextBox(
             font="Noto Sans Mono Bold",
             text="T:",
-            foreground=colors[8],
+            foreground=colors[9],
+            background=colors[2],
             padding=5,
             fontsize=label_font_size
         ),
         widget.Clock(
             font="Noto Sans Mono Bold",
             fontsize=widget_font_size,
-            foreground=colors[6],
+            foreground=colors[3],
+            background=colors[2],
             format="%A, %B %d - %H:%M"
         ),
         separator,
@@ -400,6 +422,7 @@ def init_screens():
             top=bar.Bar(
                 init_widgets_for_secondary_screen(),
                 24,
+                background=colors[0],
                 # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
                 # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
             ),
@@ -408,6 +431,7 @@ def init_screens():
             top=bar.Bar(
                 init_widgets_for_main_screen(),
                 28,
+                background=colors[0],
                 # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
                 # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
             ),
@@ -470,11 +494,7 @@ if __name__ in ["config", "__main__"]:
     #     # layout.Zoomy(),
     # ]
 
-    widget_defaults = dict(
-        font="sans",
-        fontsize=12,
-        padding=3,
-    )
+    widget_defaults = init_widget_defaults()
     extension_defaults = widget_defaults.copy()
 
     screens = init_screens()
