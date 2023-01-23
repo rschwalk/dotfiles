@@ -26,14 +26,11 @@
 
 import os
 import socket
-from libqtile import bar, layout, widget
+import subprocess
+from libqtile import bar, layout, widget, hook
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 # from libqtile.utils import guess_terminal
-
-
-def _build_color(color):
-    return [color, color]
 
 
 def init_colors():
@@ -313,12 +310,33 @@ def init_widgets_list():
         #     foreground=colors[3],
         #     background=colors[1]
         # ),
-        separator,
+        widget.TextBox(
+            text='\u25e2',
+            padding=0,
+            fontsize=60,
+            background=colors[0],
+            foreground=colors[2]
+        ),
+        widget.CurrentLayout(
+            font="Hack",
+            scale=0.7,
+            foreground=colors[9],
+            fontsize=label_font_size,
+            background=colors[2],
+        ),
+        widget.TextBox(
+            text='\u25e2',
+            padding=0,
+            fontsize=60,
+            background=colors[2],
+            foreground=colors[0]
+        ),
+        # separator,
         widget.WindowName(
             fontsize=widget_font_size,
             foreground=colors[5],
         ),
-        separator,
+        # separator,
     ]
     return widgets_list
 
@@ -331,7 +349,14 @@ def init_main_widget_list():
     main_widgets = [
         widget.Systray(
         ),
-        separator,
+        # separator,
+        widget.TextBox(
+            text='\u25e2',
+            padding=0,
+            fontsize=60,
+            background=colors[0],
+            foreground=colors[2]
+        ),
         widget.TextBox(
             font="Hack",
             text="CPU:",
@@ -385,7 +410,14 @@ def init_main_widget_list():
             foreground=colors[5],
             background=colors[2],
         ),
-        separator,
+        widget.TextBox(
+            text='\u25e2',
+            padding=0,
+            fontsize=60,
+            background=colors[2],
+            foreground=colors[0]
+        ),
+        # separator,
         widget.TextBox(
             font="Hack",
             text="T:",
@@ -512,6 +544,7 @@ if __name__ in ["config", "__main__"]:
     bring_front_click = False
     cursor_warp = False
     floating_layout = layout.Floating(
+        border_focus=colors[9],
         float_rules=[
             # Run the utility of `xprop` to see the wm class and name of an X client.
             *layout.Floating.default_float_rules,
@@ -533,6 +566,12 @@ if __name__ in ["config", "__main__"]:
 
     # When using the Wayland backend, this can be used to configure input devices.
     wl_input_rules = None
+
+
+@hook.subscribe.startup_once
+def autostart():
+    home = os.path.expanduser('~/.config/qtile/autostart.sh')
+    subprocess.call([home])
 
 # XXX: Gasp! We're lying here. In fact, nobody really uses or cares about this
 # string besides java UI toolkits; you can see several discussions on the
