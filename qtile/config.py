@@ -246,7 +246,7 @@ def init_groups():
 def init_layout_theme():
     return {"border_width": 2,
             "margin": 2,
-            "border_focus": colors[7],
+            "border_focus": colors[9],
             "border_normal": colors[2]
             }
 
@@ -262,10 +262,10 @@ def init_layouts():
 
 
 def init_widget_defaults():
-    return dict(font="Noto Sans Mono Regular",
+    return dict(font="Hack",
                 fontsize=12,
                 padding=3,
-                foreground=colors[3],
+                foreground=colors[4],
                 background=colors[0])
 
 
@@ -276,6 +276,7 @@ def _separator_widget():
         foreground=colors[2],
     )
 
+
 def init_widgets_list():
     label_font_size = 14
     widget_font_size = 12
@@ -285,7 +286,7 @@ def init_widgets_list():
     widgets_list = [
         separator,
         widget.GroupBox(
-            font="Noto Sans Mono Bold",
+            font="Hack",
             fontsize=label_font_size,
             margin_y=5,
             margin_x=0,
@@ -293,7 +294,7 @@ def init_widgets_list():
             padding_x=5,
             borderwidth=3,
             active=colors[9],
-            inactive=colors[3],
+            inactive=colors[4],
             highlight_color=colors[2],
             rounded=True,
             highlight_method="line",
@@ -314,9 +315,8 @@ def init_widgets_list():
         # ),
         separator,
         widget.WindowName(
-            font="Noto Sans Mono",
             fontsize=widget_font_size,
-            foreground=colors[3],
+            foreground=colors[5],
         ),
         separator,
     ]
@@ -333,71 +333,70 @@ def init_main_widget_list():
         ),
         separator,
         widget.TextBox(
-            font="Noto Sans Mono Bold",
+            font="Hack",
             text="CPU:",
             foreground=colors[9],
             fontsize=label_font_size,
             background=colors[2],
         ),
         widget.CPU(
-            font="Noto Sans Mono Regular",
             fontsize=widget_font_size,
-            foreground=colors[3],
+            foreground=colors[5],
             background=colors[2],
         ),
-        separator,
+        # separator,
         widget.TextBox(
-            font="Noto Sans Mono Bold",
+            font="Hack",
             text="Mem.:",
             foreground=colors[9],
-            fontsize=label_font_size
+            fontsize=label_font_size,
+            background=colors[2],
         ),
         widget.Memory(
-            font="Noto Sans Mono Regular",
             fontsize=widget_font_size,
-            foreground=colors[3],
+            foreground=colors[5],
+            background=colors[2],
         ),
-        separator,
+        # separator,
         widget.TextBox(
-            font="Noto Sans Mono Bold",
+            font="Hack",
             text="Net:",
             foreground=colors[9],
             fontsize=label_font_size,
             background=colors[2],
         ),
         widget.Net(
-            font="Noto Sans Mono Regular",
             fontsize=widget_font_size,
             interface="enp27s0",
-            foreground=colors[3],
+            foreground=colors[5],
             background=colors[2],
         ),
-        separator,
+        # separator,
         widget.TextBox(
-            font="Noto Sans Mono Bold",
+            font="Hack",
             text="Vol.:",
             foreground=colors[9],
+            background=colors[2],
             fontsize=label_font_size
         ),
         widget.Volume(
-            font="Noto Sans Mono Regular",
             fontsize=widget_font_size,
-            foreground=colors[3],
+            padding=5,
+            foreground=colors[5],
+            background=colors[2],
         ),
         separator,
         widget.TextBox(
-            font="Noto Sans Mono Bold",
+            font="Hack",
             text="T:",
             foreground=colors[9],
-            background=colors[2],
             padding=5,
             fontsize=label_font_size
         ),
         widget.Clock(
-            font="Noto Sans Mono Bold",
+            font="Hack",
             fontsize=widget_font_size,
-            foreground=colors[3],
-            background=colors[2],
+            foreground=colors[5],
             format="%A, %B %d - %H:%M"
         ),
         separator,
@@ -432,8 +431,9 @@ def init_screens():
                 init_widgets_for_main_screen(),
                 28,
                 background=colors[0],
-                # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
-                # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
+                # border_width=[4, 4, 4, 4],  # Draw top and bottom borders
+                # border_color="#ff00ff",
+                # opacity=0.5,
             ),
         ),
     ]
