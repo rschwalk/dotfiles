@@ -21,18 +21,19 @@ font:
   # UI for powerline & tmux bottom bar.
   normal:
     # Font name
-    family: Hack
+    family: "Hack"
+      #family: "Source Code Pro"
     # Font face
     style: Regular
 
   # Bold font face
   bold:
-    family: Hack
+    family: "Hack"
     style: Bold
 
   # Italic font face
   italic:
-    family: Hack
+    family: "Hack"
     style: Italic
 
   # Bold italic font face
@@ -40,11 +41,11 @@ font:
   # italic & it just works. You may specifiy the bold italic version if it exists
   # for your font
   bold_italic:
-    family: Hack
+    family: "Hack"
     style: Bold Italic
 
   # Font size
-  size: 11.0
+  size: 10.0
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing
@@ -52,7 +53,7 @@ font:
   # to your convenience but make sure to adjust 'glyph_offset' appropriately post that
   offset:
    x: 0
-   y: 2
+   y: 1
 
   # Note: This requires RESTART
   # By default when you change the offset above you'll see an issue, where the texts are bottom
@@ -61,7 +62,7 @@ font:
   glyph_offset:
    x: 0
   # Keeping this as half of offset to vertically align the text in cursor
-   y: 1
+   y: 2
 
   # Better font rendering for mac
   #use_thin_strokes: true
